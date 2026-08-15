@@ -114,10 +114,20 @@ a{color:#B85C3E;text-decoration:none}a:hover{color:#8F4025;text-decoration:under
   .pill-grid{grid-template-columns:1fr !important;gap:8px !important}
   .pill{white-space:normal !important;justify-content:flex-start !important;text-align:left !important}
 
-  /* полосы времени: 190px 1fr 110px 200px → в столбик */
-  .bar-row{grid-template-columns:1fr !important;gap:6px !important;
-           align-items:flex-start !important;padding:14px 0 !important}
-  .bar-row > div:last-child{border-left:0 !important;padding-left:0 !important}
+  /* Полосы времени. В один столбец было нечитаемо: сумма справа висела
+     сама по себе, глаз не связывал её ни с названием, ни со сроком.
+     Теперь пары — слева кто, справа сколько и как долго, полоса под ними.
+     Порядок детей в разметке: 1 имя+часы, 2 полоса, 3 сумма, 4 срок. */
+  .bar-row{grid-template-columns:1fr auto !important;align-items:start !important;
+           gap:2px 18px !important;padding:18px 0 !important}
+  .bar-row > div:nth-child(1){grid-column:1;grid-row:1 / span 2}
+  .bar-row > div:nth-child(3){grid-column:2;grid-row:1;text-align:right}
+  .bar-row > div:nth-child(4){grid-column:2;grid-row:2;text-align:right;
+           border-left:0 !important;padding-left:0 !important}
+  .bar-row > div:nth-child(2){grid-column:1 / -1;grid-row:3;margin-top:12px}
+
+  /* переключатель языка фиксирован снизу — не должен накрывать финальную фразу */
+  .doc-wrap{padding-bottom:96px !important}
 }
 
 @media (max-width:420px){
@@ -270,7 +280,9 @@ a{color:#B85C3E;text-decoration:none}a:hover{color:#8F4025;text-decoration:under
     </div>
     <div class="table-hint" data-i="tblScroll"></div>
     <div class="table-scroll" style="border:1px solid #E3DFD3;border-radius:6px;overflow-x:auto;background:#fff">
-      <div class="table-inner" style="min-width:880px">
+      <!-- 922px = точная сумма колонок 40+300+112+120+192+158. При 880px
+           фон шапки не докрашивался на 42px справа под колонкой «Удалённо». -->
+      <div class="table-inner" style="min-width:922px">
       <div class="table-row table-head" style="position:sticky;top:0;z-index:5;display:grid;grid-template-columns:40px minmax(300px,1fr) 112px 120px 192px 158px;background:#1C1C1E;color:#F7F5EF">
         <div></div>
         <div data-i="thTask" style="padding:12px 16px 12px 0;font:700 12px 'Manrope',sans-serif;letter-spacing:0.02em"></div>
