@@ -243,6 +243,47 @@ blockquote{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:ital
 .bblock .price-ok{font-weight:700;color:var(--obsidian);}
 .bblock-dark .price-ok{font-weight:700;color:var(--ivory);}
 .bblock.bg-dune .price-ok,.bblock[style*="var(--dune)"] .price-ok{font-weight:700;color:var(--obsidian);}
+
+/* ── Мобільна адаптація (десктоп не зачіпається) ── */
+.bt-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+
+@media (max-width:640px){
+  .wrap{padding:0 18px}
+  .hero{padding:56px 0 44px}
+  .hero-meta{flex-wrap:wrap;gap:18px 24px}
+  .footer-row{flex-wrap:wrap;gap:16px}
+
+  /* усі багатоколонкові сітки — в одну колонку */
+  .stats-row,.team-grid,.goals-row,.concept-row,.arcs-row,.zones-grid,
+  .aud-row,.wp-grid,.days-grid,.video-grid,.two-col,.content-grid,
+  .ref-grid,.contests-grid,.check-grid{grid-template-columns:1fr}
+
+  /* дві колонки там, де вміст короткий і читається парами */
+  .stats-row{grid-template-columns:1fr 1fr;gap:2px}
+
+  /* таймлайн і роадмап: фіксована ліва колонка з'їдала текст */
+  .tl-item,.rm-item{grid-template-columns:1fr}
+  .tl-item::after,.rm-item::after{display:none}
+  .tl-body,.rm-body{padding-left:0}
+
+  /* декоративна цифра дня наїжджала на заголовок */
+  .day-card .day-bg{font-size:44px}
+
+  /* таблиці: горизонтальний скрол + натяк, що є що гортати */
+  .bt-scroll{position:relative}
+  .bt-scroll .bt{min-width:520px}
+  .bt th,.bt td{padding-left:10px;padding-right:10px}
+
+  /* сітки, задані інлайново в розмітці */
+  [style*="grid-template-columns:1fr 1fr 1fr"]{grid-template-columns:1fr 1fr !important}
+  [style*="grid-template-columns:1fr 1fr;"]{grid-template-columns:1fr !important}
+}
+
+@media (max-width:420px){
+  .wrap{padding:0 14px}
+  .stats-row{grid-template-columns:1fr}
+}
+
 </style>
 </head>
 <body>
@@ -948,7 +989,7 @@ blockquote{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:ital
   <div class="bb-head" style="background:rgba(183,145,65,.12);">
     <h3>11 Липня — що купуємо</h3>
   </div>
-  <table class="bt">
+  <div class="bt-scroll"><table class="bt">
     <tr><th style="width:48%">Стаття</th><th>Ціна</th><th style="text-align:center;">К-сть</th><th style="text-align:right;">Грн</th><th>Відп.</th></tr>
     <tr><td>Таблички / інфо-листи (3 точки маршруту)</td><td class="bq">300 грн</td><td style="text-align:center;" class="bq">6 шт</td><td class="bph">1 800</td><td class="bq">Digital-лід</td></tr>
     <tr><td>Підготовка маршруту <span class="btag tgf">безкоштовно</span></td><td class="bq">—</td><td style="text-align:center;">—</td><td class="bok">0</td><td class="bq">Свої</td></tr>
@@ -958,7 +999,7 @@ blockquote{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:ital
     <tr><td>SMM-оператор <span class="btag tgf">вже є</span></td><td class="bq">—</td><td style="text-align:center;">—</td><td class="bok">0</td><td class="bq">Контент-лід</td></tr>
     <tr><td>Блогери <span class="btag tgm">маркетинговий бюджет</span></td><td class="bq">—</td><td style="text-align:center;">—</td><td class="bok">0</td><td class="bq">Контент-лід</td></tr>
     <tr class="bsub"><td colspan="3"><strong>Разом 11.07</strong></td><td class="bok" style="white-space:nowrap;">31 800 грн</td><td></td></tr>
-  </table>
+  </table></div>
 </div>
 
 <!-- ── 2. 12 ЛИПНЯ ─────────────────────────────────────── -->
@@ -966,7 +1007,7 @@ blockquote{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:ital
   <div class="bb-head" style="background:rgba(183,145,65,.12);">
     <h3>12 Липня — що купуємо (~50–100 гостей)</h3>
   </div>
-  <table class="bt">
+  <div class="bt-scroll"><table class="bt">
     <tr><th style="width:48%">Стаття</th><th>Ціна</th><th style="text-align:center;">К-сть</th><th style="text-align:right;">Грн</th><th>Відп.</th></tr>
     <tr><td>Ведучий + звук + техніка + проектор + звукар + дорога</td><td class="bq">–</td><td style="text-align:center;" class="bq">1</td><td class="bok">82 500</td><td class="bq">✓</td></tr>
     <tr><td>Фотограф (6+ год)</td><td class="bq">—</td><td style="text-align:center;" class="bq">1</td><td class="bph">12 000</td><td class="bq">Контент-лід</td></tr>
@@ -989,7 +1030,7 @@ blockquote{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:ital
     <tr><td>Ювілейний ролик «15 Років» + зйомка молодої пари</td><td class="bq">—</td><td style="text-align:center;" class="bq">—</td><td class="bph">~82 500</td><td class="bq">Контент-лід · до 10.07</td></tr>
     <tr><td>Сертифікат переможцю конкурсу + рамка</td><td class="bq">—</td><td style="text-align:center;" class="bq">1</td><td class="bph">600</td><td class="bq">Конкурс</td></tr>
     <tr class="bsub"><td colspan="3"><strong>Разом 12.07</strong></td><td class="bok" style="white-space:nowrap;">~416 100 грн</td><td></td></tr>
-  </table>
+  </table></div>
 </div>
 
 <!-- ── 3. BLOGGER WP ─────────────────────────────────────── -->
@@ -997,7 +1038,7 @@ blockquote{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:ital
   <div class="bb-head" style="background:rgba(183,145,65,.12);">
     <h3>Blogger Welcome Pack — 20 шт</h3>
   </div>
-  <table class="bt">
+  <div class="bt-scroll"><table class="bt">
     <tr><th style="width:48%">Стаття</th><th>Ціна</th><th style="text-align:center;">К-сть</th><th style="text-align:right;">Грн</th><th>Примітка</th></tr>
     <tr><td>Пакет <span class="btag tgf">з блоку брендованої продукції</span></td><td class="bq">150 грн</td><td style="text-align:center;" class="bq">20 шт</td><td class="bok">0</td><td class="bq">Digital-лід</td></tr>
     <tr><td>Цеглинка з логотипом — фрезерування</td><td class="bq">520 грн</td><td style="text-align:center;" class="bq">20 шт</td><td class="bph">10 400</td><td class="bq">Алекс</td></tr>
@@ -1006,7 +1047,7 @@ blockquote{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:ital
     <tr><td>Друк запрошень</td><td class="bq">75 грн</td><td style="text-align:center;" class="bq">20 шт</td><td class="bph">1 500</td><td class="bq">Digital-лід</td></tr>
     <tr><td>Доставка кур'єром блогерам</td><td class="bq">220 грн</td><td style="text-align:center;" class="bq">20 шт</td><td class="bph">4 400</td><td class="bq">Логістика</td></tr>
     <tr class="bsub"><td colspan="3"><strong>Разом Blogger WP</strong></td><td class="bok" style="white-space:nowrap;">~16 300 грн</td><td class="bq">цеглинка + друк + доставка</td></tr>
-  </table>
+  </table></div>
 </div>
 
 <!-- ── 4. GUEST WP ──────────────────────────────────────── -->
@@ -1014,7 +1055,7 @@ blockquote{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:ital
   <div class="bb-head" style="background:rgba(0,0,0,.2);">
     <h3 style="color:var(--ivory);">Guest Welcome Pack — ~50 шт (перші 50 зареєстрованих)</h3>
   </div>
-  <table class="bt">
+  <div class="bt-scroll"><table class="bt">
     <tr><th style="width:48%;color:rgba(250,249,246,.45);">Стаття</th><th style="color:rgba(250,249,246,.45);">Ціна</th><th style="text-align:center;color:rgba(250,249,246,.45);">К-сть</th><th style="text-align:right;color:rgba(250,249,246,.45);">Грн</th><th style="color:rgba(250,249,246,.45);">Примітка</th></tr>
     <tr><td>Пакет <span class="btag tgf">з блоку брендованої продукції</span></td><td class="bq-l">150 грн</td><td style="text-align:center;" class="bq-l">50 шт</td><td class="bok-l">0</td><td class="bq-l">Враховано окремо</td></tr>
     <tr><td>Кружки брендовані <span class="btag tgf">вже є</span></td><td class="bq-l">0 грн</td><td style="text-align:center;" class="bq-l">~25 шт</td><td class="bok-l">0</td><td class="bq-l">З наявних запасів</td></tr>
@@ -1023,7 +1064,7 @@ blockquote{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:ital
     <tr><td>QR-картка зі знижкою (друк)</td><td class="bq-l">18 грн</td><td style="text-align:center;" class="bq-l">50 шт</td><td class="bph-l">900</td><td class="bq-l">Digital-лід</td></tr>
     <tr><td>Картка для решти гостей</td><td class="bq-l">15 грн</td><td style="text-align:center;" class="bq-l">50 шт</td><td class="bph-l">750</td><td class="bq-l">Алекс</td></tr>
     <tr class="bsub-l"><td colspan="3" style="color:var(--ivory);"><strong>Разом Guest WP</strong></td><td class="bok-l" style="white-space:nowrap;">~16 650 грн</td><td class="bq-l">якщо всі 50 — кружки → −7 500</td></tr>
-  </table>
+  </table></div>
 </div>
 
 <!-- ── 5. БРЕНДОВАНА ПРОДУКЦІЯ (довгострокові активи) ────── -->
@@ -1031,14 +1072,14 @@ blockquote{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:ital
   <div class="bb-head" style="background:rgba(215,179,105,.08);">
     <h3 style="color:var(--ivory);">Брендована продукція <span style="font-size:11px;font-weight:400;color:rgba(215,179,105,.5);">— довгострокові активи, що залишаються після заходу</span></h3>
   </div>
-  <table class="bt">
+  <div class="bt-scroll"><table class="bt">
     <tr><th style="width:48%;color:rgba(215,179,105,.6);">Стаття</th><th style="color:rgba(215,179,105,.6);">Ціна</th><th style="text-align:center;color:rgba(215,179,105,.6);">К-сть</th><th style="text-align:right;color:rgba(215,179,105,.6);">Грн</th><th style="color:rgba(215,179,105,.6);">Примітка</th></tr>
     <tr><td style="color:rgba(250,249,246,.85);">Брендовані пакети темно-зелені (для ивентів, блогерів, запасу)</td><td class="bq-l">150 грн</td><td style="text-align:center;" class="bq-l">200 шт</td><td style="font-weight:700;text-align:right;color:var(--ivory);">30 000</td><td class="bq-l">✓ Підтверджено</td></tr>
     <tr><td style="color:rgba(250,249,246,.85);">Дашборди на ПВХ + мольберти (4 шт)</td><td class="bq-l">3 000 грн</td><td style="text-align:center;" class="bq-l">4 шт</td><td style="font-weight:700;text-align:right;color:var(--ivory);">12 000</td><td class="bq-l">✓ Підтверджено</td></tr>
     <tr><td style="color:rgba(250,249,246,.85);">Штамп + воск + конверти (для blogger WP)</td><td class="bq-l">—</td><td style="text-align:center;" class="bq-l">20 шт</td><td style="font-weight:700;text-align:right;color:var(--ivory);">2 550</td><td class="bq-l">Уточнюється</td></tr>
     <tr><td style="color:rgba(250,249,246,.85);">Тент/палатка (оновлення або нова брендована)</td><td class="bq-l">—</td><td style="text-align:center;" class="bq-l">1</td><td style="color:rgba(250,249,246,.38);font-style:italic;text-align:right;">~15 000</td><td class="bq-l">Уточнюється</td></tr>
     <tr style="background:rgba(215,179,105,.06);"><td colspan="3" style="color:var(--ivory);font-weight:700;">Разом брендована продукція</td><td style="font-weight:700;text-align:right;color:var(--gold);white-space:nowrap;">~59 550 грн</td><td class="bq-l">Залишається назавжди</td></tr>
-  </table>
+  </table></div>
 </div>
 
 <!-- ── 6. ПІДСУМОК ──────────────────────────────────────── -->

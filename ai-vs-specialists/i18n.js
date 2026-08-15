@@ -62,6 +62,7 @@ ru: {
   footSmall: "Период: апрель – июль 2026 · ИИ — по нетто-ставке с учётом налоговой льготы (CIT 19%); остальные варианты — по полной стоимости для компании (брутто)<br>Все ставки, часы и формулы — во внутреннем Excel-файле, открыты для проверки · Подготовлено: Алекс Гончаревский, операционный директор, промпт-инженер",
 
   unitWork: "работа", unitTech: "техника", unitSearch: "поиск",
+  tblScroll: "Таблица листается вбок →",
   gateHint: "Документ доступен на трёх языках"
 },
 
@@ -126,6 +127,7 @@ pl: {
   footSmall: "Okres: kwiecień – lipiec 2026 · AI — według stawki netto z uwzględnieniem ulgi podatkowej (CIT 19%); pozostałe warianty — według pełnego kosztu dla firmy (brutto)<br>Wszystkie stawki, godziny i formuły — w wewnętrznym pliku Excel, otwarte do weryfikacji · Przygotował: Alex Goncharevski, dyrektor operacyjny, prompt engineer",
 
   unitWork: "praca", unitTech: "sprzęt", unitSearch: "szukanie",
+  tblScroll: "Tabelę przewija się w bok →",
   gateHint: "Dokument dostępny w trzech językach"
 },
 
@@ -190,6 +192,7 @@ en: {
   footSmall: "Period: April – July 2026 · AI costed at the net rate including the tax deduction (CIT 19%); all other options at full cost to the company (gross)<br>Every rate, hour and formula sits in an internal spreadsheet, open to inspection · Prepared by Alex Goncharevski, Chief Operating Officer and prompt engineer",
 
   unitWork: "work", unitTech: "hardware", unitSearch: "search",
+  tblScroll: "Scroll the table sideways →",
   gateHint: "This document is available in three languages"
 }
 };

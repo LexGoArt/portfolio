@@ -61,6 +61,71 @@ a{color:#B85C3E;text-decoration:none}a:hover{color:#8F4025;text-decoration:under
 
 /* содержимое скрыто, пока язык не выбран */
 #doc[hidden]{display:none}
+
+/* ══════════════════════════════════════════════════════════════
+   Мобильная адаптация.
+   Вся вёрстка документа — на инлайновых style, поэтому переопределяем
+   через !important, но ТОЧЕЧНО: только те свойства, что реально меняются.
+   font-size отдельной строкой, а не через шорткод font — иначе слетит
+   семейство и вес. Десктоп (>=900px) ни одним правилом не затронут.
+   ══════════════════════════════════════════════════════════════ */
+
+/* подсказка к таблице — только на узких экранах */
+.table-hint{display:none;font:600 11.5px 'Manrope',sans-serif;color:#8A867C;margin:0 0 8px}
+
+@media (max-width:899px){
+  .doc-wrap{padding-left:24px !important;padding-right:24px !important}
+  .kpi-num--1{font-size:76px !important}
+  .kpi-num--2{font-size:56px !important}
+  .grid4{grid-template-columns:repeat(2,1fr) !important}
+  .grid4--biz{gap:28px !important}
+  .risk-panel{gap:24px !important;padding:22px 22px !important}
+  .risk-aside{padding-right:24px !important}
+  .stat-num{font-size:34px !important}
+  .table-hint{display:block}
+  .table-scroll{-webkit-overflow-scrolling:touch}
+}
+
+@media (max-width:680px){
+  .doc-wrap{padding-left:16px !important;padding-right:16px !important}
+
+  /* шапка: числа уезжают под заголовок */
+  .hero{align-items:flex-start !important;gap:22px !important;padding-bottom:22px !important}
+  .hero-kpis{align-items:flex-end !important;gap:26px !important}
+  .kpi-num--1{font-size:58px !important}
+  .kpi-num--2{font-size:44px !important}
+
+  /* тёмная секция: две колонки → одна, разделитель переезжает вниз */
+  .risk-panel{grid-template-columns:1fr !important;gap:20px !important;padding:22px 18px !important}
+  .risk-aside{border-right:0 !important;border-bottom:1px solid #3A3A3C !important;
+              padding-right:0 !important;padding-bottom:18px !important}
+  .risk-aside-num{font-size:44px !important}
+
+  /* три карточки риска: в столбик, стрелки разворачиваются вниз */
+  .risk-cards{flex-direction:column !important;gap:8px !important}
+  .risk-arrow{align-self:flex-start !important;transform:rotate(90deg) !important;margin-left:12px !important}
+
+  /* обе сетки по 4 колонки → одна */
+  .grid4{grid-template-columns:1fr !important;gap:18px !important}
+  .grid4--biz > div{border-left:0 !important;padding-left:0 !important;margin-left:0 !important}
+  .stat-num{font-size:32px !important}
+
+  /* пилюли: снимаем nowrap — польские строки длиннее английских */
+  .pill-grid{grid-template-columns:1fr !important;gap:8px !important}
+  .pill{white-space:normal !important;justify-content:flex-start !important;text-align:left !important}
+
+  /* полосы времени: 190px 1fr 110px 200px → в столбик */
+  .bar-row{grid-template-columns:1fr !important;gap:6px !important;
+           align-items:flex-start !important;padding:14px 0 !important}
+  .bar-row > div:last-child{border-left:0 !important;padding-left:0 !important}
+}
+
+@media (max-width:420px){
+  .kpi-num--1{font-size:46px !important}
+  .kpi-num--2{font-size:34px !important}
+  .risk-aside-num{font-size:36px !important}
+  #lang{right:12px;bottom:12px}
+}
 </style>
 </head>
 <body>
@@ -86,21 +151,21 @@ a{color:#B85C3E;text-decoration:none}a:hover{color:#8F4025;text-decoration:under
 </nav>
 
 <div id="doc" hidden>
-<div style="max-width:1240px;margin:0 auto;padding:0 32px 100px">
+<div class="doc-wrap" style="max-width:1240px;margin:0 auto;padding:0 32px 100px">
 
-  <header style="display:flex;flex-wrap:wrap;gap:32px 40px;align-items:flex-end;justify-content:space-between;padding:44px 0 30px">
+  <header class="hero" style="display:flex;flex-wrap:wrap;gap:32px 40px;align-items:flex-end;justify-content:space-between;padding:44px 0 30px">
     <div style="flex:1 1 560px;min-width:0">
       <div data-i="eyebrow" style="font:500 11px 'JetBrains Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;color:#8A867C;margin-bottom:14px"></div>
       <h1 data-ih="h1" style="font:800 clamp(34px,3.6vw,48px)/1.18 'Manrope',sans-serif;letter-spacing:-0.02em;margin:0"></h1>
 
     </div>
-    <div style="display:flex;align-items:flex-end;gap:40px;flex:none">
+    <div class="hero-kpis" style="display:flex;align-items:flex-end;gap:40px;flex:none">
       <div>
-        <div style="font:700 112px/0.9 'JetBrains Mono',monospace;letter-spacing:-0.06em;color:#C75B39">×13</div>
+        <div class="kpi-num kpi-num--1" style="font:700 112px/0.9 'JetBrains Mono',monospace;letter-spacing:-0.06em;color:#C75B39">×13</div>
         <div data-i="kpi1" style="font:600 15px 'Manrope',sans-serif;color:#6E6A60;margin-top:12px;text-align:center"></div>
       </div>
       <div>
-        <div style="font:700 80px/0.9 'JetBrains Mono',monospace;letter-spacing:-0.05em;color:#1C1C1E">×10</div>
+        <div class="kpi-num kpi-num--2" style="font:700 80px/0.9 'JetBrains Mono',monospace;letter-spacing:-0.05em;color:#1C1C1E">×10</div>
         <div data-i="kpi2" style="font:600 15px 'Manrope',sans-serif;color:#6E6A60;margin-top:12px;text-align:center"></div>
       </div>
       <div style="display:none"> · </div>
@@ -109,27 +174,27 @@ a{color:#B85C3E;text-decoration:none}a:hover{color:#8F4025;text-decoration:under
 
   <p data-i="intro" style="font:600 14.5px/1.6 'Manrope',sans-serif;color:#55524A;margin:0 0 28px;border-left:2px solid #C75B39;padding-left:14px"></p>
 
-  <section style="display:grid;grid-template-columns:auto 1fr;gap:40px;background:#1C1C1E;color:#F7F5EF;border-radius:6px;padding:28px 30px;margin:0 0 36px;align-items:center">
-    <div style="border-right:1px solid #3A3A3C;padding-right:40px">
+  <section class="risk-panel" style="display:grid;grid-template-columns:auto 1fr;gap:40px;background:#1C1C1E;color:#F7F5EF;border-radius:6px;padding:28px 30px;margin:0 0 36px;align-items:center">
+    <div class="risk-aside" style="border-right:1px solid #3A3A3C;padding-right:40px">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px"><div style="width:24px;height:2px;background:#E08A63"></div><div data-i="asideLabel" style="font:500 11px 'JetBrains Mono',monospace;letter-spacing:0.1em;text-transform:uppercase;color:#8F8C82"></div></div>
-      <div data-ih="asideBig" style="font:700 60px/0.95 'JetBrains Mono',monospace;letter-spacing:-0.04em;color:#E08A63"></div>
+      <div data-ih="asideBig" class="risk-aside-num" style="font:700 60px/0.95 'JetBrains Mono',monospace;letter-spacing:-0.04em;color:#E08A63"></div>
       <div data-ih="asideNote" style="font:600 13.5px/1.5 'Manrope',sans-serif;color:#C9C6BC;margin-top:14px"></div>
     </div>
     <div>
-      <div style="display:flex;align-items:stretch;gap:10px">
-        <div style="flex:1;background:#26262A;border-radius:8px;padding:16px 18px;border-top:3px solid #E08A63">
+      <div class="risk-cards" style="display:flex;align-items:stretch;gap:10px">
+        <div class="risk-card" style="flex:1;background:#26262A;border-radius:8px;padding:16px 18px;border-top:3px solid #E08A63">
           <div data-i="st1Label" style="font:600 10px 'JetBrains Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;color:#8F8C82"></div>
           <div data-i="st1Val" style="font:700 20px/1 'JetBrains Mono',monospace;letter-spacing:-0.02em;color:#E08A63;margin-top:8px;white-space:nowrap"></div>
           <div data-i="st1Txt" style="font:500 12px/1.5 'Manrope',sans-serif;color:#A8A59B;margin-top:8px"></div>
         </div>
-        <div style="align-self:center;font:700 16px 'JetBrains Mono',monospace;color:#5A5A5E;flex:none">→</div>
-        <div style="flex:1;background:#26262A;border-radius:8px;padding:16px 18px;border-top:3px solid rgba(224,138,99,0.6)">
+        <div class="risk-arrow" style="align-self:center;font:700 16px 'JetBrains Mono',monospace;color:#5A5A5E;flex:none">→</div>
+        <div class="risk-card" style="flex:1;background:#26262A;border-radius:8px;padding:16px 18px;border-top:3px solid rgba(224,138,99,0.6)">
           <div data-i="st2Label" style="font:600 10px 'JetBrains Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;color:#8F8C82"></div>
           <div data-i="st2Val" style="font:700 20px/1 'JetBrains Mono',monospace;letter-spacing:-0.02em;color:#E08A63;margin-top:8px;white-space:nowrap"></div>
           <div data-i="st2Txt" style="font:500 12px/1.5 'Manrope',sans-serif;color:#A8A59B;margin-top:8px"></div>
         </div>
-        <div style="align-self:center;font:700 16px 'JetBrains Mono',monospace;color:#5A5A5E;flex:none">→</div>
-        <div style="flex:1;background:#26262A;border-radius:8px;padding:16px 18px;border-top:3px solid rgba(224,138,99,0.35)">
+        <div class="risk-arrow" style="align-self:center;font:700 16px 'JetBrains Mono',monospace;color:#5A5A5E;flex:none">→</div>
+        <div class="risk-card" style="flex:1;background:#26262A;border-radius:8px;padding:16px 18px;border-top:3px solid rgba(224,138,99,0.35)">
           <div data-i="st3Label" style="font:600 10px 'JetBrains Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;color:#8F8C82"></div>
           <div data-i="st3Val" style="font:700 20px/1 'JetBrains Mono',monospace;letter-spacing:-0.02em;color:#E08A63;margin-top:8px;white-space:nowrap"></div>
           <div data-i="st3Txt" style="font:500 12px/1.5 'Manrope',sans-serif;color:#A8A59B;margin-top:8px"></div>
@@ -139,7 +204,7 @@ a{color:#B85C3E;text-decoration:none}a:hover{color:#8F4025;text-decoration:under
     </div>
   </section>
 
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);border:1px solid #E3DFD3;border-radius:6px;overflow:hidden;background:#fff;margin-bottom:56px">
+  <div class="grid4 grid4--metrics" style="display:grid;grid-template-columns:repeat(4,1fr);border:1px solid #E3DFD3;border-radius:6px;overflow:hidden;background:#fff;margin-bottom:56px">
     <div style="padding:22px 20px;background:#FBEDE4;border-right:1px solid #F0D9C8">
       <div data-i="c1Name" style="font:700 12px 'Manrope',sans-serif;color:#B85C3E;margin-bottom:10px"></div>
       <div data-i="c1Sum" style="font:700 30px/1 'JetBrains Mono',monospace;letter-spacing:-0.02em;color:#B85C3E"></div>
@@ -172,29 +237,29 @@ a{color:#B85C3E;text-decoration:none}a:hover{color:#8F4025;text-decoration:under
 
   <section style="margin:-16px 0 56px">
     <h2 data-i="bizTitle" style="font:800 24px 'Manrope',sans-serif;letter-spacing:-0.01em;margin:0 0 16px"></h2>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:40px;padding:28px 0 24px;border-top:2px solid #1C1C1E">
+    <div class="grid4 grid4--biz" style="display:grid;grid-template-columns:repeat(4,1fr);gap:40px;padding:28px 0 24px;border-top:2px solid #1C1C1E">
       <div style="border-left:1px solid #E3DFD3;padding-left:20px;margin-left:-20px;border-left-color:transparent">
-        <div data-ih="b1Num" style="font:700 44px/1 'JetBrains Mono',monospace;letter-spacing:-0.04em;color:#1C1C1E"></div>
+        <div data-ih="b1Num" class="stat-num" style="font:700 44px/1 'JetBrains Mono',monospace;letter-spacing:-0.04em;color:#1C1C1E"></div>
         <div data-ih="b1Txt" style="font:600 13px/1.45 'Manrope',sans-serif;color:#8A867C;margin-top:10px"></div>
       </div>
       <div style="border-left:1px solid #E3DFD3;padding-left:24px">
-        <div data-ih="b2Num" style="font:700 44px/1 'JetBrains Mono',monospace;letter-spacing:-0.04em;color:#1C1C1E"></div>
+        <div data-ih="b2Num" class="stat-num" style="font:700 44px/1 'JetBrains Mono',monospace;letter-spacing:-0.04em;color:#1C1C1E"></div>
         <div data-ih="b2Txt" style="font:600 13px/1.45 'Manrope',sans-serif;color:#8A867C;margin-top:10px"></div>
       </div>
       <div style="border-left:1px solid #E3DFD3;padding-left:24px">
-        <div data-ih="b3Num" style="font:700 44px/1 'JetBrains Mono',monospace;letter-spacing:-0.04em;color:#C75B39;white-space:nowrap"></div>
+        <div data-ih="b3Num" class="stat-num" style="font:700 44px/1 'JetBrains Mono',monospace;letter-spacing:-0.04em;color:#C75B39;white-space:nowrap"></div>
         <div data-ih="b3Txt" style="font:600 13px/1.45 'Manrope',sans-serif;color:#8A867C;margin-top:10px"></div>
       </div>
       <div style="border-left:1px solid #E3DFD3;padding-left:24px">
-        <div data-ih="b4Num" style="font:700 44px/1 'JetBrains Mono',monospace;letter-spacing:-0.04em;color:#1C1C1E;white-space:nowrap"></div>
+        <div data-ih="b4Num" class="stat-num" style="font:700 44px/1 'JetBrains Mono',monospace;letter-spacing:-0.04em;color:#1C1C1E;white-space:nowrap"></div>
         <div data-ih="b4Txt" style="font:600 13px/1.45 'Manrope',sans-serif;color:#8A867C;margin-top:10px"></div>
       </div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
-      <div style="display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;border:1px solid #E3DFD3;border-radius:999px;padding:12px 16px;font:600 13.5px 'Manrope',sans-serif;color:#3A3833;white-space:nowrap"><span style="width:20px;height:20px;border-radius:50%;background:#C75B39;color:#fff;font:800 11px/20px 'Manrope',sans-serif;text-align:center;flex:none">✓</span><span data-i="p1"></span></div>
-      <div style="display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;border:1px solid #E3DFD3;border-radius:999px;padding:12px 16px;font:600 13.5px 'Manrope',sans-serif;color:#3A3833;white-space:nowrap"><span style="width:20px;height:20px;border-radius:50%;background:#C75B39;color:#fff;font:800 11px/20px 'Manrope',sans-serif;text-align:center;flex:none">✓</span><span data-i="p2"></span></div>
-      <div style="display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;border:1px solid #E3DFD3;border-radius:999px;padding:12px 16px;font:600 13.5px 'Manrope',sans-serif;color:#3A3833;white-space:nowrap"><span style="width:20px;height:20px;border-radius:50%;background:#C75B39;color:#fff;font:800 11px/20px 'Manrope',sans-serif;text-align:center;flex:none">✓</span><span data-i="p3"></span></div>
-      <div style="display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;border:1px solid #E3DFD3;border-radius:999px;padding:12px 16px;font:600 13.5px 'Manrope',sans-serif;color:#3A3833;white-space:nowrap"><span style="width:20px;height:20px;border-radius:50%;background:#C75B39;color:#fff;font:800 11px/20px 'Manrope',sans-serif;text-align:center;flex:none">✓</span><span data-i="p4"></span></div>
+    <div class="pill-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+      <div class="pill" style="display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;border:1px solid #E3DFD3;border-radius:999px;padding:12px 16px;font:600 13.5px 'Manrope',sans-serif;color:#3A3833;white-space:nowrap"><span style="width:20px;height:20px;border-radius:50%;background:#C75B39;color:#fff;font:800 11px/20px 'Manrope',sans-serif;text-align:center;flex:none">✓</span><span data-i="p1"></span></div>
+      <div class="pill" style="display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;border:1px solid #E3DFD3;border-radius:999px;padding:12px 16px;font:600 13.5px 'Manrope',sans-serif;color:#3A3833;white-space:nowrap"><span style="width:20px;height:20px;border-radius:50%;background:#C75B39;color:#fff;font:800 11px/20px 'Manrope',sans-serif;text-align:center;flex:none">✓</span><span data-i="p2"></span></div>
+      <div class="pill" style="display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;border:1px solid #E3DFD3;border-radius:999px;padding:12px 16px;font:600 13.5px 'Manrope',sans-serif;color:#3A3833;white-space:nowrap"><span style="width:20px;height:20px;border-radius:50%;background:#C75B39;color:#fff;font:800 11px/20px 'Manrope',sans-serif;text-align:center;flex:none">✓</span><span data-i="p3"></span></div>
+      <div class="pill" style="display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;border:1px solid #E3DFD3;border-radius:999px;padding:12px 16px;font:600 13.5px 'Manrope',sans-serif;color:#3A3833;white-space:nowrap"><span style="width:20px;height:20px;border-radius:50%;background:#C75B39;color:#fff;font:800 11px/20px 'Manrope',sans-serif;text-align:center;flex:none">✓</span><span data-i="p4"></span></div>
     </div>
   </section>
 
@@ -203,9 +268,10 @@ a{color:#B85C3E;text-decoration:none}a:hover{color:#8F4025;text-decoration:under
       <h2 data-i="tblTitle" style="font:800 24px 'Manrope',sans-serif;letter-spacing:-0.01em;margin:0"></h2>
 
     </div>
-    <div style="border:1px solid #E3DFD3;border-radius:6px;overflow-x:auto;background:#fff">
-      <div style="min-width:880px">
-      <div style="position:sticky;top:0;z-index:5;display:grid;grid-template-columns:40px minmax(300px,1fr) 112px 120px 192px 158px;background:#1C1C1E;color:#F7F5EF">
+    <div class="table-hint" data-i="tblScroll"></div>
+    <div class="table-scroll" style="border:1px solid #E3DFD3;border-radius:6px;overflow-x:auto;background:#fff">
+      <div class="table-inner" style="min-width:880px">
+      <div class="table-row table-head" style="position:sticky;top:0;z-index:5;display:grid;grid-template-columns:40px minmax(300px,1fr) 112px 120px 192px 158px;background:#1C1C1E;color:#F7F5EF">
         <div></div>
         <div data-i="thTask" style="padding:12px 16px 12px 0;font:700 12px 'Manrope',sans-serif;letter-spacing:0.02em"></div>
         <div style="padding:12px 14px;background:#B85C3E;text-align:right"><div data-i="thAi" style="font:700 12px 'Manrope',sans-serif"></div><div data-i="thAiSub" style="font:500 10px 'JetBrains Mono',monospace;color:#F3D2BE;margin-top:2px"></div></div>
@@ -214,7 +280,7 @@ a{color:#B85C3E;text-decoration:none}a:hover{color:#8F4025;text-decoration:under
         <div style="padding:12px 14px;text-align:right;border-left:1px solid #33322F"><div data-i="thRem" style="font:700 12px 'Manrope',sans-serif"></div><div data-i="thRemSub" style="font:500 10px 'JetBrains Mono',monospace;color:#9C998F;margin-top:2px"></div></div>
       </div>
       <div id="rows"></div>
-      <div style="display:grid;grid-template-columns:40px minmax(300px,1fr) 112px 120px 192px 158px;border-top:2px solid #1C1C1E;background:#fff">
+      <div class="table-row table-foot" style="display:grid;grid-template-columns:40px minmax(300px,1fr) 112px 120px 192px 158px;border-top:2px solid #1C1C1E;background:#fff">
         <div></div>
         <div data-i="totLabel" style="padding:16px 16px 16px 0;font:800 13px 'Manrope',sans-serif;letter-spacing:0.05em;text-transform:uppercase;align-self:center"></div>
         <div style="padding:14px 14px;text-align:right;background:#FBEDE4;border-left:1px solid #F0D9C8;border-right:1px solid #F0D9C8">
@@ -248,7 +314,7 @@ a{color:#B85C3E;text-decoration:none}a:hover{color:#8F4025;text-decoration:under
     <div id="bars"></div>
   </section>
 
-  <footer style="margin-top:72px;padding-top:28px;border-top:2px solid #1C1C1E">
+  <footer class="closing" style="margin-top:72px;padding-top:28px;border-top:2px solid #1C1C1E">
     <div data-ih="footBig" style="font:800 26px/1.3 'Manrope',sans-serif;letter-spacing:-0.01em;margin-bottom:12px"></div>
     <div data-ih="footSmall" style="font:500 11.5px/1.65 'JetBrains Mono',monospace;color:#A8A49A"></div>
   </footer>
@@ -292,7 +358,7 @@ a{color:#B85C3E;text-decoration:none}a:hover{color:#8F4025;text-decoration:under
         ? fh(rw, L) + ' + ' + fh(rs, L) + ' ' + T.unitSearch
         : fh(rw, L);
       out.push(
-        '<div id="task-' + d[0] + '" class="row" style="' + ROW_CSS + '">' +
+        '<div id="task-' + d[0] + '" class="row table-row" style="' + ROW_CSS + '">' +
           '<div style="padding:10px 0 10px 12px;font:500 11px \'JetBrains Mono\',monospace;color:#B5B1A5">' +
             (d[0] < 10 ? '0' + d[0] : d[0]) + '</div>' +
           '<div style="padding:9px 16px 9px 0">' +
@@ -326,7 +392,7 @@ a{color:#B85C3E;text-decoration:none}a:hover{color:#8F4025;text-decoration:under
     var T = window.I18N[L], out = [];
     for (var i = 0; i < 4; i++) {
       out.push(
-        '<div style="display:grid;grid-template-columns:190px 1fr 110px 200px;align-items:center;gap:18px;padding:14px 0;border-bottom:1px solid #E3DFD3">' +
+        '<div class="bar-row" style="display:grid;grid-template-columns:190px 1fr 110px 200px;align-items:center;gap:18px;padding:14px 0;border-bottom:1px solid #E3DFD3">' +
           '<div>' +
             '<div style="font:700 14px \'Manrope\',sans-serif">' + esc(T.barNames[i]) + '</div>' +
             '<div style="font:500 11.5px \'JetBrains Mono\',monospace;color:#A8A49A;margin-top:2px">' + esc(T.barHours[i]) + '</div>' +
