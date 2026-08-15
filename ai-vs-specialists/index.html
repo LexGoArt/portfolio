@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI vs specialists — what I delivered in 3 months</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Alex Goncharevski — Selected Work">
+<meta property="og:title" content="AI vs specialists — what I delivered in 3 months">
+<meta property="og:description" content="32 delivered tasks, recosted hour by hour against doing them without AI, in-house or with a contractor.">
+<meta property="og:url" content="https://lexgoart.github.io/portfolio/ai-vs-specialists/">
+<meta property="og:image" content="https://lexgoart.github.io/portfolio/og/ai.png">
+<meta property="og:image:secure_url" content="https://lexgoart.github.io/portfolio/og/ai.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="AI vs specialists — what I delivered in 3 months">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI vs specialists — what I delivered in 3 months">
+<meta name="twitter:description" content="32 delivered tasks, recosted hour by hour against doing them without AI, in-house or with a contractor.">
+<meta name="twitter:image" content="https://lexgoart.github.io/portfolio/og/ai.png">
+<meta name="description" content="32 delivered tasks, recosted hour by hour against doing them without AI, in-house or with a contractor.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F7F5EF;color:#1C1C1E;font-family:'Manrope',-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#B85C3E;text-decoration:none}a:hover{color:#8F4025;text-decoration:underline}
+@media print{body{background:#fff}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+
+/* строка таблицы — было style-hover в исходнике */
+.row:hover{background:#FAF8F1}
+
+/* ── экран выбора языка ── */
+#gate{position:fixed;inset:0;z-index:9999;background:#F7F5EF;display:flex;align-items:center;justify-content:center;padding:24px}
+#gate[hidden]{display:none}
+.gate-card{max-width:520px;width:100%;text-align:center}
+.gate-mark{font:700 11px 'JetBrains Mono',monospace;letter-spacing:0.18em;text-transform:uppercase;color:#B85C3E;margin-bottom:18px}
+.gate-title{font:800 clamp(24px,4vw,34px)/1.2 'Manrope',sans-serif;letter-spacing:-0.02em;margin:0 0 10px;color:#1C1C1E}
+.gate-sub{font:500 13.5px/1.5 'Manrope',sans-serif;color:#8A867C;margin:0 0 30px}
+.gate-btns{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.gate-btn{appearance:none;cursor:pointer;background:#fff;border:1px solid #E3DFD3;border-radius:999px;
+  padding:13px 26px;font:700 15px 'Manrope',sans-serif;color:#1C1C1E;
+  transition:background .18s ease,border-color .18s ease,transform .18s ease}
+.gate-btn:hover{background:#1C1C1E;border-color:#1C1C1E;color:#F7F5EF;transform:translateY(-2px)}
+.gate-btn:focus-visible{outline:2px solid #C75B39;outline-offset:3px}
+.gate-foot{font:500 11.5px 'JetBrains Mono',monospace;color:#B5B1A5;margin-top:26px}
+
+/* ── переключатель языка ── */
+#lang{position:fixed;right:20px;bottom:20px;z-index:900;display:flex;gap:2px;
+  background:#fff;border:1px solid #E3DFD3;border-radius:999px;padding:4px;
+  box-shadow:0 6px 20px rgba(28,28,30,0.10)}
+#lang[hidden]{display:none}
+#lang button{appearance:none;cursor:pointer;background:none;border:0;border-radius:999px;
+  padding:7px 13px;font:700 12px 'JetBrains Mono',monospace;color:#8A867C;
+  transition:background .15s ease,color .15s ease}
+#lang button:hover{color:#1C1C1E}
+#lang button[aria-current="true"]{background:#1C1C1E;color:#F7F5EF}
+#lang button:focus-visible{outline:2px solid #C75B39;outline-offset:2px}
+@media print{#lang,#gate{display:none !important}}
+
+/* содержимое скрыто, пока язык не выбран */
+#doc[hidden]{display:none}
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <div class="gate-card">
+    <div class="gate-mark">Язык · Język · Language</div>
+    <h1 class="gate-title">AI &amp; специалисты</h1>
+    <p class="gate-sub">Документ доступен на трёх языках<br>Dokument dostępny w trzech językach<br>This document is available in three languages</p>
+    <div class="gate-btns">
+      <button class="gate-btn" data-lang="ru" type="button">Русский</button>
+      <button class="gate-btn" data-lang="pl" type="button">Polski</button>
+      <button class="gate-btn" data-lang="en" type="button">English</button>
+    </div>
+    <div class="gate-foot">Alex Goncharevski · Iron Invest Group</div>
+  </div>
+</div>
+
+<nav id="lang" hidden aria-label="Language">
+  <button type="button" data-lang="ru">RU</button>
+  <button type="button" data-lang="pl">PL</button>
+  <button type="button" data-lang="en">EN</button>
+</nav>
+
+<div id="doc" hidden>
+<div style="max-width:1240px;margin:0 auto;padding:0 32px 100px">
+
+  <header style="display:flex;flex-wrap:wrap;gap:32px 40px;align-items:flex-end;justify-content:space-between;padding:44px 0 30px">
+    <div style="flex:1 1 560px;min-width:0">
+      <div data-i="eyebrow" style="font:500 11px 'JetBrains Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;color:#8A867C;margin-bottom:14px"></div>
+      <h1 data-ih="h1" style="font:800 clamp(34px,3.6vw,48px)/1.18 'Manrope',sans-serif;letter-spacing:-0.02em;margin:0"></h1>
+
+    </div>
+    <div style="display:flex;align-items:flex-end;gap:40px;flex:none">
+      <div>
+        <div style="font:700 112px/0.9 'JetBrains Mono',monospace;letter-spacing:-0.06em;color:#C75B39">×13</div>
+        <div data-i="kpi1" style="font:600 15px 'Manrope',sans-serif;color:#6E6A60;margin-top:12px;text-align:center"></div>
+      </div>
+      <div>
+        <div style="font:700 80px/0.9 'JetBrains Mono',monospace;letter-spacing:-0.05em;color:#1C1C1E">×10</div>
+        <div data-i="kpi2" style="font:600 15px 'Manrope',sans-serif;color:#6E6A60;margin-top:12px;text-align:center"></div>
+      </div>
+      <div style="display:none"> · </div>
+    </div>
+  </header>
+
+  <p data-i="intro" style="font:600 14.5px/1.6 'Manrope',sans-serif;color:#55524A;margin:0 0 28px;border-left:2px solid #C75B39;padding-left:14px"></p>
+
+  <section style="display:grid;grid-template-columns:auto 1fr;gap:40px;background:#1C1C1E;color:#F7F5EF;border-radius:6px;padding:28px 30px;margin:0 0 36px;align-items:center">
+    <div style="border-right:1px solid #3A3A3C;padding-right:40px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px"><div style="width:24px;height:2px;background:#E08A63"></div><div data-i="asideLabel" style="font:500 11px 'JetBrains Mono',monospace;letter-spacing:0.1em;text-transform:uppercase;color:#8F8C82"></div></div>
+      <div data-ih="asideBig" style="font:700 60px/0.95 'JetBrains Mono',monospace;letter-spacing:-0.04em;color:#E08A63"></div>
+      <div data-ih="asideNote" style="font:600 13.5px/1.5 'Manrope',sans-serif;color:#C9C6BC;margin-top:14px"></div>
+    </div>
+    <div>
+      <div style="display:flex;align-items:stretch;gap:10px">
+        <div style="flex:1;background:#26262A;border-radius:8px;padding:16px 18px;border-top:3px solid #E08A63">
+          <div data-i="st1Label" style="font:600 10px 'JetBrains Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;color:#8F8C82"></div>
+          <div data-i="st1Val" style="font:700 20px/1 'JetBrains Mono',monospace;letter-spacing:-0.02em;color:#E08A63;margin-top:8px;white-space:nowrap"></div>
+          <div data-i="st1Txt" style="font:500 12px/1.5 'Manrope',sans-serif;color:#A8A59B;margin-top:8px"></div>
+        </div>
+        <div style="align-self:center;font:700 16px 'JetBrains Mono',monospace;color:#5A5A5E;flex:none">→</div>
+        <div style="flex:1;background:#26262A;border-radius:8px;padding:16px 18px;border-top:3px solid rgba(224,138,99,0.6)">
+          <div data-i="st2Label" style="font:600 10px 'JetBrains Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;color:#8F8C82"></div>
+          <div data-i="st2Val" style="font:700 20px/1 'JetBrains Mono',monospace;letter-spacing:-0.02em;color:#E08A63;margin-top:8px;white-space:nowrap"></div>
+          <div data-i="st2Txt" style="font:500 12px/1.5 'Manrope',sans-serif;color:#A8A59B;margin-top:8px"></div>
+        </div>
+        <div style="align-self:center;font:700 16px 'JetBrains Mono',monospace;color:#5A5A5E;flex:none">→</div>
+        <div style="flex:1;background:#26262A;border-radius:8px;padding:16px 18px;border-top:3px solid rgba(224,138,99,0.35)">
+          <div data-i="st3Label" style="font:600 10px 'JetBrains Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;color:#8F8C82"></div>
+          <div data-i="st3Val" style="font:700 20px/1 'JetBrains Mono',monospace;letter-spacing:-0.02em;color:#E08A63;margin-top:8px;white-space:nowrap"></div>
+          <div data-i="st3Txt" style="font:500 12px/1.5 'Manrope',sans-serif;color:#A8A59B;margin-top:8px"></div>
+        </div>
+      </div>
+      <p data-i="stFoot" style="font:500 11.5px/1.5 'Manrope',sans-serif;color:#8F8C82;margin:14px 0 0;border-top:1px solid #3A3A3C;padding-top:10px"></p>
+    </div>
+  </section>
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);border:1px solid #E3DFD3;border-radius:6px;overflow:hidden;background:#fff;margin-bottom:56px">
+    <div style="padding:22px 20px;background:#FBEDE4;border-right:1px solid #F0D9C8">
+      <div data-i="c1Name" style="font:700 12px 'Manrope',sans-serif;color:#B85C3E;margin-bottom:10px"></div>
+      <div data-i="c1Sum" style="font:700 30px/1 'JetBrains Mono',monospace;letter-spacing:-0.02em;color:#B85C3E"></div>
+      <div data-i="c1Sub" style="font:600 12px 'JetBrains Mono',monospace;color:#C08163;margin-top:8px"></div>
+      <div style="height:6px;background:#F0D9C8;border-radius:3px;margin-top:12px"><div style="width:4%;height:100%;background:#B85C3E;border-radius:3px"></div></div>
+      <div data-i="c1Note" style="font:600 11.5px/1.5 'Manrope',sans-serif;color:#B85C3E;margin-top:10px"></div>
+    </div>
+    <div style="padding:22px 20px;border-right:1px solid #E3DFD3">
+      <div data-i="c2Name" style="font:700 12px 'Manrope',sans-serif;color:#6E6A60;margin-bottom:10px"></div>
+      <div data-i="c2Sum" style="font:700 30px/1 'JetBrains Mono',monospace;letter-spacing:-0.02em"></div>
+      <div data-i="c2Sub" style="font:600 12px 'JetBrains Mono',monospace;color:#8A867C;margin-top:8px"></div>
+      <div style="height:6px;background:#ECE9DE;border-radius:3px;margin-top:12px"><div style="width:48%;height:100%;background:#1C1C1E;border-radius:3px"></div></div>
+      <div data-i="c2Note" style="font:600 11.5px/1.5 'Manrope',sans-serif;color:#6E6A60;margin-top:10px"></div>
+    </div>
+    <div style="padding:22px 20px;border-right:1px solid #E3DFD3">
+      <div data-i="c3Name" style="font:700 12px 'Manrope',sans-serif;color:#6E6A60;margin-bottom:10px"></div>
+      <div data-i="c3Sum" style="font:700 30px/1 'JetBrains Mono',monospace;letter-spacing:-0.02em"></div>
+      <div data-i="c3Sub" style="font:600 12px 'JetBrains Mono',monospace;color:#8A867C;margin-top:8px"></div>
+      <div style="height:6px;background:#ECE9DE;border-radius:3px;margin-top:12px"><div style="width:100%;height:100%;background:#1C1C1E;border-radius:3px"></div></div>
+      <div data-ih="c3Note" style="font:600 11.5px/1.5 'Manrope',sans-serif;color:#6E6A60;margin-top:10px"></div>
+    </div>
+    <div style="padding:22px 20px">
+      <div data-i="c4Name" style="font:700 12px 'Manrope',sans-serif;color:#6E6A60;margin-bottom:10px"></div>
+      <div data-i="c4Sum" style="font:700 30px/1 'JetBrains Mono',monospace;letter-spacing:-0.02em"></div>
+      <div data-i="c4Sub" style="font:600 12px 'JetBrains Mono',monospace;color:#8A867C;margin-top:8px"></div>
+      <div style="height:6px;background:#ECE9DE;border-radius:3px;margin-top:12px"><div style="width:55%;height:100%;background:#1C1C1E;border-radius:3px"></div></div>
+      <div data-i="c4Note" style="font:600 11.5px/1.5 'Manrope',sans-serif;color:#6E6A60;margin-top:10px"></div>
+    </div>
+  </div>
+
+  <section style="margin:-16px 0 56px">
+    <h2 data-i="bizTitle" style="font:800 24px 'Manrope',sans-serif;letter-spacing:-0.01em;margin:0 0 16px"></h2>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:40px;padding:28px 0 24px;border-top:2px solid #1C1C1E">
+      <div style="border-left:1px solid #E3DFD3;padding-left:20px;margin-left:-20px;border-left-color:transparent">
+        <div data-ih="b1Num" style="font:700 44px/1 'JetBrains Mono',monospace;letter-spacing:-0.04em;color:#1C1C1E"></div>
+        <div data-ih="b1Txt" style="font:600 13px/1.45 'Manrope',sans-serif;color:#8A867C;margin-top:10px"></div>
+      </div>
+      <div style="border-left:1px solid #E3DFD3;padding-left:24px">
+        <div data-ih="b2Num" style="font:700 44px/1 'JetBrains Mono',monospace;letter-spacing:-0.04em;color:#1C1C1E"></div>
+        <div data-ih="b2Txt" style="font:600 13px/1.45 'Manrope',sans-serif;color:#8A867C;margin-top:10px"></div>
+      </div>
+      <div style="border-left:1px solid #E3DFD3;padding-left:24px">
+        <div data-ih="b3Num" style="font:700 44px/1 'JetBrains Mono',monospace;letter-spacing:-0.04em;color:#C75B39;white-space:nowrap"></div>
+        <div data-ih="b3Txt" style="font:600 13px/1.45 'Manrope',sans-serif;color:#8A867C;margin-top:10px"></div>
+      </div>
+      <div style="border-left:1px solid #E3DFD3;padding-left:24px">
+        <div data-ih="b4Num" style="font:700 44px/1 'JetBrains Mono',monospace;letter-spacing:-0.04em;color:#1C1C1E;white-space:nowrap"></div>
+        <div data-ih="b4Txt" style="font:600 13px/1.45 'Manrope',sans-serif;color:#8A867C;margin-top:10px"></div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+      <div style="display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;border:1px solid #E3DFD3;border-radius:999px;padding:12px 16px;font:600 13.5px 'Manrope',sans-serif;color:#3A3833;white-space:nowrap"><span style="width:20px;height:20px;border-radius:50%;background:#C75B39;color:#fff;font:800 11px/20px 'Manrope',sans-serif;text-align:center;flex:none">✓</span><span data-i="p1"></span></div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;border:1px solid #E3DFD3;border-radius:999px;padding:12px 16px;font:600 13.5px 'Manrope',sans-serif;color:#3A3833;white-space:nowrap"><span style="width:20px;height:20px;border-radius:50%;background:#C75B39;color:#fff;font:800 11px/20px 'Manrope',sans-serif;text-align:center;flex:none">✓</span><span data-i="p2"></span></div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;border:1px solid #E3DFD3;border-radius:999px;padding:12px 16px;font:600 13.5px 'Manrope',sans-serif;color:#3A3833;white-space:nowrap"><span style="width:20px;height:20px;border-radius:50%;background:#C75B39;color:#fff;font:800 11px/20px 'Manrope',sans-serif;text-align:center;flex:none">✓</span><span data-i="p3"></span></div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:10px;background:#fff;border:1px solid #E3DFD3;border-radius:999px;padding:12px 16px;font:600 13.5px 'Manrope',sans-serif;color:#3A3833;white-space:nowrap"><span style="width:20px;height:20px;border-radius:50%;background:#C75B39;color:#fff;font:800 11px/20px 'Manrope',sans-serif;text-align:center;flex:none">✓</span><span data-i="p4"></span></div>
+    </div>
+  </section>
+
+  <section>
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:14px">
+      <h2 data-i="tblTitle" style="font:800 24px 'Manrope',sans-serif;letter-spacing:-0.01em;margin:0"></h2>
+
+    </div>
+    <div style="border:1px solid #E3DFD3;border-radius:6px;overflow-x:auto;background:#fff">
+      <div style="min-width:880px">
+      <div style="position:sticky;top:0;z-index:5;display:grid;grid-template-columns:40px minmax(300px,1fr) 112px 120px 192px 158px;background:#1C1C1E;color:#F7F5EF">
+        <div></div>
+        <div data-i="thTask" style="padding:12px 16px 12px 0;font:700 12px 'Manrope',sans-serif;letter-spacing:0.02em"></div>
+        <div style="padding:12px 14px;background:#B85C3E;text-align:right"><div data-i="thAi" style="font:700 12px 'Manrope',sans-serif"></div><div data-i="thAiSub" style="font:500 10px 'JetBrains Mono',monospace;color:#F3D2BE;margin-top:2px"></div></div>
+        <div style="padding:12px 14px;text-align:right"><div data-i="thSelf" style="font:700 12px 'Manrope',sans-serif"></div><div data-i="thSelfSub" style="font:500 10px 'JetBrains Mono',monospace;color:#9C998F;margin-top:2px"></div></div>
+        <div style="padding:12px 14px;text-align:right;border-left:1px solid #33322F"><div data-i="thOff" style="font:700 12px 'Manrope',sans-serif"></div><div data-i="thOffSub" style="font:500 10px 'JetBrains Mono',monospace;color:#9C998F;margin-top:2px"></div></div>
+        <div style="padding:12px 14px;text-align:right;border-left:1px solid #33322F"><div data-i="thRem" style="font:700 12px 'Manrope',sans-serif"></div><div data-i="thRemSub" style="font:500 10px 'JetBrains Mono',monospace;color:#9C998F;margin-top:2px"></div></div>
+      </div>
+      <div id="rows"></div>
+      <div style="display:grid;grid-template-columns:40px minmax(300px,1fr) 112px 120px 192px 158px;border-top:2px solid #1C1C1E;background:#fff">
+        <div></div>
+        <div data-i="totLabel" style="padding:16px 16px 16px 0;font:800 13px 'Manrope',sans-serif;letter-spacing:0.05em;text-transform:uppercase;align-self:center"></div>
+        <div style="padding:14px 14px;text-align:right;background:#FBEDE4;border-left:1px solid #F0D9C8;border-right:1px solid #F0D9C8">
+          <div data-i="totAiH" style="font:700 19px/1.2 'JetBrains Mono',monospace;letter-spacing:-0.02em;color:#B85C3E;white-space:nowrap"></div>
+          <div data-i="totAiZ" style="font:600 11.5px 'JetBrains Mono',monospace;color:#C08163;margin-top:2px"></div>
+        </div>
+        <div style="padding:14px 14px;text-align:right">
+          <div data-i="totSelfZ" style="font:700 17px/1.2 'JetBrains Mono',monospace;letter-spacing:-0.02em"></div>
+          <div data-i="totSelfH" style="font:600 11.5px 'JetBrains Mono',monospace;color:#B85C3E;margin-top:2px"></div>
+          <div data-i="totSelfX" style="font:600 10.5px 'Manrope',sans-serif;color:#B85C3E;margin-top:4px;white-space:nowrap"></div>
+        </div>
+        <div style="padding:14px 14px;text-align:right;border-left:1px solid #EFECE2">
+          <div data-i="totOffZ" style="font:700 17px/1.2 'JetBrains Mono',monospace;letter-spacing:-0.02em"></div>
+          <div data-i="totOffH" style="font:600 11.5px 'JetBrains Mono',monospace;color:#B85C3E;margin-top:2px"></div>
+          <div data-i="totOffX" style="font:600 10.5px 'Manrope',sans-serif;color:#B85C3E;margin-top:4px;white-space:nowrap"></div>
+        </div>
+        <div style="padding:14px 14px;text-align:right;border-left:1px solid #EFECE2">
+          <div data-i="totRemZ" style="font:700 17px/1.2 'JetBrains Mono',monospace;letter-spacing:-0.02em"></div>
+          <div data-i="totRemH" style="font:600 11.5px 'JetBrains Mono',monospace;color:#B85C3E;margin-top:2px"></div>
+          <div data-i="totRemX" style="font:600 10.5px 'Manrope',sans-serif;color:#B85C3E;margin-top:4px;white-space:nowrap"></div>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div data-i="tblNote" style="font:500 11.5px/1.55 'Manrope',sans-serif;color:#8A867C;margin-top:10px;max-width:860px"></div>
+  </section>
+
+  <section style="margin-top:64px">
+    <h2 data-i="timeTitle" style="font:800 24px 'Manrope',sans-serif;letter-spacing:-0.01em;margin:0 0 4px"></h2>
+    <div data-i="timeSub" style="font:500 12.5px 'Manrope',sans-serif;color:#8A867C;margin-bottom:24px"></div>
+    <div id="bars"></div>
+  </section>
+
+  <footer style="margin-top:72px;padding-top:28px;border-top:2px solid #1C1C1E">
+    <div data-ih="footBig" style="font:800 26px/1.3 'Manrope',sans-serif;letter-spacing:-0.01em;margin-bottom:12px"></div>
+    <div data-ih="footSmall" style="font:500 11.5px/1.65 'JetBrains Mono',monospace;color:#A8A49A"></div>
+  </footer>
+
+</div>
+</div>
+
+<script src="i18n.js"></script>
+<script>
+(function () {
+  var STORE = 'aivs-lang';
+  var BAR_W = ['3.7%', '48.1%', '55%', '100%'];
+  var BAR_C = ['#C75B39', '#1C1C1E', '#1C1C1E', '#1C1C1E'];
+  var ROW_CSS = 'display:grid;grid-template-columns:40px minmax(300px,1fr) 112px 120px 192px 158px;border-bottom:1px solid #EFECE2;align-items:stretch';
+
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+  // Своя группировка: Intl для pl-PL не разделяет 4-значные числа,
+  // из-за чего в одной колонке соседствовали «3400» и «11 148».
+  function fz(n, L) {
+    var sep = L === 'en' ? ',' : ' ';
+    return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, sep);
+  }
+  // В польском «godz.» не влезает в колонку 112px («16 godz.» рвётся на
+  // две строки), поэтому в числовых колонках — символ «h».
+  function fh(n, L) {
+    var s = L === 'en' ? String(n) : String(n).replace('.', ',');
+    return s + (L === 'ru' ? ' ч' : ' h');
+  }
+
+  function renderRows(L) {
+    var T = window.I18N[L], TX = window.TASK_TEXT[L], out = [];
+    for (var i = 0; i < window.TASK_NUMS.length; i++) {
+      var d = window.TASK_NUMS[i];               // [n, aiH, aiZl, selfH, selfZl, offH, offZl, remZl]
+      var tech = window.TASK_TECH[i], rw = window.TASK_REMW[i], rs = window.TASK_REMS[i];
+      var split = tech > 0
+        ? T.unitWork + ' ' + fz(d[6] - tech, L) + ' + ' + T.unitTech + ' ' + fz(tech, L)
+        : '';
+      var remH = rs > 0
+        ? fh(rw, L) + ' + ' + fh(rs, L) + ' ' + T.unitSearch
+        : fh(rw, L);
+      out.push(
+        '<div id="task-' + d[0] + '" class="row" style="' + ROW_CSS + '">' +
+          '<div style="padding:10px 0 10px 12px;font:500 11px \'JetBrains Mono\',monospace;color:#B5B1A5">' +
+            (d[0] < 10 ? '0' + d[0] : d[0]) + '</div>' +
+          '<div style="padding:9px 16px 9px 0">' +
+            '<div style="font:600 14px/1.35 \'Manrope\',sans-serif">' + esc(TX[i][0]) + '</div>' +
+            '<div style="font:500 11.5px/1.3 \'Manrope\',sans-serif;color:#9C988C;margin-top:2px">' + esc(TX[i][1]) + '</div>' +
+          '</div>' +
+          '<div style="padding:8px 14px;text-align:right;background:#FBEDE4;border-left:1px solid #F0D9C8;border-right:1px solid #F0D9C8">' +
+            '<div style="font:700 20px/1.2 \'JetBrains Mono\',monospace;letter-spacing:-0.02em;color:#B85C3E">' + fh(d[1], L) + '</div>' +
+            '<div style="font:600 11.5px \'JetBrains Mono\',monospace;color:#C08163;margin-top:2px">' + fz(d[2], L) + ' zł</div>' +
+          '</div>' +
+          '<div style="padding:8px 14px;text-align:right">' +
+            '<div style="font:600 17px/1.2 \'JetBrains Mono\',monospace;letter-spacing:-0.02em;color:#1C1C1E">' + fz(d[4], L) + '</div>' +
+            '<div style="font:600 11.5px \'JetBrains Mono\',monospace;color:#B85C3E;margin-top:2px">' + fh(d[3], L) + '</div>' +
+          '</div>' +
+          '<div style="padding:8px 14px;text-align:right;border-left:1px solid #EFECE2">' +
+            '<div style="font:600 17px/1.2 \'JetBrains Mono\',monospace;letter-spacing:-0.02em;color:#1C1C1E">' + fz(d[6], L) + '</div>' +
+            '<div style="font:600 11.5px \'JetBrains Mono\',monospace;color:#B85C3E;margin-top:2px">' + fh(d[5], L) + '</div>' +
+            '<div style="font:500 10px \'JetBrains Mono\',monospace;color:#B5B1A5;margin-top:1px">' + esc(split) + '</div>' +
+          '</div>' +
+          '<div style="padding:8px 14px;text-align:right;border-left:1px solid #EFECE2">' +
+            '<div style="font:600 17px/1.2 \'JetBrains Mono\',monospace;letter-spacing:-0.02em;color:#1C1C1E">' + fz(d[7], L) + '</div>' +
+            '<div style="font:600 11.5px \'JetBrains Mono\',monospace;color:#B85C3E;margin-top:2px">' + esc(remH) + '</div>' +
+          '</div>' +
+        '</div>'
+      );
+    }
+    document.getElementById('rows').innerHTML = out.join('');
+  }
+
+  function renderBars(L) {
+    var T = window.I18N[L], out = [];
+    for (var i = 0; i < 4; i++) {
+      out.push(
+        '<div style="display:grid;grid-template-columns:190px 1fr 110px 200px;align-items:center;gap:18px;padding:14px 0;border-bottom:1px solid #E3DFD3">' +
+          '<div>' +
+            '<div style="font:700 14px \'Manrope\',sans-serif">' + esc(T.barNames[i]) + '</div>' +
+            '<div style="font:500 11.5px \'JetBrains Mono\',monospace;color:#A8A49A;margin-top:2px">' + esc(T.barHours[i]) + '</div>' +
+          '</div>' +
+          '<div style="height:10px;background:#ECE9DE;border-radius:3px;overflow:hidden"><div style="height:100%;border-radius:3px;width:' + BAR_W[i] + ';background:' + BAR_C[i] + '"></div></div>' +
+          '<div style="font:700 14px \'JetBrains Mono\',monospace;text-align:right">' + esc(T.barCosts[i]) + '</div>' +
+          '<div style="font:500 12px \'JetBrains Mono\',monospace;color:#6E6A60;padding-left:14px;border-left:1px dashed #E3DFD3">' + esc(T.barTimes[i]) + '</div>' +
+        '</div>'
+      );
+    }
+    document.getElementById('bars').innerHTML = out.join('');
+  }
+
+  function apply(L) {
+    var T = window.I18N[L];
+    if (!T) return;
+    document.documentElement.lang = T.htmlLang;
+    document.title = T.docTitle;
+    document.querySelectorAll('[data-i]').forEach(function (el) {
+      var v = T[el.getAttribute('data-i')];
+      if (v !== undefined) el.textContent = v;
+    });
+    document.querySelectorAll('[data-ih]').forEach(function (el) {
+      var v = T[el.getAttribute('data-ih')];
+      if (v !== undefined) el.innerHTML = v;
+    });
+    renderRows(L);
+    renderBars(L);
+    document.querySelectorAll('#lang button').forEach(function (b) {
+      b.setAttribute('aria-current', String(b.getAttribute('data-lang') === L));
+    });
+    try { localStorage.setItem(STORE, L); } catch (e) {}
+  }
+
+  function reveal(L) {
+    apply(L);
+    document.getElementById('gate').hidden = true;
+    document.getElementById('doc').hidden = false;
+    document.getElementById('lang').hidden = false;
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('#gate .gate-btn, #lang button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var L = b.getAttribute('data-lang');
+      if (document.getElementById('gate').hidden) { apply(L); } else { reveal(L); }
+    });
+  });
+
+  var saved = null;
+  try { saved = localStorage.getItem(STORE); } catch (e) {}
+  if (saved && window.I18N[saved]) {
+    reveal(saved);
+  } else {
+    document.body.style.overflow = 'hidden';
+  }
+})();
+</script>
+</body>
+</html>

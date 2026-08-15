@@ -142,6 +142,8 @@
 
   @media (min-width:720px){
     .grid{grid-template-columns:1fr 1fr}
+    .card--wide{grid-column:1 / -1}
+    .card--wide h3{font-size:clamp(24px,3.4vw,30px)}
     header{padding-top:120px}
   }
   @media (prefers-reduced-motion:reduce){
@@ -172,6 +174,29 @@
   <section>
     <h2>Projects</h2>
     <div class="grid">
+
+      <a class="card card--wide" href="ai-vs-specialists/">
+        <div class="card-top">
+          <span class="tag">AI in operations</span>
+          <span class="year">2026</span>
+        </div>
+        <h3>×13 cheaper, ×10 faster — what AI actually changed</h3>
+        <p>
+          Three months of operational work, task by task: 32 delivered items recosted
+          against what each would have taken without AI, done in-house, or handed to a
+          contractor. Real hours, real rates, arithmetic you can audit — not a vibe.
+          Published in Russian, Polish and English.
+        </p>
+        <ul class="facts">
+          <li>32 tasks costed</li>
+          <li>124.5 h vs 1,279 h</li>
+          <li>RU · PL · EN</li>
+        </ul>
+        <span class="go">
+          Open the breakdown
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+        </span>
+      </a>
 
       <a class="card" href="dobrograd-brandbook/">
         <div class="card-top">
