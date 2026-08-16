@@ -63,6 +63,11 @@
    У body стоїть overflow-x:hidden — він не давав горизонтального
    скролу, але й мовчки обрізав праву частину секцій. Нижче знято
    першопричину: фіксовані колонки, 80px паддінги і nowrap-заголовок. */
+@media (max-width:1024px) and (min-width:761px){
+  .ts-meta{width:210px !important}
+  .ts-live{font-size:48px !important}
+}
+
 @media (max-width:760px){
   /* секційні паддінги з'їдали 160px — 44% екрана */
   #about,#logo,#colors,#typo,#combos,#mockups{padding:56px 20px !important}
@@ -88,10 +93,15 @@
   .cc{padding:26px 20px !important;min-height:auto !important}
   .lb{padding:32px 20px !important;min-height:auto !important}
 
-  /* рядок типографіки: фіксовані 280px не стискались,
-     а всередині лежало 300px дітей */
+  /* Рядок типографіки. Було: підписи тримали фіксовані 280px, зразку
+     лишалось ~180px — видно 7–10 символів, решта (до 1067px) обрізана
+     через overflow:hidden. Тепер підписи зверху, зразок на всю ширину
+     і з переносом — видно фразу цілком, а не два склади. */
+  .ts-row{flex-direction:column !important;align-items:stretch !important;gap:12px}
   .ts-meta{width:auto !important;flex-shrink:1 !important;flex-wrap:wrap !important;gap:10px}
   .ts-use,.ts-sz,.ts-fnt{width:auto !important}
+  .ts-live{width:100% !important;flex:none !important;white-space:normal !important;
+           overflow:visible !important;font-size:26px !important;line-height:1.25 !important}
 
   /* навігаційні крапки лягали поверх тексту */
   .nav{display:none !important}
