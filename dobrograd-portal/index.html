@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dobrograd Portal — the registry the sales floor runs on</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Alex Goncharevski — Selected Work">
+<meta property="og:title" content="Dobrograd Portal — the registry the sales floor runs on">
+<meta property="og:description" content="An internal portal that turned scattered spreadsheets into one live registry of 2,121 units across nine developments: search, map, pricing and role-based access, used daily by sales and construction.">
+<meta property="og:url" content="https://lexgoart.github.io/portfolio/dobrograd-portal/">
+<meta property="og:image" content="https://lexgoart.github.io/portfolio/og/portal.png">
+<meta property="og:image:secure_url" content="https://lexgoart.github.io/portfolio/og/portal.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Dobrograd Portal — internal product">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dobrograd Portal — the registry the sales floor runs on">
+<meta name="twitter:description" content="An internal portal that turned scattered spreadsheets into one live registry of 2,121 units across nine developments: search, map, pricing and role-based access, used daily by sales and construction.">
+<meta name="twitter:image" content="https://lexgoart.github.io/portfolio/og/portal.png">
+<meta name="description" content="An internal portal that turned scattered spreadsheets into one live registry of 2,121 units across nine developments: search, map, pricing and role-based access, used daily by sales and construction.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#12140F; --surface:#191C15; --surface-2:#20241B;
+    --gold:#C2A05E; --gold-ink:#ECDAAE; --gold-bright:#EBCF94;
+    --text:#F2EFE6; --text-2:#A8A697; --text-3:#78776C;
+    --line:rgba(194,160,94,.18);
+    --sans:'Outfit',system-ui,sans-serif; --body:'Inter',system-ui,sans-serif;
+    --serif:'Cormorant Garamond',Georgia,serif;
+    --ease:cubic-bezier(.16,1,.3,1);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);
+    font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  a{color:var(--gold-ink)}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 28px}
+
+  header{padding:92px 0 0;position:relative;overflow:hidden}
+  header::before{content:'';position:absolute;top:-220px;right:-180px;width:560px;height:560px;
+    border-radius:50%;border:1px solid rgba(194,160,94,.12);pointer-events:none}
+  .eyebrow{font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--gold);margin:0 0 20px}
+  h1{font-family:var(--sans);font-size:clamp(32px,5.2vw,50px);font-weight:800;line-height:1.1;
+    letter-spacing:-.02em;margin:0 0 18px}
+  h1 span{display:block;color:var(--gold-ink);font-weight:500;font-size:.62em;margin-top:10px}
+  .lede{font-size:clamp(16px,2vw,18.5px);color:var(--text-2);max-width:62ch;margin:0}
+
+  .facts{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);
+    border:1px solid var(--line);margin:44px 0 0}
+  .fact{background:var(--bg);padding:22px 24px}
+  .fact b{display:block;font-family:var(--sans);font-size:clamp(26px,4vw,34px);font-weight:800;
+    color:var(--gold-ink);line-height:1;letter-spacing:-.02em}
+  .fact span{display:block;font-size:13px;color:var(--text-3);margin-top:9px}
+
+  section{padding:76px 0 0}
+  h2{font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--gold);margin:0 0 26px}
+  h3{font-family:var(--sans);font-size:21px;font-weight:600;margin:0 0 10px;letter-spacing:-.01em}
+  p{color:var(--text-2);max-width:70ch}
+
+  .shot{margin:0 0 56px}
+  .shot img{width:100%;height:auto;display:block;border:1px solid var(--line)}
+  .shot figcaption{font-size:13.5px;color:var(--text-3);margin-top:12px;max-width:70ch}
+  .shot figcaption b{color:var(--text-2);font-weight:600}
+
+  .cols{display:grid;gap:34px}
+  .note{border-left:2px solid var(--gold);padding:4px 0 4px 18px;color:var(--text-2);
+    font-size:14.5px;max-width:72ch}
+  .note b{color:var(--text)}
+  .quote{font-family:var(--serif);font-style:italic;font-size:clamp(19px,2.6vw,24px);
+    color:var(--gold-ink);line-height:1.5;max-width:62ch;margin:0}
+
+  footer{padding:56px 0 96px;margin-top:80px;border-top:1px solid var(--line)}
+  .links{display:flex;flex-wrap:wrap;gap:24px;margin:0 0 18px;padding:0;list-style:none}
+  .links a{font-size:14px;color:var(--text-2);text-decoration:none;border-bottom:1px solid transparent;
+    padding-bottom:2px;transition:color .2s var(--ease),border-color .2s var(--ease)}
+  .links a:hover,.links a:focus-visible{color:var(--gold-ink);border-bottom-color:var(--gold)}
+  .colophon{font-size:11.5px;color:var(--text-3);margin:0;letter-spacing:.04em}
+
+  @media (min-width:760px){
+    .facts{grid-template-columns:repeat(4,1fr)}
+    .cols{grid-template-columns:1fr 1fr;gap:44px}
+    header{padding-top:120px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">Internal product · Dobrograd</p>
+    <h1>The registry the sales floor<br>actually runs on<span>Nine developments, 2,121 units, one source of truth</span></h1>
+    <p class="lede">
+      Before this, availability lived in a dozen spreadsheets that disagreed with each other.
+      A sales manager answering “is unit 749 still free, and at what price?” had to call someone.
+      This portal replaced that with a single registry the whole company reads from — and it is
+      the system I use every day to run the operation.
+    </p>
+
+    <div class="facts">
+      <div class="fact"><b>2 121</b><span>units in the registry</span></div>
+      <div class="fact"><b>9</b><span>developments, 46 addresses</span></div>
+      <div class="fact"><b>5</b><span>access roles, from viewer to full</span></div>
+      <div class="fact"><b>1</b><span>place instead of a dozen files</span></div>
+    </div>
+  </header>
+
+  <section>
+    <h2>What it does</h2>
+
+    <figure class="shot">
+      <img src="shots/dashboard.png" alt="Portal overview screen showing one large availability figure">
+      <figcaption><b>The overview is one number.</b> Most people opening this portal are not
+      analysts — they are sales managers and construction staff, some of them not comfortable with
+      dashboards at all. So the landing screen answers the only question they actually have:
+      how much is available right now. Everything else is one click deeper.</figcaption>
+    </figure>
+
+    <figure class="shot">
+      <img src="shots/objects.png" alt="Registry table with unit type, section, floor, area, price per square metre and status">
+      <figcaption><b>The registry itself.</b> Every unit with its section, floor, area, price per
+      square metre and status, grouped by address. Search, filters, and an Excel export — because
+      the finance team will want it in a spreadsheet no matter what you build. Rows flagged with a
+      warning are the ones whose registry data and price list disagree; surfacing those conflicts
+      instead of hiding them is how the data got clean.</figcaption>
+    </figure>
+
+    <figure class="shot">
+      <img src="shots/map.png" alt="Map of the Kyiv region with availability clusters per development">
+      <figcaption><b>Availability on a map.</b> Nine developments across the Kyiv region with live
+      counts per location. Useful in a sales conversation — a client asks what is near Bucha and the
+      answer is on screen, not in someone's head.</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2>What was hard</h2>
+    <div class="cols">
+      <div>
+        <h3>Two sources that disagreed</h3>
+        <p>The asset registry and the price list were maintained by different people and did not
+        match. Rather than pick a winner globally, the import marks each unit with where its number
+        came from, so a wrong price is traceable to its source instead of quietly overwriting a
+        right one.</p>
+      </div>
+      <div>
+        <h3>Data that arrives as spreadsheets</h3>
+        <p>Everything upstream is Excel and will stay Excel. So the portal is built around
+        converters: the registry and the price list are regenerated from the source files, never
+        edited by hand. That way the system never drifts from the documents the company signs.</p>
+      </div>
+      <div>
+        <h3>Five kinds of reader</h3>
+        <p>A sales manager should not see the full portfolio valuation, and a viewer should not be
+        able to change anything. Access is role-based, and each role gets its own guided tour on
+        first open — the people using this are not going to read documentation.</p>
+      </div>
+      <div>
+        <h3>Simplicity as a requirement</h3>
+        <p>The hardest constraint was not technical. Every screen had to survive being opened by
+        someone who does not use software for a living: one big number, plain words, large targets,
+        no jargon and no charts where a sentence will do.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Why it is not linked here</h2>
+    <p class="note">
+      <b>The live portal is not public and there is no link to it on this page.</b> It holds the
+      company's real asset registry and pricing, and its access control is prototype-grade — good
+      enough to keep a passer-by out, not to withstand a determined one. Publishing the address
+      from an indexed page would remove the only protection it currently has. The screenshots above
+      are from a local copy; the organisational chart the portal also contains is deliberately not
+      shown, because it names real employees.
+    </p>
+  </section>
+
+  <section>
+    <p class="quote">Order is not a personality trait. It is something you build, and then
+    someone has to maintain the thing that holds it.</p>
+  </section>
+
+  <footer>
+    <ul class="links">
+      <li><a href="../">← Back to selected work</a></li>
+      <li><a href="https://www.linkedin.com/in/goncharevski/">LinkedIn</a></li>
+      <li><a href="https://github.com/LexGoArt">GitHub</a></li>
+    </ul>
+    <p class="colophon">Alex Goncharevski · COO, Iron Invest Group · Internal product, 2026</p>
+  </footer>
+
+</div>
+</body>
+</html>
