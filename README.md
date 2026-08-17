@@ -4,6 +4,9 @@ Operations, brand and product work, shipped as self-contained web documents.
 
 **→ [Live portfolio](https://lexgoart.github.io/portfolio/)**
 
+**→ [How I work](https://lexgoart.github.io/portfolio/coo/)** — seven operating principles,
+six cases with numbers, where AI actually pays, and my first 90 days.
+
 ---
 
 ## Projects

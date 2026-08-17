@@ -94,6 +94,11 @@
     border-color:var(--border-strong);background:var(--surface-2);transform:translateY(-3px);
   }
   .card:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .card--lead{
+    border-color:rgba(225,140,68,.32);
+    background:linear-gradient(180deg,rgba(225,140,68,.08),rgba(225,140,68,.015)),var(--surface);
+  }
+  .card--lead:hover,.card--lead:focus-visible{border-color:var(--accent)}
   .card-top{
     display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px;
   }
@@ -170,6 +175,35 @@
     </ul>
     <div class="rule"></div>
   </header>
+
+  <section>
+    <h2>Start here</h2>
+    <div class="grid">
+
+      <a class="card card--wide card--lead" href="coo/">
+        <div class="card-top">
+          <span class="tag">How I work</span>
+          <span class="year">Updated 2026</span>
+        </div>
+        <h3>Chaos in, system out</h3>
+        <p>
+          The short version of how I run an operation: seven principles I apply from
+          week one, six cases written as problem, action and result, where AI actually
+          pays for itself, and exactly what my first 90 days look like.
+        </p>
+        <ul class="facts">
+          <li>7 principles</li>
+          <li>6 cases with numbers</li>
+          <li>First 90 days</li>
+        </ul>
+        <span class="go">
+          Read how I work
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+        </span>
+      </a>
+
+    </div>
+  </section>
 
   <section>
     <h2>Projects</h2>

@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alex Goncharevski — Operations that pay for themselves</title>
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Alex Goncharevski">
+<meta property="og:title" content="Alex Goncharevski — Operations that pay for themselves">
+<meta property="og:description" content="I help companies save money and time by turning operations into a system that runs without heroics. 27 projects, €15M+ in construction budgets, 60 people across Warsaw and Kyiv.">
+<meta property="og:url" content="https://lexgoart.github.io/portfolio/coo/">
+<meta property="og:image" content="https://lexgoart.github.io/portfolio/og/coo.png">
+<meta property="og:image:secure_url" content="https://lexgoart.github.io/portfolio/og/coo.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Chaos in, system out — Alex Goncharevski">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Alex Goncharevski — Operations that pay for themselves">
+<meta name="twitter:description" content="I help companies save money and time by turning operations into a system that runs without heroics. 27 projects, €15M+ in construction budgets, 60 people across Warsaw and Kyiv.">
+<meta name="twitter:image" content="https://lexgoart.github.io/portfolio/og/coo.png">
+<meta name="description" content="Alex Goncharevski, Chief Operating Officer at Iron Invest Group. How I work: seven operating principles, real cases with numbers, where AI actually pays, and what my first 90 days look like.">
+
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B1220;
+    --surface:#0E1626;
+    --surface-2:#131D30;
+    --text:#E8EDF4;
+    --text-2:#8A9BB2;
+    --text-3:#64778F;
+    --accent:#E18C44;
+    --accent-soft:rgba(225,140,68,.14);
+    --border:rgba(255,255,255,.10);
+    --border-strong:rgba(255,255,255,.18);
+    --sans:'Satoshi',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;
+    --ease:cubic-bezier(.16,1,.3,1);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--text);
+    font-family:var(--sans);font-size:16px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(ellipse 80% 50% at 50% -10%,rgba(225,140,68,.07),transparent 70%);
+    background-repeat:no-repeat;
+  }
+  a{color:inherit}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px}
+
+  /* ── back ───────────────────────────────── */
+  .back{
+    display:inline-flex;align-items:center;gap:8px;padding:28px 0 0;
+    font-family:var(--mono);font-size:12px;color:var(--text-3);text-decoration:none;
+    transition:color .2s var(--ease);
+  }
+  .back:hover,.back:focus-visible{color:var(--accent)}
+
+  /* ── header ─────────────────────────────── */
+  header{padding:56px 0 0}
+  .eyebrow{
+    font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--accent);margin:0 0 22px;
+  }
+  h1{
+    font-size:clamp(32px,5.6vw,50px);line-height:1.09;font-weight:900;
+    letter-spacing:-.025em;margin:0 0 22px;max-width:19ch;
+  }
+  h1 .dim{color:var(--text-3);font-weight:700}
+  .lede{font-size:clamp(16px,2.2vw,19px);color:var(--text-2);max-width:62ch;margin:0}
+  .lede strong{color:var(--text);font-weight:500}
+
+  /* ── stat tiles ─────────────────────────── */
+  .stats{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:12px;
+    margin:40px 0 0;padding:0;list-style:none;
+  }
+  .stats li{
+    background:var(--surface);border:1px solid var(--border);border-radius:12px;
+    padding:18px 18px 16px;
+  }
+  .stats b{
+    display:block;font-size:clamp(23px,4.4vw,30px);font-weight:900;letter-spacing:-.02em;
+    line-height:1.1;margin:0 0 7px;
+  }
+  .stats span{
+    display:block;font-family:var(--mono);font-size:11px;line-height:1.45;
+    color:var(--text-3);
+  }
+
+  .rule{height:1px;background:var(--border);margin:64px 0 0}
+
+  /* ── section ────────────────────────────── */
+  section{padding:56px 0 0}
+  h2{
+    font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--text-3);margin:0 0 12px;
+  }
+  .sect-lede{color:var(--text-2);margin:0 0 32px;max-width:64ch;font-size:15px}
+
+  /* ── principles ─────────────────────────── */
+  .principles{display:grid;grid-template-columns:1fr;gap:2px;margin:0;padding:0;list-style:none}
+  .principles li{
+    display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;
+    padding:20px 0;border-top:1px solid var(--border);
+  }
+  .principles li:last-child{border-bottom:1px solid var(--border)}
+  .num{
+    font-family:var(--mono);font-size:12px;color:var(--accent);
+    padding-top:3px;min-width:22px;
+  }
+  .principles h3{font-size:17px;font-weight:700;margin:0 0 6px;letter-spacing:-.01em}
+  .principles p{margin:0;color:var(--text-2);font-size:14.5px;max-width:62ch}
+
+  /* ── cases ──────────────────────────────── */
+  .cases{display:grid;gap:16px}
+  .case{
+    background:var(--surface);border:1px solid var(--border);border-radius:16px;
+    padding:26px 26px 22px;
+  }
+  .case-top{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:0 0 16px}
+  .tag{
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--accent);background:var(--accent-soft);border-radius:6px;padding:5px 10px;
+  }
+  .year{font-family:var(--mono);font-size:12px;color:var(--text-3)}
+  .case h3{font-size:clamp(19px,2.6vw,22px);font-weight:700;letter-spacing:-.015em;margin:0 0 18px;line-height:1.3}
+  .par{display:grid;gap:14px;margin:0}
+  .par > div{display:grid;grid-template-columns:78px 1fr;gap:14px;align-items:start}
+  .par dt{
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--text-3);padding-top:3px;
+  }
+  .par dd{margin:0;color:var(--text-2);font-size:15px}
+  .par .res dd{color:var(--text);font-weight:500}
+  .par .res dt{color:var(--accent)}
+  .case-link{
+    display:inline-flex;align-items:center;gap:9px;margin:20px 0 0;
+    font-size:14px;font-weight:500;color:var(--accent);text-decoration:none;
+  }
+  .case-link:hover span,.case-link:focus-visible span{text-decoration:underline}
+
+  /* ── AI panel ───────────────────────────── */
+  .panel{
+    background:linear-gradient(180deg,rgba(225,140,68,.09),rgba(225,140,68,.02));
+    border:1px solid rgba(225,140,68,.30);border-radius:16px;padding:30px 28px 26px;
+  }
+  .panel h3{font-size:clamp(20px,3vw,25px);font-weight:800;letter-spacing:-.02em;margin:0 0 14px;line-height:1.25}
+  .panel p{color:var(--text-2);margin:0 0 18px;max-width:62ch;font-size:15px}
+  .panel ul{margin:0 0 22px;padding:0 0 0 20px;color:var(--text-2);font-size:15px}
+  .panel li{margin:0 0 8px}
+  .panel li::marker{color:var(--accent)}
+
+  /* ── 90 days ────────────────────────────── */
+  .phases{display:grid;gap:16px}
+  .phase{
+    background:var(--surface);border:1px solid var(--border);border-radius:14px;
+    padding:24px 24px 20px;position:relative;
+    display:flex;flex-direction:column;
+  }
+  .phase .when{
+    font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--accent);margin:0 0 12px;
+  }
+  .phase h3{font-size:18px;font-weight:700;margin:0 0 12px;letter-spacing:-.01em}
+  .phase ul{margin:0;padding:0 0 0 18px;color:var(--text-2);font-size:14.5px}
+  .phase li{margin:0 0 7px}
+  .phase li::marker{color:var(--text-3)}
+  .phase .out{
+    margin:16px 0 0;padding:14px 0 0;border-top:1px solid var(--border);
+    font-size:14px;color:var(--text);
+  }
+  @media (min-width:720px){.phase .out{margin-top:auto}}
+  .phase .out b{color:var(--accent);font-family:var(--mono);font-size:10.5px;
+    letter-spacing:.1em;text-transform:uppercase;display:block;margin:0 0 5px;font-weight:500}
+
+  /* ── scale ──────────────────────────────── */
+  .scale{margin:0;padding:0;list-style:none;display:grid;gap:2px}
+  .scale li{
+    display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;
+    padding:15px 0;border-top:1px solid var(--border);
+  }
+  .scale li:last-child{border-bottom:1px solid var(--border)}
+  .scale .k{color:var(--text-2);font-size:15px}
+  .scale .v{font-family:var(--mono);font-size:14px;color:var(--text);text-align:right;white-space:nowrap}
+
+  /* ── CTA ────────────────────────────────── */
+  .cta{
+    background:var(--surface);border:1px solid var(--border-strong);border-radius:18px;
+    padding:34px 30px 30px;
+  }
+  .cta h3{font-size:clamp(21px,3.2vw,27px);font-weight:800;letter-spacing:-.02em;margin:0 0 16px;line-height:1.25}
+  .cta p{color:var(--text-2);margin:0 0 12px;max-width:60ch;font-size:15px}
+  .want{margin:0 0 26px;padding:0 0 0 20px;color:var(--text-2);font-size:15px}
+  .want li{margin:0 0 8px}
+  .want li::marker{color:var(--accent)}
+  .btns{display:flex;flex-wrap:wrap;gap:12px}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;text-decoration:none;
+    font-size:14.5px;font-weight:600;border-radius:10px;padding:13px 20px;
+    transition:transform .2s var(--ease),background .2s var(--ease),border-color .2s var(--ease);
+  }
+  .btn-primary{background:var(--accent);color:#12100C}
+  .btn-primary:hover,.btn-primary:focus-visible{transform:translateY(-2px);background:#EE9B52}
+  .btn-ghost{border:1px solid var(--border-strong);color:var(--text)}
+  .btn-ghost:hover,.btn-ghost:focus-visible{transform:translateY(-2px);background:var(--surface-2);border-color:var(--accent)}
+  a:focus-visible,.btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+  /* ── footer ─────────────────────────────── */
+  footer{padding:64px 0 72px;color:var(--text-3);font-size:13px}
+  footer p{margin:0 0 8px;max-width:70ch}
+  footer a{color:var(--text-2)}
+
+  /* ── responsive ─────────────────────────── */
+  @media (min-width:720px){
+    .stats{grid-template-columns:repeat(4,1fr)}
+    .principles{grid-template-columns:1fr 1fr;gap:0 40px}
+    .principles li:nth-child(2){border-top:1px solid var(--border)}
+    .principles li:nth-last-child(2){border-bottom:1px solid var(--border)}
+    .phases{grid-template-columns:repeat(3,1fr)}
+    header{padding:64px 0 0}
+  }
+  @media (max-width:719px){
+    .par > div{grid-template-columns:1fr;gap:4px}
+    .par dt{padding-top:0}
+    .case{padding:22px 20px 20px}
+    .panel,.cta{padding:24px 20px 22px}
+    .btn{width:100%;justify-content:center}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *{transition:none !important}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <a class="back" href="../">← Selected work</a>
+</div>
+
+<header class="wrap">
+  <p class="eyebrow">Alex Goncharevski · Operations · Warsaw &amp; Kyiv</p>
+  <h1>I save companies money and time by turning operations into a system that runs <span class="dim">without heroics.</span></h1>
+  <p class="lede">
+    Chief Operating Officer at Iron Invest Group. <strong>27 projects, €15M+ in active
+    construction budgets, 60 people across two countries.</strong> I build the operating
+    model that makes delivery predictable, and I put AI inside the daily processes rather
+    than in the pitch deck.
+  </p>
+
+  <ul class="stats">
+    <li><b>27</b><span>projects run in parallel, two holdings</span></li>
+    <li><b>€15M+</b><span>active construction budgets owned</span></li>
+    <li><b>30 → 250</b><span>team size scaled over my career</span></li>
+    <li><b>×13</b><span>cheaper delivery with AI, measured task by task</span></li>
+  </ul>
+</header>
+
+<div class="wrap"><div class="rule"></div></div>
+
+<section class="wrap" aria-labelledby="how">
+  <h2 id="how">How I work</h2>
+  <p class="sect-lede">
+    Seven rules I apply from week one. They are boring on purpose: an operation that
+    depends on someone being clever every morning is not an operation, it is a rescue.
+  </p>
+  <ol class="principles">
+    <li><span class="num">01</span><div>
+      <h3>Map first, decide second</h3>
+      <p>Before anything is built I run discovery: interviews, customer journeys,
+      competitor checks. Most of the savings come from work that never starts.</p>
+    </div></li>
+    <li><span class="num">02</span><div>
+      <h3>One source of truth</h3>
+      <p>A dozen spreadsheets that disagree is not data, it is a negotiation. I collapse
+      them into one live registry everyone reads, including the sales floor.</p>
+    </div></li>
+    <li><span class="num">03</span><div>
+      <h3>Roles, not heroes</h3>
+      <p>Governance framework, written role and process documentation, reporting
+      standards. The system has to survive the person who built it leaving.</p>
+    </div></li>
+    <li><span class="num">04</span><div>
+      <h3>Priority is calculated, not argued</h3>
+      <p>MoSCoW and WSJF on the backlog. When the ranking is arithmetic, the loudest
+      voice in the room stops setting the roadmap.</p>
+    </div></li>
+    <li><span class="num">05</span><div>
+      <h3>Risks are named before they bite</h3>
+      <p>RAID logs kept live, not reconstructed after the fact. A risk written down is a
+      decision waiting; a risk unwritten is a surprise with a date on it.</p>
+    </div></li>
+    <li><span class="num">06</span><div>
+      <h3>AI in the process, not in the deck</h3>
+      <p>I do not run AI pilots. I take a recurring task, measure what it costs today,
+      rebuild it with AI, and keep it only if the number moves.</p>
+    </div></li>
+    <li><span class="num">07</span><div>
+      <h3>Reporting a board reads in two minutes</h3>
+      <p>A KPI matrix, not a deck. If an owner needs a meeting to understand the status,
+      the reporting has failed, not the owner.</p>
+    </div></li>
+  </ol>
+</section>
+
+<div class="wrap"><div class="rule"></div></div>
+
+<section class="wrap" aria-labelledby="cases">
+  <h2 id="cases">Cases</h2>
+  <p class="sect-lede">
+    Problem, what I did, what came out. Four of these ship as public documents you can
+    open and read in full.
+  </p>
+
+  <div class="cases">
+
+    <article class="case">
+      <div class="case-top"><span class="tag">Operating model</span><span class="year">2026 · Iron Invest Group</span></div>
+      <h3>A 27-project portfolio with no shared way of running a project</h3>
+      <dl class="par">
+        <div><dt>Problem</dt><dd>Two holdings in Poland and Ukraine, 27 active projects, €15M+ in construction budgets, and every project run its own way. No common governance, no shared reporting, no written process.</dd></div>
+        <div><dt>Action</dt><dd>Built the operating model from the ground up: governance framework, role and process documentation, reporting standards. Then stood up a dedicated project office to hold the standard across all 27.</dd></div>
+        <div class="res"><dt>Result</dt><dd>One delivery standard across both offices, 60 in-house staff and the external contractor network working to the same definitions.</dd></div>
+      </dl>
+    </article>
+
+    <article class="case">
+      <div class="case-top"><span class="tag">Internal product</span><span class="year">2026 · Dobrograd</span></div>
+      <h3>Twelve spreadsheets that disagreed about what was for sale</h3>
+      <dl class="par">
+        <div><dt>Problem</dt><dd>Unit availability, pricing and reservations lived in parallel files. Sales quoted from whichever copy they had open, and nobody could say with confidence what was actually free.</dd></div>
+        <div><dt>Action</dt><dd>Specified and shipped one live registry of 2,121 units across nine developments: search, map, price list, role-based access, instalment calculator.</dd></div>
+        <div class="res"><dt>Result</dt><dd>A single answer to "what is available and at what price", visible to the sales floor and to management in the same second.</dd></div>
+      </dl>
+      <a class="case-link" href="../dobrograd-portal/"><span>Read the case study</span> →</a>
+    </article>
+
+    <article class="case">
+      <div class="case-top"><span class="tag">AI in operations</span><span class="year">2026 · Iron Invest Group</span></div>
+      <h3>Three months of work, recosted task by task</h3>
+      <dl class="par">
+        <div><dt>Problem</dt><dd>"AI saves time" is easy to claim and impossible to budget against. I wanted a number an owner could argue with.</dd></div>
+        <div><dt>Action</dt><dd>Took 32 delivered pieces of work and priced each one three ways: what it cost with AI, what it would have cost in-house, and what a contractor would have charged.</dd></div>
+        <div class="res"><dt>Result</dt><dd>×13 cheaper and ×10 faster on the measured set, published in full with the method and the caveats visible.</dd></div>
+      </dl>
+      <a class="case-link" href="../ai-vs-specialists/"><span>Open the document</span> →</a>
+    </article>
+
+    <article class="case">
+      <div class="case-top"><span class="tag">Brand</span><span class="year">2026 · Dobrograd</span></div>
+      <h3>A 15-year-old brand with no written identity</h3>
+      <dl class="par">
+        <div><dt>Problem</dt><dd>The group's development brand had recognition but no rules: positioning, logo use, typography and colour differed by whoever made the last file.</dd></div>
+        <div><dt>Action</dt><dd>Delivered a full rebrand and the 15th anniversary programme on the new identity, both as living web documents rather than PDFs that go stale.</dd></div>
+        <div class="res"><dt>Result</dt><dd>Shipped inside the first month in the role. Promoted from Marketing Director to Chief Operating Officer immediately after.</dd></div>
+      </dl>
+      <a class="case-link" href="../dobrograd-brandbook/"><span>Open the brand book</span> →</a>
+    </article>
+
+    <article class="case">
+      <div class="case-top"><span class="tag">E-commerce</span><span class="year">2025–2026 · ROZETKA.PL</span></div>
+      <h3>Teams busy on work that did not move the business</h3>
+      <dl class="par">
+        <div><dt>Problem</dt><dd>A digital portfolio across B2B and B2C, 60+ people in cross-functional teams, and a backlog ranked by whoever asked most persistently.</dd></div>
+        <div><dt>Action</dt><dd>Put discovery in front of build, re-ranked the backlog with MoSCoW and WSJF, and gave the C-level a KPI matrix with live RAID risk logs.</dd></div>
+        <div class="res"><dt>Result</dt><dd>Low-value work cut before it started, and a B2B expansion into European markets run to a PRINCE2 roadmap.</dd></div>
+      </dl>
+    </article>
+
+    <article class="case">
+      <div class="case-top"><span class="tag">General management</span><span class="year">2022–2024 · Impreza.PL</span></div>
+      <h3>Growth that outran the company's own processes</h3>
+      <dl class="par">
+        <div><dt>Problem</dt><dd>Events across 10+ cities and 6 European countries, 70+ people per project, 150+ vendors, and coordination held together by individuals rather than by process.</dd></div>
+        <div><dt>Action</dt><dd>As CEO: introduced Kanban for logistics, wrote the SOPs and leadership tracks, took personal ownership of cashflow and cost control, and launched AURA Club in Warsaw as the flagship venue.</dd></div>
+        <div class="res"><dt>Result</dt><dd>Delivery timelines down 30%, operational costs down 18% with no loss of quality, 50+ large-scale events at 98% client satisfaction on 2M+ PLN annual budgets.</dd></div>
+      </dl>
+    </article>
+
+  </div>
+</section>
+
+<div class="wrap"><div class="rule"></div></div>
+
+<section class="wrap" aria-labelledby="ai">
+  <h2 id="ai">Where AI actually pays</h2>
+  <div class="panel">
+    <h3>I do not sell AI. I use it, and I can show the invoice.</h3>
+    <p>
+      Most "AI transformation" stops at a pilot nobody adopts. My approach is narrower and
+      duller: find the tasks that repeat, price them honestly, rebuild them, keep score.
+    </p>
+    <ul>
+      <li><strong>Documentation and reporting.</strong> The cycle from raw numbers to a document an owner can read, compressed from days to hours.</li>
+      <li><strong>Analytics prep.</strong> The unglamorous 80% before an analyst starts thinking, handed to a machine.</li>
+      <li><strong>Internal tools.</strong> Registries, calculators and dashboards built in days instead of being queued behind an IT roadmap.</li>
+      <li><strong>What I do not automate.</strong> Anything where a wrong answer is expensive and nobody would notice it was wrong.</li>
+    </ul>
+    <a class="case-link" href="../ai-vs-specialists/"><span>32 tasks, three price columns, full method</span> →</a>
+  </div>
+</section>
+
+<div class="wrap"><div class="rule"></div></div>
+
+<section class="wrap" aria-labelledby="d90">
+  <h2 id="d90">My first 90 days</h2>
+  <p class="sect-lede">
+    The same sequence every time. I do not change anything in month one, because the first
+    thing an operation needs is an honest picture of itself.
+  </p>
+  <div class="phases">
+
+    <article class="phase">
+      <p class="when">Days 1–30</p>
+      <h3>Look, do not touch</h3>
+      <ul>
+        <li>Map every process, project and reporting line as they actually run</li>
+        <li>Interview the people doing the work, not only the people describing it</li>
+        <li>Find where money and time leak, with numbers attached</li>
+      </ul>
+      <p class="out"><b>You get</b>An honest map and a ranked list of leaks.</p>
+    </article>
+
+    <article class="phase">
+      <p class="when">Days 31–60</p>
+      <h3>Fix the loudest leak</h3>
+      <ul>
+        <li>Close the single most expensive gap, visibly, so the change is credible</li>
+        <li>Stand up one source of truth for whatever people argue about most</li>
+        <li>Install a reporting cadence the owner reads in two minutes</li>
+      </ul>
+      <p class="out"><b>You get</b>One measurable win and reporting you can trust.</p>
+    </article>
+
+    <article class="phase">
+      <p class="when">Days 61–90</p>
+      <h3>Make it hold without me</h3>
+      <ul>
+        <li>Write the governance: roles, processes, delivery standard</li>
+        <li>Automate the repetitive parts and measure what that saved</li>
+        <li>Hand over dashboards and the operating rhythm to the team</li>
+      </ul>
+      <p class="out"><b>You get</b>A system that runs when I am on holiday.</p>
+    </article>
+
+  </div>
+</section>
+
+<div class="wrap"><div class="rule"></div></div>
+
+<section class="wrap" aria-labelledby="scale">
+  <h2 id="scale">Scale I have worked at</h2>
+  <ul class="scale">
+    <li><span class="k">Projects run in parallel</span><span class="v">27</span></li>
+    <li><span class="k">Construction budgets owned</span><span class="v">€15M+</span></li>
+    <li><span class="k">People led, current role</span><span class="v">60 + contractors</span></li>
+    <li><span class="k">Largest team scaled</span><span class="v">30 → 250</span></li>
+    <li><span class="k">Countries delivered in</span><span class="v">6</span></li>
+    <li><span class="k">Functions owned</span><span class="v">development · finance · legal</span></li>
+    <li><span class="k">Offices run</span><span class="v">Warsaw · Kyiv</span></li>
+    <li><span class="k">Methodology</span><span class="v">PRINCE2 · Agile · Kanban</span></li>
+    <li><span class="k">Languages</span><span class="v">EN · PL · UA · RU</span></li>
+  </ul>
+</section>
+
+<div class="wrap"><div class="rule"></div></div>
+
+<section class="wrap" aria-labelledby="next">
+  <h2 id="next">What I am looking for</h2>
+  <div class="cta">
+    <h3>An operation that has outgrown the way it is being run.</h3>
+    <p>That is the situation I am best in, and it is the one I have walked into three times now.</p>
+    <ul class="want">
+      <li><strong>Role:</strong> COO, Operations Director, or Head of Operations with real ownership, not coordination.</li>
+      <li><strong>Company:</strong> development, e-commerce or multi-project services, roughly 50 to 500 people.</li>
+      <li><strong>Location:</strong> Warsaw, hybrid or remote across the EU.</li>
+      <li><strong>Mandate I want:</strong> own the operating model end to end, including the authority to change it.</li>
+    </ul>
+    <div class="btns">
+      <a class="btn btn-primary" href="mailto:goncharevski@gmail.com">Write to me</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/goncharevski/" rel="noopener">LinkedIn</a>
+      <a class="btn btn-ghost" href="../">See the work</a>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <p>
+    Figures on this page are the ones I publish on my
+    <a href="https://www.linkedin.com/in/goncharevski/" rel="noopener">LinkedIn profile</a>.
+    In the linked documents, commercially sensitive numbers are replaced with illustrative
+    values and colleagues appear by role rather than by name. The thinking and the craft
+    are real; the client's figures are not mine to publish.
+  </p>
+  <p>Alex Goncharevski · Warsaw · <a href="mailto:goncharevski@gmail.com">goncharevski@gmail.com</a></p>
+</footer>
+
+</body>
+</html>
