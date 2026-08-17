@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Alex Goncharevski — Operations that pay for themselves</title>
+<title>Alex Goncharevski — Operations, issued for construction</title>
 <meta property="og:type" content="profile">
 <meta property="og:site_name" content="Alex Goncharevski">
-<meta property="og:title" content="Alex Goncharevski — Operations that pay for themselves">
-<meta property="og:description" content="I help companies save money and time by turning operations into a system that runs without heroics. 27 projects, €15M+ in construction budgets, 60 people across Warsaw and Kyiv.">
+<meta property="og:title" content="Alex Goncharevski — Operations, issued for construction">
+<meta property="og:description" content="27 projects, €15M+ in construction budgets, 60 people across Warsaw and Kyiv. What I brought to the business, drawn rather than described.">
 <meta property="og:url" content="https://lexgoart.github.io/portfolio/coo/">
 <meta property="og:image" content="https://lexgoart.github.io/portfolio/og/coo.png">
 <meta property="og:image:secure_url" content="https://lexgoart.github.io/portfolio/og/coo.png">
@@ -16,490 +16,839 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Chaos in, system out — Alex Goncharevski">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Alex Goncharevski — Operations that pay for themselves">
-<meta name="twitter:description" content="I help companies save money and time by turning operations into a system that runs without heroics. 27 projects, €15M+ in construction budgets, 60 people across Warsaw and Kyiv.">
+<meta name="twitter:title" content="Alex Goncharevski — Operations, issued for construction">
+<meta name="twitter:description" content="27 projects, €15M+ in construction budgets, 60 people across Warsaw and Kyiv. What I brought to the business, drawn rather than described.">
 <meta name="twitter:image" content="https://lexgoart.github.io/portfolio/og/coo.png">
-<meta name="description" content="Alex Goncharevski, Chief Operating Officer at Iron Invest Group. How I work: seven operating principles, real cases with numbers, where AI actually pays, and what my first 90 days look like.">
+<meta name="description" content="Alex Goncharevski, Chief Operating Officer. Seven operating principles, six cases with numbers, the AI cost study, the knowledge graph of an operation, and the first 90 days.">
 
-<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0B1220;
-    --surface:#0E1626;
-    --surface-2:#131D30;
-    --text:#E8EDF4;
-    --text-2:#8A9BB2;
-    --text-3:#64778F;
-    --accent:#E18C44;
-    --accent-soft:rgba(225,140,68,.14);
-    --border:rgba(255,255,255,.10);
-    --border-strong:rgba(255,255,255,.18);
-    --sans:'Satoshi',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
+    --paper:#F4F1EA;
+    --paper-2:#EAE6DC;
+    --ink:#0B1220;
+    --ink-70:#4A5468;
+    --ink-60:#5E6879;
+    --ink-45:#7C8698;
+    --rule:rgba(11,18,32,.16);
+    --rule-strong:rgba(11,18,32,.42);
+    --stamp:#A4551B;
+    --gold:#E18C44;
+    --d1:#0B1220;--d2:#2B3A54;--d3:#55637A;--d4:#8D96A6;--d5:#C3C7CF;
+    --sans:'Archivo',ui-sans-serif,system-ui,-apple-system,sans-serif;
     --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;
-    --ease:cubic-bezier(.16,1,.3,1);
+    --e-plot:cubic-bezier(.2,.7,.2,1);
+    --e-rule:cubic-bezier(.65,0,.35,1);
+    --e-dim:cubic-bezier(.33,1,.68,1);
   }
   *,*::before,*::after{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  html{-webkit-text-size-adjust:100%}
   body{
-    margin:0;background:var(--bg);color:var(--text);
-    font-family:var(--sans);font-size:16px;line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-    background-image:radial-gradient(ellipse 80% 50% at 50% -10%,rgba(225,140,68,.07),transparent 70%);
-    background-repeat:no-repeat;
+    margin:0;background:var(--paper);color:var(--ink-70);
+    font-family:var(--sans);font-size:17px;line-height:1.55;
+    font-stretch:100%;-webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
   }
-  a{color:inherit}
-  .wrap{max-width:920px;margin:0 auto;padding:0 24px}
+  a{color:var(--stamp)}
+  ::selection{background:var(--ink);color:var(--paper)}
 
-  /* ── back ───────────────────────────────── */
-  .back{
-    display:inline-flex;align-items:center;gap:8px;padding:28px 0 0;
-    font-family:var(--mono);font-size:12px;color:var(--text-3);text-decoration:none;
-    transition:color .2s var(--ease);
+  /* ── sheet frame ──────────────────────────────────────── */
+  .sheet-frame{
+    position:fixed;inset:24px;border:1px solid var(--rule-strong);
+    pointer-events:none;z-index:60;
   }
-  .back:hover,.back:focus-visible{color:var(--accent)}
+  .sheet-frame::before,.sheet-frame::after{
+    content:'';position:absolute;width:9px;height:9px;border:1px solid var(--rule-strong);
+  }
+  .sheet-frame::before{top:-1px;left:-1px;border-right:0;border-bottom:0}
+  .sheet-frame::after{bottom:-1px;right:-1px;border-left:0;border-top:0}
 
-  /* ── header ─────────────────────────────── */
-  header{padding:56px 0 0}
-  .eyebrow{
-    font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--accent);margin:0 0 22px;
+  /* ── grid ─────────────────────────────────────────────── */
+  .sheet{max-width:1272px;margin:0 auto;padding:0 56px}
+  .row{
+    display:grid;
+    grid-template-columns:48px repeat(12,minmax(0,1fr));
+    column-gap:24px;
   }
+  .field{grid-column:2/10}
+  .detail{grid-column:3/8}
+  .rail{
+    grid-column:11/14;font-family:var(--mono);font-size:11px;line-height:1.5;
+    letter-spacing:.04em;color:var(--ink-60);
+  }
+  .rail p{margin:0 0 10px}
+  .rail b{display:block;font-weight:500;color:var(--ink);letter-spacing:.14em;
+    text-transform:uppercase;font-size:10px;margin:0 0 5px}
+
+  /* ── ordinate strip ───────────────────────────────────── */
+  .ord{
+    grid-column:1;font-family:var(--mono);font-size:11px;font-weight:500;
+    letter-spacing:.14em;color:var(--ink-60);padding-top:2px;position:relative;
+    transition:color 180ms var(--e-dim);
+  }
+  .ord::after{
+    content:'';position:absolute;left:0;top:22px;bottom:0;width:5px;
+    border-left:1px solid var(--rule);
+    background-image:repeating-linear-gradient(to bottom,var(--rule) 0 1px,transparent 1px 12px);
+  }
+
+  /* ── section rhythm ───────────────────────────────────── */
+  .sec{padding-top:160px}
+  .sec--b{padding-top:128px}
+  .sec--c{padding-top:96px}
+  .hr{
+    grid-column:1/-1;height:1px;background:var(--rule);
+    transform:scaleX(0);transform-origin:left;
+    transition:transform 520ms var(--e-rule);
+  }
+  .hr.in{transform:scaleX(1)}
+
+  h2.lab{
+    font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--ink);margin:0 0 26px;
+  }
+  h3{
+    font-family:var(--sans);font-stretch:100%;font-weight:700;font-size:26px;
+    line-height:1.15;letter-spacing:-.015em;color:var(--ink);margin:0 0 14px;
+  }
+  p{margin:0 0 16px;max-width:64ch}
+  .lede{font-size:19px;color:var(--ink-70);max-width:60ch}
+  .caveat{font-stretch:75%;font-size:15px;color:var(--ink-60)}
+
+  /* ── title block ──────────────────────────────────────── */
+  .titleblock{padding-top:64px}
+  .tb{
+    grid-column:1/-1;display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr)) 2fr;
+    border-top:1px solid var(--rule-strong);border-bottom:1px solid var(--rule-strong);
+  }
+  .tb div{padding:12px 16px 12px 0;border-right:1px solid var(--rule)}
+  .tb div:last-child{border-right:0;text-align:right;padding-right:0;min-width:0}
+  .tb div:last-child span{display:inline-block;max-width:100%}
+  .tb b{
+    display:block;font-family:var(--mono);font-size:9.5px;font-weight:500;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--ink-60);margin:0 0 4px;
+  }
+  .tb span{font-family:var(--mono);font-size:12px;color:var(--ink)}
+  .tb a{text-decoration:none}
+  .tb a:hover{text-decoration:underline}
+
+  /* ── H1 : the width-axis move ─────────────────────────── */
   h1{
-    font-size:clamp(32px,5.6vw,50px);line-height:1.09;font-weight:900;
-    letter-spacing:-.025em;margin:0 0 22px;max-width:19ch;
+    font-size:76px;line-height:.94;letter-spacing:-.02em;margin:0 0 28px;
+    color:var(--ink);font-weight:700;max-width:16ch;
   }
-  h1 .dim{color:var(--text-3);font-weight:700}
-  .lede{font-size:clamp(16px,2.2vw,19px);color:var(--text-2);max-width:62ch;margin:0}
-  .lede strong{color:var(--text);font-weight:500}
+  h1 .wide{font-stretch:125%}
+  h1 .narrow{font-stretch:62%;color:var(--ink-60)}
 
-  /* ── stat tiles ─────────────────────────── */
-  .stats{
-    display:grid;grid-template-columns:repeat(2,1fr);gap:12px;
-    margin:40px 0 0;padding:0;list-style:none;
+  /* ── plates ───────────────────────────────────────────── */
+  .plate{
+    grid-column:1/-1;margin-inline:-56px;background:var(--ink);color:var(--paper);
+    padding:0;overflow:hidden;
   }
-  .stats li{
-    background:var(--surface);border:1px solid var(--border);border-radius:12px;
-    padding:18px 18px 16px;
+  .plate svg{display:block;width:100%;height:auto}
+  .plate .band{
+    display:flex;flex-wrap:wrap;gap:0 34px;padding:20px 56px 26px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--gold);border-top:1px solid rgba(225,140,68,.28);
   }
-  .stats b{
-    display:block;font-size:clamp(23px,4.4vw,30px);font-weight:900;letter-spacing:-.02em;
-    line-height:1.1;margin:0 0 7px;
+  .plate .band i{font-style:normal;color:rgba(244,241,234,.5)}
+  .plate .cap{
+    padding:22px 56px 0;font-family:var(--mono);font-size:10px;letter-spacing:.2em;
+    text-transform:uppercase;color:rgba(244,241,234,.55);
   }
-  .stats span{
-    display:block;font-family:var(--mono);font-size:11px;line-height:1.45;
-    color:var(--text-3);
+  .plate .note{
+    padding:0 56px 26px;font-stretch:75%;font-size:14px;color:rgba(244,241,234,.62);
+    max-width:70ch;
+  }
+  /* specificity must beat `.plate svg{display:block}` above */
+  .plate svg.mob-only{display:none}
+
+  /* ── counters ─────────────────────────────────────────── */
+  .count{font-variant-numeric:tabular-nums}
+
+  /* ── principles ───────────────────────────────────────── */
+  .pr{margin:0;padding:0;list-style:none}
+  .pr > li{
+    display:grid;grid-template-columns:64px 1fr;gap:0 24px;
+    padding:22px 0;border-top:1px solid var(--rule);
+  }
+  .pr > li:last-child{border-bottom:1px solid var(--rule)}
+  .pr .code{
+    font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.1em;
+    color:var(--ink-60);padding-top:5px;transition:color 180ms var(--e-dim);
+  }
+  .pr h4{
+    font-size:19px;font-weight:700;font-stretch:100%;color:var(--ink);
+    margin:0 0 5px;letter-spacing:-.01em;
+  }
+  .pr p{margin:0;font-size:16px;max-width:58ch}
+  @media (hover:hover) and (pointer:fine){
+    .pr > li:hover .code{color:var(--stamp)}
+    .case:hover .slug b{color:var(--stamp)}
   }
 
-  .rule{height:1px;background:var(--border);margin:64px 0 0}
-
-  /* ── section ────────────────────────────── */
-  section{padding:56px 0 0}
-  h2{
-    font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--text-3);margin:0 0 12px;
+  /* ── cases ────────────────────────────────────────────── */
+  .case{padding:44px 0;border-top:1px solid var(--rule)}
+  .case:last-of-type{border-bottom:1px solid var(--rule)}
+  .slug{
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-60);margin:0 0 16px;
   }
-  .sect-lede{color:var(--text-2);margin:0 0 32px;max-width:64ch;font-size:15px}
-
-  /* ── principles ─────────────────────────── */
-  .principles{display:grid;grid-template-columns:1fr;gap:2px;margin:0;padding:0;list-style:none}
-  .principles li{
-    display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;
-    padding:20px 0;border-top:1px solid var(--border);
-  }
-  .principles li:last-child{border-bottom:1px solid var(--border)}
-  .num{
-    font-family:var(--mono);font-size:12px;color:var(--accent);
-    padding-top:3px;min-width:22px;
-  }
-  .principles h3{font-size:17px;font-weight:700;margin:0 0 6px;letter-spacing:-.01em}
-  .principles p{margin:0;color:var(--text-2);font-size:14.5px;max-width:62ch}
-
-  /* ── cases ──────────────────────────────── */
-  .cases{display:grid;gap:16px}
-  .case{
-    background:var(--surface);border:1px solid var(--border);border-radius:16px;
-    padding:26px 26px 22px;
-  }
-  .case-top{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:0 0 16px}
-  .tag{
-    font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
-    color:var(--accent);background:var(--accent-soft);border-radius:6px;padding:5px 10px;
-  }
-  .year{font-family:var(--mono);font-size:12px;color:var(--text-3)}
-  .case h3{font-size:clamp(19px,2.6vw,22px);font-weight:700;letter-spacing:-.015em;margin:0 0 18px;line-height:1.3}
-  .par{display:grid;gap:14px;margin:0}
-  .par > div{display:grid;grid-template-columns:78px 1fr;gap:14px;align-items:start}
+  .slug b{font-weight:500;color:var(--ink);transition:color 180ms var(--e-dim)}
+  .par{margin:0}
+  .par > div{display:grid;grid-template-columns:92px 1fr;gap:0 20px;margin:0 0 13px}
   .par dt{
-    font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
-    color:var(--text-3);padding-top:3px;
+    font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-60);padding-top:5px;
   }
-  .par dd{margin:0;color:var(--text-2);font-size:15px}
-  .par .res dd{color:var(--text);font-weight:500}
-  .par .res dt{color:var(--accent)}
-  .case-link{
-    display:inline-flex;align-items:center;gap:9px;margin:20px 0 0;
-    font-size:14px;font-weight:500;color:var(--accent);text-decoration:none;
+  .par dd{margin:0;font-size:16px;max-width:58ch}
+  .par .res dd{
+    font-stretch:125%;font-size:19px;font-weight:500;color:var(--ink);line-height:1.4;
   }
-  .case-link:hover span,.case-link:focus-visible span{text-decoration:underline}
+  .doclink{
+    display:inline-block;margin:14px 0 0;font-family:var(--mono);font-size:11px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--stamp);text-decoration:none;
+    border-bottom:1px solid rgba(164,85,27,.4);padding-bottom:2px;
+  }
+  .doclink:hover{border-bottom-color:var(--stamp)}
 
-  /* ── AI panel ───────────────────────────── */
-  .panel{
-    background:linear-gradient(180deg,rgba(225,140,68,.09),rgba(225,140,68,.02));
-    border:1px solid rgba(225,140,68,.30);border-radius:16px;padding:30px 28px 26px;
+  /* ── figures ──────────────────────────────────────────── */
+  figure{margin:26px 0 0;grid-column:2/10}
+  /* overflow:visible let long <text> paint past the viewBox and widen the page */
+  figure svg{display:block;width:100%;height:auto;overflow:hidden}
+  figure svg.fig-mob{display:none}
+  /* a Gantt genuinely needs width — let it scroll rather than shrink to 5px type */
+  .scrollfig{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .scrollhint{display:none}
+  figcaption{
+    margin:12px 0 0;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--ink-60);
   }
-  .panel h3{font-size:clamp(20px,3vw,25px);font-weight:800;letter-spacing:-.02em;margin:0 0 14px;line-height:1.25}
-  .panel p{color:var(--text-2);margin:0 0 18px;max-width:62ch;font-size:15px}
-  .panel ul{margin:0 0 22px;padding:0 0 0 20px;color:var(--text-2);font-size:15px}
-  .panel li{margin:0 0 8px}
-  .panel li::marker{color:var(--accent)}
+  .plot-bar{transform:scaleX(0);transform-origin:left;transition:transform 900ms var(--e-plot)}
+  .plot-bar.in{transform:scaleX(1)}
+  .plot-line{stroke-dasharray:var(--len);stroke-dashoffset:var(--len);
+    transition:stroke-dashoffset 900ms var(--e-plot)}
+  .plot-line.in{stroke-dashoffset:0}
+  .fade{opacity:0;transition:opacity 600ms var(--e-plot)}
+  .fade.in{opacity:1}
 
-  /* ── 90 days ────────────────────────────── */
-  .phases{display:grid;gap:16px}
-  .phase{
-    background:var(--surface);border:1px solid var(--border);border-radius:14px;
-    padding:24px 24px 20px;position:relative;
-    display:flex;flex-direction:column;
+  /* ── schedule table ───────────────────────────────────── */
+  .sched{width:100%;border-collapse:collapse;font-size:16px}
+  .sched th{
+    text-align:left;font-family:var(--mono);font-size:10px;font-weight:500;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--ink-60);
+    padding:0 0 10px;border-bottom:1px solid var(--rule-strong);
   }
-  .phase .when{
-    font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
-    color:var(--accent);margin:0 0 12px;
+  .sched th:last-child,.sched td:last-child{text-align:right}
+  .sched td{padding:11px 0;border-bottom:1px solid var(--rule);color:var(--ink-70)}
+  .sched tr:nth-child(even) td{background:var(--paper-2)}
+  .sched td:first-child{padding-left:8px}
+  .sched td:last-child{
+    padding-right:8px;font-family:var(--mono);font-size:14px;color:var(--ink);
+    font-variant-numeric:tabular-nums;white-space:nowrap;
   }
-  .phase h3{font-size:18px;font-weight:700;margin:0 0 12px;letter-spacing:-.01em}
-  .phase ul{margin:0;padding:0 0 0 18px;color:var(--text-2);font-size:14.5px}
-  .phase li{margin:0 0 7px}
-  .phase li::marker{color:var(--text-3)}
-  .phase .out{
-    margin:16px 0 0;padding:14px 0 0;border-top:1px solid var(--border);
-    font-size:14px;color:var(--text);
-  }
-  @media (min-width:720px){.phase .out{margin-top:auto}}
-  .phase .out b{color:var(--accent);font-family:var(--mono);font-size:10.5px;
-    letter-spacing:.1em;text-transform:uppercase;display:block;margin:0 0 5px;font-weight:500}
 
-  /* ── scale ──────────────────────────────── */
-  .scale{margin:0;padding:0;list-style:none;display:grid;gap:2px}
-  .scale li{
-    display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;
-    padding:15px 0;border-top:1px solid var(--border);
+  /* ── phases ───────────────────────────────────────────── */
+  .ph{display:grid;grid-template-columns:repeat(3,1fr);gap:0 32px}
+  .ph > div{border-top:2px solid var(--ink);padding:16px 0 0}
+  .ph .when{
+    font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--stamp);margin:0 0 10px;
   }
-  .scale li:last-child{border-bottom:1px solid var(--border)}
-  .scale .k{color:var(--text-2);font-size:15px}
-  .scale .v{font-family:var(--mono);font-size:14px;color:var(--text);text-align:right;white-space:nowrap}
+  .ph h4{font-size:19px;font-weight:700;color:var(--ink);margin:0 0 12px;letter-spacing:-.01em}
+  .ph ul{margin:0 0 16px;padding:0 0 0 16px;font-size:15px}
+  .ph li{margin:0 0 6px}
+  .ph li::marker{color:var(--ink-45)}
+  .ph .out{
+    border-top:1px solid var(--rule);padding-top:11px;font-size:15px;color:var(--ink);
+  }
+  .ph .out b{
+    display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--ink-60);font-weight:500;margin:0 0 5px;
+  }
 
-  /* ── CTA ────────────────────────────────── */
-  .cta{
-    background:var(--surface);border:1px solid var(--border-strong);border-radius:18px;
-    padding:34px 30px 30px;
+  /* ── contact ──────────────────────────────────────────── */
+  .want{margin:0 0 28px;padding:0;list-style:none}
+  .want li{
+    display:grid;grid-template-columns:120px 1fr;gap:0 20px;
+    padding:12px 0;border-top:1px solid var(--rule);font-size:16px;
   }
-  .cta h3{font-size:clamp(21px,3.2vw,27px);font-weight:800;letter-spacing:-.02em;margin:0 0 16px;line-height:1.25}
-  .cta p{color:var(--text-2);margin:0 0 12px;max-width:60ch;font-size:15px}
-  .want{margin:0 0 26px;padding:0 0 0 20px;color:var(--text-2);font-size:15px}
-  .want li{margin:0 0 8px}
-  .want li::marker{color:var(--accent)}
-  .btns{display:flex;flex-wrap:wrap;gap:12px}
+  .want li:last-child{border-bottom:1px solid var(--rule)}
+  .want b{
+    font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--ink-60);padding-top:4px;
+  }
+  .btns{display:flex;flex-wrap:wrap;gap:10px}
   .btn{
-    display:inline-flex;align-items:center;gap:9px;text-decoration:none;
-    font-size:14.5px;font-weight:600;border-radius:10px;padding:13px 20px;
-    transition:transform .2s var(--ease),background .2s var(--ease),border-color .2s var(--ease);
+    display:inline-flex;align-items:center;font-family:var(--mono);font-size:11px;
+    letter-spacing:.16em;text-transform:uppercase;text-decoration:none;
+    padding:14px 22px;border:1px solid var(--ink);color:var(--ink);
+    transition:background 180ms var(--e-dim),color 180ms var(--e-dim);
   }
-  .btn-primary{background:var(--accent);color:#12100C}
-  .btn-primary:hover,.btn-primary:focus-visible{transform:translateY(-2px);background:#EE9B52}
-  .btn-ghost{border:1px solid var(--border-strong);color:var(--text)}
-  .btn-ghost:hover,.btn-ghost:focus-visible{transform:translateY(-2px);background:var(--surface-2);border-color:var(--accent)}
-  a:focus-visible,.btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .btn:hover,.btn:focus-visible{background:var(--ink);color:var(--paper)}
+  .btn--solid{background:var(--ink);color:var(--paper)}
+  .btn--solid:hover,.btn--solid:focus-visible{background:var(--stamp);border-color:var(--stamp);color:var(--paper)}
+  a:focus-visible{outline:2px solid var(--stamp);outline-offset:3px}
 
-  /* ── footer ─────────────────────────────── */
-  footer{padding:64px 0 72px;color:var(--text-3);font-size:13px}
-  footer p{margin:0 0 8px;max-width:70ch}
-  footer a{color:var(--text-2)}
+  /* ── back / footer ────────────────────────────────────── */
+  .back{
+    display:inline-block;padding:34px 0 0;font-family:var(--mono);font-size:11px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--ink-60);text-decoration:none;
+  }
+  .back:hover{color:var(--stamp)}
+  footer{padding:120px 0 90px}
+  footer .fine{font-stretch:75%;font-size:14px;color:var(--ink-60);max-width:78ch}
+  footer .fine a{color:var(--ink-60)}
 
-  /* ── responsive ─────────────────────────── */
-  @media (min-width:720px){
-    .stats{grid-template-columns:repeat(4,1fr)}
-    .principles{grid-template-columns:1fr 1fr;gap:0 40px}
-    .principles li:nth-child(2){border-top:1px solid var(--border)}
-    .principles li:nth-last-child(2){border-bottom:1px solid var(--border)}
-    .phases{grid-template-columns:repeat(3,1fr)}
-    header{padding:64px 0 0}
+  /* ── responsive ───────────────────────────────────────── */
+  @media (max-width:1119px){
+    .sheet{padding:0 32px}
+    .row{grid-template-columns:36px repeat(8,minmax(0,1fr));column-gap:18px}
+    .field,.detail,figure{grid-column:2/10}
+    .rail{grid-column:2/10;margin-top:18px;border-top:1px solid var(--rule);padding-top:12px}
+    .plate{margin-inline:-32px}
+    .plate .band,.plate .cap,.plate .note{padding-left:32px;padding-right:32px}
+    h1{font-size:54px}
   }
   @media (max-width:719px){
-    .par > div{grid-template-columns:1fr;gap:4px}
+    body{font-size:16px}
+    .sheet-frame{inset:10px}
+    .sheet{padding:0 14px}
+    .row{grid-template-columns:26px repeat(6,minmax(0,1fr));column-gap:12px}
+    .field,.detail,figure,.rail{grid-column:2/8}
+    .ord{font-size:9px;letter-spacing:.08em}
+    .sec{padding-top:88px}
+    .sec--b,.sec--c{padding-top:72px}
+    h1{font-size:34px;line-height:1.0;max-width:none}
+    .lede{font-size:17px}
+    h3{font-size:21px}
+    .plate{margin-inline:-14px}
+    .plate .band,.plate .cap,.plate .note{padding-left:14px;padding-right:14px}
+    .plate .band{gap:0 18px;font-size:10px}
+    .tb{grid-template-columns:1fr 1fr}
+    .tb div{border-right:0;border-bottom:1px solid var(--rule)}
+    .tb div:last-child{text-align:left;border-bottom:0}
+    .tb div:nth-child(4){border-bottom:1px solid var(--rule)}
+    .pr > li{grid-template-columns:44px 1fr;gap:0 12px}
+    .par > div{grid-template-columns:1fr;gap:2px}
     .par dt{padding-top:0}
-    .case{padding:22px 20px 20px}
-    .panel,.cta{padding:24px 20px 22px}
+    .par .res dd{font-size:17px}
+    .ph{grid-template-columns:1fr;gap:28px}
+    .want li{grid-template-columns:1fr;gap:2px}
+    .want b{padding-top:0}
     .btn{width:100%;justify-content:center}
+    .plate svg.desk-only{display:none}
+    .plate svg.mob-only{display:block}
+    /* nowrap values ("development · finance · legal") were forcing the
+       page wider than the screen; overflow-x:hidden then clipped it */
+    .sched thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+    .sched tr{display:block;padding:10px 8px}
+    .sched tr:nth-child(even){background:var(--paper-2)}
+    .sched tr:nth-child(even) td{background:transparent}
+    .sched td{display:block;border:0;padding:0;font-size:15px}
+    .sched td:first-child{padding-left:0;color:var(--ink)}
+    .sched td:last-child{
+      padding-right:0;text-align:left;white-space:normal;font-size:13px;margin-top:2px;
+    }
+    .sched tbody tr{border-bottom:1px solid var(--rule)}
+    figure{margin-top:20px}
+    figure svg.fig-desk{display:none}
+    figure svg.fig-mob{display:block}
+    .scrollfig svg{min-width:600px}
+    .scrollhint{
+      display:block;margin:8px 0 0;font-family:var(--mono);font-size:10px;
+      letter-spacing:.14em;text-transform:uppercase;color:var(--ink-60);
+    }
   }
   @media (prefers-reduced-motion:reduce){
-    html{scroll-behavior:auto}
-    *{transition:none !important}
+    *{transition:none!important;animation:none!important}
+    .hr{transform:scaleX(1)}
+    .plot-bar{transform:scaleX(1)}
+    .plot-line{stroke-dashoffset:0}
+    .fade{opacity:1}
+  }
+
+  /* charts are also readable as a table by screen readers.
+     must wrap a <div>: a <table> ignores width:1px and its content
+     stretches it, which pushed the page wider than the viewport */
+  .sr-only{
+    position:absolute;width:1px;height:1px;overflow:hidden;
+    clip-path:inset(50%);white-space:nowrap;
+  }
+
+  /* recruiters print this */
+  @media print{
+    .sheet-frame{display:none}
+    body{background:#fff;color:#000;font-size:11pt}
+    .sheet{padding:0;max-width:none}
+    .plate{background:#0B1220!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .hr,.plot-bar{transform:none!important}
+    .plot-line{stroke-dashoffset:0!important}
+    .fade{opacity:1!important}
+    .back,.btns{display:none}
+    .case,section{break-inside:avoid}
+    figure{break-inside:avoid;page-break-inside:avoid}
+    a[href^="http"]::after{content:" (" attr(href) ")";font-size:9pt;color:#555}
   }
 </style>
 </head>
 <body>
 
-<div class="wrap">
-  <a class="back" href="../">← Selected work</a>
-</div>
+<div class="sheet-frame" aria-hidden="true"></div>
 
-<header class="wrap">
-  <p class="eyebrow">Alex Goncharevski · Operations · Warsaw &amp; Kyiv</p>
-  <h1>I save companies money and time by turning operations into a system that runs <span class="dim">without heroics.</span></h1>
-  <p class="lede">
-    Chief Operating Officer at Iron Invest Group. <strong>27 projects, €15M+ in active
-    construction budgets, 60 people across two countries.</strong> I build the operating
-    model that makes delivery predictable, and I put AI inside the daily processes rather
-    than in the pitch deck.
-  </p>
+<div class="sheet">
 
-  <ul class="stats">
-    <li><b>27</b><span>projects run in parallel, two holdings</span></li>
-    <li><b>€15M+</b><span>active construction budgets owned</span></li>
-    <li><b>30 → 250</b><span>team size scaled over my career</span></li>
-    <li><b>×13</b><span>cheaper delivery with AI, measured task by task</span></li>
-  </ul>
-</header>
+  <a class="back" href="../">← Index of drawings</a>
 
-<div class="wrap"><div class="rule"></div></div>
-
-<section class="wrap" aria-labelledby="how">
-  <h2 id="how">How I work</h2>
-  <p class="sect-lede">
-    Seven rules I apply from week one. They are boring on purpose: an operation that
-    depends on someone being clever every morning is not an operation, it is a rescue.
-  </p>
-  <ol class="principles">
-    <li><span class="num">01</span><div>
-      <h3>Map first, decide second</h3>
-      <p>Before anything is built I run discovery: interviews, customer journeys,
-      competitor checks. Most of the savings come from work that never starts.</p>
-    </div></li>
-    <li><span class="num">02</span><div>
-      <h3>One source of truth</h3>
-      <p>A dozen spreadsheets that disagree is not data, it is a negotiation. I collapse
-      them into one live registry everyone reads, including the sales floor.</p>
-    </div></li>
-    <li><span class="num">03</span><div>
-      <h3>Roles, not heroes</h3>
-      <p>Governance framework, written role and process documentation, reporting
-      standards. The system has to survive the person who built it leaving.</p>
-    </div></li>
-    <li><span class="num">04</span><div>
-      <h3>Priority is calculated, not argued</h3>
-      <p>MoSCoW and WSJF on the backlog. When the ranking is arithmetic, the loudest
-      voice in the room stops setting the roadmap.</p>
-    </div></li>
-    <li><span class="num">05</span><div>
-      <h3>Risks are named before they bite</h3>
-      <p>RAID logs kept live, not reconstructed after the fact. A risk written down is a
-      decision waiting; a risk unwritten is a surprise with a date on it.</p>
-    </div></li>
-    <li><span class="num">06</span><div>
-      <h3>AI in the process, not in the deck</h3>
-      <p>I do not run AI pilots. I take a recurring task, measure what it costs today,
-      rebuild it with AI, and keep it only if the number moves.</p>
-    </div></li>
-    <li><span class="num">07</span><div>
-      <h3>Reporting a board reads in two minutes</h3>
-      <p>A KPI matrix, not a deck. If an owner needs a meeting to understand the status,
-      the reporting has failed, not the owner.</p>
-    </div></li>
-  </ol>
-</section>
-
-<div class="wrap"><div class="rule"></div></div>
-
-<section class="wrap" aria-labelledby="cases">
-  <h2 id="cases">Cases</h2>
-  <p class="sect-lede">
-    Problem, what I did, what came out. Four of these ship as public documents you can
-    open and read in full.
-  </p>
-
-  <div class="cases">
-
-    <article class="case">
-      <div class="case-top"><span class="tag">Operating model</span><span class="year">2026 · Iron Invest Group</span></div>
-      <h3>A 27-project portfolio with no shared way of running a project</h3>
-      <dl class="par">
-        <div><dt>Problem</dt><dd>Two holdings in Poland and Ukraine, 27 active projects, €15M+ in construction budgets, and every project run its own way. No common governance, no shared reporting, no written process.</dd></div>
-        <div><dt>Action</dt><dd>Built the operating model from the ground up: governance framework, role and process documentation, reporting standards. Then stood up a dedicated project office to hold the standard across all 27.</dd></div>
-        <div class="res"><dt>Result</dt><dd>One delivery standard across both offices, 60 in-house staff and the external contractor network working to the same definitions.</dd></div>
-      </dl>
-    </article>
-
-    <article class="case">
-      <div class="case-top"><span class="tag">Internal product</span><span class="year">2026 · Dobrograd</span></div>
-      <h3>Twelve spreadsheets that disagreed about what was for sale</h3>
-      <dl class="par">
-        <div><dt>Problem</dt><dd>Unit availability, pricing and reservations lived in parallel files. Sales quoted from whichever copy they had open, and nobody could say with confidence what was actually free.</dd></div>
-        <div><dt>Action</dt><dd>Specified and shipped one live registry of 2,121 units across nine developments: search, map, price list, role-based access, instalment calculator.</dd></div>
-        <div class="res"><dt>Result</dt><dd>A single answer to "what is available and at what price", visible to the sales floor and to management in the same second.</dd></div>
-      </dl>
-      <a class="case-link" href="../dobrograd-portal/"><span>Read the case study</span> →</a>
-    </article>
-
-    <article class="case">
-      <div class="case-top"><span class="tag">AI in operations</span><span class="year">2026 · Iron Invest Group</span></div>
-      <h3>Three months of work, recosted task by task</h3>
-      <dl class="par">
-        <div><dt>Problem</dt><dd>"AI saves time" is easy to claim and impossible to budget against. I wanted a number an owner could argue with.</dd></div>
-        <div><dt>Action</dt><dd>Took 32 delivered pieces of work and priced each one three ways: what it cost with AI, what it would have cost in-house, and what a contractor would have charged.</dd></div>
-        <div class="res"><dt>Result</dt><dd>×13 cheaper and ×10 faster on the measured set, published in full with the method and the caveats visible.</dd></div>
-      </dl>
-      <a class="case-link" href="../ai-vs-specialists/"><span>Open the document</span> →</a>
-    </article>
-
-    <article class="case">
-      <div class="case-top"><span class="tag">Brand</span><span class="year">2026 · Dobrograd</span></div>
-      <h3>A 15-year-old brand with no written identity</h3>
-      <dl class="par">
-        <div><dt>Problem</dt><dd>The group's development brand had recognition but no rules: positioning, logo use, typography and colour differed by whoever made the last file.</dd></div>
-        <div><dt>Action</dt><dd>Delivered a full rebrand and the 15th anniversary programme on the new identity, both as living web documents rather than PDFs that go stale.</dd></div>
-        <div class="res"><dt>Result</dt><dd>Shipped inside the first month in the role. Promoted from Marketing Director to Chief Operating Officer immediately after.</dd></div>
-      </dl>
-      <a class="case-link" href="../dobrograd-brandbook/"><span>Open the brand book</span> →</a>
-    </article>
-
-    <article class="case">
-      <div class="case-top"><span class="tag">E-commerce</span><span class="year">2025–2026 · ROZETKA.PL</span></div>
-      <h3>Teams busy on work that did not move the business</h3>
-      <dl class="par">
-        <div><dt>Problem</dt><dd>A digital portfolio across B2B and B2C, 60+ people in cross-functional teams, and a backlog ranked by whoever asked most persistently.</dd></div>
-        <div><dt>Action</dt><dd>Put discovery in front of build, re-ranked the backlog with MoSCoW and WSJF, and gave the C-level a KPI matrix with live RAID risk logs.</dd></div>
-        <div class="res"><dt>Result</dt><dd>Low-value work cut before it started, and a B2B expansion into European markets run to a PRINCE2 roadmap.</dd></div>
-      </dl>
-    </article>
-
-    <article class="case">
-      <div class="case-top"><span class="tag">General management</span><span class="year">2022–2024 · Impreza.PL</span></div>
-      <h3>Growth that outran the company's own processes</h3>
-      <dl class="par">
-        <div><dt>Problem</dt><dd>Events across 10+ cities and 6 European countries, 70+ people per project, 150+ vendors, and coordination held together by individuals rather than by process.</dd></div>
-        <div><dt>Action</dt><dd>As CEO: introduced Kanban for logistics, wrote the SOPs and leadership tracks, took personal ownership of cashflow and cost control, and launched AURA Club in Warsaw as the flagship venue.</dd></div>
-        <div class="res"><dt>Result</dt><dd>Delivery timelines down 30%, operational costs down 18% with no loss of quality, 50+ large-scale events at 98% client satisfaction on 2M+ PLN annual budgets.</dd></div>
-      </dl>
-    </article>
-
-  </div>
-</section>
-
-<div class="wrap"><div class="rule"></div></div>
-
-<section class="wrap" aria-labelledby="ai">
-  <h2 id="ai">Where AI actually pays</h2>
-  <div class="panel">
-    <h3>I do not sell AI. I use it, and I can show the invoice.</h3>
-    <p>
-      Most "AI transformation" stops at a pilot nobody adopts. My approach is narrower and
-      duller: find the tasks that repeat, price them honestly, rebuild them, keep score.
-    </p>
-    <ul>
-      <li><strong>Documentation and reporting.</strong> The cycle from raw numbers to a document an owner can read, compressed from days to hours.</li>
-      <li><strong>Analytics prep.</strong> The unglamorous 80% before an analyst starts thinking, handed to a machine.</li>
-      <li><strong>Internal tools.</strong> Registries, calculators and dashboards built in days instead of being queued behind an IT roadmap.</li>
-      <li><strong>What I do not automate.</strong> Anything where a wrong answer is expensive and nobody would notice it was wrong.</li>
-    </ul>
-    <a class="case-link" href="../ai-vs-specialists/"><span>32 tasks, three price columns, full method</span> →</a>
-  </div>
-</section>
-
-<div class="wrap"><div class="rule"></div></div>
-
-<section class="wrap" aria-labelledby="d90">
-  <h2 id="d90">My first 90 days</h2>
-  <p class="sect-lede">
-    The same sequence every time. I do not change anything in month one, because the first
-    thing an operation needs is an honest picture of itself.
-  </p>
-  <div class="phases">
-
-    <article class="phase">
-      <p class="when">Days 1–30</p>
-      <h3>Look, do not touch</h3>
-      <ul>
-        <li>Map every process, project and reporting line as they actually run</li>
-        <li>Interview the people doing the work, not only the people describing it</li>
-        <li>Find where money and time leak, with numbers attached</li>
-      </ul>
-      <p class="out"><b>You get</b>An honest map and a ranked list of leaks.</p>
-    </article>
-
-    <article class="phase">
-      <p class="when">Days 31–60</p>
-      <h3>Fix the loudest leak</h3>
-      <ul>
-        <li>Close the single most expensive gap, visibly, so the change is credible</li>
-        <li>Stand up one source of truth for whatever people argue about most</li>
-        <li>Install a reporting cadence the owner reads in two minutes</li>
-      </ul>
-      <p class="out"><b>You get</b>One measurable win and reporting you can trust.</p>
-    </article>
-
-    <article class="phase">
-      <p class="when">Days 61–90</p>
-      <h3>Make it hold without me</h3>
-      <ul>
-        <li>Write the governance: roles, processes, delivery standard</li>
-        <li>Automate the repetitive parts and measure what that saved</li>
-        <li>Hand over dashboards and the operating rhythm to the team</li>
-      </ul>
-      <p class="out"><b>You get</b>A system that runs when I am on holiday.</p>
-    </article>
-
-  </div>
-</section>
-
-<div class="wrap"><div class="rule"></div></div>
-
-<section class="wrap" aria-labelledby="scale">
-  <h2 id="scale">Scale I have worked at</h2>
-  <ul class="scale">
-    <li><span class="k">Projects run in parallel</span><span class="v">27</span></li>
-    <li><span class="k">Construction budgets owned</span><span class="v">€15M+</span></li>
-    <li><span class="k">People led, current role</span><span class="v">60 + contractors</span></li>
-    <li><span class="k">Largest team scaled</span><span class="v">30 → 250</span></li>
-    <li><span class="k">Countries delivered in</span><span class="v">6</span></li>
-    <li><span class="k">Functions owned</span><span class="v">development · finance · legal</span></li>
-    <li><span class="k">Offices run</span><span class="v">Warsaw · Kyiv</span></li>
-    <li><span class="k">Methodology</span><span class="v">PRINCE2 · Agile · Kanban</span></li>
-    <li><span class="k">Languages</span><span class="v">EN · PL · UA · RU</span></li>
-  </ul>
-</section>
-
-<div class="wrap"><div class="rule"></div></div>
-
-<section class="wrap" aria-labelledby="next">
-  <h2 id="next">What I am looking for</h2>
-  <div class="cta">
-    <h3>An operation that has outgrown the way it is being run.</h3>
-    <p>That is the situation I am best in, and it is the one I have walked into three times now.</p>
-    <ul class="want">
-      <li><strong>Role:</strong> COO, Operations Director, or Head of Operations with real ownership, not coordination.</li>
-      <li><strong>Company:</strong> development, e-commerce or multi-project services, roughly 50 to 500 people.</li>
-      <li><strong>Location:</strong> Warsaw, hybrid or remote across the EU.</li>
-      <li><strong>Mandate I want:</strong> own the operating model end to end, including the authority to change it.</li>
-    </ul>
-    <div class="btns">
-      <a class="btn btn-primary" href="mailto:goncharevski@gmail.com">Write to me</a>
-      <a class="btn btn-ghost" href="https://www.linkedin.com/in/goncharevski/" rel="noopener">LinkedIn</a>
-      <a class="btn btn-ghost" href="../">See the work</a>
+  <!-- ══ TITLE BLOCK ══ -->
+  <div class="row titleblock">
+    <div class="tb">
+      <div><b>Sheet</b><span>COO / 01</span></div>
+      <div><b>Issued</b><span>2026</span></div>
+      <div><b>Scale</b><span>27 projects · €15M+</span></div>
+      <div><b>Status</b><span>Open to offers</span></div>
+      <div><b>Drawn by</b><span><a href="https://www.linkedin.com/in/goncharevski/" rel="noopener">Alex Goncharevski · COO, Iron Invest Group</a></span></div>
     </div>
   </div>
-</section>
 
-<footer class="wrap">
-  <p>
-    Figures on this page are the ones I publish on my
-    <a href="https://www.linkedin.com/in/goncharevski/" rel="noopener">LinkedIn profile</a>.
-    In the linked documents, commercially sensitive numbers are replaced with illustrative
-    values and colleagues appear by role rather than by name. The thinking and the craft
-    are real; the client's figures are not mine to publish.
-  </p>
-  <p>Alex Goncharevski · Warsaw · <a href="mailto:goncharevski@gmail.com">goncharevski@gmail.com</a></p>
-</footer>
+  <!-- ══ A · POSITION ══ -->
+  <section class="row sec" aria-labelledby="a-lab">
+    <div class="ord" aria-hidden="true">A</div>
+    <div class="field">
+      <h2 class="lab" id="a-lab">A · Position</h2>
+      <h1><span class="wide">I save companies money and time by turning operations into a system that runs</span> <span class="narrow">without heroics.</span></h1>
+      <p class="lede">
+        Chief Operating Officer at Iron Invest Group. I own the operating model across
+        two holdings in Poland and Ukraine, and I put AI inside the daily processes
+        rather than in the pitch deck.
+      </p>
+    </div>
+    <div class="rail">
+      <p><b>Location</b>Warsaw · Kyiv<br>Hybrid or remote, EU</p>
+      <p><b>Owns</b>Development<br>Finance<br>Legal</p>
+      <p><b>Method</b>PRINCE2 · Agile<br>Kanban</p>
+    </div>
+  </section>
+
+  <!-- ══ HERO PLATE ══ -->
+  <div class="row" style="padding-top:56px">
+    <div class="plate">
+      <p class="cap">Fig. 01 — Twenty-seven projects, before and after an operating model</p>
+      <svg class="desk-only" viewBox="0 0 1440 520" role="img" aria-label="Diagram: 27 tangled project lines on the left resolve into six ordered delivery buses on the right after passing through a gate labelled operating model.">
+        <g stroke="#55637A" stroke-width="1" fill="none" opacity=".85" class="chaos">
+          <path class="plot-line" d="M80 44.4 Q151.8 44.4 223.6 30 Q268.6 30 313.7 115.6 Q377.0 115.6 440.3 155.7 Q488.9 155.7 537.5 247.3 Q618.8 247.3 700 209.9"/><path class="plot-line" d="M80 61.3 Q143.3 61.3 206.7 51.4 Q265.4 51.4 324.1 145.7 Q371.0 145.7 417.9 54.6 Q496.2 54.6 574.6 36.1 Q637.3 36.1 700 12.0"/><path class="plot-line" d="M80 85.3 Q145.6 85.3 211.2 37.2 Q281.5 37.2 351.9 30 Q419.9 30 488.0 30 Q533.3 30 578.6 30 Q627.0 30 675.4 30 Q687.7 30 700 53.7"/><path class="plot-line" d="M80 102.2 Q150.8 102.2 221.5 172.2 Q289.1 172.2 356.7 118.7 Q429.8 118.7 502.8 162.3 Q553.4 162.3 604.0 189.1 Q652.0 189.1 700 166.6"/><path class="plot-line" d="M80 106.9 Q134.3 106.9 188.6 120.5 Q249.9 120.5 311.3 149.2 Q366.5 149.2 421.6 94.7 Q492.9 94.7 564.2 30 Q632.1 30 700 105.3"/><path class="plot-line" d="M80 138.8 Q154.6 138.8 229.2 99.9 Q279.0 99.9 328.9 30 Q401.8 30 474.7 30 Q553.8 30 632.8 62.2 Q666.4 62.2 700 30 Q700.0 30 700 103.1"/><path class="plot-line" d="M80 140.0 Q153.2 140.0 226.4 129.4 Q299.1 129.4 371.9 141.2 Q419.6 141.2 467.4 64.9 Q547.4 64.9 627.4 30 Q663.7 30 700 5.5"/><path class="plot-line" d="M80 162.4 Q160.2 162.4 240.5 96.3 Q286.1 96.3 331.6 117.5 Q394.1 117.5 456.5 186.0 Q536.4 186.0 616.3 184.1 Q658.1 184.1 700 251.5 Q700.0 251.5 700 308.0"/><path class="plot-line" d="M80 186.5 Q159.6 186.5 239.2 237.3 Q292.1 237.3 345.0 287.8 Q425.0 287.8 505.0 259.0 Q548.9 259.0 592.7 235.3 Q646.4 235.3 700 173.8"/><path class="plot-line" d="M80 183.9 Q144.5 183.9 209.0 205.5 Q286.8 205.5 364.5 279.0 Q437.2 279.0 510.0 363.9 Q585.6 363.9 661.3 399.9 Q680.6 399.9 700 404.3"/><path class="plot-line" d="M80 215.7 Q142.9 215.7 205.8 284.1 Q264.1 284.1 322.5 288.6 Q392.6 288.6 462.6 281.3 Q532.7 281.3 602.8 275.0 Q651.1 275.0 699.5 203.5 Q699.8 203.5 700 250.0"/><path class="plot-line" d="M80 243.4 Q137.5 243.4 195.0 295.2 Q239.9 295.2 284.9 327.1 Q355.6 327.1 426.3 271.6 Q478.8 271.6 531.3 344.3 Q582.3 344.3 633.4 418.4 Q666.7 418.4 700 435.0"/><path class="plot-line" d="M80 258.0 Q150.8 258.0 221.5 320.2 Q266.1 320.2 310.7 342.0 Q387.4 342.0 464.2 296.2 Q515.1 296.2 566.0 355.8 Q623.0 355.8 679.9 337.1 Q690.0 337.1 700 362.5"/><path class="plot-line" d="M80 256.3 Q132.3 256.3 184.7 222.5 Q239.2 222.5 293.6 309.8 Q341.1 309.8 388.7 255.8 Q468.1 255.8 547.6 328.9 Q623.8 328.9 700 344.4"/><path class="plot-line" d="M80 287.8 Q158.2 287.8 236.4 245.5 Q286.6 245.5 336.7 156.9 Q398.0 156.9 459.4 118.4 Q520.4 118.4 581.4 30 Q624.8 30 668.3 30 Q684.1 30 700 50.6"/><path class="plot-line" d="M80 284.4 Q144.9 284.4 209.9 266.0 Q282.2 266.0 354.5 215.3 Q420.4 215.3 486.4 281.2 Q549.9 281.2 613.4 246.9 Q656.7 246.9 700 214.6"/><path class="plot-line" d="M80 308.5 Q124.2 308.5 168.3 385.7 Q230.1 385.7 291.8 348.9 Q352.6 348.9 413.5 432.4 Q466.6 432.4 519.6 487.8 Q609.8 487.8 700 479.6"/><path class="plot-line" d="M80 312.4 Q151.9 312.4 223.9 226.5 Q288.5 226.5 353.1 313.8 Q405.5 313.8 457.8 379.9 Q516.5 379.9 575.1 458.3 Q637.5 458.3 700 440.1"/><path class="plot-line" d="M80 324.4 Q125.7 324.4 171.4 276.6 Q233.1 276.6 294.8 371.2 Q343.4 371.2 392.0 285.3 Q447.1 285.3 502.1 198.8 Q560.7 198.8 619.3 206.1 Q659.6 206.1 700 138.0"/><path class="plot-line" d="M80 337.0 Q139.8 337.0 199.5 333.3 Q260.7 333.3 321.9 368.5 Q398.8 368.5 475.7 430.7 Q546.1 430.7 616.6 400.1 Q658.3 400.1 700 322.1"/><path class="plot-line" d="M80 379.2 Q158.2 379.2 236.5 358.7 Q312.2 358.7 388.0 381.3 Q438.9 381.3 489.8 327.9 Q535.4 327.9 580.9 398.1 Q640.5 398.1 700 393.8"/><path class="plot-line" d="M80 395.3 Q140.2 395.3 200.4 376.6 Q274.1 376.6 347.9 421.3 Q425.1 421.3 502.4 466.6 Q579.7 466.6 657.0 453.0 Q678.5 453.0 700 490"/><path class="plot-line" d="M80 397.0 Q155.8 397.0 231.6 360.3 Q301.4 360.3 371.2 302.5 Q438.5 302.5 505.9 296.5 Q559.5 296.5 613.2 266.2 Q656.6 266.2 700 299.7"/><path class="plot-line" d="M80 422.6 Q145.7 422.6 211.3 483.6 Q270.3 483.6 329.3 401.7 Q397.0 401.7 464.6 477.1 Q538.2 477.1 611.9 490 Q656.0 490 700 490"/><path class="plot-line" d="M80 435.9 Q133.3 435.9 186.6 489.0 Q246.1 489.0 305.5 408.9 Q352.4 408.9 399.4 465.9 Q462.9 465.9 526.5 463.2 Q583.0 463.2 639.5 490 Q669.8 490 700 488.6"/><path class="plot-line" d="M80 430.6 Q135.3 430.6 190.7 490 Q245.5 490 300.4 406.2 Q355.9 406.2 411.4 442.3 Q486.2 442.3 561.0 490 Q630.4 490 699.7 438.4 Q699.9 438.4 700 454.5"/><path class="plot-line" d="M80 449.7 Q143.7 449.7 207.3 490 Q272.9 490 338.4 490 Q413.6 490 488.8 490 Q541.9 490 594.9 409.2 Q647.5 409.2 700 418.3"/>
+        </g>
+        <g stroke="#F4F1EA" stroke-width="1" fill="none" opacity=".75">
+          <path d="M730 40 L730 480" stroke-dasharray="4 4"/>
+          <path d="M700 500 L760 500"/>
+          <path d="M700 495 L700 505"/><path d="M760 495 L760 505"/>
+        </g>
+        <text x="730" y="26" text-anchor="middle" fill="#F4F1EA" opacity=".72"
+              font-family="'JetBrains Mono',monospace" font-size="10" letter-spacing="2.4">OPERATING MODEL</text>
+        <g stroke="#E18C44" stroke-width="1.25" fill="none" class="order">
+          <path class="plot-line" d="M780 150 L1360 150"/><path class="plot-line" d="M780 186 L1360 186"/><path class="plot-line" d="M780 222 L1360 222"/><path class="plot-line" d="M780 258 L1360 258"/><path class="plot-line" d="M780 294 L1360 294"/><path class="plot-line" d="M780 330 L1360 330"/>
+        </g>
+        <g stroke="#E18C44" stroke-width="1" fill="none" opacity=".8" class="order">
+          <path class="plot-line" d="M850.0 150 L850.0 161"/><path class="plot-line" d="M965.0 150 L965.0 166"/><path class="plot-line" d="M1080.0 150 L1080.0 161"/><path class="plot-line" d="M1195.0 150 L1195.0 166"/><path class="plot-line" d="M1310.0 150 L1310.0 161"/><path class="plot-line" d="M850.0 186 L850.0 197"/><path class="plot-line" d="M965.0 186 L965.0 202"/><path class="plot-line" d="M1080.0 186 L1080.0 197"/><path class="plot-line" d="M1195.0 186 L1195.0 202"/><path class="plot-line" d="M1310.0 186 L1310.0 197"/><path class="plot-line" d="M850.0 222 L850.0 233"/><path class="plot-line" d="M965.0 222 L965.0 238"/><path class="plot-line" d="M1080.0 222 L1080.0 233"/><path class="plot-line" d="M1195.0 222 L1195.0 238"/><path class="plot-line" d="M1310.0 222 L1310.0 233"/><path class="plot-line" d="M850.0 258 L850.0 269"/><path class="plot-line" d="M1003.3 258 L1003.3 274"/><path class="plot-line" d="M1156.7 258 L1156.7 269"/><path class="plot-line" d="M1310.0 258 L1310.0 274"/><path class="plot-line" d="M850.0 294 L850.0 305"/><path class="plot-line" d="M1003.3 294 L1003.3 310"/><path class="plot-line" d="M1156.7 294 L1156.7 305"/><path class="plot-line" d="M1310.0 294 L1310.0 310"/><path class="plot-line" d="M850.0 330 L850.0 341"/><path class="plot-line" d="M1003.3 330 L1003.3 346"/><path class="plot-line" d="M1156.7 330 L1156.7 341"/><path class="plot-line" d="M1310.0 330 L1310.0 346"/>
+        </g>
+        <g fill="#E18C44" opacity=".5" font-family="'JetBrains Mono',monospace" font-size="9" letter-spacing="1.6">
+          <text x="1372" y="153">01</text><text x="1372" y="189">02</text><text x="1372" y="225">03</text>
+          <text x="1372" y="261">04</text><text x="1372" y="297">05</text><text x="1372" y="333">06</text>
+        </g>
+      </svg>
+      <svg class="mob-only" viewBox="0 0 375 420" role="img" aria-label="Diagram: tangled project lines resolve into ordered delivery buses after an operating model is applied.">
+        <g stroke="#55637A" stroke-width="1" fill="none" opacity=".85" class="chaos">
+          <path class="plot-line" d="M20 39.0 Q42.2 39.0 64.5 98.4 Q85.6 98.4 106.7 99.5 Q128.3 99.5 150 55.4 Q150.0 55.4 150 56.0"/><path class="plot-line" d="M20 80.1 Q45.3 80.1 70.6 23.3 Q89.5 23.3 108.5 20 Q129.2 20 150 47.1 Q150.0 47.1 150 24.2"/><path class="plot-line" d="M20 124.6 Q47.5 124.6 75.0 146.2 Q98.0 146.2 121.0 98.2 Q135.5 98.2 150 102.2 Q150.0 102.2 150 80.2"/><path class="plot-line" d="M20 146.3 Q38.1 146.3 56.3 80.5 Q77.3 80.5 98.4 72.2 Q124.2 72.2 150 74.9 Q150.0 74.9 150 81.9"/><path class="plot-line" d="M20 190.0 Q43.6 190.0 67.2 184.0 Q85.8 184.0 104.5 253.7 Q127.2 253.7 150 301.3 Q150.0 301.3 150 311.7"/><path class="plot-line" d="M20 223.8 Q38.0 223.8 56.0 194.3 Q72.0 194.3 87.9 231.6 Q108.2 231.6 128.4 280.1 Q139.2 280.1 150 274.4"/><path class="plot-line" d="M20 274.2 Q46.0 274.2 72.0 204.2 Q89.8 204.2 107.5 261.7 Q128.6 261.7 149.7 328.9 Q149.8 328.9 150 323.8"/><path class="plot-line" d="M20 294.0 Q43.1 294.0 66.3 333.0 Q84.8 333.0 103.4 275.2 Q122.8 275.2 142.1 340.1 Q146.1 340.1 150 353.0"/><path class="plot-line" d="M20 332.4 Q38.2 332.4 56.5 276.5 Q72.3 276.5 88.1 318.1 Q105.4 318.1 122.8 326.4 Q136.4 326.4 150 323.8"/>
+        </g>
+        <g stroke="#F4F1EA" stroke-width="1" fill="none" opacity=".75">
+          <path d="M182 30 L182 390" stroke-dasharray="4 4"/>
+        </g>
+        <text x="182" y="18" text-anchor="middle" fill="#F4F1EA" opacity=".72"
+              font-family="'JetBrains Mono',monospace" font-size="8" letter-spacing="1.6">OPERATING MODEL</text>
+        <g stroke="#E18C44" stroke-width="1.25" fill="none" class="order">
+          <path class="plot-line" d="M215 150 L355 150"/><path class="plot-line" d="M215 200 L355 200"/><path class="plot-line" d="M215 250 L355 250"/>
+        </g>
+      </svg>
+      <div class="band">
+        <span><b class="count" data-to="27">27</b> projects</span>
+        <span><b class="count" data-to="2">2</b> holdings</span>
+        <span>€<b class="count" data-to="15">15</b>M+ budgets</span>
+        <span><b class="count" data-to="60">60</b> people</span>
+        <span><i>one standard</i></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ B · METHOD ══ -->
+  <div class="row sec--b"><div class="hr"></div></div>
+  <section class="row" style="padding-top:40px" aria-labelledby="b-lab">
+    <div class="ord" aria-hidden="true">B</div>
+    <div class="field">
+      <h2 class="lab" id="b-lab">B · Method</h2>
+      <h3>Seven rules I apply from week one</h3>
+      <p class="caveat">
+        They are boring on purpose. An operation that depends on someone being clever
+        every morning is not an operation, it is a rescue.
+      </p>
+      <ol class="pr">
+        <li><span class="code">B.01</span><div>
+          <h4>Map first, decide second</h4>
+          <p>Discovery before build: interviews, customer journeys, competitor checks. Most of the savings come from work that never starts.</p>
+        </div></li>
+        <li><span class="code">B.02</span><div>
+          <h4>One source of truth</h4>
+          <p>A dozen spreadsheets that disagree is not data, it is a negotiation.</p>
+        </div></li>
+        <li><span class="code">B.03</span><div>
+          <h4>Roles, not heroes</h4>
+          <p>Governance framework, written role and process documentation, reporting standards. The system has to survive the person who built it leaving.</p>
+        </div></li>
+        <li><span class="code">B.04</span><div>
+          <h4>Priority is calculated, not argued</h4>
+          <p>MoSCoW and WSJF on the backlog. When the ranking is arithmetic, the loudest voice stops setting the roadmap.</p>
+        </div></li>
+        <li><span class="code">B.05</span><div>
+          <h4>Risks are named before they bite</h4>
+          <p>RAID logs kept live, not reconstructed afterwards. A risk written down is a decision waiting; a risk unwritten is a surprise with a date on it.</p>
+        </div></li>
+        <li><span class="code">B.06</span><div>
+          <h4>AI in the process, not in the deck</h4>
+          <p>I do not run pilots. I take a recurring task, measure what it costs today, rebuild it, and keep it only if the number moves.</p>
+        </div></li>
+        <li><span class="code">B.07</span><div>
+          <h4>Reporting a board reads in two minutes</h4>
+          <p>A KPI matrix, not a deck. If an owner needs a meeting to understand status, the reporting failed, not the owner.</p>
+        </div></li>
+      </ol>
+    </div>
+    <div class="rail">
+      <p><b>Applies to</b>27 live projects across two holdings, one delivery standard.</p>
+      <p><b>Instruments</b>Governance framework<br>Role &amp; process docs<br>RAID risk log<br>KPI matrix<br>Project office</p>
+    </div>
+  </section>
+
+  <!-- ══ C · RECORD ══ -->
+  <div class="row sec--b"><div class="hr"></div></div>
+  <section class="row" style="padding-top:40px" aria-labelledby="c-lab">
+    <div class="ord" aria-hidden="true">C</div>
+    <div class="field">
+      <h2 class="lab" id="c-lab">C · Record</h2>
+
+      <article class="case">
+        <p class="slug"><b>C.01</b> / Operating model / 2026 / Iron Invest Group</p>
+        <dl class="par">
+          <div><dt>Problem</dt><dd>Two holdings, 27 active projects, €15M+ in construction budgets, and every project run its own way. No common governance, no shared reporting, no written process.</dd></div>
+          <div><dt>Action</dt><dd>Built the operating model from the ground up: governance framework, role and process documentation, reporting standards. Then stood up a project office to hold the standard across all 27.</dd></div>
+          <div class="res"><dt>Result</dt><dd>One delivery standard across both offices, 60 in-house staff and the contractor network working to the same definitions.</dd></div>
+        </dl>
+      </article>
+
+      <article class="case">
+        <p class="slug"><b>C.02</b> / Internal product / 2026 / Dobrograd</p>
+        <dl class="par">
+          <div><dt>Problem</dt><dd>Unit availability, pricing and reservations lived in parallel files. Sales quoted from whichever copy they had open.</dd></div>
+          <div><dt>Action</dt><dd>Specified and shipped one live registry: search, map, price list, role-based access, instalment calculator.</dd></div>
+          <div class="res"><dt>Result</dt><dd>2,121 units across nine developments in one place, visible to the sales floor and to management in the same second.</dd></div>
+        </dl>
+        <a class="doclink" href="../dobrograd-portal/">Open the case study →</a>
+      </article>
+      <figure aria-label="Diagram: twelve disagreeing spreadsheets consolidated into one live registry of 2,121 units across nine developments.">
+<svg class="fig-desk" viewBox="0 0 704 170" role="img">
+  <text x="0" y="12" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="10" letter-spacing="1.8">BEFORE — ABOUT A DOZEN PARALLEL FILES</text>
+  <g class="fade" transform="rotate(-3.7 24 39)"><rect x="8" y="26" width="34" height="26" fill="none" stroke="#8D96A6" stroke-width="1"/><path d="M12 34 H38 M12 40 H32 M12 46 H35" stroke="#C3C7CF" stroke-width="1"/></g><g class="fade" transform="rotate(-5.6 66 39)"><rect x="50" y="26" width="34" height="26" fill="none" stroke="#8D96A6" stroke-width="1"/><path d="M54 34 H80 M54 40 H74 M54 46 H77" stroke="#C3C7CF" stroke-width="1"/></g><g class="fade" transform="rotate(-1.5 108 39)"><rect x="92" y="26" width="34" height="26" fill="none" stroke="#8D96A6" stroke-width="1"/><path d="M96 34 H122 M96 40 H116 M96 46 H119" stroke="#C3C7CF" stroke-width="1"/></g><g class="fade" transform="rotate(-4.8 150 39)"><rect x="134" y="26" width="34" height="26" fill="none" stroke="#8D96A6" stroke-width="1"/><path d="M138 34 H164 M138 40 H158 M138 46 H161" stroke="#C3C7CF" stroke-width="1"/></g><g class="fade" transform="rotate(-6.1 24 83)"><rect x="8" y="70" width="34" height="26" fill="none" stroke="#8D96A6" stroke-width="1"/><path d="M12 78 H38 M12 84 H32 M12 90 H35" stroke="#C3C7CF" stroke-width="1"/></g><g class="fade" transform="rotate(-1.4 66 83)"><rect x="50" y="70" width="34" height="26" fill="none" stroke="#8D96A6" stroke-width="1"/><path d="M54 78 H80 M54 84 H74 M54 90 H77" stroke="#C3C7CF" stroke-width="1"/></g><g class="fade" transform="rotate(5.9 108 83)"><rect x="92" y="70" width="34" height="26" fill="none" stroke="#8D96A6" stroke-width="1"/><path d="M96 78 H122 M96 84 H116 M96 90 H119" stroke="#C3C7CF" stroke-width="1"/></g><g class="fade" transform="rotate(4.2 150 83)"><rect x="134" y="70" width="34" height="26" fill="none" stroke="#8D96A6" stroke-width="1"/><path d="M138 78 H164 M138 84 H158 M138 90 H161" stroke="#C3C7CF" stroke-width="1"/></g><g class="fade" transform="rotate(3.7 24 127)"><rect x="8" y="114" width="34" height="26" fill="none" stroke="#8D96A6" stroke-width="1"/><path d="M12 122 H38 M12 128 H32 M12 134 H35" stroke="#C3C7CF" stroke-width="1"/></g><g class="fade" transform="rotate(-3.9 66 127)"><rect x="50" y="114" width="34" height="26" fill="none" stroke="#8D96A6" stroke-width="1"/><path d="M54 122 H80 M54 128 H74 M54 134 H77" stroke="#C3C7CF" stroke-width="1"/></g><g class="fade" transform="rotate(0.5 108 127)"><rect x="92" y="114" width="34" height="26" fill="none" stroke="#8D96A6" stroke-width="1"/><path d="M96 122 H122 M96 128 H116 M96 134 H119" stroke="#C3C7CF" stroke-width="1"/></g><g class="fade" transform="rotate(-3.1 150 127)"><rect x="134" y="114" width="34" height="26" fill="none" stroke="#8D96A6" stroke-width="1"/><path d="M138 122 H164 M138 128 H158 M138 134 H161" stroke="#C3C7CF" stroke-width="1"/></g>
+  <g stroke="rgba(11,18,32,.42)" fill="none" stroke-width="1">
+    <path d="M212 85 H286" stroke-dasharray="4 4"/>
+    <path d="M280 80 L288 85 L280 90" fill="rgba(11,18,32,.42)" stroke="none"/>
+  </g>
+  <text x="249" y="72" text-anchor="middle" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9" letter-spacing="1.4">SPEC</text>
+  <text x="300" y="12" fill="#A4551B" font-family="'JetBrains Mono',monospace" font-size="10" letter-spacing="1.8">AFTER — ONE LIVE REGISTRY</text>
+  <rect class="fade" x="300" y="26" width="404" height="114" fill="none" stroke="#A4551B" stroke-width="1.5"/>
+  <g class="fade" stroke="rgba(11,18,32,.16)" stroke-width="1">
+    <path d="M300 54 H704"/><path d="M436 26 V140"/>
+  </g>
+  <text x="316" y="46" fill="#0B1220" font-family="'JetBrains Mono',monospace" font-size="10" letter-spacing="1.6">UNITS</text>
+  <text x="452" y="46" fill="#0B1220" font-family="'JetBrains Mono',monospace" font-size="10" letter-spacing="1.6">ONE SOURCE OF TRUTH</text>
+  <text class="fade" x="316" y="104" fill="#0B1220" font-family="Archivo,sans-serif" font-size="38" font-weight="700" font-stretch="125%">2 121</text>
+  <text x="316" y="126" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9.5" letter-spacing="1.2">9 DEVELOPMENTS</text>
+  <g font-family="'JetBrains Mono',monospace" font-size="10" letter-spacing="1.1" fill="#5E6879">
+    <text x="452" y="72">46 ADDRESSES</text>
+    <text x="452" y="90">5 ACCESS ROLES</text>
+    <text x="452" y="108">1 PRICE LIST</text>
+    <text x="452" y="126">SEARCH · MAP · CALCULATOR</text>
+  </g>
+</svg>
+<svg class="fig-mob" viewBox="0 0 344 330" role="img" aria-hidden="true"><text x="0" y="10" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9.5" letter-spacing="1.2">BEFORE — ABOUT A DOZEN FILES</text><g class="fade" transform="rotate(-3.7 19 33)"><rect x="4" y="22" width="31" height="23" fill="none" stroke="#8D96A6" stroke-width="1"/><path d="M8 29 H31 M8 34 H26 M8 39 H29" stroke="#C3C7CF" stroke-width="1"/></g><g class="fade" transform="rotate(-5.6 59 33)"><rect x="44" y="22" width="31" height="23" fill="none" stroke="#8D96A6" stroke-width="1"/><path d="M48 29 H71 M48 34 H66 M48 39 H69" stroke="#C3C7CF" stroke-width="1"/></g><g class="fade" transform="rotate(-1.5 99 33)"><rect x="84" y="22" width="31" height="23" fill="none" stroke="#8D96A6" stroke-width="1"/><path d="M88 29 H111 M88 34 H106 M88 39 H109" stroke="#C3C7CF" stroke-width="1"/></g><g class="fade" transform="rotate(-4.8 139 33)"><rect x="124" y="22" width="31" height="23" fill="none" stroke="#8D96A6" stroke-width="1"/><path d="M128 29 H151 M128 34 H146 M128 39 H149" stroke="#C3C7CF" stroke-width="1"/></g><g class="fade" transform="rotate(-6.1 19 71)"><rect x="4" y="60" width="31" height="23" fill="none" stroke="#8D96A6" stroke-width="1"/><path d="M8 67 H31 M8 72 H26 M8 77 H29" stroke="#C3C7CF" stroke-width="1"/></g><g class="fade" transform="rotate(-1.4 59 71)"><rect x="44" y="60" width="31" height="23" fill="none" stroke="#8D96A6" stroke-width="1"/><path d="M48 67 H71 M48 72 H66 M48 77 H69" stroke="#C3C7CF" stroke-width="1"/></g><g class="fade" transform="rotate(5.9 99 71)"><rect x="84" y="60" width="31" height="23" fill="none" stroke="#8D96A6" stroke-width="1"/><path d="M88 67 H111 M88 72 H106 M88 77 H109" stroke="#C3C7CF" stroke-width="1"/></g><g class="fade" transform="rotate(4.2 139 71)"><rect x="124" y="60" width="31" height="23" fill="none" stroke="#8D96A6" stroke-width="1"/><path d="M128 67 H151 M128 72 H146 M128 77 H149" stroke="#C3C7CF" stroke-width="1"/></g><g class="fade" transform="rotate(3.7 19 109)"><rect x="4" y="98" width="31" height="23" fill="none" stroke="#8D96A6" stroke-width="1"/><path d="M8 105 H31 M8 110 H26 M8 115 H29" stroke="#C3C7CF" stroke-width="1"/></g><g class="fade" transform="rotate(-3.9 59 109)"><rect x="44" y="98" width="31" height="23" fill="none" stroke="#8D96A6" stroke-width="1"/><path d="M48 105 H71 M48 110 H66 M48 115 H69" stroke="#C3C7CF" stroke-width="1"/></g><g class="fade" transform="rotate(0.5 99 109)"><rect x="84" y="98" width="31" height="23" fill="none" stroke="#8D96A6" stroke-width="1"/><path d="M88 105 H111 M88 110 H106 M88 115 H109" stroke="#C3C7CF" stroke-width="1"/></g><g class="fade" transform="rotate(-3.1 139 109)"><rect x="124" y="98" width="31" height="23" fill="none" stroke="#8D96A6" stroke-width="1"/><path d="M128 105 H151 M128 110 H146 M128 115 H149" stroke="#C3C7CF" stroke-width="1"/></g><g stroke="rgba(11,18,32,.42)" fill="none" stroke-width="1"><path d="M172.0 146 V172" stroke-dasharray="4 4"/><path d="M167.0 166 L172.0 174 L177.0 166" fill="rgba(11,18,32,.42)" stroke="none"/></g><text x="182.0" y="164" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9">SPEC</text><text x="0" y="192" fill="#A4551B" font-family="'JetBrains Mono',monospace" font-size="9.5" letter-spacing="1.2">AFTER — ONE LIVE REGISTRY</text><rect class="fade" x="0" y="202" width="344" height="120" fill="none" stroke="#A4551B" stroke-width="1.5"/><text class="fade" x="14" y="252" fill="#0B1220" font-family="Archivo,sans-serif" font-size="36" font-weight="700" font-stretch="125%">2 121</text><text x="14" y="272" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9.5">UNITS · 9 DEVELOPMENTS</text><g font-family="'JetBrains Mono',monospace" font-size="9.5" fill="#5E6879"><text x="14" y="294">46 ADDRESSES · 5 ACCESS ROLES</text><text x="14" y="310">1 PRICE LIST · SEARCH · MAP</text></g></svg>
+<figcaption>Fig. 02 — About a dozen files that disagreed, replaced by one registry the sales floor and management read in the same second</figcaption>
+</figure>
+
+      <article class="case">
+        <p class="slug"><b>C.03</b> / AI in operations / 2026 / Iron Invest Group</p>
+        <dl class="par">
+          <div><dt>Problem</dt><dd>"AI saves time" is easy to claim and impossible to budget against. I wanted a number an owner could argue with.</dd></div>
+          <div><dt>Action</dt><dd>Took 32 delivered pieces of work and priced each one four ways: with AI, by me without AI, by a remote specialist, by a specialist in the office.</dd></div>
+          <div class="res"><dt>Result</dt><dd>×13 cheaper and ×10 faster on the measured set, published in full with the method and the caveats visible.</dd></div>
+        </dl>
+        <a class="doclink" href="../ai-vs-specialists/">Open the full study →</a>
+      </article>
+      <figure>
+<svg class="fig-desk" viewBox="0 0 704 268" role="img" aria-hidden="true">
+  <defs><pattern id="hatch" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+    <line x1="0" y1="0" x2="0" y2="6" stroke="#2B3A54" stroke-width="3"/></pattern></defs>
+  <text x="0" y="10" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="10" letter-spacing="1.6">BAR LENGTH = TOTAL COST, zł</text>
+  <text x="704" y="10" text-anchor="end" fill="#0B1220" font-family="'JetBrains Mono',monospace" font-size="10" letter-spacing="1.6">▼ MARKER = HOURS SPENT</text>
+  <path d="M188 22 V232" stroke="rgba(11,18,32,.16)" stroke-width="1"/>
+  <text x="0" y="44" fill="#0B1220" font-family="'JetBrains Mono',monospace" font-size="10.5" letter-spacing="1.1">WITH AI (CLAUDE)</text><rect class="plot-bar" x="188" y="30" width="14.6" height="21" fill="#A4551B"/><rect class="plot-bar" x="188" y="30" width="14.6" height="21" fill="none" stroke="#A4551B" stroke-width="1"/><text x="704" y="45" text-anchor="end" fill="#A4551B" font-family="'JetBrains Mono',monospace" font-size="11.5" letter-spacing=".5">8 251 zł</text><path class="fade" d="M226.3 24 V57" stroke="#0B1220" stroke-width="1"/><path class="fade" d="M222.8 24 L229.8 24 L226.3 29 Z" fill="#0B1220"/><text class="fade" x="226.3" y="68" text-anchor="middle" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9.5" letter-spacing=".4">124.5 h · ≈3.1 wk</text><text x="0" y="94" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="10.5" letter-spacing="1.1">ME, WITHOUT AI</text><rect class="plot-bar" x="188" y="80" width="192.6" height="21" fill="url(#hatch)"/><rect class="plot-bar" x="188" y="80" width="192.6" height="21" fill="none" stroke="#2B3A54" stroke-width="1"/><text x="704" y="95" text-anchor="end" fill="#2B3A54" font-family="'JetBrains Mono',monospace" font-size="11.5" letter-spacing=".5">108 715 zł</text><path class="fade" d="M581.5 74 V107" stroke="#0B1220" stroke-width="1"/><path class="fade" d="M578.0 74 L585.0 74 L581.5 79 Z" fill="#0B1220"/><text class="fade" x="581.5" y="118" text-anchor="middle" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9.5" letter-spacing=".4">1 279 h · ≈32 wk</text><text x="0" y="144" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="10.5" letter-spacing="1.1">REMOTE SPECIALIST</text><rect class="plot-bar" x="188" y="130" width="220.2" height="21" fill="url(#hatch)"/><rect class="plot-bar" x="188" y="130" width="220.2" height="21" fill="none" stroke="#2B3A54" stroke-width="1"/><text x="704" y="145" text-anchor="end" fill="#2B3A54" font-family="'JetBrains Mono',monospace" font-size="11.5" letter-spacing=".5">124 280 zł</text><path class="fade" d="M528.9 124 V157" stroke="#0B1220" stroke-width="1"/><path class="fade" d="M525.4 124 L532.4 124 L528.9 129 Z" fill="#0B1220"/><text class="fade" x="528.9" y="168" text-anchor="middle" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9.5" letter-spacing=".4">1 108 h · ≈27.7 wk</text><text x="0" y="194" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="10.5" letter-spacing="1.1">SPECIALIST IN OFFICE</text><rect class="plot-bar" x="188" y="180" width="400.0" height="21" fill="url(#hatch)"/><rect class="plot-bar" x="188" y="180" width="400.0" height="21" fill="none" stroke="#2B3A54" stroke-width="1"/><text x="704" y="195" text-anchor="end" fill="#2B3A54" font-family="'JetBrains Mono',monospace" font-size="11.5" letter-spacing=".5">225 787 zł</text><path class="fade" d="M415.1 174 V207" stroke="#0B1220" stroke-width="1"/><path class="fade" d="M411.6 174 L418.6 174 L415.1 179 Z" fill="#0B1220"/><text class="fade" x="415.1" y="218" text-anchor="middle" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9.5" letter-spacing=".4">738 h · ≈18.5 wk</text>
+  <text x="188" y="256" fill="#A4551B" font-family="'JetBrains Mono',monospace" font-size="10.5" letter-spacing="1.3">FEWEST HOURS, BIGGEST INVOICE</text>
+</svg>
+<svg class="fig-mob" viewBox="0 0 344 314" role="img" aria-hidden="true"><defs><pattern id="hatchm" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="6" stroke="#2B3A54" stroke-width="3"/></pattern></defs><text x="0" y="10" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9.5" letter-spacing="1.2">BAR = COST · ▼ = HOURS</text><text x="0" y="26" fill="#0B1220" font-family="'JetBrains Mono',monospace" font-size="10.5" letter-spacing="1">WITH AI (CLAUDE)</text><rect class="plot-bar" x="0" y="34" width="12.6" height="17" fill="#A4551B"/><rect class="plot-bar" x="0" y="34" width="12.6" height="17" fill="none" stroke="#A4551B" stroke-width="1"/><path class="fade" d="M32.9 29 V56" stroke="#0B1220" stroke-width="1"/><path class="fade" d="M29.4 29 L36.4 29 L32.9 34 Z" fill="#0B1220"/><text x="0" y="69" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9.5">124.5 h · ≈3.1 wk</text><text x="344" y="69" text-anchor="end" fill="#A4551B" font-family="'JetBrains Mono',monospace" font-size="11">8 251 zł</text><text x="0" y="94" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="10.5" letter-spacing="1">ME, WITHOUT AI</text><rect class="plot-bar" x="0" y="102" width="165.6" height="17" fill="url(#hatchm)"/><rect class="plot-bar" x="0" y="102" width="165.6" height="17" fill="none" stroke="#2B3A54" stroke-width="1"/><path class="fade" d="M338.4 97 V124" stroke="#0B1220" stroke-width="1"/><path class="fade" d="M334.9 97 L341.9 97 L338.4 102 Z" fill="#0B1220"/><text x="0" y="137" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9.5">1 279 h · ≈32 wk</text><text x="344" y="137" text-anchor="end" fill="#2B3A54" font-family="'JetBrains Mono',monospace" font-size="11">108 715 zł</text><text x="0" y="162" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="10.5" letter-spacing="1">REMOTE SPECIALIST</text><rect class="plot-bar" x="0" y="170" width="189.3" height="17" fill="url(#hatchm)"/><rect class="plot-bar" x="0" y="170" width="189.3" height="17" fill="none" stroke="#2B3A54" stroke-width="1"/><path class="fade" d="M293.2 165 V192" stroke="#0B1220" stroke-width="1"/><path class="fade" d="M289.7 165 L296.7 165 L293.2 170 Z" fill="#0B1220"/><text x="0" y="205" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9.5">1 108 h · ≈27.7 wk</text><text x="344" y="205" text-anchor="end" fill="#2B3A54" font-family="'JetBrains Mono',monospace" font-size="11">124 280 zł</text><text x="0" y="230" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="10.5" letter-spacing="1">SPECIALIST IN OFFICE</text><rect class="plot-bar" x="0" y="238" width="344.0" height="17" fill="url(#hatchm)"/><rect class="plot-bar" x="0" y="238" width="344.0" height="17" fill="none" stroke="#2B3A54" stroke-width="1"/><path class="fade" d="M195.3 233 V260" stroke="#0B1220" stroke-width="1"/><path class="fade" d="M191.8 233 L198.8 233 L195.3 238 Z" fill="#0B1220"/><text x="0" y="273" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9.5">738 h · ≈18.5 wk</text><text x="344" y="273" text-anchor="end" fill="#2B3A54" font-family="'JetBrains Mono',monospace" font-size="11">225 787 zł</text></svg>
+<figcaption>Fig. 03 — The same 32 tasks, priced four ways. ×13.2 cheaper and ×10.3 faster than doing them myself; note that the hours marker moves left as the invoice grows — of the office specialist’s 225,787 zł, some 129,000 zł is kit and hiring before any work starts.</figcaption>
+<div class="sr-only"><table><caption>Cost and hours for 32 delivered tasks, four scenarios</caption>
+<thead><tr><th>Scenario</th><th>Total cost</th><th>Hours</th><th>Calendar</th></tr></thead>
+<tbody><tr><td>With AI (Claude)</td><td>8 251 zł</td><td>124.5 h</td><td>≈3.1 wk</td></tr><tr><td>Me, without AI</td><td>108 715 zł</td><td>1 279 h</td><td>≈32 wk</td></tr><tr><td>Remote specialist</td><td>124 280 zł</td><td>1 108 h</td><td>≈27.7 wk</td></tr><tr><td>Specialist in office</td><td>225 787 zł</td><td>738 h</td><td>≈18.5 wk</td></tr></tbody></table></div>
+</figure>
+
+      <article class="case">
+        <p class="slug"><b>C.04</b> / Brand / 2026 / Dobrograd</p>
+        <dl class="par">
+          <div><dt>Problem</dt><dd>A 15-year-old development brand with recognition but no rules: positioning, logo use, typography and colour differed by whoever made the last file.</dd></div>
+          <div><dt>Action</dt><dd>Delivered a full rebrand and the 15th anniversary programme on the new identity, both as living web documents rather than PDFs that go stale.</dd></div>
+          <div class="res"><dt>Result</dt><dd>Shipped inside the first month in the role. Promoted from Marketing Director to Chief Operating Officer immediately after.</dd></div>
+        </dl>
+        <a class="doclink" href="../dobrograd-brandbook/">Open the brand book →</a>
+        <a class="doclink" href="../dobrograd-15-anniversary/" style="margin-left:18px">Open the programme →</a>
+      </article>
+
+      <article class="case">
+        <p class="slug"><b>C.05</b> / E-commerce / 2025–2026 / ROZETKA.PL</p>
+        <dl class="par">
+          <div><dt>Problem</dt><dd>A digital portfolio across B2B and B2C, 60+ people in cross-functional teams, and a backlog ranked by whoever asked most persistently.</dd></div>
+          <div><dt>Action</dt><dd>Put discovery in front of build, re-ranked the backlog with MoSCoW and WSJF, gave the C-level a KPI matrix with live RAID logs.</dd></div>
+          <div class="res"><dt>Result</dt><dd>Low-value work cut before it started, and a B2B expansion into European markets run to a PRINCE2 roadmap.</dd></div>
+        </dl>
+      </article>
+
+      <article class="case">
+        <p class="slug"><b>C.06</b> / General management / 2022–2024 / Impreza.PL</p>
+        <dl class="par">
+          <div><dt>Problem</dt><dd>Events across 10+ cities and 6 European countries, 70+ people per project, 150+ vendors, coordination held together by individuals rather than process.</dd></div>
+          <div><dt>Action</dt><dd>As CEO: Kanban for logistics, written SOPs and leadership tracks, personal ownership of cashflow and cost control, and AURA Club launched as the flagship venue.</dd></div>
+          <div class="res"><dt>Result</dt><dd>Delivery timelines down 30%, operating costs down 18% with no loss of quality, 50+ events at 98% client satisfaction.</dd></div>
+        </dl>
+      </article>
+      <figure aria-label="Chart: reductions delivered, indexed with before equal to 100. Delivery timelines down 30 percent and operating costs down 18 percent at Impreza.PL as CEO; meeting conflicts and idle time down 12 percent at Santander Polska.">
+<svg class="fig-desk" viewBox="0 0 704 206" role="img">
+  <defs><pattern id="cut" width="5" height="5" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+    <line x1="0" y1="0" x2="0" y2="5" stroke="#A4551B" stroke-width="1.6" opacity=".45"/></pattern></defs>
+  <text x="0" y="12" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="10" letter-spacing="1.8">REDUCTIONS DELIVERED · HATCHED = THE PART REMOVED</text>
+  <text x="0" y="45" fill="#0B1220" font-family="'JetBrains Mono',monospace" font-size="10.5" letter-spacing="1.2">DELIVERY TIMELINES</text><text x="0" y="60" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9.5" letter-spacing="1">IMPREZA.PL, AS CEO</text><rect x="250" y="32" width="300" height="20" fill="none" stroke="#8D96A6" stroke-width="1" stroke-dasharray="3 3"/><rect x="460.0" y="32" width="90.0" height="20" fill="url(#cut)"/><rect class="plot-bar" x="250" y="32" width="210.0" height="20" fill="#2B3A54"/><text x="560" y="46" fill="#A4551B" font-family="'JetBrains Mono',monospace" font-size="13" letter-spacing=".4">−30%</text><text x="0" y="97" fill="#0B1220" font-family="'JetBrains Mono',monospace" font-size="10.5" letter-spacing="1.2">OPERATING COSTS</text><text x="0" y="112" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9.5" letter-spacing="1">IMPREZA.PL, AS CEO</text><rect x="250" y="84" width="300" height="20" fill="none" stroke="#8D96A6" stroke-width="1" stroke-dasharray="3 3"/><rect x="496.0" y="84" width="54.0" height="20" fill="url(#cut)"/><rect class="plot-bar" x="250" y="84" width="246.0" height="20" fill="#2B3A54"/><text x="560" y="98" fill="#A4551B" font-family="'JetBrains Mono',monospace" font-size="13" letter-spacing=".4">−18%</text><text x="0" y="149" fill="#0B1220" font-family="'JetBrains Mono',monospace" font-size="10.5" letter-spacing="1.2">MEETING CONFLICTS, IDLE TIME</text><text x="0" y="164" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9.5" letter-spacing="1">SANTANDER POLSKA</text><rect x="250" y="136" width="300" height="20" fill="none" stroke="#8D96A6" stroke-width="1" stroke-dasharray="3 3"/><rect x="514.0" y="136" width="36.0" height="20" fill="url(#cut)"/><rect class="plot-bar" x="250" y="136" width="264.0" height="20" fill="#2B3A54"/><text x="560" y="150" fill="#A4551B" font-family="'JetBrains Mono',monospace" font-size="13" letter-spacing=".4">−12%</text>
+  <text x="250" y="200" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9.5" letter-spacing="1.1">INDEXED — BEFORE = 100</text>
+</svg>
+<svg class="fig-mob" viewBox="0 0 344 218" role="img" aria-hidden="true"><defs><pattern id="cutm" width="5" height="5" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="5" stroke="#A4551B" stroke-width="1.6" opacity=".45"/></pattern></defs><text x="0" y="10" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9.5" letter-spacing="1.2">HATCHED = THE PART REMOVED</text><text x="0" y="26" fill="#0B1220" font-family="'JetBrains Mono',monospace" font-size="10" letter-spacing=".9">DELIVERY TIMELINES</text><text x="0" y="39" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9">IMPREZA.PL, AS CEO</text><rect x="0" y="46" width="344" height="18" fill="none" stroke="#8D96A6" stroke-width="1" stroke-dasharray="3 3"/><rect x="240.8" y="46" width="103.2" height="18" fill="url(#cutm)"/><rect class="plot-bar" x="0" y="46" width="240.8" height="18" fill="#2B3A54"/><text x="234.8" y="59" text-anchor="end" fill="#F4F1EA" font-family="'JetBrains Mono',monospace" font-size="11">−30%</text><text x="0" y="88" fill="#0B1220" font-family="'JetBrains Mono',monospace" font-size="10" letter-spacing=".9">OPERATING COSTS</text><text x="0" y="101" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9">IMPREZA.PL, AS CEO</text><rect x="0" y="108" width="344" height="18" fill="none" stroke="#8D96A6" stroke-width="1" stroke-dasharray="3 3"/><rect x="282.1" y="108" width="61.9" height="18" fill="url(#cutm)"/><rect class="plot-bar" x="0" y="108" width="282.1" height="18" fill="#2B3A54"/><text x="276.1" y="121" text-anchor="end" fill="#F4F1EA" font-family="'JetBrains Mono',monospace" font-size="11">−18%</text><text x="0" y="150" fill="#0B1220" font-family="'JetBrains Mono',monospace" font-size="10" letter-spacing=".9">MEETING CONFLICTS, IDLE TIME</text><text x="0" y="163" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9">SANTANDER POLSKA</text><rect x="0" y="170" width="344" height="18" fill="none" stroke="#8D96A6" stroke-width="1" stroke-dasharray="3 3"/><rect x="302.7" y="170" width="41.3" height="18" fill="url(#cutm)"/><rect class="plot-bar" x="0" y="170" width="302.7" height="18" fill="#2B3A54"/><text x="296.7" y="183" text-anchor="end" fill="#F4F1EA" font-family="'JetBrains Mono',monospace" font-size="11">−12%</text></svg>
+<figcaption>Fig. 05 — Three metrics, two companies, four years apart — all moved down. Indexed, before = 100; the absolute baselines are the clients’ and are not published here.</figcaption>
+</figure>
+    </div>
+    <div class="rail">
+      <p><b>Documents</b>Each linked case ships as a self-contained web document — no framework, no build step, opens offline.</p>
+      <p><b>Confidentiality</b>Commercially sensitive figures are replaced with illustrative values; colleagues appear by role, not by name.</p>
+    </div>
+  </section>
+
+  <!-- ══ KNOWLEDGE GRAPH PLATE ══ -->
+  <div class="row" style="padding-top:96px">
+    <div class="plate">
+      <p class="cap">Fig. 04 — The operation as a graph: every person, project and problem, linked</p>
+      <svg viewBox="0 0 1440 628" role="img" aria-label="Network graph of an operational knowledge base: 106 linked notes and 842 connections. Twenty-six project nodes in gold, fifty people nodes, thirty further nodes for problem maps, systems and marketing. Node size reflects how many notes link to it. All labels removed."><path class="fade" d="M884.1 335.0L687.3 207.2M929.4 236.0L805.8 257.1M909.5 262.0L917.2 442.8M838.1 123.0L876.9 99.6M879.9 167.3L770.4 202.3M712.0 390.7L929.4 236.0M816.5 312.8L642.7 247.4M879.9 167.3L1029.4 223.2M876.9 99.6L1086.4 135.8M712.0 390.7L808.6 468.1M953.3 351.6L944.7 210.2M1010.4 307.5L1044.6 371.8M1037.8 38.9L929.4 236.0M402.4 145.8L642.7 247.4M862.0 205.5L1206.0 247.8M953.3 351.6L929.4 236.0M1037.8 38.9L879.9 167.3M948.0 280.0L759.9 361.4M1394.0 296.8L1337.4 227.7M948.0 280.0L1062.2 245.0M763.9 114.8L721.6 175.4M862.0 205.5L752.4 245.2M929.4 236.0L759.9 361.4M1088.0 280.5L1373.2 199.5M948.0 280.0L1106.1 252.0M712.0 390.7L957.2 164.2M953.3 351.6L816.5 312.8M929.4 236.0L897.0 63.5M712.0 390.7L304.5 528.0M1132.2 302.3L1080.6 165.7M879.9 167.3L599.5 183.8M929.4 236.0L1106.1 252.0M876.9 99.6L957.2 164.2M674.9 148.7L948.0 280.0M1062.2 245.0L759.9 361.4M1037.8 38.9L957.2 164.2M687.3 207.2L1108.5 193.4M1200.4 146.0L1206.0 247.8M862.0 205.5L894.7 370.6M875.6 275.7L917.2 442.8M793.8 165.6L1086.4 135.8M944.7 210.2L1160.0 182.4M953.3 351.6L957.2 164.2M1206.0 247.8L1364.1 265.1M922.3 299.9L862.0 205.5M269.8 402.6L642.7 247.4M968.9 132.3L902.6 207.8M763.9 114.8L802.2 72.5M862.0 205.5L1163.3 88.0M968.9 132.3L1373.2 199.5M862.0 205.5L967.2 48.8M929.4 236.0L793.8 165.6M805.8 257.1L875.6 275.7M1206.0 247.8L957.2 164.2M350.4 528.0L594.3 526.2M948.0 280.0L1394.0 296.8M897.0 63.5L1062.2 245.0M1115.1 338.5L1062.2 245.0M948.0 280.0L1086.4 135.8M922.3 299.9L770.4 202.3M1132.2 302.3L770.4 202.3M1106.1 252.0L1145.2 399.2M948.0 280.0L780.3 281.8M929.4 236.0L1086.4 135.8M922.3 299.9L1029.4 223.2M1132.2 302.3L1232.0 359.6M1199.6 528.0L759.9 361.4M948.0 280.0L1223.9 398.4M1086.4 135.8L1062.2 245.0M879.9 167.3L708.2 336.8M948.0 280.0L879.9 167.3M940.5 180.4L1206.0 247.8M1416.8 338.9L1145.2 399.2M929.4 236.0L1223.9 398.4M660.3 88.9L862.0 205.5M752.4 245.2L1088.0 280.5M764.8 20.0L674.9 148.7M940.5 180.4L752.4 245.2M922.3 299.9L1200.4 146.0M940.5 180.4L1145.2 399.2M1132.2 302.3L902.6 207.8M793.8 165.6L875.6 275.7M1132.2 302.3L1373.2 199.5M1364.1 265.1L1115.1 338.5M948.0 280.0L1142.7 49.4M929.4 236.0L1364.1 265.1M944.7 210.2L1010.4 307.5M909.5 262.0L687.3 207.2M944.7 210.2L968.9 132.3M598.2 117.0L929.4 236.0M948.0 280.0L957.2 164.2M838.1 123.0L825.1 192.2M790.0 420.3L862.0 205.5M929.4 236.0L957.2 164.2M902.6 207.8L1169.5 217.0M909.5 262.0L1080.6 165.7M752.0 75.2L902.6 207.8M948.0 280.0L1029.7 528.0M862.0 205.5L851.5 26.8M825.1 192.2L1062.2 245.0M929.4 236.0L875.6 275.7M721.6 175.4L902.6 207.8M752.4 245.2L642.7 247.4M1062.2 245.0L957.2 164.2M948.0 280.0L1328.3 474.4M790.0 420.3L551.4 465.6M909.5 262.0L862.0 205.5M1045.1 76.2L1062.2 245.0M598.2 117.0L957.2 164.2M660.3 88.9L948.0 280.0M948.0 280.0L1199.6 528.0M1200.4 146.0L1062.2 245.0M412.8 308.6L759.9 361.4M944.7 210.2L948.0 280.0M909.5 262.0L1010.4 307.5M1364.1 265.1L1223.9 398.4M660.3 88.9L599.5 183.8M674.9 148.7L825.1 192.2M1062.2 245.0L1328.3 474.4M728.3 528.0L663.2 371.8M689.7 118.5L897.0 63.5M1106.1 252.0L1062.2 245.0M1132.2 302.3L1169.5 217.0M879.9 167.3L897.0 63.5M862.0 205.5L1088.0 280.5M940.5 180.4L825.1 192.2M879.9 167.3L1106.1 252.0M862.0 205.5L884.1 335.0M967.2 48.8L1062.2 245.0M816.5 312.8L948.0 280.0M862.0 205.5L1045.1 76.2M862.0 205.5L679.7 20.0M879.9 167.3L793.8 165.6M909.5 262.0L948.0 280.0M1160.0 182.4L1337.4 227.7M624.1 337.9L412.8 308.6M805.8 257.1L770.4 202.3M1132.2 302.3L805.8 257.1M402.4 145.8L599.5 183.8M884.1 335.0L1062.2 245.0M968.9 132.3L967.2 48.8M689.7 118.5L929.4 236.0M944.7 210.2L708.2 336.8M879.9 167.3L1086.4 135.8M1275.9 276.9L1394.0 296.8M712.0 390.7L902.6 207.8M879.9 167.3L780.3 281.8M894.7 370.6L663.2 371.8M879.9 167.3L929.4 236.0M689.7 118.5L879.9 167.3M876.9 99.6L902.6 207.8M838.1 123.0L642.7 247.4M1029.4 223.2L1086.4 135.8M805.8 257.1L902.6 207.8M1256.0 197.8L1206.0 247.8M953.3 351.6L902.6 207.8M865.0 528.0L759.9 361.4M660.3 88.9L805.8 257.1M1132.2 302.3L759.9 361.4M808.6 468.1L1232.0 359.6M689.7 118.5L957.2 164.2M1080.6 165.7L1062.2 245.0M579.8 60.8L957.2 164.2M563.9 265.6L940.5 180.4M1132.2 302.3L1106.1 252.0M879.9 167.3L957.2 164.2M940.5 180.4L1045.1 76.2M909.5 262.0L708.2 336.8M763.9 114.8L825.1 192.2M1106.1 252.0L642.7 247.4M940.5 180.4L679.7 20.0M1088.0 280.5L957.2 164.2M1132.2 302.3L1115.1 338.5M1088.0 280.5L1108.5 193.4M944.7 210.2L1275.9 276.9M948.0 280.0L551.4 465.6M948.0 280.0L1029.4 223.2M1029.4 223.2L957.2 164.2M808.6 468.1L350.4 528.0M712.0 390.7L663.2 371.8M793.8 165.6L902.6 207.8M922.3 299.9L793.8 165.6M851.5 26.8L708.2 336.8M862.0 205.5L721.6 175.4M721.6 175.4L1106.1 252.0M1029.4 223.2L875.6 275.7M929.4 236.0L1337.4 227.7M940.5 180.4L642.7 247.4M884.1 335.0L865.0 528.0M1088.0 280.5L1307.0 310.9M922.3 299.9L944.7 210.2M948.0 280.0L1200.4 146.0M929.4 236.0L579.8 60.8M902.6 207.8L957.2 164.2M909.5 262.0L805.8 257.1M944.7 210.2L790.0 420.3M1132.2 302.3L1086.4 135.8M953.3 351.6L663.2 371.8M948.0 280.0L902.6 207.8M862.0 205.5L1160.0 182.4M944.7 210.2L624.1 337.9M922.3 299.9L929.4 236.0M929.4 236.0L902.6 207.8M1002.8 482.3L929.4 236.0M929.4 236.0L1373.2 199.5M721.6 175.4L793.8 165.6M1132.2 302.3L1223.9 398.4M922.3 299.9L808.6 468.1M1206.0 247.8L1169.5 217.0M1010.4 307.5L1275.9 276.9M862.0 205.5L802.2 72.5M802.2 72.5L825.1 192.2M922.3 299.9L816.5 312.8M1132.2 302.3L1364.1 265.1M825.1 192.2L687.3 207.2M721.6 175.4L929.4 236.0M909.5 262.0L759.9 361.4M909.5 262.0L1062.2 245.0M1223.9 398.4L1307.0 310.9M1044.6 371.8L862.0 205.5M922.3 299.9L957.2 164.2M445.8 229.6L759.9 361.4M1132.2 302.3L1108.5 193.4M909.5 262.0L624.1 337.9M944.7 210.2L780.3 281.8M838.1 123.0L1080.6 165.7M624.1 337.9L663.2 371.8M944.7 210.2L838.1 123.0M1364.1 265.1L1337.4 227.7M948.0 280.0L663.2 371.8M712.0 390.7L894.7 370.6M948.0 280.0L712.0 390.7M948.0 280.0L1169.5 217.0M838.1 123.0L862.0 205.5M929.4 236.0L663.2 371.8M790.0 420.3L929.4 236.0M1132.2 302.3L1307.0 310.9M1339.2 166.4L1080.6 165.7M721.6 175.4L957.2 164.2M808.6 468.1L805.8 257.1M1364.1 265.1L1373.2 199.5M790.0 420.3L808.6 468.1M1106.1 252.0L1080.6 165.7M816.5 312.8L780.3 281.8M909.5 262.0L752.0 75.2M909.5 262.0L1394.0 296.8M944.7 210.2L1142.7 49.4M1062.2 245.0L663.2 371.8M825.1 192.2L770.4 202.3M423.1 528.0L663.2 371.8M790.0 420.3L816.5 312.8M1062.2 245.0L1169.5 217.0M764.8 20.0L876.9 99.6M909.5 262.0L780.3 281.8M862.0 205.5L876.9 99.6M816.5 312.8L917.2 442.8M1010.4 307.5L884.1 335.0M598.2 117.0L876.9 99.6M909.5 262.0L808.6 468.1M968.9 132.3L555.1 349.7M909.5 262.0L879.9 167.3M674.9 148.7L862.0 205.5M1206.0 247.8L1115.1 338.5M563.9 265.6L929.4 236.0M1339.2 166.4L1232.0 359.6M1106.1 252.0L770.4 202.3M929.4 236.0L1206.0 247.8M838.1 123.0L948.0 280.0M1106.1 252.0L1232.0 359.6M862.0 205.5L1002.8 482.3M929.4 236.0L752.4 245.2M940.5 180.4L862.0 205.5M674.9 148.7L770.4 202.3M805.8 257.1L1086.4 135.8M1088.0 280.5L1337.4 227.7M1160.0 182.4L1062.2 245.0M1275.9 276.9L1232.0 359.6M838.1 123.0L660.3 88.9M687.3 207.2L1062.2 245.0M940.5 180.4L770.4 202.3M909.5 262.0L875.6 275.7M879.9 167.3L902.6 207.8M1373.2 199.5L1337.4 227.7M598.2 117.0L752.4 245.2M1115.1 338.5L805.8 257.1M894.7 370.6L865.0 528.0M929.4 236.0L1163.3 88.0M712.0 390.7L594.3 526.2M948.0 280.0L1115.1 338.5M708.2 336.8L1145.2 399.2M1088.0 280.5L1416.8 338.9M884.1 335.0L1029.4 223.2M654.4 516.4L1002.8 482.3M968.9 132.3L802.2 72.5M805.8 257.1L957.2 164.2M1232.0 359.6L1307.0 310.9M940.5 180.4L948.0 280.0M808.6 468.1L1223.9 398.4M953.3 351.6L594.3 526.2M1045.1 76.2L1169.5 217.0M624.1 337.9L929.4 236.0M412.8 308.6L663.2 371.8M689.7 118.5L663.2 371.8M948.0 280.0L929.4 236.0M944.7 210.2L1256.0 197.8M944.7 210.2L1080.6 165.7M879.9 167.3L663.2 371.8M1037.8 38.9L1045.1 76.2M879.9 167.3L1169.5 217.0M808.6 468.1L304.5 528.0M624.1 337.9L816.5 312.8M953.3 351.6L884.1 335.0M551.4 465.6L350.4 528.0M1037.8 38.9L679.7 20.0M862.0 205.5L1339.2 166.4M1132.2 302.3L1337.4 227.7M1223.9 398.4L1416.8 338.9M1169.5 217.0L957.2 164.2M1163.3 88.0L1062.2 245.0M825.1 192.2L805.8 257.1M752.4 245.2L780.3 281.8M793.8 165.6L1108.5 193.4M862.0 205.5L1275.9 276.9M763.9 114.8L968.9 132.3M862.0 205.5L825.1 192.2M944.7 210.2L862.0 205.5M1010.4 307.5L1160.0 182.4M1029.4 223.2L1169.5 217.0M922.3 299.9L902.6 207.8M948.0 280.0L1108.5 193.4M752.0 75.2L802.2 72.5M944.7 210.2L770.4 202.3M1132.2 302.3L1416.8 338.9M929.4 236.0L1108.5 193.4M944.7 210.2L1029.4 223.2M1106.1 252.0L805.8 257.1M721.6 175.4L802.2 72.5M412.8 308.6L752.4 245.2M599.5 183.8L802.2 72.5M816.5 312.8L862.0 205.5M884.1 335.0L1169.5 217.0M1115.1 338.5L808.6 468.1M674.9 148.7L805.8 257.1M763.9 114.8L948.0 280.0M948.0 280.0L1307.0 310.9M660.3 88.9L902.6 207.8M944.7 210.2L1200.4 146.0M948.0 280.0L1088.0 280.5M1163.3 88.0L1086.4 135.8M1010.4 307.5L862.0 205.5M1029.4 223.2L1206.0 247.8M922.3 299.9L940.5 180.4M948.0 280.0L884.1 335.0M1088.0 280.5L1145.2 399.2M763.9 114.8L599.5 183.8M929.4 236.0L1088.0 280.5M929.4 236.0L1307.0 310.9M816.5 312.8L1029.4 223.2M948.0 280.0L1045.1 76.2M865.0 528.0L663.2 371.8M897.0 63.5L957.2 164.2M402.4 145.8L770.4 202.3M780.3 281.8L1115.1 338.5M922.3 299.9L663.2 371.8M1115.1 338.5L957.2 164.2M929.4 236.0L679.7 20.0M1044.6 371.8L929.4 236.0M922.3 299.9L1169.5 217.0M825.1 192.2L793.8 165.6M909.5 262.0L1029.4 223.2M838.1 123.0L793.8 165.6M944.7 210.2L660.3 88.9M884.1 335.0L805.8 257.1M350.4 528.0L423.1 528.0M968.9 132.3L752.4 245.2M764.8 20.0L838.1 123.0M862.0 205.5L780.3 281.8M879.9 167.3L967.2 48.8M838.1 123.0L752.0 75.2M1080.6 165.7L1169.5 217.0M948.0 280.0L1044.6 371.8M1086.4 135.8L957.2 164.2M551.4 465.6L805.8 257.1M780.3 281.8L793.8 165.6M909.5 262.0L579.8 60.8M1416.8 338.9L1062.2 245.0M944.7 210.2L689.7 118.5M909.5 262.0L1200.4 146.0M967.2 48.8L897.0 63.5M269.8 402.6L862.0 205.5M940.5 180.4L1062.2 245.0M929.4 236.0L642.7 247.4M944.7 210.2L940.5 180.4M909.5 262.0L902.6 207.8M851.5 26.8L1029.4 223.2M1223.9 398.4L1145.2 399.2M594.3 526.2L304.5 528.0M862.0 205.5L949.4 20.0M1010.4 307.5L948.0 280.0M1044.6 371.8L957.2 164.2M838.1 123.0L879.9 167.3M1045.1 76.2L929.4 236.0M350.4 528.0L83.0 528.0M1339.2 166.4L1086.4 135.8M944.7 210.2L712.0 390.7M674.9 148.7L793.8 165.6M953.3 351.6L1160.0 182.4M944.7 210.2L1169.5 217.0M1307.0 310.9L1337.4 227.7M1364.1 265.1L1307.0 310.9M1080.6 165.7L805.8 257.1M1106.1 252.0L1086.4 135.8M551.4 465.6L759.9 361.4M944.7 210.2L1037.8 38.9M1088.0 280.5L825.1 192.2M922.3 299.9L752.4 245.2M654.4 516.4L269.8 402.6M654.4 516.4L929.4 236.0M948.0 280.0L555.1 349.7M708.2 336.8L642.7 247.4M1232.0 359.6L1416.8 338.9M1132.2 302.3L1145.2 399.2M1307.0 310.9L1310.4 360.2M825.1 192.2L957.2 164.2M838.1 123.0L957.2 164.2M909.5 262.0L689.7 118.5M929.4 236.0L555.1 349.7M1106.1 252.0L1223.9 398.4M674.9 148.7L929.4 236.0M909.5 262.0L940.5 180.4M968.9 132.3L1339.2 166.4M967.2 48.8L929.4 236.0M1045.1 76.2L957.2 164.2M825.1 192.2L875.6 275.7M780.3 281.8L957.2 164.2M816.5 312.8L712.0 390.7M838.1 123.0L875.6 275.7M1275.9 276.9L1223.9 398.4M1200.4 146.0L957.2 164.2M940.5 180.4L1086.4 135.8M879.9 167.3L851.5 26.8M555.1 349.7L759.9 361.4M944.7 210.2L805.8 257.1M894.7 370.6L1002.8 482.3M909.5 262.0L712.0 390.7M948.0 280.0L721.6 175.4M402.4 145.8L46.0 140.5M909.5 262.0L1169.5 217.0M1169.5 217.0L1337.4 227.7M940.5 180.4L879.9 167.3M663.2 371.8L917.2 442.8M687.3 207.2L770.4 202.3M884.1 335.0L929.4 236.0M1029.7 528.0L929.4 236.0M953.3 351.6L1010.4 307.5M674.9 148.7L957.2 164.2M1106.1 252.0L875.6 275.7M563.9 265.6L663.2 371.8M967.2 48.8L957.2 164.2M940.5 180.4L949.4 20.0M654.4 516.4L1029.7 528.0M940.5 180.4L1364.1 265.1M1029.4 223.2L1108.5 193.4M948.0 280.0L1337.4 227.7M674.9 148.7L875.6 275.7M948.0 280.0L802.2 72.5M1132.2 302.3L1275.9 276.9M752.4 245.2L1029.4 223.2M805.8 257.1L663.2 371.8M929.4 236.0L802.2 72.5M1417.0 20.0L957.2 164.2M944.7 210.2L1163.3 88.0M879.9 167.3L1045.1 76.2M944.7 210.2L967.2 48.8M884.1 335.0L957.2 164.2M929.4 236.0L1310.4 360.2M1029.4 223.2L1088.0 280.5M1373.2 199.5L1307.0 310.9M728.3 528.0L759.9 361.4M953.3 351.6L948.0 280.0M862.0 205.5L687.3 207.2M1108.5 193.4L770.4 202.3M752.0 75.2L825.1 192.2M752.4 245.2L902.6 207.8M1062.2 245.0L1310.4 360.2M944.7 210.2L793.8 165.6M721.6 175.4L825.1 192.2M862.0 205.5L1256.0 197.8M968.9 132.3L838.1 123.0M816.5 312.8L897.0 63.5M563.9 265.6L752.4 245.2M862.0 205.5L1080.6 165.7M894.7 370.6L805.8 257.1M599.5 183.8L825.1 192.2M1232.0 359.6L1145.2 399.2M763.9 114.8L780.3 281.8M1088.0 280.5L642.7 247.4M1010.4 307.5L1062.2 245.0M1256.0 197.8L1062.2 245.0M660.3 88.9L929.4 236.0M944.7 210.2L1086.4 135.8M764.8 20.0L862.0 205.5M944.7 210.2L674.9 148.7M909.5 262.0L1163.3 88.0M909.5 262.0L897.0 63.5M46.0 140.5L642.7 247.4M1029.4 223.2L642.7 247.4M909.5 262.0L967.2 48.8M1163.3 88.0L1029.4 223.2M909.5 262.0L1106.1 252.0M944.7 210.2L929.4 236.0M1115.1 338.5L902.6 207.8M712.0 390.7L708.2 336.8M909.5 262.0L1115.1 338.5M944.7 210.2L879.9 167.3M1080.6 165.7L875.6 275.7M948.0 280.0L876.9 99.6M944.7 210.2L816.5 312.8M1086.4 135.8L902.6 207.8M851.5 26.8L897.0 63.5M922.3 299.9L1088.0 280.5M894.7 370.6L1062.2 245.0M929.4 236.0L876.9 99.6M862.0 205.5L1029.4 223.2M1142.7 49.4L862.0 205.5M816.5 312.8L929.4 236.0M944.7 210.2L957.2 164.2M23 20.0L679.7 20.0M944.7 210.2L1108.5 193.4M728.3 528.0L917.2 442.8M909.5 262.0L1086.4 135.8M816.5 312.8L879.9 167.3M1160.0 182.4L805.8 257.1M862.0 205.5L1200.4 146.0M1010.4 307.5L780.3 281.8M402.4 145.8L929.4 236.0M909.5 262.0L929.4 236.0M805.8 257.1L141.7 415.2M944.7 210.2L875.6 275.7M1010.4 307.5L808.6 468.1M922.3 299.9L1044.6 371.8M790.0 420.3L594.3 526.2M948.0 280.0L1206.0 247.8M624.1 337.9L752.4 245.2M909.5 262.0L816.5 312.8M1115.1 338.5L1169.5 217.0M825.1 192.2L902.6 207.8M838.1 123.0L902.6 207.8M948.0 280.0L752.4 245.2M876.9 99.6L825.1 192.2M851.5 26.8L929.4 236.0M948.0 280.0L1145.2 399.2M949.4 20.0L929.4 236.0M879.9 167.3L1337.4 227.7M894.7 370.6L780.3 281.8M929.4 236.0L1145.2 399.2M579.8 60.8L687.3 207.2M909.5 262.0L957.2 164.2M1206.0 247.8L1275.9 276.9M1037.8 38.9L1062.2 245.0M929.4 236.0L708.2 336.8M1307.0 310.9L1062.2 245.0M948.0 280.0L894.7 370.6M1160.0 182.4L1106.1 252.0M1106.1 252.0L902.6 207.8M940.5 180.4L1029.4 223.2M884.1 335.0L721.6 175.4M1106.1 252.0L1373.2 199.5M1088.0 280.5L1310.4 360.2M953.3 351.6L1062.2 245.0M1339.2 166.4L1416.8 338.9M1088.0 280.5L1080.6 165.7M948.0 280.0L805.8 257.1M953.3 351.6L790.0 420.3M851.5 26.8L957.2 164.2M1275.9 276.9L1373.2 199.5M642.7 247.4L759.9 361.4M674.9 148.7L902.6 207.8M949.4 20.0L957.2 164.2M862.0 205.5L712.0 390.7M909.5 262.0L1088.0 280.5M1206.0 247.8L1062.2 245.0M624.1 337.9L728.3 528.0M909.5 262.0L884.1 335.0M862.0 205.5L1037.8 38.9M948.0 280.0L728.3 528.0M940.5 180.4L902.6 207.8M953.3 351.6L909.5 262.0M1029.4 223.2L1416.8 338.9M902.6 207.8L1310.4 360.2M679.7 20.0L897.0 63.5M968.9 132.3L1080.6 165.7M948.0 280.0L445.8 229.6M948.0 280.0L1339.2 166.4M1307.0 310.9L1394.0 296.8M948.0 280.0L1275.9 276.9M1160.0 182.4L929.4 236.0M1045.1 76.2L876.9 99.6M1200.4 146.0L1169.5 217.0M764.8 20.0L805.8 257.1M948.0 280.0L825.1 192.2M1088.0 280.5L1232.0 359.6M752.4 245.2L793.8 165.6M909.5 262.0L1044.6 371.8M1044.6 371.8L1206.0 247.8M968.9 132.3L862.0 205.5M689.7 118.5L876.9 99.6M929.4 236.0L825.1 192.2M862.0 205.5L805.8 257.1M1108.5 193.4L1106.1 252.0M654.4 516.4L663.2 371.8M1044.6 371.8L752.4 245.2M940.5 180.4L689.7 118.5M1106.1 252.0L1169.5 217.0M763.9 114.8L862.0 205.5M879.9 167.3L876.9 99.6M808.6 468.1L594.3 526.2M968.9 132.3L770.4 202.3M902.6 207.8L770.4 202.3M929.4 236.0L1062.2 245.0M1132.2 302.3L1310.4 360.2M902.6 207.8L1232.0 359.6M944.7 210.2L721.6 175.4M687.3 207.2L957.2 164.2M1080.6 165.7L902.6 207.8M862.0 205.5L759.9 361.4M1223.9 398.4L1232.0 359.6M862.0 205.5L897.0 63.5M968.9 132.3L948.0 280.0M642.7 247.4L957.2 164.2M350.4 528.0L304.5 528.0M752.4 245.2L957.2 164.2M660.3 88.9L802.2 72.5M922.3 299.9L1010.4 307.5M763.9 114.8L902.6 207.8M1364.1 265.1L1275.9 276.9M879.9 167.3L752.4 245.2M929.4 236.0L1394.0 296.8M551.4 465.6L663.2 371.8M944.7 210.2L802.2 72.5M679.7 20.0L957.2 164.2M712.0 390.7L423.1 528.0M752.0 75.2L862.0 205.5M764.8 20.0L793.8 165.6M944.7 210.2L902.6 207.8M944.7 210.2L1373.2 199.5M862.0 205.5L793.8 165.6M1108.5 193.4L1364.1 265.1M1364.1 265.1L1062.2 245.0M948.0 280.0L917.2 442.8M752.0 75.2L770.4 202.3M793.8 165.6L642.7 247.4M909.5 262.0L1160.0 182.4M929.4 236.0L917.2 442.8M948.0 280.0L865.0 528.0M555.1 349.7L663.2 371.8M1256.0 197.8L1029.4 223.2M862.0 205.5L929.4 236.0M599.5 183.8L770.4 202.3M598.2 117.0L838.1 123.0M884.1 335.0L752.4 245.2M948.0 280.0L642.7 247.4M862.0 205.5L879.9 167.3M1163.3 88.0L957.2 164.2M838.1 123.0L674.9 148.7M1132.2 302.3L599.5 183.8M838.1 123.0L929.4 236.0M402.4 145.8L902.6 207.8M802.2 72.5L902.6 207.8M1010.4 307.5L902.6 207.8M780.3 281.8L825.1 192.2M1088.0 280.5L805.8 257.1M752.0 75.2L948.0 280.0M879.9 167.3L445.8 229.6M1142.7 49.4L929.4 236.0M894.7 370.6L1029.4 223.2M1364.1 265.1L1394.0 296.8M764.8 20.0L957.2 164.2M879.9 167.3L1275.9 276.9M944.7 210.2L663.2 371.8M876.9 99.6L687.3 207.2M862.0 205.5L957.2 164.2M876.9 99.6L1080.6 165.7M968.9 132.3L805.8 257.1M598.2 117.0L875.6 275.7M894.7 370.6L902.6 207.8M1029.4 223.2L825.1 192.2M879.9 167.3L1062.2 245.0M563.9 265.6L862.0 205.5M763.9 114.8L805.8 257.1M953.3 351.6L1256.0 197.8M922.3 299.9L708.2 336.8M1142.7 49.4L957.2 164.2M816.5 312.8L663.2 371.8M1010.4 307.5L940.5 180.4M1132.2 302.3L708.2 336.8M790.0 420.3L948.0 280.0M940.5 180.4L929.4 236.0M1029.4 223.2L1062.2 245.0M909.5 262.0L663.2 371.8M825.1 192.2L1307.0 310.9M944.7 210.2L1206.0 247.8M953.3 351.6L862.0 205.5M1256.0 197.8L1169.5 217.0M876.9 99.6L770.4 202.3M708.2 336.8L423.1 528.0M793.8 165.6L687.3 207.2M944.7 210.2L752.4 245.2M940.5 180.4L816.5 312.8M902.6 207.8L759.9 361.4M902.6 207.8L1062.2 245.0M1088.0 280.5L793.8 165.6M968.9 132.3L897.0 63.5M968.9 132.3L1106.1 252.0M83.0 528.0L663.2 371.8M1088.0 280.5L1394.0 296.8M953.3 351.6L1029.4 223.2M940.5 180.4L957.2 164.2M948.0 280.0L687.3 207.2M1045.1 76.2L679.7 20.0M563.9 265.6L948.0 280.0M763.9 114.8L967.2 48.8M1160.0 182.4L902.6 207.8M1160.0 182.4L1373.2 199.5M944.7 210.2L894.7 370.6M929.4 236.0L687.3 207.2M1088.0 280.5L780.3 281.8M689.7 118.5L679.7 20.0M816.5 312.8L752.4 245.2M1275.9 276.9L1307.0 310.9M922.3 299.9L825.1 192.2M1010.4 307.5L805.8 257.1M948.0 280.0L1310.4 360.2M1373.2 199.5L1394.0 296.8M948.0 280.0L1080.6 165.7M909.5 262.0L1206.0 247.8M879.9 167.3L679.7 20.0M1088.0 280.5L1223.9 398.4M929.4 236.0L1080.6 165.7M968.9 132.3L752.0 75.2M909.5 262.0L752.4 245.2M763.9 114.8L793.8 165.6M624.1 337.9L862.0 205.5M922.3 299.9L1062.2 245.0M1132.2 302.3L1062.2 245.0M940.5 180.4L1088.0 280.5M793.8 165.6L770.4 202.3M948.0 280.0L862.0 205.5M967.2 48.8L679.7 20.0M551.4 465.6L594.3 526.2M816.5 312.8L894.7 370.6M1088.0 280.5L1364.1 265.1M763.9 114.8L944.7 210.2M968.9 132.3L929.4 236.0M1339.2 166.4L1132.2 302.3M879.9 167.3L642.7 247.4M763.9 114.8L929.4 236.0M909.5 262.0L894.7 370.6M948.0 280.0L770.4 202.3M922.3 299.9L909.5 262.0M944.7 210.2L825.1 192.2M929.4 236.0L770.4 202.3M948.0 280.0L1232.0 359.6M599.5 183.8L759.9 361.4M929.4 236.0L1029.4 223.2M929.4 236.0L1232.0 359.6M598.2 117.0L862.0 205.5M1256.0 197.8L1115.1 338.5M1132.2 302.3L1394.0 296.8M624.1 337.9L948.0 280.0M654.4 516.4L555.1 349.7M929.4 236.0L1200.4 146.0M953.3 351.6L712.0 390.7M763.9 114.8L957.2 164.2M802.2 72.5L793.8 165.6M1010.4 307.5L793.8 165.6M902.6 207.8L875.6 275.7M922.3 299.9L838.1 123.0M642.7 247.4L663.2 371.8M599.5 183.8L793.8 165.6M752.4 245.2L876.9 99.6M948.0 280.0L599.5 183.8M862.0 205.5L579.8 60.8M865.0 528.0L917.2 442.8M909.5 262.0L825.1 192.2M838.1 123.0L1160.0 182.4M922.3 299.9L917.2 442.8M1132.2 302.3L917.2 442.8M1223.9 398.4L875.6 275.7M764.8 20.0L902.6 207.8M948.0 280.0L1002.8 482.3M445.8 229.6L825.1 192.2M752.0 75.2L929.4 236.0M1010.4 307.5L929.4 236.0M876.9 99.6L805.8 257.1M1256.0 197.8L929.4 236.0M1002.8 482.3L865.0 528.0M721.6 175.4L780.3 281.8M598.2 117.0L902.6 207.8M752.0 75.2L879.9 167.3M838.1 123.0L802.2 72.5M909.5 262.0L790.0 420.3M674.9 148.7L721.6 175.4M1010.4 307.5L816.5 312.8M708.2 336.8L350.4 528.0M944.7 210.2L1088.0 280.5M555.1 349.7L642.7 247.4M412.8 308.6L687.3 207.2M1132.2 302.3L875.6 275.7M563.9 265.6L759.9 361.4M23 528.0L269.8 402.6M1142.7 49.4L902.6 207.8M1106.1 252.0L1337.4 227.7M624.1 337.9L708.2 336.8M944.7 210.2L1045.1 76.2M894.7 370.6L929.4 236.0M770.4 202.3L759.9 361.4M1010.4 307.5L957.2 164.2M1132.2 302.3L1328.3 474.4M862.0 205.5L689.7 118.5M1256.0 197.8L957.2 164.2M909.5 262.0L594.3 526.2M764.8 20.0L940.5 180.4M1010.4 307.5L1108.5 193.4M1002.8 482.3L1328.3 474.4M1275.9 276.9L1337.4 227.7M1163.3 88.0L876.9 99.6M948.0 280.0L1037.8 38.9M816.5 312.8L1088.0 280.5M805.8 257.1L1062.2 245.0M949.4 20.0L851.5 26.8M793.8 165.6L805.8 257.1M412.8 308.6L862.0 205.5M944.7 210.2L642.7 247.4M1106.1 252.0L1416.8 338.9M563.9 265.6L793.8 165.6M1029.4 223.2L1080.6 165.7M940.5 180.4L802.2 72.5M894.7 370.6L957.2 164.2M875.6 275.7L1062.2 245.0M876.9 99.6L793.8 165.6M350.4 528.0L141.7 415.2" stroke="rgba(244,241,234,.11)" stroke-width=".6" fill="none"/><g class="fade" fill="rgba(244,241,234,.42)"><circle cx="922.3" cy="299.9" r="4.74"/><circle cx="953.3" cy="351.6" r="4.33"/><circle cx="598.2" cy="117.0" r="3.45"/><circle cx="909.5" cy="262.0" r="5.95"/><circle cx="763.9" cy="114.8" r="4.1"/><circle cx="944.7" cy="210.2" r="6.08"/><circle cx="624.1" cy="337.9" r="3.76"/><circle cx="1010.4" cy="307.5" r="4.54"/><circle cx="790.0" cy="420.3" r="3.66"/><circle cx="968.9" cy="132.3" r="4.4"/><circle cx="764.8" cy="20.0" r="3.56"/><circle cx="838.1" cy="123.0" r="4.61"/><circle cx="940.5" cy="180.4" r="5.04"/><circle cx="816.5" cy="312.8" r="4.61"/><circle cx="674.9" cy="148.7" r="4.02"/><circle cx="660.3" cy="88.9" r="3.56"/><circle cx="752.0" cy="75.2" r="3.76"/><circle cx="1142.7" cy="49.4" r="3.22"/><circle cx="1044.6" cy="371.8" r="3.56"/><circle cx="862.0" cy="205.5" r="6.46"/><circle cx="712.0" cy="390.7" r="4.18"/><circle cx="1037.8" cy="38.9" r="3.56"/><circle cx="884.1" cy="335.0" r="4.1"/><circle cx="1160.0" cy="182.4" r="3.94"/><circle cx="689.7" cy="118.5" r="3.76"/><circle cx="879.9" cy="167.3" r="5.37"/><circle cx="967.2" cy="48.8" r="3.76"/><circle cx="1256.0" cy="197.8" r="3.66"/><circle cx="1045.1" cy="76.2" r="3.85"/><circle cx="894.7" cy="370.6" r="4.18"/><circle cx="949.4" cy="20.0" r="3.09"/><circle cx="721.6" cy="175.4" r="4.02"/><circle cx="851.5" cy="26.8" r="3.45"/><circle cx="929.4" cy="236.0" r="7.14"/><circle cx="555.1" cy="349.7" r="3.34"/><circle cx="1163.3" cy="88.0" r="3.56"/><circle cx="752.4" cy="245.2" r="4.74"/><circle cx="876.9" cy="99.6" r="4.47"/><circle cx="679.7" cy="20.0" r="3.76"/><circle cx="1029.4" cy="223.2" r="4.98"/><circle cx="1088.0" cy="280.5" r="4.98"/><circle cx="802.2" cy="72.5" r="4.1"/><circle cx="780.3" cy="281.8" r="4.18"/><circle cx="825.1" cy="192.2" r="4.98"/><circle cx="897.0" cy="63.5" r="3.85"/><circle cx="793.8" cy="165.6" r="4.92"/><circle cx="1200.4" cy="146.0" r="3.66"/><circle cx="1206.0" cy="247.8" r="4.18"/><circle cx="579.8" cy="60.8" r="3.09"/><circle cx="687.3" cy="207.2" r="4.02"/></g><g class="fade" fill="none" stroke="rgba(244,241,234,.34)" stroke-width="1"><circle cx="23" cy="528.0" r="2.32"/><circle cx="654.4" cy="516.4" r="3.22"/><circle cx="563.9" cy="265.6" r="3.45"/><circle cx="402.4" cy="145.8" r="3.22"/><circle cx="46.0" cy="140.5" r="2.58"/><circle cx="412.8" cy="308.6" r="3.22"/><circle cx="269.8" cy="402.6" r="2.94"/><circle cx="948.0" cy="280.0" r="6.89"/><circle cx="551.4" cy="465.6" r="3.34"/><circle cx="1029.7" cy="528.0" r="2.77"/><circle cx="1002.8" cy="482.3" r="3.34"/><circle cx="865.0" cy="528.0" r="3.34"/><circle cx="23" cy="20.0" r="2.32"/><circle cx="1417.0" cy="20.0" r="2.32"/><circle cx="728.3" cy="528.0" r="3.09"/><circle cx="599.5" cy="183.8" r="3.76"/><circle cx="1199.6" cy="528.0" r="2.58"/><circle cx="445.8" cy="229.6" r="2.94"/><circle cx="808.6" cy="468.1" r="3.85"/><circle cx="350.4" cy="528.0" r="3.45"/><circle cx="642.7" cy="247.4" r="4.47"/><circle cx="594.3" cy="526.2" r="3.45"/><circle cx="1328.3" cy="474.4" r="2.94"/><circle cx="423.1" cy="528.0" r="2.94"/><circle cx="83.0" cy="528.0" r="2.58"/><circle cx="141.7" cy="415.2" r="2.58"/><circle cx="304.5" cy="528.0" r="2.94"/><circle cx="759.9" cy="361.4" r="4.33"/><circle cx="957.2" cy="164.2" r="6.04"/><circle cx="663.2" cy="371.8" r="4.8"/></g><g class="fade" fill="#E18C44"><circle cx="1339.2" cy="166.4" r="3.45"/><circle cx="1132.2" cy="302.3" r="4.98"/><circle cx="1108.5" cy="193.4" r="3.85"/><circle cx="1364.1" cy="265.1" r="4.02"/><circle cx="708.2" cy="336.8" r="3.94"/><circle cx="1115.1" cy="338.5" r="3.94"/><circle cx="1106.1" cy="252.0" r="4.74"/><circle cx="1080.6" cy="165.7" r="4.33"/><circle cx="805.8" cy="257.1" r="5.21"/><circle cx="1086.4" cy="135.8" r="4.26"/><circle cx="1275.9" cy="276.9" r="4.02"/><circle cx="1373.2" cy="199.5" r="3.85"/><circle cx="1223.9" cy="398.4" r="3.94"/><circle cx="902.6" cy="207.8" r="5.72"/><circle cx="770.4" cy="202.3" r="4.54"/><circle cx="1232.0" cy="359.6" r="3.94"/><circle cx="1416.8" cy="338.9" r="3.56"/><circle cx="1145.2" cy="399.2" r="3.66"/><circle cx="875.6" cy="275.7" r="4.26"/><circle cx="1307.0" cy="310.9" r="4.02"/><circle cx="1394.0" cy="296.8" r="3.66"/><circle cx="1062.2" cy="245.0" r="5.57"/><circle cx="1169.5" cy="217.0" r="4.4"/><circle cx="1310.4" cy="360.2" r="3.34"/><circle cx="1337.4" cy="227.7" r="3.94"/><circle cx="917.2" cy="442.8" r="3.66"/></g><g font-family="'JetBrains Mono',monospace" font-size="10" letter-spacing="1.6"><path d="M60 578 H1380" stroke="rgba(225,140,68,.24)" stroke-width="1"/><circle cx="64" cy="600" r="4" fill="#E18C44"/><text x="78" y="604" fill="rgba(244,241,234,.72)">26 PROJECTS</text><circle cx="222" cy="600" r="4" fill="rgba(244,241,234,.42)"/><text x="236" y="604" fill="rgba(244,241,234,.72)">50 PEOPLE</text><circle cx="366" cy="600" r="4" fill="none" stroke="rgba(244,241,234,.34)"/><text x="380" y="604" fill="rgba(244,241,234,.72)">30 PROBLEM MAPS, SYSTEMS, MARKETING</text><text x="1380" y="604" text-anchor="end" fill="rgba(244,241,234,.45)">NODE SIZE = INBOUND LINKS</text></g></svg>
+      <div class="band">
+        <span><b class="count" data-to="108">108</b> notes</span>
+        <span><b class="count" data-to="2307">2 307</b> links</span>
+        <span><b class="count" data-to="266">266</b> entities</span>
+        <span><b class="count" data-to="2150">2 150</b> table rows</span>
+      </div>
+      <p class="note">
+        I keep the operation in a linked knowledge base: 50 people, 26 projects, 10 problem
+        maps, each one connected to the others. Node size is the number of inbound links —
+        the largest are the people and projects everything else depends on. Labels are
+        removed here on purpose: the structure is the point, the contents are the client's.
+      </p>
+    </div>
+  </div>
+
+  <!-- ══ D · SEQUENCE ══ -->
+  <div class="row sec--c"><div class="hr"></div></div>
+  <section class="row" style="padding-top:40px" aria-labelledby="d-lab">
+    <div class="ord" aria-hidden="true">D</div>
+    <div class="field">
+      <h2 class="lab" id="d-lab">D · Sequence</h2>
+      <h3>My first 90 days</h3>
+      <p class="caveat">
+        The same sequence every time. I change nothing in month one, because the first
+        thing an operation needs is an honest picture of itself.
+      </p>
+      <div class="ph">
+        <div>
+          <p class="when">Days 1–30</p>
+          <h4>Look, do not touch</h4>
+          <ul>
+            <li>Map every process, project and reporting line as they actually run</li>
+            <li>Interview the people doing the work, not only those describing it</li>
+            <li>Find where money and time leak, with numbers attached</li>
+          </ul>
+          <p class="out"><b>You get</b>An honest map and a ranked list of leaks.</p>
+        </div>
+        <div>
+          <p class="when">Days 31–60</p>
+          <h4>Fix the loudest leak</h4>
+          <ul>
+            <li>Close the single most expensive gap, visibly, so the change is credible</li>
+            <li>Stand up one source of truth for whatever people argue about most</li>
+            <li>Install a reporting cadence the owner reads in two minutes</li>
+          </ul>
+          <p class="out"><b>You get</b>One measurable win and reporting you can trust.</p>
+        </div>
+        <div>
+          <p class="when">Days 61–90</p>
+          <h4>Make it hold without me</h4>
+          <ul>
+            <li>Write the governance: roles, processes, delivery standard</li>
+            <li>Automate the repetitive parts and measure what that saved</li>
+            <li>Hand over dashboards and the operating rhythm to the team</li>
+          </ul>
+          <p class="out"><b>You get</b>A system that runs when I am on holiday.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ E · SCHEDULE ══ -->
+  <div class="row sec--c"><div class="hr"></div></div>
+  <section class="row" style="padding-top:40px" aria-labelledby="e-lab">
+    <div class="ord" aria-hidden="true">E</div>
+    <div class="field">
+      <h2 class="lab" id="e-lab">E · Schedule</h2>
+      <h3>Scale I have worked at</h3>
+      <table class="sched">
+        <thead><tr><th scope="col">Item</th><th scope="col">Quantity</th></tr></thead>
+        <tbody>
+          <tr><td>Projects run in parallel</td><td>27</td></tr>
+          <tr><td>Construction budgets owned</td><td>€15M+</td></tr>
+          <tr><td>People led, current role</td><td>60 + contractors</td></tr>
+          <tr><td>Largest team scaled</td><td>30 → 250</td></tr>
+          <tr><td>Countries delivered in</td><td>6</td></tr>
+          <tr><td>Vendors and partners contracted</td><td>150+</td></tr>
+          <tr><td>Functions owned</td><td>development · finance · legal</td></tr>
+          <tr><td>Offices run</td><td>Warsaw · Kyiv</td></tr>
+          <tr><td>Methodology</td><td>PRINCE2 · Agile · Kanban</td></tr>
+          <tr><td>Languages</td><td>EN · PL · UA · RU</td></tr>
+        </tbody>
+      </table>
+      <figure>
+<div class="scrollfig"><svg viewBox="0 0 704 274" role="img" aria-hidden="true">
+  <path d="M250.0 22 V222" stroke="rgba(11,18,32,.16)" stroke-width="1"/><text x="250.0" y="16" text-anchor="middle" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9">2018</text><path d="M298.5 22 V222" stroke="rgba(11,18,32,.16)" stroke-width="1"/><text x="298.5" y="16" text-anchor="middle" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9">2019</text><path d="M346.9 22 V222" stroke="rgba(11,18,32,.16)" stroke-width="1"/><text x="346.9" y="16" text-anchor="middle" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9">2020</text><path d="M395.4 22 V222" stroke="rgba(11,18,32,.16)" stroke-width="1"/><text x="395.4" y="16" text-anchor="middle" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9">2021</text><path d="M443.8 22 V222" stroke="rgba(11,18,32,.16)" stroke-width="1"/><text x="443.8" y="16" text-anchor="middle" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9">2022</text><path d="M492.3 22 V222" stroke="rgba(11,18,32,.16)" stroke-width="1"/><text x="492.3" y="16" text-anchor="middle" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9">2023</text><path d="M540.8 22 V222" stroke="rgba(11,18,32,.16)" stroke-width="1"/><text x="540.8" y="16" text-anchor="middle" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9">2024</text><path d="M589.2 22 V222" stroke="rgba(11,18,32,.16)" stroke-width="1"/><text x="589.2" y="16" text-anchor="middle" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9">2025</text><path d="M637.7 22 V222" stroke="rgba(11,18,32,.16)" stroke-width="1"/><text x="637.7" y="16" text-anchor="middle" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9">2026</text>
+  <text x="0" y="41" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9.5" letter-spacing=".7">GRAPHIC DESIGNER, FREELANCE</text><rect class="plot-bar" x="250.0" y="32" width="290.79999999999995" height="11" fill="#2B3A54"/><text x="0" y="65" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9.5" letter-spacing=".7">ASSISTANT TO HNW BANKER · SANTANDER</text><rect class="plot-bar" x="346.9" y="56" width="101.0" height="11" fill="#2B3A54"/><text x="0" y="89" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9.5" letter-spacing=".7">EVENT PROJECT MANAGER · IMPREZA.PL</text><rect class="plot-bar" x="443.8" y="80" width="44.5" height="11" fill="#2B3A54"/><text x="0" y="113" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9.5" letter-spacing=".7">CHIEF EXECUTIVE OFFICER · IMPREZA.PL</text><rect class="plot-bar" x="492.3" y="104" width="92.90000000000003" height="11" fill="#2B3A54"/><text x="0" y="137" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9.5" letter-spacing=".7">PROJECT MANAGER · ROZETKA.PL</text><rect class="plot-bar" x="589.2" y="128" width="4.099999999999909" height="11" fill="#2B3A54"/><text x="0" y="161" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9.5" letter-spacing=".7">PRODUCT MANAGER · ROZETKA.PL</text><rect class="plot-bar" x="597.3" y="152" width="52.5" height="11" fill="#2B3A54"/><text x="0" y="185" fill="#0B1220" font-family="'JetBrains Mono',monospace" font-size="9.5" letter-spacing=".7">MARKETING DIRECTOR · IRON INVEST</text><rect class="plot-bar" x="649.8" y="176" width="4.0" height="11" fill="#A4551B"/><text x="0" y="209" fill="#0B1220" font-family="'JetBrains Mono',monospace" font-size="9.5" letter-spacing=".7">CHIEF OPERATING OFFICER · IRON INVEST</text><rect class="plot-bar" x="653.8" y="200" width="16.200000000000045" height="11" fill="#A4551B"/>
+  <path d="M649.8 231 H670.0" stroke="#A4551B" stroke-width="1"/>
+  <path d="M649.8 227 V235" stroke="#A4551B" stroke-width="1"/>
+  <path d="M670.0 227 V235" stroke="#A4551B" stroke-width="1"/>
+  <text x="641.8" y="235" fill="#A4551B" font-family="'JetBrains Mono',monospace" font-size="9.5" letter-spacing="1.1" text-anchor="end">MARKETING DIRECTOR → COO IN ONE MONTH</text>
+</svg></div>
+<p class="scrollhint">Scroll the chart sideways →</p>
+<figcaption>Fig. 06 — Eight years, eight roles, and one month between the last two. Year granularity; the two 2026 promotions are one month apart.</figcaption>
+<div class="sr-only"><table><caption>Roles held, by year</caption>
+<thead><tr><th>Role</th><th>From</th><th>To</th></tr></thead>
+<tbody><tr><td>Graphic designer, freelance</td><td>2018</td><td>2024</td></tr><tr><td>Assistant to HNW banker · Santander</td><td>2020</td><td>2022</td></tr><tr><td>Event project manager · Impreza.PL</td><td>2022</td><td>2022</td></tr><tr><td>Chief Executive Officer · Impreza.PL</td><td>2023</td><td>2024</td></tr><tr><td>Project manager · ROZETKA.PL</td><td>2025</td><td>2025</td></tr><tr><td>Product manager · ROZETKA.PL</td><td>2025</td><td>2026</td></tr><tr><td>Marketing director · Iron Invest</td><td>2026</td><td>2026</td></tr><tr><td>Chief Operating Officer · Iron Invest</td><td>2026</td><td>2026</td></tr></tbody></table></div>
+</figure>
+    </div>
+    <div class="rail">
+      <p><b>Verification</b>Every figure on this sheet is published on the LinkedIn profile linked in the title block.</p>
+    </div>
+  </section>
+
+  <!-- ══ F · CONTACT ══ -->
+  <div class="row sec--c"><div class="hr"></div></div>
+  <section class="row" style="padding-top:40px" aria-labelledby="f-lab">
+    <div class="ord" aria-hidden="true">F</div>
+    <div class="field">
+      <h2 class="lab" id="f-lab">F · Contact</h2>
+      <h3>An operation that has outgrown the way it is being run</h3>
+      <p>That is the situation I am best in, and the one I have walked into three times now.</p>
+      <ul class="want">
+        <li><b>Role</b><span>COO, Operations Director or Head of Operations with real ownership, not coordination.</span></li>
+        <li><b>Company</b><span>Development, e-commerce or multi-project services, roughly 50 to 500 people.</span></li>
+        <li><b>Location</b><span>Warsaw, hybrid or remote across the EU.</span></li>
+        <li><b>Mandate</b><span>Own the operating model end to end, including the authority to change it.</span></li>
+      </ul>
+      <div class="btns">
+        <a class="btn btn--solid" href="mailto:goncharevski@gmail.com">Write to me</a>
+        <a class="btn" href="https://www.linkedin.com/in/goncharevski/" rel="noopener">LinkedIn</a>
+        <a class="btn" href="../">Index of drawings</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="row">
+    <div class="field">
+      <p class="fine">
+        Figures on this sheet are the ones published on my
+        <a href="https://www.linkedin.com/in/goncharevski/" rel="noopener">LinkedIn profile</a>.
+        In the linked documents, commercially sensitive numbers are replaced with
+        illustrative values and colleagues appear by role rather than by name. The graph in
+        Fig. 04 shows real structure with all labels removed. The thinking and the craft are
+        real; the client's figures are not mine to publish.
+      </p>
+      <p class="fine">Alex Goncharevski · Warsaw · <a href="mailto:goncharevski@gmail.com">goncharevski@gmail.com</a></p>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* RULE + PLOT + fade */
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var el = e.target;
+      io.unobserve(el);
+      if(el.classList.contains('hr')){ el.classList.add('in'); return; }
+      if(el.classList.contains('count')){ count(el); return; }
+      var parts = el.querySelectorAll('.plot-bar,.plot-line,.fade');
+      parts.forEach(function(p,i){
+        setTimeout(function(){ p.classList.add('in'); }, reduce ? 0 : i*60);
+      });
+    });
+  }, {threshold:0.35});
+
+  document.querySelectorAll('.hr,.count,figure,.plate svg').forEach(function(el){
+    if(el.tagName === 'svg' || el.tagName === 'FIGURE'){
+      el.querySelectorAll('.plot-line').forEach(function(p){
+        try{ p.style.setProperty('--len', Math.ceil(p.getTotalLength())); }catch(err){}
+      });
+    }
+    io.observe(el);
+  });
+
+  /* COUNT */
+  function count(el){
+    var to = parseFloat(el.getAttribute('data-to'));
+    if(!isFinite(to)) return;
+    var fmt = function(n){ return n >= 1000 ? String(n).replace(/\B(?=(\d{3})+(?!\d))/g,' ') : String(n); };
+    if(reduce){ el.textContent = fmt(to); return; }
+    var from = Math.round(to*0.6), t0 = null, dur = 700;
+    function step(ts){
+      if(t0 === null) t0 = ts;
+      var p = Math.min((ts-t0)/dur, 1);
+      var e = 1 - Math.pow(1-p, 3);
+      el.textContent = fmt(Math.round(from + (to-from)*e));
+      if(p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+})();
+</script>
 
 </body>
 </html>
