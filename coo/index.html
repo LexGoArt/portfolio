@@ -4,6 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Alex Goncharevski — Operations, issued for construction</title>
+<link rel="alternate" hreflang="en" href="https://lexgoart.github.io/portfolio/coo/">
+<link rel="alternate" hreflang="pl" href="https://lexgoart.github.io/portfolio/coo/pl/">
+<link rel="alternate" hreflang="x-default" href="https://lexgoart.github.io/portfolio/coo/">
 <link rel="icon" href="/portfolio/favicon.svg" type="image/svg+xml">
 <link rel="mask-icon" href="/portfolio/favicon.svg" color="#E0580D">
 <meta name="theme-color" content="#0B1220">
@@ -158,7 +161,9 @@
   .titleblock{padding-top:64px}
   .tb{
     grid-column:1/-1;display:grid;
-    grid-template-columns:repeat(4,minmax(0,1fr)) 2fr;
+    /* unequal on purpose: the scale and the byline carry long values,
+       the sheet code and the language switch need almost nothing */
+    grid-template-columns:0.75fr 0.5fr 1.35fr 1.05fr 0.5fr 2fr;
     border-top:1px solid var(--rule-strong);border-bottom:1px solid var(--rule-strong);
   }
   .tb div{padding:12px 18px;border-right:1px solid var(--rule)}
@@ -171,6 +176,9 @@
   }
   .tb span{font-family:var(--mono);font-size:12px;color:var(--ink)}
   .tb a{text-decoration:none}
+  .langsw a{color:var(--ink-60);padding:0 1px}
+  .langsw a[aria-current="true"]{color:var(--stamp);font-weight:500}
+  .langsw a:hover{color:var(--stamp)}
   .tb a:hover{text-decoration:underline}
 
   /* ── H1 : the width-axis move ─────────────────────────── */
@@ -674,7 +682,7 @@
   }
 </style>
 </head>
-<body>
+<body data-lang="en">
 
 <div class="sheet-frame" aria-hidden="true"></div>
 
@@ -689,6 +697,7 @@
       <div><b>Issued</b><span>2026</span></div>
       <div><b>Scale</b><span>27 projects · €15M+</span></div>
       <div><b>Status</b><span>Open to offers</span></div>
+      <div class="langcell"><b>Language</b><span class="langsw"><a href="./" data-l="en">EN</a> · <a href="pl/" data-l="pl">PL</a></span></div>
       <div><b>Drawn by</b><span><a href="https://www.linkedin.com/in/goncharevski/" rel="noopener">Alex Goncharevski · COO, Iron Invest Group</a></span></div>
     </div>
   </div>
@@ -1153,10 +1162,10 @@
   <text x="643.8" y="235" fill="#B94100" font-family="'JetBrains Mono',monospace" font-size="9.5" letter-spacing="1.1" text-anchor="end">MARKETING DIRECTOR → COO IN ONE MONTH</text>
   <g font-family="'JetBrains Mono',monospace" font-size="10.5" fill="#5E6879">
     <rect x="0" y="252" width="14" height="9" fill="#8D96A6"/><text x="20" y="260">IC</text>
-    <rect x="60" y="252" width="14" height="9" fill="#55637A"/><text x="80" y="260">MANAGER</text>
-    <rect x="164" y="252" width="14" height="9" fill="#2B3A54"/><text x="184" y="260">DIRECTOR</text>
-    <rect x="272" y="252" width="14" height="9" fill="#E0580D"/><text x="292" y="260">C-LEVEL</text>
-    <text x="392" y="260">2026 BARS AT MINIMUM WIDTH</text>
+    <rect x="110" y="252" width="14" height="9" fill="#55637A"/><text x="130" y="260">MANAGER</text>
+    <rect x="210" y="252" width="14" height="9" fill="#2B3A54"/><text x="230" y="260">DIRECTOR</text>
+    <rect x="320" y="252" width="14" height="9" fill="#E0580D"/><text x="340" y="260">C-LEVEL</text>
+    <text x="450" y="260">2026 BARS AT MINIMUM WIDTH</text>
   </g>
 </svg></div>
 <p class="scrollhint">Scroll the chart sideways →</p>
@@ -1404,6 +1413,14 @@
     sync();
     window.addEventListener('resize', sync);
   });
+
+  /* mark the active language in the title block */
+  (function(){
+    var cur = document.body.getAttribute('data-lang') || 'en';
+    [].slice.call(document.querySelectorAll('.langsw a')).forEach(function(a){
+      if(a.getAttribute('data-l') === cur) a.setAttribute('aria-current','true');
+    });
+  })();
 
   /* COUNT */
   function count(el){

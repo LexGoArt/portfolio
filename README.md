@@ -4,8 +4,9 @@ Operations, brand and product work, shipped as self-contained web documents.
 
 **→ [Live portfolio](https://lexgoart.github.io/portfolio/)**
 
-**→ [How I work](https://lexgoart.github.io/portfolio/coo/)** — an executive sheet set as a
-construction drawing: six diagrams, six cases with numbers, the cost study, the knowledge
+**→ [How I work](https://lexgoart.github.io/portfolio/coo/)** ·
+[po polsku](https://lexgoart.github.io/portfolio/coo/pl/) — an executive sheet set as a
+construction drawing: ten diagrams, six cases with numbers, the cost study, the knowledge
 graph of an operation, and my first 90 days.
 
 ---
