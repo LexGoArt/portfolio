@@ -3,32 +3,48 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Alex Goncharevski — Selected Work</title>
+<title>Alex Goncharevski — COO, Warsaw</title>
 <link rel="icon" href="/portfolio/favicon.svg" type="image/svg+xml">
 <link rel="mask-icon" href="/portfolio/favicon.svg" color="#E0580D">
 <meta name="theme-color" content="#0B1220">
+<link rel="canonical" href="https://lexgoart.github.io/portfolio/">
 
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Alex Goncharevski — Selected Work">
-<meta property="og:title" content="Alex Goncharevski — Selected Work">
-<meta property="og:description" content="Selected operations, brand and product work by Alex Goncharevski, COO at Iron Invest Group — real client projects, each shipped as a self-contained web document.">
+<meta property="og:site_name" content="Alex Goncharevski">
+<meta property="og:title" content="Alex Goncharevski — COO, Warsaw">
+<meta property="og:description" content="27 projects, €15M+ in construction budgets, 60 people across Warsaw and Kyiv. Operations work, shipped as self-contained web documents.">
 <meta property="og:url" content="https://lexgoart.github.io/portfolio/">
-<meta property="og:image" content="https://lexgoart.github.io/portfolio/og/landing.png">
-<meta property="og:image:secure_url" content="https://lexgoart.github.io/portfolio/og/landing.png">
+<meta property="og:image" content="https://lexgoart.github.io/portfolio/og/landing-2.png">
+<meta property="og:image:secure_url" content="https://lexgoart.github.io/portfolio/og/landing-2.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Alex Goncharevski — Selected Work">
+<meta property="og:image:alt" content="Alex Goncharevski — COO, Warsaw">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Alex Goncharevski — Selected Work">
-<meta name="twitter:description" content="Selected operations, brand and product work by Alex Goncharevski, COO at Iron Invest Group — real client projects, each shipped as a self-contained web document.">
-<meta name="twitter:image" content="https://lexgoart.github.io/portfolio/og/landing.png">
-<meta name="description" content="Selected operations, brand and product work by Alex Goncharevski, COO at Iron Invest Group — real client projects, each shipped as a self-contained web document.">
+<meta name="twitter:title" content="Alex Goncharevski — COO, Warsaw">
+<meta name="twitter:description" content="27 projects, €15M+ in construction budgets, 60 people across Warsaw and Kyiv. Operations work, shipped as self-contained web documents.">
+<meta name="twitter:image" content="https://lexgoart.github.io/portfolio/og/landing-2.png">
+<meta name="description" content="Alex Goncharevski, Chief Operating Officer in Warsaw. 27 projects, €15M+ in construction budgets, 60 people across two countries. Selected operations, brand and product work.">
 
-<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ProfilePage",
+ "url":"https://lexgoart.github.io/portfolio/",
+ "mainEntity":{"@type":"Person",
+  "name":"Alex Goncharevski",
+  "alternateName":"Alex Gonczarewski",
+  "jobTitle":"Chief Operating Officer",
+  "worksFor":{"@type":"Organization","name":"Iron Invest Group"},
+  "address":{"@type":"PostalAddress","addressLocality":"Warsaw","addressCountry":"PL"},
+  "email":"mailto:goncharevski@gmail.com",
+  "knowsLanguage":["en","pl","uk","ru"],
+  "sameAs":["https://www.linkedin.com/in/goncharevski/",
+            "https://github.com/LexGoArt",
+            "https://dusky-sea-671.higgsfield.app"]}}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#0B1220;
@@ -36,124 +52,182 @@
     --surface-2:#131D30;
     --text:#E8EDF4;
     --text-2:#8A9BB2;
-    --text-3:#64778F;
-    --accent:#E18C44;
-    --accent-soft:rgba(225,140,68,.14);
+    /* the old --text-3 #64778F was 4.08:1 — under AA for text.
+       Kept only for hairlines; #7E90A8 (5.74:1) carries the small type. */
+    --text-3:#7E90A8;
+    --stroke:#64778F;
+    --brand:#E0580D;
+    --brand-soft:rgba(224,88,13,.13);
     --border:rgba(255,255,255,.10);
-    --border-strong:rgba(255,255,255,.18);
-    --sans:'Satoshi',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
+    --border-strong:rgba(255,255,255,.20);
+    --sans:'Archivo',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
     --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;
     --ease:cubic-bezier(.16,1,.3,1);
+    --ease-dim:cubic-bezier(.33,1,.68,1);
   }
   *,*::before,*::after{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
   body{
-    margin:0;background:var(--bg);color:var(--text);
-    font-family:var(--sans);font-size:16px;line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-    background-image:radial-gradient(ellipse 80% 50% at 50% -10%,rgba(225,140,68,.07),transparent 70%);
-    background-repeat:no-repeat;
+    margin:0;background:var(--bg);color:var(--text-2);
+    font-family:var(--sans);font-size:16px;line-height:1.6;font-stretch:100%;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
   }
   a{color:inherit}
-  .wrap{max-width:920px;margin:0 auto;padding:0 24px}
+  ::selection{background:var(--brand);color:var(--bg)}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 28px}
 
-  /* ── header ─────────────────────────────── */
-  header{padding:96px 0 0}
-  .eyebrow{
-    font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--accent);margin:0 0 22px;
+  /* ── title block ─────────────────────────────────────── */
+  .tb{
+    display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;
+    border-bottom:1px solid var(--border-strong);
+    margin:0;padding:0;
   }
+  .tb div{padding:14px 18px 13px;border-right:1px solid var(--border)}
+  .tb div:first-child{padding-left:0}
+  .tb div:last-child{border-right:0;padding-right:0;text-align:right}
+  .tb b{
+    display:block;font-family:var(--mono);font-size:10.5px;font-weight:500;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--text-3);margin:0 0 6px;
+  }
+  .tb span{font-family:var(--mono);font-size:12px;color:var(--text)}
+  /* WCAG 2.2 target size: the bare inline link measured 158×16 */
+  .tb a{
+    display:inline-flex;align-items:center;min-height:24px;
+    text-decoration:none;color:var(--brand);
+  }
+  .tb a:hover{text-decoration:underline}
+  .tb a:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+  .tb .live{color:var(--brand)}
+  header{padding:64px 0 0}
+
+  /* ── claim ───────────────────────────────────────────── */
+  .claim{padding:72px 0 0}
   h1{
-    font-size:clamp(34px,6vw,52px);line-height:1.08;font-weight:900;
-    letter-spacing:-.025em;margin:0 0 20px;
+    font-size:clamp(30px,4.6vw,54px);line-height:1.04;letter-spacing:-.02em;
+    font-weight:700;color:var(--text);margin:0 0 34px;max-width:19ch;
   }
-  h1 .dim{color:var(--text-3);font-weight:700}
-  .lede{font-size:clamp(16px,2.2vw,19px);color:var(--text-2);max-width:62ch;margin:0}
-  .meta{
-    display:flex;flex-wrap:wrap;gap:10px;margin:32px 0 0;padding:0;list-style:none;
+  h1 .wide{font-stretch:118%}
+  h1 .narrow{font-stretch:66%;color:var(--text-2)}
+
+  .figs{
+    display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;
+    margin:0;padding:0;list-style:none;border-top:1px solid var(--border-strong);
   }
-  .meta li{
-    font-family:var(--mono);font-size:12px;color:var(--text-2);
-    border:1px solid var(--border);border-radius:9999px;padding:6px 14px;
+  .figs li{padding:22px 20px 20px;border-right:1px solid var(--border)}
+  .figs li:first-child{padding-left:0}
+  .figs li:last-child{border-right:0;padding-right:0}
+  .figs b{
+    display:block;font-weight:700;font-stretch:118%;font-variant-numeric:tabular-nums;
+    font-size:clamp(26px,3.3vw,40px);line-height:1;letter-spacing:-.025em;color:var(--text);
+  }
+  .figs span{
+    display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--brand);margin:11px 0 0;
   }
 
-  .rule{height:1px;background:var(--border);margin:64px 0 0}
+  .lead{
+    display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
+    margin:30px 0 0;padding:18px 0 0;border-top:1px solid var(--border);
+    font-size:16px;color:var(--text-2);text-decoration:none;
+  }
+  .lead strong{color:var(--text);font-weight:700}
+  .lead em{
+    font-style:normal;font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--brand);
+  }
+  .lead:hover strong,.lead:focus-visible strong{color:var(--brand)}
+  .lead:focus-visible{outline:2px solid var(--brand);outline-offset:4px}
 
-  /* ── section ────────────────────────────── */
-  section{padding:56px 0 0}
+  /* ── index of documents ──────────────────────────────── */
+  section{padding:76px 0 0}
   h2{
-    font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--text-3);margin:0 0 28px;
+    display:flex;align-items:center;gap:12px;margin:0 0 4px;
+    font-family:var(--mono);font-size:10.5px;font-weight:500;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--text-3);
+  }
+  h2::after{
+    content:'';flex:1;height:1px;background:var(--border);
   }
 
-  /* ── project cards ──────────────────────── */
-  .grid{display:grid;gap:20px}
-  .card{
-    display:block;text-decoration:none;position:relative;
-    background:var(--surface);border:1px solid var(--border);border-radius:16px;
-    padding:30px 30px 26px;
-    transition:border-color .25s var(--ease),transform .25s var(--ease),background .25s var(--ease);
+  .idx{margin:0;padding:0;list-style:none}
+  .idx a{
+    display:grid;grid-template-columns:44px 1fr auto;gap:0 20px;align-items:baseline;
+    padding:24px 0;border-top:1px solid var(--border);text-decoration:none;
+    transition:background .2s var(--ease-dim);
   }
-  .card:hover,.card:focus-visible{
-    border-color:var(--border-strong);background:var(--surface-2);transform:translateY(-3px);
+  .idx li:last-child a{border-bottom:1px solid var(--border)}
+  .idx a:hover,.idx a:focus-visible{background:var(--surface)}
+  .idx a:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+  .num{
+    font-family:var(--mono);font-size:11px;color:var(--text-3);letter-spacing:.1em;
+    transition:color .2s var(--ease-dim);
   }
-  .card:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-  .card--lead{
-    border-color:rgba(225,140,68,.32);
-    background:linear-gradient(180deg,rgba(225,140,68,.08),rgba(225,140,68,.015)),var(--surface);
+  .idx a:hover .num,.idx a:focus-visible .num{color:var(--brand)}
+  .idx h3{
+    font-size:clamp(19px,2.3vw,25px);font-weight:700;letter-spacing:-.015em;
+    color:var(--text);margin:0 0 7px;line-height:1.24;
   }
-  .card--lead:hover,.card--lead:focus-visible{border-color:var(--accent)}
-  .card-top{
-    display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px;
-  }
-  .tag{
+  .idx p{margin:0;font-size:15px;color:var(--text-2);max-width:56ch}
+  .side{
     font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
-    color:var(--accent);background:var(--accent-soft);border-radius:6px;padding:5px 10px;
+    color:var(--text-3);text-align:right;white-space:nowrap;
   }
-  .year{font-family:var(--mono);font-size:12px;color:var(--text-3)}
-  .card h3{
-    font-size:clamp(21px,3vw,26px);font-weight:700;letter-spacing:-.015em;
-    margin:0 0 10px;line-height:1.25;
-  }
-  .card p{color:var(--text-2);margin:0 0 22px;font-size:15px;max-width:60ch}
-  .facts{
-    display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px;padding:0;list-style:none;
-  }
-  .facts li{
-    font-family:var(--mono);font-size:11px;color:var(--text-3);
-    border:1px solid var(--border);border-radius:6px;padding:4px 9px;
-  }
-  .go{
-    display:inline-flex;align-items:center;gap:9px;
-    font-size:14px;font-weight:500;color:var(--accent);
-  }
-  .go svg{transition:transform .25s var(--ease)}
-  .card:hover .go svg{transform:translateX(4px)}
+  .side i{display:block;font-style:normal;color:var(--brand);margin:0 0 6px}
 
-  /* ── note ───────────────────────────────── */
+  /* ── note ────────────────────────────────────────────── */
   .note{
-    border:1px solid var(--border);border-left:2px solid var(--accent);
-    border-radius:0 12px 12px 0;background:var(--surface);
-    padding:22px 26px;color:var(--text-2);font-size:14px;margin:0;
+    margin:0;padding:20px 0 0;border-top:1px solid var(--border);
+    font-size:14px;color:var(--text-2);max-width:74ch;
   }
-  .note strong{color:var(--text);font-weight:700}
+  .note b{
+    display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--brand);margin:0 0 10px;font-weight:500;
+  }
 
-  /* ── footer ─────────────────────────────── */
-  footer{padding:56px 0 96px;margin-top:56px;border-top:1px solid var(--border)}
-  .links{display:flex;flex-wrap:wrap;gap:26px;margin:0 0 20px;padding:0;list-style:none}
+  /* ── footer ──────────────────────────────────────────── */
+  footer{padding:76px 0 96px}
+  .links{
+    display:flex;flex-wrap:wrap;gap:0;margin:0 0 24px;padding:0;list-style:none;
+    border-top:1px solid var(--border-strong);
+  }
+  .links li{border-right:1px solid var(--border)}
+  .links li:last-child{border-right:0}
   .links a{
-    font-size:14px;color:var(--text-2);text-decoration:none;
-    border-bottom:1px solid transparent;padding-bottom:2px;
-    transition:color .2s var(--ease),border-color .2s var(--ease);
+    display:inline-flex;align-items:center;min-height:44px;padding:0 18px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--text-2);text-decoration:none;
+    transition:color .18s var(--ease-dim),background .18s var(--ease-dim);
   }
-  .links a:hover,.links a:focus-visible{color:var(--accent);border-bottom-color:var(--accent)}
-  .colophon{font-family:var(--mono);font-size:11.5px;color:var(--text-3);margin:0}
+  .links li:first-child a{padding-left:0}
+  .links a:hover,.links a:focus-visible{color:var(--brand)}
+  .links a:focus-visible{outline:2px solid var(--brand);outline-offset:-2px}
+  .colophon{font-family:var(--mono);font-size:11px;color:var(--text-3);margin:0}
 
-  @media (min-width:720px){
-    .grid{grid-template-columns:1fr 1fr}
-    .card--wide{grid-column:1 / -1}
-    .card--wide h3{font-size:clamp(24px,3.4vw,30px)}
-    header{padding-top:120px}
+  /* ── responsive ──────────────────────────────────────── */
+  @media (max-width:860px){
+    .tb{grid-template-columns:1fr 1fr}
+    .tb div{border-right:0;border-bottom:1px solid var(--border);padding:12px 0}
+    .tb div:nth-child(odd){padding-right:18px;border-right:1px solid var(--border)}
+    .tb div:last-child{text-align:left;border-bottom:0}
+    .figs{grid-template-columns:1fr 1fr}
+    .figs li{padding:18px 16px 16px}
+    .figs li:nth-child(odd){padding-left:0}
+    .figs li:nth-child(2n){border-right:0;padding-right:0}
+    .figs li:nth-child(-n+2){border-bottom:1px solid var(--border)}
+  }
+  @media (max-width:640px){
+    .wrap{padding:0 20px}
+    header{padding-top:40px}
+    .claim{padding-top:48px}
+    section{padding-top:56px}
+    .idx a{grid-template-columns:32px 1fr;gap:0 14px}
+    .side{grid-column:2;text-align:left;margin:10px 0 0;white-space:normal}
+    .side i{display:inline;margin:0 10px 0 0}
+    footer{padding:56px 0 72px}
+    .links{display:grid;grid-template-columns:1fr 1fr}
+    .links li{border-bottom:1px solid var(--border)}
+    .links li:nth-child(2n){border-right:0}
+    .links li:first-child a{padding-left:18px}
   }
   @media (prefers-reduced-motion:reduce){
     *{transition:none!important;animation:none!important}
@@ -165,192 +239,105 @@
 <div class="wrap">
 
   <header>
-    <p class="eyebrow">Selected work</p>
-    <h1>Alex Goncharevski<br><span class="dim">Operations, brand, product.</span></h1>
-    <p class="lede">
-      COO at Iron Invest Group. I run operations for a residential development group —
-      and I build the documents, systems and tools that make the operation legible.
-      Everything below was designed and shipped by me as a self-contained web document.
-    </p>
-    <ul class="meta">
-      <li>Kyiv / Warsaw</li>
-      <li>Real estate development</li>
-      <li>Ops · Brand · Product</li>
-    </ul>
-    <div class="rule"></div>
+    <div class="tb">
+      <div><b>Drawn by</b><span>Alex Goncharevski · COO, Iron Invest Group</span></div>
+      <div><b>Based</b><span>Warsaw · Kyiv</span></div>
+      <div><b>Status</b><span class="live">Open to offers</span></div>
+      <div><b>Contact</b><span><a href="mailto:goncharevski@gmail.com">goncharevski@gmail.com</a></span></div>
+    </div>
   </header>
 
-  <section>
-    <h2>Start here</h2>
-    <div class="grid">
+  <div class="claim">
+    <h1><span class="wide">I save companies money and time by turning operations into a system that runs</span> <span class="narrow">without heroics.</span></h1>
 
-      <a class="card card--wide card--lead" href="coo/">
-        <div class="card-top">
-          <span class="tag">How I work</span>
-          <span class="year">Updated 2026</span>
+    <ul class="figs">
+      <li><b>27</b><span>projects</span></li>
+      <li><b>€15M+</b><span>budgets</span></li>
+      <li><b>60</b><span>people</span></li>
+      <li><b>2 121</b><span>apartments</span></li>
+    </ul>
+
+    <a class="lead" href="coo/">
+      <em>Start here</em>
+      <strong>How I work — ten diagrams, six cases, the first 90 days →</strong>
+    </a>
+  </div>
+
+  <section aria-labelledby="idx-h">
+    <h2 id="idx-h">Index of documents</h2>
+    <ol class="idx">
+
+      <li><a href="ai-vs-specialists/">
+        <span class="num">01</span>
+        <div>
+          <h3>×13 cheaper, ×10 faster — what AI actually changed</h3>
+          <p>32 delivered tasks recosted hour by hour against doing them without AI,
+             in-house, or through a contractor.</p>
         </div>
-        <h3>Chaos in, system out</h3>
-        <p>
-          How I run an operation, drawn rather than described: 27 tangled projects
-          resolving into one delivery standard, the same 32 tasks priced four ways,
-          the knowledge graph of a whole company, and exactly what my first 90 days
-          look like. Set as a drawing sheet, because that is what the industry issues.
-        </p>
-        <ul class="facts">
-          <li>10 diagrams</li>
-          <li>6 cases with numbers</li>
-          <li>EN · PL</li>
-        </ul>
-        <span class="go">
-          Read how I work
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
-        </span>
-      </a>
+        <div class="side"><i>2026</i>RU · PL · EN</div>
+      </a></li>
 
-    </div>
+      <li><a href="dobrograd-portal/">
+        <span class="num">02</span>
+        <div>
+          <h3>2,121 units, one registry — the portal the sales floor runs on</h3>
+          <p>A dozen disagreeing spreadsheets replaced by one live source: search,
+             map, pricing, role-based access.</p>
+        </div>
+        <div class="side"><i>2026</i>EN · PL · UA</div>
+      </a></li>
+
+      <li><a href="plaka-villa/">
+        <span class="num">03</span>
+        <div>
+          <h3>Plaka, Crete — buy, renovate, break even?</h3>
+          <p>A villa purchase costed end to end, with live comparables and three
+             renovation packages you configure yourself.</p>
+        </div>
+        <div class="side"><i>2026</i>EN · PL · RU</div>
+      </a></li>
+
+      <li><a href="dobrograd-brandbook/">
+        <span class="num">04</span>
+        <div>
+          <h3>Dobrograd — the brand book as a living document</h3>
+          <p>Positioning, logo system, typography and colour rules for a 15-year-old
+             development brand that had none.</p>
+        </div>
+        <div class="side"><i>2026</i>UA · PL · EN</div>
+      </a></li>
+
+      <li><a href="dobrograd-15-anniversary/">
+        <span class="num">05</span>
+        <div>
+          <h3>15 Years of Dobrograd — an 18-part anniversary programme</h3>
+          <p>Concept, audience zones, the funnel from ad to signed contract, content
+             plan, team ownership and budget.</p>
+        </div>
+        <div class="side"><i>2026</i>UA · PL · EN</div>
+      </a></li>
+
+    </ol>
   </section>
 
-  <section>
-    <h2>Projects</h2>
-    <div class="grid">
-
-      <a class="card card--wide" href="ai-vs-specialists/">
-        <div class="card-top">
-          <span class="tag">AI in operations</span>
-          <span class="year">2026</span>
-        </div>
-        <h3>×13 cheaper, ×10 faster — what AI actually changed</h3>
-        <p>
-          Three months of operational work, task by task: 32 delivered items recosted
-          against what each would have taken without AI, done in-house, or handed to a
-          contractor. Real hours, real rates, arithmetic you can audit — not a vibe.
-          Published in Russian, Polish and English.
-        </p>
-        <ul class="facts">
-          <li>32 tasks costed</li>
-          <li>124.5 h vs 1,279 h</li>
-          <li>RU · PL · EN</li>
-        </ul>
-        <span class="go">
-          Open the breakdown
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
-        </span>
-      </a>
-
-      <a class="card" href="plaka-villa/">
-        <div class="card-top">
-          <span class="tag">Market analysis</span>
-          <span class="year">2026</span>
-        </div>
-        <h3>Plaka, Crete — buy, renovate, break even?</h3>
-        <p>
-          A villa purchase costed end to end: live comparables from Greek listing
-          portals, three renovation packages you configure yourself, cost per square
-          metre, and the resale price the deal needs to pay back.
-        </p>
-        <ul class="facts">
-          <li>Live comparables</li>
-          <li>3 packages</li>
-          <li>EN · PL · RU</li>
-        </ul>
-        <span class="go">
-          Open the configurator
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
-        </span>
-      </a>
-
-      <a class="card card--wide" href="dobrograd-portal/">
-        <div class="card-top">
-          <span class="tag">Internal product</span>
-          <span class="year">2026</span>
-        </div>
-        <h3>2,121 units, one registry — the portal the sales floor runs on</h3>
-        <p>
-          Availability used to live in a dozen spreadsheets that disagreed with each other.
-          This replaced them with a single live registry across nine developments: search,
-          filters, a map, pricing and role-based access — built for people who don't use
-          software for a living.
-        </p>
-        <ul class="facts">
-          <li>2,121 units · 46 addresses</li>
-          <li>9 developments</li>
-          <li>5 access roles</li>
-          <li>EN · PL · UA</li>
-        </ul>
-        <span class="go">
-          Read the case
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
-        </span>
-      </a>
-
-      <a class="card" href="dobrograd-brandbook/">
-        <div class="card-top">
-          <span class="tag">Brand identity</span>
-          <span class="year">2026</span>
-        </div>
-        <h3>Dobrograd — Brand Book</h3>
-        <p>
-          Full rebrand of a residential development brand: positioning, logo system,
-          typography, colour, and application rules — delivered as a living web document
-          the whole team can reference instead of a static PDF.
-        </p>
-        <ul class="facts">
-          <li>Identity system</li>
-          <li>Design tokens</li>
-          <li>Usage rules</li>
-          <li>UA · PL · EN</li>
-        </ul>
-        <span class="go">
-          Open brand book
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
-        </span>
-      </a>
-
-      <a class="card" href="dobrograd-15-anniversary/">
-        <div class="card-top">
-          <span class="tag">Campaign strategy</span>
-          <span class="year">2026</span>
-        </div>
-        <h3>15 Years of Dobrograd — Anniversary Programme</h3>
-        <p>
-          An 18-part strategy deck for a two-day anniversary event: concept, audience zones,
-          the funnel from ad to signed contract, content plan, team ownership and budget —
-          the document the plan was approved from.
-        </p>
-        <ul class="facts">
-          <li>Two-day format</li>
-          <li>6 audience zones</li>
-          <li>Ad → contract funnel</li>
-          <li>UA · PL · EN</li>
-        </ul>
-        <span class="go">
-          Open the deck
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
-        </span>
-      </a>
-
-    </div>
-  </section>
-
-  <section>
-    <h2>A note on confidentiality</h2>
+  <section aria-labelledby="note-h">
+    <h2 id="note-h">On confidentiality</h2>
     <p class="note">
-      <strong>These are real projects, shown responsibly.</strong>
-      Work produced for a client is published here with the document structure and design
-      intact, but commercially sensitive detail removed: contractor pricing and budget
-      figures are replaced with illustrative values, and individual colleagues appear by
-      role rather than by name. What you are judging is the thinking and the craft — not
-      anyone's real numbers.
+      <b>Read this before the numbers</b>
+      These are real client projects, published responsibly. Structure and craft are intact;
+      commercially sensitive figures are replaced with illustrative values and colleagues
+      appear by role rather than by name.
     </p>
   </section>
 
   <footer>
     <ul class="links">
-      <li><a href="https://www.linkedin.com/in/goncharevski/">LinkedIn</a></li>
-      <li><a href="https://dusky-sea-671.higgsfield.app">Personal site</a></li>
-      <li><a href="https://github.com/LexGoArt">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/goncharevski/" rel="noopener">LinkedIn</a></li>
+      <li><a href="https://dusky-sea-671.higgsfield.app" rel="noopener">Personal site</a></li>
+      <li><a href="https://github.com/LexGoArt" rel="noopener">GitHub</a></li>
+      <li><a href="mailto:goncharevski@gmail.com">Email</a></li>
     </ul>
-    <p class="colophon">Hand-built · no framework · no tracking</p>
+    <p class="colophon">Warsaw · EN · PL · UA · RU · Also spelled Gonczarewski</p>
   </footer>
 
 </div>
