@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Alex Goncharevski — COO, Warsaw</title>
 <link rel="icon" href="/portfolio/favicon.svg" type="image/svg+xml">
-<link rel="mask-icon" href="/portfolio/favicon.svg" color="#E0580D">
 <meta name="theme-color" content="#0B1220">
 <link rel="canonical" href="https://lexgoart.github.io/portfolio/">
 
+<meta property="og:locale" content="en_US">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Alex Goncharevski">
 <meta property="og:title" content="Alex Goncharevski — COO, Warsaw">
@@ -24,6 +24,7 @@
 <meta name="twitter:title" content="Alex Goncharevski — COO, Warsaw">
 <meta name="twitter:description" content="27 projects, €15M+ in construction budgets, 60 people across Warsaw and Kyiv. Operations work, shipped as self-contained web documents.">
 <meta name="twitter:image" content="https://lexgoart.github.io/portfolio/og/landing-2.png">
+<meta name="twitter:image:alt" content="Alex Goncharevski — COO, Warsaw">
 <meta name="description" content="Alex Goncharevski, Chief Operating Officer in Warsaw. 27 projects, €15M+ in construction budgets, 60 people across two countries. Selected operations, brand and product work.">
 
 <script type="application/ld+json">
@@ -177,7 +178,7 @@
   /* ── note ────────────────────────────────────────────── */
   .note{
     margin:0;padding:20px 0 0;border-top:1px solid var(--border);
-    font-size:14px;color:var(--text-2);max-width:74ch;
+    font-size:14px;color:var(--text-2);max-width:430px;  /* 74ch rendered 100 chars */
   }
   .note b{
     display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;
@@ -247,17 +248,18 @@
     </div>
   </header>
 
+  <main>
   <div class="claim">
     <h1><span class="wide">I save companies money and time by turning operations into a system that runs</span> <span class="narrow">without heroics.</span></h1>
 
-    <ul class="figs">
+    <ul class="figs" role="list">
       <li><b>27</b><span>projects</span></li>
       <li><b>€15M+</b><span>budgets</span></li>
       <li><b>60</b><span>people</span></li>
       <li><b>2 121</b><span>apartments</span></li>
     </ul>
 
-    <a class="lead" href="coo/">
+    <a class="lead" href="coo/" aria-label="Start here: how I work — ten diagrams, six cases, the first 90 days">
       <em>Start here</em>
       <strong>How I work — ten diagrams, six cases, the first 90 days →</strong>
     </a>
@@ -265,9 +267,9 @@
 
   <section aria-labelledby="idx-h">
     <h2 id="idx-h">Index of documents</h2>
-    <ol class="idx">
+    <ol class="idx" role="list">
 
-      <li><a href="ai-vs-specialists/">
+      <li><a href="ai-vs-specialists/" aria-label="Open the study: ×13 cheaper, ×10 faster — what AI actually changed">
         <span class="num">01</span>
         <div>
           <h3>×13 cheaper, ×10 faster — what AI actually changed</h3>
@@ -277,7 +279,7 @@
         <div class="side"><i>2026</i>RU · PL · EN</div>
       </a></li>
 
-      <li><a href="dobrograd-portal/">
+      <li><a href="dobrograd-portal/" aria-label="Open the case study: 2,121 units in one registry — the sales portal">
         <span class="num">02</span>
         <div>
           <h3>2,121 units, one registry — the portal the sales floor runs on</h3>
@@ -287,7 +289,7 @@
         <div class="side"><i>2026</i>EN · PL · UA</div>
       </a></li>
 
-      <li><a href="plaka-villa/">
+      <li><a href="plaka-villa/" aria-label="Open the configurator: Plaka, Crete — buy, renovate, break even?">
         <span class="num">03</span>
         <div>
           <h3>Plaka, Crete — buy, renovate, break even?</h3>
@@ -297,7 +299,7 @@
         <div class="side"><i>2026</i>EN · PL · RU</div>
       </a></li>
 
-      <li><a href="dobrograd-brandbook/">
+      <li><a href="dobrograd-brandbook/" aria-label="Open the brand book: Dobrograd as a living document">
         <span class="num">04</span>
         <div>
           <h3>Dobrograd — the brand book as a living document</h3>
@@ -307,7 +309,7 @@
         <div class="side"><i>2026</i>UA · PL · EN</div>
       </a></li>
 
-      <li><a href="dobrograd-15-anniversary/">
+      <li><a href="dobrograd-15-anniversary/" aria-label="Open the programme: 15 Years of Dobrograd, 18 parts">
         <span class="num">05</span>
         <div>
           <h3>15 Years of Dobrograd — an 18-part anniversary programme</h3>
@@ -329,9 +331,10 @@
       appear by role rather than by name.
     </p>
   </section>
+  </main>
 
   <footer>
-    <ul class="links">
+    <ul class="links" role="list">
       <li><a href="https://www.linkedin.com/in/goncharevski/" rel="noopener">LinkedIn</a></li>
       <li><a href="https://dusky-sea-671.higgsfield.app" rel="noopener">Personal site</a></li>
       <li><a href="https://github.com/LexGoArt" rel="noopener">GitHub</a></li>

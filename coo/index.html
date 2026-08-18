@@ -8,9 +8,9 @@
 <link rel="alternate" hreflang="pl" href="https://lexgoart.github.io/portfolio/coo/pl/">
 <link rel="alternate" hreflang="x-default" href="https://lexgoart.github.io/portfolio/coo/">
 <link rel="icon" href="/portfolio/favicon.svg" type="image/svg+xml">
-<link rel="mask-icon" href="/portfolio/favicon.svg" color="#E0580D">
 <meta name="theme-color" content="#0B1220">
 
+<meta property="og:locale" content="en_US">
 <meta property="og:type" content="profile">
 <meta property="og:site_name" content="Alex Goncharevski">
 <meta property="og:title" content="Alex Goncharevski — Operations, issued for construction">
@@ -171,12 +171,17 @@
   .tb div:last-child{border-right:0;text-align:right;padding-right:0;min-width:0}
   .tb div:last-child span{display:inline-block;max-width:100%}
   .tb b{
-    display:block;font-family:var(--mono);font-size:9.5px;font-weight:500;
-    letter-spacing:.2em;text-transform:uppercase;color:var(--ink-60);margin:0 0 4px;
+    display:block;font-family:var(--mono);font-size:10.5px;font-weight:500;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--ink-60);margin:0 0 5px;
   }
   .tb span{font-family:var(--mono);font-size:12px;color:var(--ink)}
-  .tb a{text-decoration:none}
-  .langsw a{color:var(--ink-60);padding:0 1px}
+  /* WCAG 2.2 target size — these measured 16px tall */
+  .tb a{display:inline-flex;align-items:center;min-height:24px;text-decoration:none}
+  .langsw a{position:relative;display:inline-flex;align-items:center;
+    min-height:24px;color:var(--ink-60)}
+  /* WCAG 2.5.8 — 24×24 target without widening the LANGUAGE cell */
+  .langsw a::after{content:'';position:absolute;left:50%;top:50%;
+    width:24px;height:24px;transform:translate(-50%,-50%)}
   .langsw a[aria-current="true"]{color:var(--stamp);font-weight:500}
   .langsw a:hover{color:var(--stamp)}
   .tb a:hover{text-decoration:underline}
@@ -491,7 +496,7 @@
     border-top:1px solid var(--rule);padding-top:11px;font-size:15px;color:var(--ink);
   }
   .ph .out b{
-    display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;
+    display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;
     text-transform:uppercase;color:var(--ink-60);font-weight:500;margin:0 0 5px;
   }
 
@@ -526,7 +531,7 @@
   .back:hover{color:var(--stamp)}
   footer{padding:120px 0 90px}
   footer .fine{font-stretch:75%;font-size:14px;color:var(--ink-60);max-width:78ch}
-  footer .fine a{color:var(--ink-60)}
+  footer .fine a{display:inline-flex;align-items:center;min-height:24px;color:var(--ink-60)}
 
   /* ── responsive ───────────────────────────────────────── */
   @media (max-width:1279px){
@@ -548,7 +553,7 @@
     .field,.detail,figure,.rail{grid-column:2/8}
     /* 7-column grid here: 2/14 would spawn implicit columns and widen the page */
     .field--wide{grid-column:2/8}
-    .ord{font-size:9px;letter-spacing:.08em}
+    .ord{font-size:10.5px;letter-spacing:.08em}
     .sec{padding-top:88px}
     /* section breaks must stay the largest gap on the page */
     .gap-plate{padding-top:32px}
@@ -702,6 +707,7 @@
     </div>
   </div>
 
+  <main>
   <!-- ══ A · POSITION ══ -->
   <section class="row sec" aria-labelledby="a-lab">
     <div class="ord" aria-hidden="true">A</div>
@@ -802,7 +808,7 @@
     <div class="ord" aria-hidden="true"></div>
     <div class="field field--wide">
       <h2 class="lab" id="kf-lab"><span>The load today</span></h2>
-      <ul class="bignums">
+      <ul class="bignums" role="list">
         <li><b class="count" data-to="27">27</b><em>projects</em><span>run in parallel, across two holdings</span></li>
         <li><b>€<span class="count" data-to="15">15</span>M<i>+</i></b><em>budgets</em><span>active construction, owned end to end</span></li>
         <li><b class="count" data-to="60">60</b><em>people</em><span>in house, plus the contractor network</span></li>
@@ -822,7 +828,7 @@
         They are boring on purpose. An operation that depends on someone being clever
         every morning is not an operation, it is a rescue.
       </p>
-      <ol class="pr">
+      <ol class="pr" role="list">
         <li><span class="code">B.01</span><div>
           <h4>Map first, decide second</h4>
           <p>Discovery before build: interviews, customer journeys, competitor checks. Most of the savings come from work that never starts.</p>
@@ -1025,7 +1031,7 @@
     <div class="ord" aria-hidden="true"></div>
     <div class="field field--wide">
       <h2 class="lab" id="oc-lab"><span>What the businesses got</span></h2>
-      <ul class="outcomes">
+      <ul class="outcomes" role="list">
         <li><b>&minus;30%</b><span>delivery time, as CEO of an events group</span></li>
         <li><b>&minus;18%</b><span>operating cost, same company, same year</span></li>
         <li><b>&times;13</b><span>cheaper delivery once AI was inside the process</span></li>
@@ -1132,8 +1138,8 @@
       <figure>
 <svg class="fig-desk" viewBox="0 0 712 244" role="img" aria-hidden="true">
   <text x="0" y="12" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="10" letter-spacing="1.6">BUDGETS I HAVE BEEN TRUSTED WITH</text>
-  <path d="M0 176 H206" stroke="#0B1220" stroke-width="1.5"/><text class="fade" x="0" y="154" fill="#0B1220" font-family="Archivo,sans-serif" font-size="42" font-weight="700" font-stretch="125%">500K<tspan font-family="'JetBrains Mono',monospace" font-size="12" font-weight="400" font-stretch="100%" fill="#5E6879" dx="10">PLN</tspan></text><text x="0" y="196" fill="#0B1220" font-family="'JetBrains Mono',monospace" font-size="10" letter-spacing="1.4">PER PROJECT</text><text x="0" y="212" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9.5">Event PM · Impreza.PL · 2022</text><path d="M236 134 H442" stroke="#0B1220" stroke-width="1.5"/><text class="fade" x="236" y="112" fill="#0B1220" font-family="Archivo,sans-serif" font-size="42" font-weight="700" font-stretch="125%">2M+<tspan font-family="'JetBrains Mono',monospace" font-size="12" font-weight="400" font-stretch="100%" fill="#5E6879" dx="10">PLN</tspan></text><text x="236" y="154" fill="#0B1220" font-family="'JetBrains Mono',monospace" font-size="10" letter-spacing="1.4">PER YEAR</text><text x="236" y="170" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9.5">CEO · Impreza.PL · 2023-24</text><path d="M472 92 H678" stroke="#0B1220" stroke-width="1.5"/><text class="fade" x="472" y="70" fill="#B94100" font-family="Archivo,sans-serif" font-size="42" font-weight="700" font-stretch="125%">&#8364;15M+</text><text x="472" y="112" fill="#0B1220" font-family="'JetBrains Mono',monospace" font-size="10" letter-spacing="1.4">CONSTRUCTION PORTFOLIO</text><text x="472" y="128" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9.5">COO · Iron Invest · 2026</text>
-  <text x="704" y="222" text-anchor="end" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="9.5" letter-spacing="1">AS PUBLISHED — NOT CURRENCY-CONVERTED, NOT ON A SHARED SCALE</text>
+  <path d="M0 176 H206" stroke="#0B1220" stroke-width="1.5"/><text class="fade" x="0" y="154" fill="#0B1220" font-family="Archivo,sans-serif" font-size="42" font-weight="700" font-stretch="125%">500K<tspan font-family="'JetBrains Mono',monospace" font-size="12" font-weight="400" font-stretch="100%" fill="#5E6879" dx="10">PLN</tspan></text><text x="0" y="196" fill="#0B1220" font-family="'JetBrains Mono',monospace" font-size="10" letter-spacing="1.4">PER PROJECT</text><text x="0" y="212" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="10.5">Event PM · Impreza.PL · 2022</text><path d="M236 134 H442" stroke="#0B1220" stroke-width="1.5"/><text class="fade" x="236" y="112" fill="#0B1220" font-family="Archivo,sans-serif" font-size="42" font-weight="700" font-stretch="125%">2M+<tspan font-family="'JetBrains Mono',monospace" font-size="12" font-weight="400" font-stretch="100%" fill="#5E6879" dx="10">PLN</tspan></text><text x="236" y="154" fill="#0B1220" font-family="'JetBrains Mono',monospace" font-size="10" letter-spacing="1.4">PER YEAR</text><text x="236" y="170" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="10.5">CEO · Impreza.PL · 2023-24</text><path d="M472 92 H678" stroke="#0B1220" stroke-width="1.5"/><text class="fade" x="472" y="70" fill="#B94100" font-family="Archivo,sans-serif" font-size="42" font-weight="700" font-stretch="125%">&#8364;15M+</text><text x="472" y="112" fill="#0B1220" font-family="'JetBrains Mono',monospace" font-size="10" letter-spacing="1.4">CONSTRUCTION PORTFOLIO</text><text x="472" y="128" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="10.5">COO · Iron Invest · 2026</text>
+  <text x="704" y="222" text-anchor="end" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="10.5" letter-spacing="1">AS PUBLISHED — NOT CURRENCY-CONVERTED, NOT ON A SHARED SCALE</text>
 </svg>
 <svg class="fig-mob" viewBox="0 0 344 370" role="img" aria-hidden="true"><text x="0" y="10" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="12" letter-spacing="1.2">BUDGETS I HAVE BEEN TRUSTED WITH</text><path d="M0 56 H344" stroke="#0B1220" stroke-width="1.5"/><text class="fade" x="0" y="40" fill="#0B1220" font-family="Archivo,sans-serif" font-size="34" font-weight="700" font-stretch="125%">500K<tspan font-family="'JetBrains Mono',monospace" font-size="12" font-weight="400" font-stretch="100%" fill="#5E6879" dx="9">PLN</tspan></text><text x="0" y="78" fill="#0B1220" font-family="'JetBrains Mono',monospace" font-size="12" letter-spacing="1.2">PER PROJECT</text><text x="0" y="98" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="12">Event PM · Impreza.PL · 2022</text><path d="M16 156 H344" stroke="#0B1220" stroke-width="1.5"/><text class="fade" x="16" y="140" fill="#0B1220" font-family="Archivo,sans-serif" font-size="34" font-weight="700" font-stretch="125%">2M+<tspan font-family="'JetBrains Mono',monospace" font-size="12" font-weight="400" font-stretch="100%" fill="#5E6879" dx="9">PLN</tspan></text><text x="16" y="178" fill="#0B1220" font-family="'JetBrains Mono',monospace" font-size="12" letter-spacing="1.2">PER YEAR</text><text x="16" y="198" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="12">CEO · Impreza.PL · 2023-24</text><path d="M32 256 H344" stroke="#0B1220" stroke-width="1.5"/><text class="fade" x="32" y="240" fill="#B94100" font-family="Archivo,sans-serif" font-size="34" font-weight="700" font-stretch="125%">&#8364;15M+</text><text x="32" y="278" fill="#0B1220" font-family="'JetBrains Mono',monospace" font-size="12" letter-spacing="1.2">CONSTRUCTION PORTFOLIO</text><text x="32" y="298" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="12">COO · Iron Invest · 2026</text><text x="0" y="364" fill="#5E6879" font-family="'JetBrains Mono',monospace" font-size="12">AS PUBLISHED — NOT CURRENCY-CONVERTED</text></svg>
 <figcaption>Fig. 10 — What I have been handed to run, in the order I was handed it</figcaption>
@@ -1188,7 +1194,7 @@
       <h2 class="lab" id="f-lab"><span>F · Contact</span></h2>
       <h3>An operation that has outgrown the way it is being run</h3>
       <p>That is the situation I am best in, and the one I have walked into three times now.</p>
-      <ul class="want">
+      <ul class="want" role="list">
         <li><b>Role</b><span>COO, Operations Director or Head of Operations with real ownership, not coordination.</span></li>
         <li><b>Company</b><span>Development, e-commerce or multi-project services, roughly 50 to 500 people.</span></li>
         <li><b>Location</b><span>Warsaw, hybrid or remote across the EU.</span></li>
@@ -1201,6 +1207,8 @@
       </div>
     </div>
   </section>
+
+  </main>
 
   <footer class="row">
     <div class="field">
