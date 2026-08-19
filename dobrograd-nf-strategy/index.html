@@ -290,6 +290,51 @@
     .gantt{overflow:visible}
   }
 
+  /* Чипи конкурентної карти */
+  .chipbox{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px 24px;box-shadow:var(--shadow)}
+  .chead{font-family:var(--display);font-size:14px;font-weight:800;margin-bottom:2px}
+  .chead.warn{color:var(--red)} .chead.ok{color:#2c7a51}
+  .csub{font-size:11.5px;color:var(--faint);margin-bottom:10px}
+  .chipx{display:inline-block;font-size:12.5px;line-height:1.5;padding:5px 12px;border-radius:12px;margin:4px 6px 2px 0;background:var(--bg2);border:1px solid var(--line);color:var(--ink2)}
+  .chipx b{color:var(--ink)}
+  .chipbox.niche .chipx{background:#F2F6EF;border-color:#D6E2CF}
+
+  /* Поверхові шари (бар-чарт) */
+  .layers{margin-top:8px}
+  .layer{display:grid;grid-template-columns:140px 1fr 86px;gap:10px;align-items:center;padding:6px 0;font-size:12.5px;color:var(--ink2)}
+  .layer .lbar{height:20px;border-radius:6px;background:linear-gradient(90deg,var(--moss),var(--sage));min-width:6px}
+  .layer .lbar.gold{background:linear-gradient(90deg,var(--gold),var(--gold2))}
+  .layer .lbar.champ{background:var(--champ)}
+  .layer .lbar.gray{background:#D8D3C6}
+  .layer .lval{text-align:right;font-weight:700;color:var(--ink);white-space:nowrap;font-size:12px}
+
+  /* План-схема крил */
+  .plan-scheme{display:flex;gap:8px;margin:36px 0 10px;align-items:stretch}
+  .pblock{border-radius:12px;padding:14px;color:#FAF9F6;min-height:96px;display:flex;flex-direction:column;justify-content:space-between}
+  .pblock small{opacity:.85;font-size:11px;line-height:1.45}
+  .pblock b{font-family:var(--display);font-size:13px}
+  .pblock .pm2{font-family:var(--display);font-weight:800;font-size:15px;color:var(--champ)}
+  .pb-mix{background:linear-gradient(160deg,#3d5142,var(--moss))}
+  .pb-rent{background:linear-gradient(160deg,var(--gold),#8a6d2f)}
+  .street-line{display:flex;align-items:center;gap:10px;color:var(--gold);font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin-bottom:30px}
+  .street-line::before,.street-line::after{content:'';flex:1;height:2px;background:repeating-linear-gradient(90deg,var(--gold2) 0 14px,transparent 14px 24px)}
+
+  /* Вафельна діаграма фонду */
+  .waffle{display:grid;grid-template-columns:repeat(20,1fr);gap:4px;margin-top:16px}
+  .wf{aspect-ratio:1;border-radius:3px}
+  .wf.g{background:#3F8157}.wf.b{background:var(--gold2)}.wf.r{background:var(--sage)}.wf.o{background:#8C8C8C}.wf.x{background:#DCD6C8}
+  .wlegend{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;font-size:12.5px;color:var(--ink2)}
+  .wlegend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+
+  /* Бари сценаріїв бюджету */
+  .scen{margin:32px 0 4px}
+  .scenrow{display:grid;grid-template-columns:150px 1fr 120px;gap:12px;align-items:center;padding:8px 0;font-size:13px;color:var(--ink2)}
+  .scenrow .sbar{height:26px;border-radius:8px;background:linear-gradient(90deg,var(--moss),var(--sage))}
+  .scenrow.rec .sbar{background:linear-gradient(90deg,var(--gold),var(--gold2))}
+  .scenrow .sval{text-align:right;font-family:var(--display);font-weight:800;color:var(--ink);white-space:nowrap}
+  .scenrow.rec .sval{color:var(--gold)}
+  @media (max-width:640px){.plan-scheme{flex-direction:column}.layer{grid-template-columns:110px 1fr 70px}}
+
   footer{padding:52px 0 72px;border-top:1px solid var(--line);color:var(--faint);font-size:13px;background:var(--bg2)}
   footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 
@@ -405,14 +450,14 @@
         <p style="margin-top:18px">Найбільша частина — цоколь: 15 приміщень загальною площею 1 590 м², або близько 46 % об'єкта. Також у будинку є привабливе фасадне приміщення № 941 на першому поверсі, приміщення на 2–4 поверхах, офісний блок на третьому поверсі прибудови та підвал, придатний для комор.</p>
       </div>
       <div>
-        <table class="mini-table">
-          <tr><td>1-й поверх · фасадне приміщення</td><td>1 НП · 113 м²</td></tr>
-          <tr><td>Цоколь · послуги, склад, торгівля</td><td>15 НП · 1 590 м²</td></tr>
-          <tr><td>Поверхи 2–4 · офіси або апартаменти</td><td>5 НП · 579 м²</td></tr>
-          <tr><td>Прибудова, 3 пов. · офісний блок</td><td>5 НП · 558 м²</td></tr>
-          <tr><td>Підвал прибудови · комори</td><td>4 НП · 494 м²</td></tr>
-          <tr><td>Продано (947, розстрочка)</td><td>1 НП · 104 м²</td></tr>
-        </table>
+        <div class="layers">
+          <div class="layer"><span>Цоколь · 15 НП</span><div class="lbar" style="width:100%"></div><span class="lval">1 590 м²</span></div>
+          <div class="layer"><span>Поверхи 2–4 · 5 НП</span><div class="lbar gold" style="width:36%"></div><span class="lval">579 м²</span></div>
+          <div class="layer"><span>Прибудова, 3 пов. · 5 НП</span><div class="lbar gold" style="width:35%"></div><span class="lval">558 м²</span></div>
+          <div class="layer"><span>Підвал · 4 НП</span><div class="lbar champ" style="width:31%"></div><span class="lval">494 м²</span></div>
+          <div class="layer"><span>1-й поверх · 1 НП</span><div class="lbar" style="width:7%"></div><span class="lval">113 м²</span></div>
+          <div class="layer"><span>Продано (947)</span><div class="lbar gray" style="width:6.5%"></div><span class="lval">104 м²</span></div>
+        </div>
       </div>
     </div>
     <details class="app inline">
@@ -439,7 +484,13 @@
     <div class="kicker">04 · Модель монетизації М-16</div>
     <h2>Рішення для М-16: прибудову здавати, інші приміщення — здавати або продавати</h2>
     <p class="lead">Для кожної частини будинку заздалегідь визначаємо основний сценарій. Остаточне рішення — оренда чи продаж — ухвалюємо з урахуванням конкретної пропозиції клієнта.</p>
-    <table class="data" style="margin-top:36px;font-size:14px">
+    <div class="plan-scheme">
+      <div class="pblock pb-mix" style="flex:1079"><b>Крило 1–4 · поле/двір</b><div><div class="pm2">1 079 м²</div><small>оренда або продаж · пріоритет — продаж тихого цоколя</small></div></div>
+      <div class="pblock pb-mix" style="flex:1202"><b>Крило 5–8 · вулиця</b><div><div class="pm2">1 202 м²</div><small>оренда або продаж · пріоритет — оренда 941 і цоколя</small></div></div>
+      <div class="pblock pb-rent" style="flex:1051"><b>Прибудова</b><div><div class="pm2">1 051 м²</div><small>тільки оренда · офіси 3 пов. + комори підвалу</small></div></div>
+    </div>
+    <div class="street-line">вул. Машинобудівників · головний потік людей — уздовж крила 5–8 і прибудови</div>
+    <table class="data" style="margin-top:0;font-size:14px">
       <tr><th>Блок</th><th>Що входить (поверхи / секції)</th><th style="text-align:right">м²</th><th>Сценарій</th></tr>
       <tr><td><b>Крило 5–8 · вулиця</b></td><td>1-й пов. (941) + цоколь 5–8 (8 НП) + поверхи 2–4 секц. 5 (953, 981)</td><td class="r">1 202</td><td><span class="pill">оренда або продаж залежно від пропозиції клієнта</span></td></tr>
       <tr><td><b>Крило 1–4 · поле/двір</b></td><td>цоколь 1–4 (7 НП) + поверхи 2–4 секц. 4 (948, 966, 980)</td><td class="r">1 079</td><td><span class="pill">оренда або продаж залежно від пропозиції клієнта</span></td></tr>
@@ -463,13 +514,27 @@
     <h3 style="margin-top:52px;font-size:19px">Кого шукаємо в орендарі: конкурентна карта вулиці</h3>
     <p class="lead" style="font-size:16px">Ми пройшлися по реальних точках навколо будинку (Google Maps, серпень 2026). Висновок: теза «в ЖК немає спортзалу, ресторану і клініки» застаріла — поруч уже працюють і фітнес, і клініки. Тому шукаємо орендарів насамперед у вільних нішах, а в насичені формати заходимо лише з помітною відмінністю.</p>
     <div class="grid g2">
-      <div class="card">
-        <h3 style="color:var(--red)">Насичено поруч — лише з відмінністю</h3>
-        <p>Краса: Beauty Club (№ 17), ELIT Barbershop, манікюрні студії · Стоматологія і медицина: dentique (у самому будинку), MaVita, СТОММАКС, амбулаторія · Пункти видачі посилок і пошта: Нова Пошта № 3 у будинку, ROZETKA, Meest · Аптеки: три поруч · Фітнес: Grafit, OxyDan (у будинку) · Кафе: Cinema Cafe, Bamblebee · Продукти: THRASH у будинку, ТЦ «Чабани молл».</p>
+      <div class="chipbox">
+        <div class="chead warn">Насичено поруч — заходимо лише з відмінністю</div>
+        <div class="csub">реальні точки на картах, з рейтингами</div>
+        <span class="chipx"><b>Краса:</b> Beauty Club (№ 17, 420★) · ELIT Barbershop (5д, 222★) · манікюр 4В/14а · Angel</span>
+        <span class="chipx"><b>Стомат/мед:</b> dentique (буд. 16) · MaVita (15) · СТОММАКС (2В) · амбулаторія (2Б) · УНІМЕДІКАЛ</span>
+        <span class="chipx"><b>Видача посилок/пошта:</b> Нова Пошта № 3 (буд. 16) і № 2 · поштомати · ROZETKA · Meest</span>
+        <span class="chipx"><b>Аптеки:</b> Optovykh (14А) · Подорожник · Бажаємо здоров'я</span>
+        <span class="chipx"><b>Фітнес:</b> Grafit (4Б, 245★) · OxyDan (буд. 16)</span>
+        <span class="chipx"><b>Кафе:</b> Cinema Cafe (15) · Bamblebee (у будинку)</span>
+        <span class="chipx"><b>Продукти/ТЦ:</b> THRASH (у будинку) · ТЦ «Чабани молл» (5Д) + EVA</span>
       </div>
-      <div class="card gold">
-        <h3 style="color:var(--gold)">Вільні ніші — пріоритет пошуку якорів</h3>
-        <p>Банківське відділення (на вулиці немає жодного) · ресторан або гастробар (поруч лише кафе) · оптика · зоомагазин і ветаптека · пекарня-кондитерська · державні сервіси — ЦНАП, соцслужби (поруч селищна рада, такі структури беруть цілі блоки) · приватний садок і дитячі гуртки.</p>
+      <div class="chipbox niche">
+        <div class="chead ok">Вільні ніші на вулиці — пріоритет</div>
+        <div class="csub">мало або немає поруч — під це шукаємо якорів</div>
+        <span class="chipx">🏦 <b>Банк / відділення</b> — на вулиці жодного, лише PUMB на Одеському шосе</span>
+        <span class="chipx">🍽️ <b>Ресторан / гастробар</b> на фасаді — поки лише кафе</span>
+        <span class="chipx">👓 <b>Оптика</b></span>
+        <span class="chipx">🐾 <b>Зоомагазин / ветаптека</b></span>
+        <span class="chipx">🥐 <b>Пекарня-кондитерська</b></span>
+        <span class="chipx">🏛️ <b>Державні сервіси</b> — поруч селищна рада: ЦНАП і соцслужби беруть цілі блоки</span>
+        <span class="chipx">🧒 <b>Приватний садок / дитячі гуртки</b></span>
       </div>
     </div>
 
@@ -647,6 +712,17 @@
           <tr><td>Без вікон (цоколі/підвали)</td><td>53 пом.</td></tr>
         </table>
       </div>
+    </div>
+    <h3 style="margin-top:44px;font-size:17px">146 приміщень фонду — кожен квадрат = одне приміщення</h3>
+    <div class="waffle">
+      <i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf g"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf b"></i><i class="wf r"></i><i class="wf r"></i><i class="wf r"></i><i class="wf r"></i><i class="wf r"></i><i class="wf r"></i><i class="wf r"></i><i class="wf r"></i><i class="wf r"></i><i class="wf r"></i><i class="wf r"></i><i class="wf r"></i><i class="wf r"></i><i class="wf r"></i><i class="wf r"></i><i class="wf r"></i><i class="wf r"></i><i class="wf o"></i><i class="wf o"></i><i class="wf o"></i><i class="wf o"></i><i class="wf o"></i><i class="wf o"></i><i class="wf o"></i><i class="wf o"></i><i class="wf o"></i><i class="wf o"></i><i class="wf o"></i><i class="wf o"></i><i class="wf x"></i><i class="wf x"></i><i class="wf x"></i><i class="wf x"></i><i class="wf x"></i><i class="wf x"></i><i class="wf x"></i><i class="wf x"></i><i class="wf x"></i><i class="wf x"></i><i class="wf x"></i><i class="wf x"></i><i class="wf x"></i><i class="wf x"></i><i class="wf x"></i><i class="wf x"></i><i class="wf x"></i><i class="wf x"></i><i class="wf x"></i>
+    </div>
+    <div class="wlegend">
+      <span><i style="background:#3F8157"></i>Вільні у готових будинках · 56</span>
+      <span><i style="background:#D7B369"></i>Вільні, будинки будуються · 42</span>
+      <span><i style="background:#6A7B68"></i>В оренді · 17</span>
+      <span><i style="background:#8C8C8C"></i>Офіс компанії · 12</span>
+      <span><i style="background:#DCD6C8"></i>Закриті, розстрочка, не виставлялись · 19</span>
     </div>
     <details class="app inline">
       <summary><span class="tagn">Деталі</span><span class="st"><h3>Повний перелік фотозйомок і ризиків</h3><p>56 фотозйомок охоплюють усі 98 вільних приміщень: 22 типові групи та 34 унікальні об'єкти</p></span><span class="chev">▶</span></summary>
@@ -854,8 +930,13 @@
         <div><i style="background:#8C8C8C"></i>Резерв 15 %<b>$340 · 13 %</b></div>
         <div><i style="background:#6A7B68"></i>Підготовка: сміття, клінінг<b>$270 · 11 %</b></div>
         <div><i style="background:#D7B369"></i>Логістика: 4 міста<b>$225 · 9 %</b></div>
-        <p class="note" style="margin-top:10px;font-size:12px;color:var(--faint)">Розподіл рекомендованого сценарію. Мінімум $1 500 і максимум $4 050 — у зведеній таблиці нижче.</p>
+        <p class="note" style="margin-top:10px;font-size:12px;color:var(--faint)">Розподіл рекомендованого сценарію. Порівняння трьох сценаріїв — нижче.</p>
       </div>
+    </div>
+    <div class="scen">
+      <div class="scenrow"><span>Мінімум</span><div class="sbar" style="width:37%"></div><span class="sval">≈ $1 500 <span class="uah">67 тис ₴</span></span></div>
+      <div class="scenrow rec"><span><b>Рекомендовано</b></span><div class="sbar" style="width:62%"></div><span class="sval">≈ $2 500 <span class="uah">112 тис ₴</span></span></div>
+      <div class="scenrow"><span>Максимум</span><div class="sbar" style="width:100%"></div><span class="sval">≈ $4 050 <span class="uah">181 тис ₴</span></span></div>
     </div>
 
     <details class="bblock">
