@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Доброград · Нежитловий фонд · Стратегія монетизації</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Cormorant:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ДНК бренд-буку Доброград · світла версія (як Ювілей) */
+  :root{
+    --bg:#FAF9F6; --bg2:#F3EFE7; --panel:#FFFFFF; --panel2:#F3EFE7;
+    --line:#E8E3D8; --line2:#ECE7DC;
+    --ink:#2A2A2A; --ink2:#545454; --muted:#7A7A76; --faint:#8C8C8C;
+    --gold:#B29141; --gold2:#D7B369; --champ:#EBCF94;
+    --green:#2A3728; --sage:#6A7B68; --moss:#374636; --red:#9C4A2F;
+    --display:'Montserrat', -apple-system, sans-serif;
+    --accent:'Cormorant', Georgia, serif;
+    --sans:'Inter', -apple-system, 'Segoe UI', sans-serif;
+    --shadow:0 1px 2px rgba(42,42,42,.04), 0 8px 24px -12px rgba(42,42,42,.08);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16.5px;line-height:1.62;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 32px}
+  section{padding:80px 0;border-top:1px solid var(--line)}
+  section:nth-of-type(even){background:#FCFBF8}
+  .kicker{font-family:var(--display);font-size:11.5px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+  h2{font-family:var(--display);font-size:clamp(28px,3.8vw,40px);font-weight:800;line-height:1.14;letter-spacing:-.01em;margin-bottom:20px;color:var(--ink)}
+  h3{font-family:var(--display);font-size:16.5px;font-weight:700;margin-bottom:9px;color:var(--ink)}
+  p.lead{font-size:19px;color:var(--ink2);max-width:780px}
+  .sub{color:var(--muted)}
+  .uah{font-size:.68em;font-weight:500;color:var(--faint);white-space:nowrap}
+  .usd{font-variant-numeric:tabular-nums}
+  .hint{font-size:13.5px;color:var(--faint);margin-top:16px}
+  .hint a, p a{color:var(--gold);text-decoration:none;border-bottom:1px solid var(--champ)}
+
+  /* HERO */
+  .hero{padding:92px 0 0;border-top:none;background:
+    radial-gradient(1100px 460px at 82% -10%, rgba(215,179,105,.16), transparent 62%),
+    radial-gradient(700px 420px at 4% 30%, rgba(106,123,104,.07), transparent 60%),
+    var(--bg)}
+  .hero .brand{display:flex;align-items:center;gap:14px;margin-bottom:56px}
+  .brand .mark{width:42px;height:42px;border:1.5px solid var(--gold2);border-radius:50%;display:grid;place-items:center;color:var(--gold);font-family:var(--accent);font-size:22px;font-weight:600;background:#fff}
+  .brand .t{font-family:var(--display);font-size:13px;font-weight:800;letter-spacing:.26em;text-transform:uppercase;color:var(--green)}
+  .brand .t small{display:block;font-family:var(--accent);font-style:italic;color:var(--muted);font-weight:500;letter-spacing:.04em;font-size:13px;text-transform:none;margin-top:3px}
+  .heroquote{font-family:var(--accent);font-style:italic;font-weight:600;font-size:clamp(34px,5.2vw,58px);line-height:1.16;color:var(--green);max-width:920px;letter-spacing:-.01em}
+  .heroquote .qmark{color:var(--gold2)}
+  .heroquote-by{margin-top:20px;font-family:var(--display);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+  .hero .tag{margin-top:30px;font-size:19px;color:var(--ink2);max-width:720px}
+  .meta{margin-top:32px;display:flex;gap:22px;flex-wrap:wrap;font-family:var(--display);font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+  .meta b{color:var(--gold)}
+  .statband{margin-top:56px;background:var(--green);border-radius:20px 20px 0 0;position:relative;overflow:hidden}
+  .statband::after{content:'';position:absolute;inset:0;background:radial-gradient(600px 200px at 85% 0%, rgba(215,179,105,.14), transparent 60%)}
+  .stats{position:relative;display:grid;grid-template-columns:repeat(4,1fr);z-index:1}
+  .stat{padding:32px 26px;border-right:1px solid rgba(250,249,246,.1)}
+  .stat:last-child{border-right:none}
+  .stat .n{font-family:var(--display);font-weight:800;font-size:clamp(24px,3vw,34px);color:var(--champ);line-height:1.1;letter-spacing:-.01em}
+  .stat .l{margin-top:8px;font-size:12.5px;color:rgba(250,249,246,.75);line-height:1.45}
+  .hero .hint{padding:14px 4px 24px}
+
+  /* RENDERS: ряд = одне приміщення (зараз → вайтбокс → концепт) */
+  .roomrow{margin-top:34px}
+  .roomrow .rhead{display:flex;align-items:baseline;gap:14px;margin-bottom:12px}
+  .roomrow .rhead h3{font-size:17px;margin:0}
+  .roomrow .rhead span{font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+  .renders{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+  .render{position:relative;border-radius:14px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line)}
+  .render img{display:block;width:100%;height:auto;object-fit:cover;aspect-ratio:4/3}
+  .render .cap{display:flex;align-items:center;gap:7px;background:#fff;color:var(--muted);font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:9px 12px 10px}
+  .render .cap::before{content:'';width:8px;height:8px;border-radius:50%;flex:none;background:var(--green)}
+  .render.bare .cap::before{background:#8C8C8C}
+  .render.white .cap::before{background:var(--gold2)}
+  .render .cap b{color:var(--gold)}
+  .render .arrow{position:absolute;top:50%;right:-13px;transform:translateY(-50%);z-index:2;width:26px;height:26px;border-radius:50%;background:var(--gold);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:700;box-shadow:0 1px 4px rgba(42,42,42,.25)}
+  @media (max-width:560px){.renders{grid-template-columns:1fr}.render .arrow{display:none}}
+
+  /* MATRIX 2×2 */
+  .matrix{margin-top:44px;display:grid;grid-template-columns:120px 1fr 1fr;gap:0;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--panel);box-shadow:var(--shadow)}
+  .mx-corner{background:var(--bg2)}
+  .mx-h{background:var(--bg2);padding:16px;font-family:var(--display);font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--moss);display:grid;place-items:center;text-align:center;border-left:1px solid var(--line)}
+  .mx-r{background:var(--bg2);padding:16px 14px;font-family:var(--display);font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--moss);display:grid;place-items:center;text-align:center;border-top:1px solid var(--line)}
+  .mx-cell{padding:26px;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+  .mx-cell .verdict{display:inline-block;font-family:var(--display);font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:5px 12px;border-radius:999px;margin-bottom:12px}
+  .v-rent{background:rgba(42,55,40,.92);color:var(--champ)}
+  .v-sell{background:rgba(178,145,65,.14);color:var(--gold)}
+  .mx-cell h3{font-size:15.5px}
+  .mx-cell p{font-size:13.5px;color:var(--ink2)}
+  .principle{margin-top:26px;font-family:var(--accent);font-style:italic;font-size:22px;color:var(--moss);border-left:3px solid var(--gold2);padding:6px 0 6px 22px;max-width:760px}
+  .principle small{display:block;font-family:var(--display);font-style:normal;font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-top:8px}
+
+  /* CARDS / GRID */
+  .grid{display:grid;gap:18px;margin-top:40px}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px;box-shadow:var(--shadow)}
+  .card p{font-size:14.5px;color:var(--ink2);line-height:1.58}
+  .card.gold{border-color:var(--gold2);background:linear-gradient(165deg,#FBF3E2, #fff 60%)}
+  .num-chip{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 10px;border-radius:999px;background:var(--green);color:var(--champ);font-family:var(--display);font-weight:700;font-size:14px;margin-bottom:14px}
+
+  /* FEATURE */
+  .feature{margin-top:44px;display:grid;grid-template-columns:1.1fr 1fr;gap:44px;align-items:center;background:var(--panel);border:1px solid var(--gold2);border-radius:20px;padding:44px;box-shadow:var(--shadow)}
+  .feature .big{font-family:var(--display);font-weight:800;font-size:clamp(46px,6.6vw,80px);line-height:1;color:var(--green);letter-spacing:-.02em}
+  .feature .big small{font-size:.3em;color:var(--muted);font-family:var(--sans);font-weight:600;letter-spacing:0}
+  .feature p{color:var(--ink2);font-size:16px}
+  .mini-table{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}
+  .mini-table td{padding:9px 4px;border-bottom:1px solid var(--line);color:var(--ink2)}
+  .mini-table td:last-child{text-align:right;color:var(--gold);font-weight:700;white-space:nowrap}
+  .mini-table tr:last-child td{border-bottom:none}
+
+  /* MONEY plans */
+  .plan{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:30px 26px;display:flex;flex-direction:column;box-shadow:var(--shadow)}
+  .plan.rec{border:1.5px solid var(--gold2);background:linear-gradient(172deg,#FBF3E2, #fff 55%)}
+  .plan .badge{position:absolute;top:-13px;left:24px;background:var(--green);color:var(--champ);font-family:var(--display);font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:6px 13px;border-radius:999px}
+  .plan .name{font-family:var(--display);font-size:11.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+  .plan .price{font-family:var(--display);font-weight:800;font-size:38px;color:var(--green);line-height:1;letter-spacing:-.01em}
+  .plan .price .uah{display:block;margin-top:8px;font-family:var(--sans)}
+  .plan ul{list-style:none;margin-top:18px;flex:1}
+  .plan li{font-size:13.5px;color:var(--ink2);padding:7px 0 7px 22px;position:relative}
+  .plan li::before{content:'—';position:absolute;left:0;color:var(--gold2)}
+  .plan .risk{margin-top:14px;font-size:12.5px;color:var(--faint);border-top:1px solid var(--line);padding-top:12px}
+
+  /* ROADMAP */
+  .road{margin-top:44px}
+  .step{display:grid;grid-template-columns:150px 1fr;gap:28px;padding:24px 0;border-bottom:1px solid var(--line)}
+  .step:last-child{border-bottom:none}
+  .step .when{font-family:var(--display);font-size:12.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--green);padding-top:3px}
+  .step .when small{display:block;color:var(--gold);letter-spacing:.02em;text-transform:none;font-weight:700;margin-top:4px}
+  .step h3{font-size:17px}
+  .step p{font-size:14.5px;color:var(--ink2);max-width:760px}
+  .step .who{margin-top:8px;font-size:13px;color:var(--faint)}
+  .step .who b{color:var(--moss);font-weight:700}
+
+  /* DECISIONS */
+  .decisions{background:var(--panel2);border:1px solid var(--gold2);border-radius:20px;padding:44px;margin-top:44px}
+  .dec{display:grid;grid-template-columns:44px 1fr 140px;gap:20px;align-items:center;padding:20px 0;border-bottom:1px solid var(--line)}
+  .dec:last-of-type{border-bottom:none}
+  .dec .dn{width:40px;height:40px;border-radius:50%;background:var(--green);color:var(--champ);display:grid;place-items:center;font-family:var(--accent);font-size:19px;font-weight:600}
+  .dec h3{font-size:16.5px;margin-bottom:2px}
+  .dec p{font-size:13.5px;color:var(--ink2)}
+  .dec .ok{border:1.5px solid var(--gold2);background:#fff;border-radius:10px;height:46px;display:grid;place-items:center;font-family:var(--display);font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+  .sig{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:40px}
+  .sig .line{border-bottom:1.5px solid var(--gold);height:56px}
+  .sig .cap{margin-top:8px;font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+  /* DETAILS (плашки) */
+  details.app{background:var(--panel);border:1px solid var(--line);border-radius:16px;margin-top:16px;overflow:hidden;box-shadow:var(--shadow)}
+  details.app[open]{border-color:var(--gold2)}
+  details.app summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:18px;padding:22px 26px;user-select:none}
+  details.app summary::-webkit-details-marker{display:none}
+  summary .tagn{font-family:var(--display);font-size:11px;font-weight:700;letter-spacing:.14em;color:#fff;background:var(--green);border-radius:8px;padding:5px 10px;white-space:nowrap}
+  summary .st{flex:1}
+  summary .st h3{font-size:16.5px;margin:0}
+  summary .st p{font-size:13px;color:var(--faint);margin-top:2px}
+  summary .chev{color:var(--gold);transition:transform .25s;font-size:14px}
+  details[open] summary .chev{transform:rotate(90deg)}
+  .app-body{padding:6px 26px 30px;border-top:1px solid var(--line)}
+  .app-body h4{font-family:var(--display);font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin:26px 0 10px;color:var(--moss)}
+  .app-body p{font-size:14px;color:var(--ink2);max-width:860px}
+  .app-body p.note{color:var(--faint);font-size:13px}
+  /* inline «деталі» під розділом */
+  details.inline{margin-top:34px}
+  details.inline summary .tagn{background:var(--gold);color:#fff}
+
+  /* Кошторис у стилі Ювілею: блоки з шапками */
+  .bblock{background:var(--panel);border:1px solid var(--line);border-radius:14px;margin-top:22px;overflow:hidden;box-shadow:var(--shadow)}
+  .bhead{background:var(--panel2);padding:14px 22px;font-family:var(--display);font-weight:800;font-size:14px;color:var(--ink);display:flex;justify-content:flex-start;align-items:center;gap:14px;border-bottom:1px solid var(--line)}
+  .bhead .bsum{font-size:13px;color:var(--gold);white-space:nowrap;margin-left:auto}
+  details.bblock summary{list-style:none;cursor:pointer;user-select:none}
+  details.bblock summary::-webkit-details-marker{display:none}
+  .bhead .chev{color:var(--gold);font-size:13px;transition:transform .25s}
+  .bhead .bsum + .chev{margin-left:0}
+  .bhead > .chev:first-of-type{margin-left:auto}
+  .bhead .bsum ~ .chev, .bhead .bsum + .chev{margin-left:0}
+  details.bblock:not([open]) .bhead{border-bottom:none}
+  table.budget{width:100%;border-collapse:collapse;font-size:13.5px}
+  table.budget th{text-align:left;font-family:var(--display);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);font-weight:700;padding:12px 14px;border-bottom:1px solid var(--line)}
+  table.budget td{padding:12px 14px;border-bottom:1px solid var(--line2);color:var(--ink2);vertical-align:middle}
+  table.budget tr:last-child td{border-bottom:none}
+  table.budget td.r{text-align:right;white-space:nowrap}
+  table.budget td .usd-b{font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums}
+  table.budget td.tbd, .tbd{color:var(--faint);font-style:italic}
+  table.budget tr.total td{background:var(--bg2);font-weight:800;color:var(--ink);border-top:1px solid var(--line)}
+  table.budget tr.cut .cutname{text-decoration:line-through;color:var(--faint)}
+  .legend{margin-top:26px;font-size:14px;color:var(--ink2)}
+  .legend .ok-l{font-weight:800;color:var(--ink)}
+  .legend .tbd-l{color:var(--faint);font-style:italic}
+  table.data{width:100%;border-collapse:collapse;font-size:13px;margin-top:12px}
+  table.data th{text-align:left;font-family:var(--display);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);font-weight:700;padding:10px;border-bottom:1.5px solid var(--line)}
+  table.data td{padding:10px;border-bottom:1px solid var(--line2);color:var(--ink2);vertical-align:top}
+  table.data tr:last-child td{border-bottom:none}
+  table.data td.r{text-align:right;white-space:nowrap}
+  table.data td b{color:var(--ink)}
+  .pill{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:999px;background:rgba(106,123,104,.14);color:var(--moss)}
+  .pill.amber{background:rgba(215,179,105,.2);color:#8a6d2f}
+  .pill.red{background:rgba(156,74,47,.12);color:var(--red)}
+  .pill.gray{background:rgba(140,140,140,.14);color:#6b6b67}
+
+  /* ===== ТАКТИКА: Gantt ===== */
+  .gantt{margin-top:40px;border:1px solid var(--line);border-radius:16px;background:var(--panel);box-shadow:var(--shadow);overflow-x:auto}
+  .gantt-in{min-width:860px;padding:22px 22px 26px}
+  .g-row{display:grid;grid-template-columns:190px repeat(16,1fr);align-items:center;gap:0;min-height:34px}
+  .g-row.head{border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:6px;min-height:auto}
+  .g-row.head .g-w{font-family:var(--display);font-size:9.5px;font-weight:700;letter-spacing:.06em;color:var(--faint);text-transform:uppercase;text-align:center;grid-column:span 2}
+  .g-label{font-size:12.5px;color:var(--ink2);padding-right:12px;line-height:1.3}
+  .g-label b{color:var(--ink);font-weight:700}
+  .g-track{position:relative;height:16px;grid-column:span 16;display:grid;grid-template-columns:repeat(16,1fr);align-items:center}
+  .g-row:not(.head){border-bottom:1px dashed var(--line2)}
+  .g-row:not(.head):last-child{border-bottom:none}
+  .g-bar{height:14px;border-radius:7px;background:linear-gradient(90deg,var(--moss),var(--sage))}
+  .g-bar.gold{background:linear-gradient(90deg,var(--gold),var(--gold2))}
+  .g-bar.light{background:var(--line);}
+  .g-bar.champ{background:linear-gradient(90deg,var(--gold2),var(--champ))}
+  .g-ms{width:12px;height:12px;background:var(--gold);transform:rotate(45deg);border-radius:2px;justify-self:center}
+  .g-legend{display:flex;gap:22px;flex-wrap:wrap;margin-top:16px;padding:0 22px 0;font-size:12px;color:var(--muted)}
+  .g-legend i{display:inline-block;width:22px;height:10px;border-radius:5px;margin-right:7px;vertical-align:middle}
+
+  /* ===== День-таблиця ===== */
+  .daygrid td.day{font-family:var(--display);font-weight:800;font-size:12px;color:var(--green);white-space:nowrap}
+  .daygrid td.day small{display:block;font-weight:600;color:var(--faint);font-size:10.5px;text-transform:uppercase;letter-spacing:.06em}
+
+  /* ===== Kanban ===== */
+  .kanban{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+  .kcol{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:16px}
+  .kcol h4{font-family:var(--display);font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--moss);margin-bottom:12px;display:flex;justify-content:space-between}
+  .kcol h4 span{color:var(--faint)}
+  .kcard{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px;font-size:12.5px;color:var(--ink2);box-shadow:0 1px 2px rgba(42,42,42,.04)}
+  .kcard .kmeta{display:flex;justify-content:space-between;margin-top:8px;font-size:10.5px}
+  .kcard .kwho{font-family:var(--display);font-weight:700;color:var(--gold)}
+  .kcard .kdate{color:var(--faint)}
+  .kcard.done{opacity:.66}
+  .kcard.done .kname{text-decoration:line-through}
+
+  /* ===== Ланцюжок залежностей ===== */
+  .chain{display:flex;flex-wrap:wrap;gap:0;margin-top:36px;align-items:stretch}
+  .chip{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:0 26px 14px 0;min-width:130px;box-shadow:var(--shadow)}
+  .chip::after{content:'→';position:absolute;right:-21px;top:50%;transform:translateY(-50%);color:var(--gold);font-size:15px;font-weight:700}
+  .chip:last-child::after{content:''}
+  .chip .cstep{font-family:var(--display);font-size:9.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:3px}
+  .chip .cname{font-size:12.5px;font-weight:700;color:var(--ink);line-height:1.25}
+  .chip .cdate{font-size:11px;color:var(--faint);margin-top:3px}
+
+  /* ===== Donut ===== */
+  .donutbox{display:grid;grid-template-columns:220px 1fr;gap:34px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:28px;box-shadow:var(--shadow);margin-top:26px}
+  .dlegend{font-size:13.5px;color:var(--ink2)}
+  .dlegend div{display:flex;align-items:center;gap:10px;padding:5px 0}
+  .dlegend i{width:14px;height:14px;border-radius:4px;flex:none}
+  .dlegend b{margin-left:auto;color:var(--ink);white-space:nowrap}
+
+  /* ===== Відповідальні ===== */
+  .owner{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow)}
+  .owner .oname{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:6px}
+  .owner .oname h3{font-size:17px;margin:0}
+  .owner .oname span{font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+  .owner table{width:100%;border-collapse:collapse;font-size:12.5px}
+  .owner td{padding:8px 4px;border-bottom:1px dashed var(--line2);color:var(--ink2);vertical-align:top}
+  .owner tr:last-child td{border-bottom:none}
+  .owner td.od{white-space:nowrap;font-family:var(--display);font-weight:700;color:var(--green);font-size:11.5px}
+  .owner td.ob{white-space:nowrap;text-align:right;color:var(--gold);font-weight:700;font-size:11.5px}
+
+  /* ===== НАКАЗИ (А4) ===== */
+  .order{background:#fff;border:1px solid var(--ink2);border-radius:4px;max-width:820px;margin:34px auto 0;padding:56px 64px;box-shadow:0 2px 4px rgba(42,42,42,.06), 0 18px 44px -18px rgba(42,42,42,.18);color:#1c1c1c;font-size:14px;line-height:1.6}
+  .order .o-org{text-align:center;font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+  .order .o-org small{display:block;font-family:var(--sans);font-weight:400;text-transform:none;letter-spacing:0;color:#555;font-size:11.5px;margin-top:3px}
+  .order .o-title{text-align:center;margin:30px 0 6px;font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:.28em;text-transform:uppercase}
+  .order .o-req{display:flex;justify-content:space-between;font-size:12.5px;color:#444;border-bottom:1px solid #ccc;padding-bottom:14px;margin-bottom:18px}
+  .order .o-subj{font-weight:700;margin:14px 0}
+  .order .o-pre{color:#333}
+  .order .o-cmd{text-align:center;font-family:var(--display);font-weight:800;letter-spacing:.3em;margin:22px 0 12px}
+  .order ol{margin:0 0 8px 20px;padding:0}
+  .order ol li{margin:10px 0;padding-left:6px}
+  .order li .o-due{font-weight:700}
+  .order li .o-who{color:#444}
+  .order .o-sig{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:end;margin-top:44px;font-size:13px}
+  .order .o-sig .sline{border-bottom:1px solid #1c1c1c;height:34px}
+  .order .o-sig .scap{font-size:11px;color:#555;margin-top:6px}
+  .order .o-stamp{width:92px;height:92px;border:2px solid rgba(178,145,65,.5);border-radius:50%;display:grid;place-items:center;color:rgba(178,145,65,.7);font-family:var(--display);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-align:center;justify-self:center}
+  .order-tag{max-width:820px;margin:40px auto 0;display:flex;align-items:center;gap:12px;font-family:var(--display);font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+  .order-tag::after{content:'';flex:1;height:1px;background:var(--line)}
+
+  @media (max-width:880px){
+    .kanban{grid-template-columns:1fr}
+    .donutbox{grid-template-columns:1fr;justify-items:center}
+    .order{padding:34px 24px}
+  }
+  @media print{
+    .order{break-before:page;box-shadow:none}
+    .gantt{overflow:visible}
+  }
+
+  footer{padding:52px 0 72px;border-top:1px solid var(--line);color:var(--faint);font-size:13px;background:var(--bg2)}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+  @media (max-width:880px){
+    .g3{grid-template-columns:1fr 1fr}
+    .stats{grid-template-columns:1fr 1fr}
+    .stat{border-bottom:1px solid rgba(250,249,246,.1)}
+    .feature{grid-template-columns:1fr}
+    .sig{grid-template-columns:1fr}
+    .dec{grid-template-columns:44px 1fr}
+    .dec .ok{display:none}
+    .step{grid-template-columns:1fr;gap:8px}
+    .matrix{grid-template-columns:90px 1fr 1fr}
+  }
+  @media (max-width:560px){.g3,.g2,.renders{grid-template-columns:1fr}.wrap{padding:0 20px}section{padding:58px 0}.matrix{grid-template-columns:70px 1fr 1fr}.mx-cell{padding:16px}}
+
+  @media print{
+    section{padding:32px 0;break-inside:avoid-page}
+    .hero{padding:36px 0 0}
+    details.app{break-inside:avoid-page;box-shadow:none}
+    .card,.seg,.person,.plan,.render{box-shadow:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================ HERO · 01 НАВІЩО ============================ -->
+<header class="hero">
+  <div class="wrap">
+    <div class="brand">
+      <div class="mark">Д</div>
+      <div class="t">Доброград<small>Будуємо якість. Створюємо простір для життя.</small></div>
+    </div>
+    <div class="heroquote"><span class="qmark">«</span>Нежитловий фонд, який є — це гроші, яких у нас немає.<span class="qmark">»</span></div>
+    <div class="heroquote-by">Петро Леонідович · нарада 10.08.2026</div>
+    <p class="tag">У власності компанії — 15 868 м² готових комерційних площ. Близько <b>$8,6 млн</b> вкладено у приміщення, які зараз не приносять доходу. Пропонуємо продати об'єкти з низьким орендним потенціалом, а привабливі для бізнесу площі залишити у власності та здавати в оренду. Першим перевіримо цей підхід на <b>М-16 у Чабанах</b>.</p>
+    <div class="meta">
+      <span>Стратегія введення активів в обіг · <b>v5</b></span>
+      <span>18 серпня 2026</span>
+      <span>Пілот · Машинобудівників 16</span>
+      <span>Конфіденційно · для внутрішнього використання</span>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="statband">
+      <div class="stats">
+        <div class="stat"><div class="n">≈ $8,6 млн</div><div class="l">орієнтовна вартість<br>вільних приміщень</div></div>
+        <div class="stat"><div class="n">15 868 м²</div><div class="l">146 приміщень · 25 адрес<br>Вишневе · Чабани · Гостомель · Ірпінь</div></div>
+        <div class="stat"><div class="n">~95</div><div class="l">вільних приміщень,<br>які поки не приносять доходу</div></div>
+        <div class="stat"><div class="n">17</div><div class="l">приміщень в оренді · 2 131 м²<br>уже приносять дохід</div></div>
+      </div>
+    </div>
+    <p class="hint">Дані: Єдиний реєстр активів + внутрішній реєстр нежитлового фонду + портальний прайс, станом на 12.08.2026. Методика розрахунку — <a href="#det-money">розділ 11</a>, повний реєстр — <a href="#d5">Додаток</a>.</p>
+  </div>
+</header>
+
+<!-- ============================ 02 ВІЗУАЛІЗАЦІЯ ============================ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">02 · Візуалізація</div>
+    <h2>Те саме приміщення: зараз → після ремонту → з бізнесом усередині</h2>
+    <p class="lead">Покупцеві складно оцінити потенціал порожнього приміщення. Тому кожне показуємо трьома кадрами: реальний стан сьогодні, вайтбокс — після базового ремонту, і як у ньому може працювати бізнес. Візуалізації створюємо на базі реальних фотографій, власними силами.</p>
+
+    <div class="roomrow">
+      <div class="rhead"><h3>Приміщення П.4</h3><span>М-16 · підвал · 124 м²</span></div>
+      <div class="renders">
+        <div class="render bare"><img src="assets/rooms/p4-now.webp" alt="П.4 — реальний стан: бетон"><div class="cap">Зараз · реальне фото</div><div class="arrow">→</div></div>
+        <div class="render white"><img src="assets/rooms/p4-whitebox.webp" alt="П.4 — вайтбокс"><div class="cap">Вайтбокс</div><div class="arrow">→</div></div>
+        <div class="render"><img src="assets/rooms/p4-concept.webp" alt="П.4 — концепт: більярдний клуб"><div class="cap">Концепт · <b>більярдний клуб</b></div></div>
+      </div>
+    </div>
+
+    <div class="roomrow">
+      <div class="rhead"><h3>Приміщення П.3</h3><span>Піонерський 2 · вул. Машинобудівників, 16 · прибудова · підземний</span></div>
+      <div class="renders">
+        <div class="render bare"><img src="assets/rooms/p3-now.webp" alt="П.3 — реальний стан: бетон"><div class="cap">Зараз · реальне фото</div><div class="arrow">→</div></div>
+        <div class="render white"><img src="assets/rooms/p3-whitebox.webp" alt="П.3 — вайтбокс"><div class="cap">Вайтбокс</div><div class="arrow">→</div></div>
+        <div class="render"><img src="assets/rooms/p3-concept.webp" alt="П.3 — концепт: фітнес-зал"><div class="cap">Концепт · <b>фітнес-зал</b></div></div>
+      </div>
+    </div>
+
+    <div class="roomrow">
+      <div class="rhead"><h3>Приміщення НП 18.3</h3><span>Піонерський 2 · вул. Машинобудівників, 16 · прибудова · 3 поверх</span></div>
+      <div class="renders">
+        <div class="render bare"><img src="assets/rooms/np183-now.webp" alt="НП 18.3 — реальний стан: бетон, панорамне вікно"><div class="cap">Зараз · реальне фото</div><div class="arrow">→</div></div>
+        <div class="render white"><img src="assets/rooms/np183-whitebox.webp" alt="НП 18.3 — вайтбокс"><div class="cap">Вайтбокс</div><div class="arrow">→</div></div>
+        <div class="render"><img src="assets/rooms/np183-concept.webp" alt="НП 18.3 — концепт: йога-студія"><div class="cap">Концепт · <b>йога-студія</b></div></div>
+      </div>
+    </div>
+
+    <div class="roomrow">
+      <div class="rhead"><h3>Приміщення П.1</h3><span>Піонерський 2 · вул. Машинобудівників, 16 · прибудова · підземний</span></div>
+      <div class="renders">
+        <div class="render bare"><img src="assets/rooms/p1-now.webp" alt="П.1 — реальний стан: бетон"><div class="cap">Зараз · реальне фото</div><div class="arrow">→</div></div>
+        <div class="render white"><img src="assets/rooms/p1-whitebox.webp" alt="П.1 — вайтбокс"><div class="cap">Вайтбокс</div><div class="arrow">→</div></div>
+        <div class="render"><img src="assets/rooms/p1-concept.webp" alt="П.1 — концепт: майстерня"><div class="cap">Концепт · <b>майстерня</b></div></div>
+      </div>
+    </div>
+
+    <p class="hint">Той самий ракурс, та сама колона, ті самі вікна — щоб було видно: це не «картинка з інтернету», а саме це приміщення. Візуалізації — концептуальні, не є проєктом ремонту.</p>
+  </div>
+</section>
+
+<!-- ============================ 03 ПІЛОТ М-16 ============================ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">03 · Пілот</div>
+    <h2>М-16, Чабани: пілотний об'єкт для нової моделі</h2>
+    <p class="lead">«Будинок 1» ЖК Pionerskiy 2 введено в експлуатацію у 2021–2022 роках. За інвентаризацією від 26.06.2026 у ньому 31 нежитлове приміщення загальною площею 3 436 м². Вони розташовані на різних поверхах, тому мають різну цінність і потребують різних сценаріїв використання.</p>
+    <div class="feature">
+      <div>
+        <div class="big">≈ 65 % <small>площ М-16 не приносить доходу</small></div>
+        <p style="margin-top:18px">Найбільша частина — цоколь: 15 приміщень загальною площею 1 590 м², або близько 46 % об'єкта. Також у будинку є привабливе фасадне приміщення № 941 на першому поверсі, приміщення на 2–4 поверхах, офісний блок на третьому поверсі прибудови та підвал, придатний для комор.</p>
+      </div>
+      <div>
+        <table class="mini-table">
+          <tr><td>1-й поверх · фасадне приміщення</td><td>1 НП · 113 м²</td></tr>
+          <tr><td>Цоколь · послуги, склад, торгівля</td><td>15 НП · 1 590 м²</td></tr>
+          <tr><td>Поверхи 2–4 · офіси або апартаменти</td><td>5 НП · 579 м²</td></tr>
+          <tr><td>Прибудова, 3 пов. · офісний блок</td><td>5 НП · 558 м²</td></tr>
+          <tr><td>Підвал прибудови · комори</td><td>4 НП · 494 м²</td></tr>
+          <tr><td>Продано (947, розстрочка)</td><td>1 НП · 104 м²</td></tr>
+        </table>
+      </div>
+    </div>
+    <details class="app inline">
+      <summary><span class="tagn">Деталі</span><span class="st"><h3>Поверхова розкладка М-16 за відомістю</h3><p>Шари · секції · блокування · права</p></span><span class="chev">▶</span></summary>
+      <div class="app-body">
+        <table class="data">
+          <tr><th>Шар</th><th>Що (секції)</th><th style="text-align:right">НП</th><th style="text-align:right">м²</th><th>Використання</th></tr>
+          <tr><td><b>1-й поверх</b></td><td>НП 5.7 (941), фасадне крило, секц. 5</td><td class="r">1</td><td class="r">113</td><td>фасадне приміщення з високим попитом</td></tr>
+          <tr><td><b>Цоколь</b></td><td>секц. 5–8 (вулиця, 8 НП · 854 м²) + секц. 1–4 (поле/двір, 7 НП · 736 м²)</td><td class="r">15</td><td class="r">1 590</td><td>послуги / склад / торгівля</td></tr>
+          <tr><td><b>Поверхи 2–4</b></td><td>секц. 4 (948, 966, 980) · секц. 5 (953, 981)</td><td class="r">5</td><td class="r">579</td><td>апартаменти або офіси</td></tr>
+          <tr><td><b>Прибудова, 3 пов.</b></td><td>964 · 967 · 968 · 970 · 971 — офісний блок</td><td class="r">5</td><td class="r">558</td><td>офіс / коворкінг</td></tr>
+          <tr><td><b>Підвал прибудови</b></td><td>915 · 916 · 917 · 918</td><td class="r">4</td><td class="r">494</td><td>комори / склад</td></tr>
+          <tr><td><b>Продано</b></td><td>947 (розстрочка)</td><td class="r">1</td><td class="r">104</td><td>поза периметром</td></tr>
+        </table>
+        <p class="note" style="margin-top:14px">Цоколь — єдиний об'єм без перегородок, 94–122 м², вхід внутрішніми сходами, вікна цокольного рівня; крила 5–8 (вулиця) і 1–4 (поле/двір) різняться орієнтацією. Частина приміщень (858, 866, 1036, 1037) зарезервована для взаєморозрахунків щодо М-18, а приміщення № 1039 планують поділити на комори. Їх можна буде продавати або здавати в оренду після зняття цих обмежень. Фонд оформлено переважно на майнові права.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============================ 04 ГІБРИДНА МОДЕЛЬ ============================ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">04 · Модель монетизації М-16</div>
+    <h2>Рішення для М-16: прибудову здавати, інші приміщення — здавати або продавати</h2>
+    <p class="lead">Для кожної частини будинку заздалегідь визначаємо основний сценарій. Остаточне рішення — оренда чи продаж — ухвалюємо з урахуванням конкретної пропозиції клієнта.</p>
+    <table class="data" style="margin-top:36px;font-size:14px">
+      <tr><th>Блок</th><th>Що входить (поверхи / секції)</th><th style="text-align:right">м²</th><th>Сценарій</th></tr>
+      <tr><td><b>Крило 5–8 · вулиця</b></td><td>1-й пов. (941) + цоколь 5–8 (8 НП) + поверхи 2–4 секц. 5 (953, 981)</td><td class="r">1 202</td><td><span class="pill">оренда або продаж залежно від пропозиції клієнта</span></td></tr>
+      <tr><td><b>Крило 1–4 · поле/двір</b></td><td>цоколь 1–4 (7 НП) + поверхи 2–4 секц. 4 (948, 966, 980)</td><td class="r">1 079</td><td><span class="pill">оренда або продаж залежно від пропозиції клієнта</span></td></tr>
+      <tr><td><b>Прибудова</b></td><td>3-й пов. офіси (964–971) + підвал-комори (915–918)</td><td class="r">1 051</td><td><span class="pill amber">тільки оренда</span></td></tr>
+    </table>
+    <div class="grid g3">
+      <div class="card"><div class="num-chip">А</div>
+        <h3>Приміщення 941 і фасадний цоколь 5–8 — в оренду</h3>
+        <p>Ці приміщення можуть забезпечити стабільний орендний дохід. Цоколь у секціях 5–8 пропонуємо аптекам, кав'ярням, салонам, студіям та операторам поштових відділень. Перед запуском разом із проєктувальником перевіряємо можливість облаштування окремих входів.</p>
+      </div>
+      <div class="card"><div class="num-chip">Б</div>
+        <h3>Цоколь 1–4 з боку двору — на продаж</h3>
+        <p>Основний сценарій — продаж без ремонту, щоб швидше повернути вкладені кошти. Альтернатива — оренда під склад, репетиційні приміщення або легке виробництво, якщо з'явиться відповідний клієнт.</p>
+      </div>
+      <div class="card"><div class="num-chip">В</div>
+        <h3>Поверхи 2–4 — офіси або апартаменти</h3>
+        <p>Можливі оренда, продаж або переведення у житловий фонд. До зміни юридичного статусу використовувати ці приміщення як житло не можна.</p>
+      </div>
+    </div>
+    <details class="app inline">
+      <summary><span class="tagn">Деталі</span><span class="st"><h3>Орієнтовні ціни М-16 · без ремонту</h3><p>Попередні дані по Чабанах · ціни ще уточнюємо</p></span><span class="chev">▶</span></summary>
+      <div class="app-body">
+        <table class="data">
+          <tr><th>Тип приміщення</th><th style="text-align:right">Продаж без ремонту</th><th>Примітка</th></tr>
+          <tr><td>1-й поверх, фасадне крило (941)</td><td class="r"><b>верхній діапазон</b></td><td>найпривабливіший формат, показуємо першим</td></tr>
+          <tr><td>Цоколь</td><td class="r"><b>≈ $470–560/м²</b></td><td>вища ціна для секцій 5–8 після облаштування окремого входу</td></tr>
+          <tr><td>Поверхи 2–4</td><td class="r tbd">орієнтир для офісів / апартаментів</td><td>потрібно оновити аналіз аналогів</td></tr>
+          <tr><td>Комори / підвал</td><td class="r"><b>$700–1 020/м²</b></td><td>за комірку малого метражу</td></tr>
+        </table>
+        <p class="note" style="margin-top:12px">Оформлене право власності може підвищити ціну приблизно на 25 % порівняно з продажем майнових прав. Орендні ставки затвердимо після аналізу актуальних пропозицій у Чабанах: дані по Вишневому для М-16 не підходять. Орієнтовна оцінка об'єкта становить $2,0–2,5 млн; реалістичну ціну перевіримо за реакцією на тестові оголошення.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============================ 05 ІНФОПОЛЕ ============================ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">05 · Інформаційне поле</div>
+    <h2>Наші метри вже продають — без нас</h2>
+    <p class="lead">Ми знайшли оголошення сторонніх брокерів про продаж приміщень у М-16. В обліку компанії проданим зазначено лише приміщення № 947, тому потрібно перевірити, на якій підставі брокери рекламують інші об'єкти. Це створює ризик неконтрольованих цін і втрати звернень.</p>
+    <table class="data" style="margin-top:36px;font-size:14px">
+      <tr><th>Продавець</th><th>Що продає</th><th style="text-align:right">Ціна</th><th>Публікується</th><th>Статус</th></tr>
+      <tr><td><b>Віталій Дьомін</b> <span class="uah">позначений «представник забудовника»</span></td><td>Блок прибудови 557,8 м² (3-й пов.), пропонує дробити весь наш блок</td><td class="r">$833/м²</td><td>з 15.01.2025</td><td><span class="pill red">повноваження з'ясувати</span></td></tr>
+      <tr><td><b>Олена Ляхова</b> <span class="uah">посередник · вторинка</span></td><td>114,4 м² — переуступка прав</td><td class="r tbd">—</td><td>з 27.12.2024</td><td><span class="pill red">повноваження з'ясувати</span></td></tr>
+      <tr><td>Приватні продавці / агентства</td><td>Окремі приміщення з ремонтом</td><td class="r tbd">різні</td><td>—</td><td><span class="pill gray">не наш фонд</span></td></tr>
+    </table>
+    <div class="grid g3">
+      <div class="card"><div class="num-chip">1</div><h3>Підтвердити або припинити</h3><p>По кожному брокеру — офіційне рішення: авторизуємо на наших умовах або припиняємо повноваження і знімаємо оголошення.</p></div>
+      <div class="card"><div class="num-chip">2</div><h3>Єдина ціна</h3><p>Одна цінова політика: оренда ₴/м²/міс і продаж $/м² — без самодіяльності посередників. Публікація прибудови «продаж $833/м²» суперечить рішенню «прибудова — оренда» — знімаємо або переорієнтовуємо.</p></div>
+      <div class="card gold"><div class="num-chip">3</div><h3>Єдиний телефон і акаунт</h3><p>Усі звернення щодо нежитлових приміщень спрямовуємо на один номер і в один акаунт Холдингу. За напрям відповідають окремі менеджери, які не поєднують цю роботу з продажем житла.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 06 РОБОЧІ БЛОКИ ============================ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">06 · Робочі блоки</div>
+    <h2>Чотири блоки запуску</h2>
+    <div class="grid g2">
+      <div class="card"><div class="num-chip">1</div>
+        <h3>Інформаційне поле</h3>
+        <p>Збираємо в одному реєстрі всі оголошення про наші приміщення. Перевіряємо статус, площу, право власності й ціну; видаляємо дублікати та помилки; з'ясовуємо повноваження брокерів. Усі звернення переводимо на єдиний номер і закріплюємо за окремими менеджерами.</p>
+      </div>
+      <div class="card"><div class="num-chip">2</div>
+        <h3>Канали просування</h3>
+        <p>Розміщуємо оголошення на OLX, DIM.RIA, RIELTOR.UA та LUN. У назві й описі зазначаємо і назву житлового комплексу, і адресу, щоб приміщення можна було знайти за обома запитами. Усі оголошення оформлюємо в єдиному стилі та публікуємо через акаунт Холдингу. Для пріоритетних об'єктів додаємо відеоогляд.</p>
+      </div>
+      <div class="card"><div class="num-chip">3</div>
+        <h3>Що просуваємо — за картою об'єкта</h3>
+        <p>Першим показуємо приміщення 941 на першому поверсі та шукаємо прямого орендаря. Фасадний цоколь 5–8 пропонуємо сервісному бізнесу після облаштування окремих входів. Цоколь 1–4 з боку двору продаємо без ремонту або здаємо під склад. Поверхи 2–4 розглядаємо як офіси чи апартаменти, прибудову — лише для оренди. За потреби базові роботи виконуємо самі або зараховуємо витрати орендаря в рахунок орендної плати.</p>
+      </div>
+      <div class="card"><div class="num-chip">4</div>
+        <h3>Єдиний реєстр і контент</h3>
+        <p>Створюємо єдиний реєстр з актуальними даними про кожне приміщення: статус, право власності, ціна, канал просування, відповідальний і посилання на оголошення. Перед публікацією перевіряємо фото та документи за двома окремими списками.</p>
+      </div>
+    </div>
+    <details class="app inline">
+      <summary><span class="tagn">Деталі</span><span class="st"><h3>Два чек-листи перед публікацією</h3><p>Фото · документація — з концепції М-16, ред. 18.08</p></span><span class="chev">▶</span></summary>
+      <div class="app-body">
+        <h4>Чек-лист фотозйомки</h4>
+        <p>Фасад і вхідна група; для секцій 5–8 — місце можливого окремого входу та приямка. Далі: прив'язка до адреси й секції, 3–5 загальних кадрів приміщення, висота стелі, електрощит, потужність, вода, каналізація, вентиляція, опалення, санвузол, вид із вікна та пішохідний потік. Додаємо планування і позначку на генплані. Вимоги до фотозйомки: рівний горизонт, денне світло, єдиний стиль, щонайменше 12–15 кадрів; для пріоритетних приміщень — відеоогляд тривалістю 30–60 секунд.</p>
+        <h4>Чек-лист документації</h4>
+        <p>Перевіряємо правовстановлювальні документи, статус права, техпаспорт, площу, поверх, висоту стелі, адресу, секцію та інженерні характеристики. Окремо фіксуємо призначення і стан приміщення — без ремонту, з будівельним оздобленням або готове; обтяження; статус оренди чи продажу; затверджену ціну; можливі роботи під потреби клієнта; контакт і комплект фото.</p>
+        <p class="note">Повні версії обох чек-листів узгоджені з фото-ТЗ (ред. 11.08) і ТЗ картки об'єкта (ред. 12.08) — Додатки Д3 і Д4.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============================ 03 МАТРИЦЯ ============================ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">07 · Весь фонд · Матриця форматів</div>
+    <h2>Для кожного приміщення — одна з чотирьох стратегій</h2>
+    <p class="lead">Розподіляємо приміщення за двома ознаками: розташуванням — фасадне чи дворове — та площею — до 100 м² або понад 100 м². Для кожної категорії визначаємо пріоритет: оренда чи продаж.</p>
+    <div class="matrix">
+      <div class="mx-corner"></div>
+      <div class="mx-h">до 100 м²</div>
+      <div class="mx-h">більше 100 м²</div>
+      <div class="mx-r">Фасад</div>
+      <div class="mx-cell">
+        <span class="verdict v-rent">Тримаємо · оренда</span>
+        <h3>Фасадні приміщення для малого бізнесу</h3>
+        <p>Підходить для кав'ярень, аптек і салонів. Помітний фасад, вітрина та потік людей забезпечують найвищу орендну ставку за м², тому такі приміщення доцільно залишати у власності.</p>
+      </div>
+      <div class="mx-cell">
+        <span class="verdict v-rent">Тримаємо · оренда</span>
+        <h3>Великі торговельні та офісні приміщення</h3>
+        <p>Підходить для продуктових мереж, медичних закладів і дитячих центрів. Потенційним орендарям надсилаємо прямі пропозиції з урахуванням вимог кожної мережі.</p>
+      </div>
+      <div class="mx-r">Не фасад</div>
+      <div class="mx-cell">
+        <span class="verdict v-sell">Продаємо</span>
+        <h3>Малі приміщення у дворах</h3>
+        <p>Підходить для студій, кабінетів і майстерень. Такі приміщення мають широке коло потенційних покупців, а дохід від оренди не виправдовує витрат на управління, тому їх доцільно продавати.</p>
+      </div>
+      <div class="mx-cell">
+        <span class="verdict v-sell">Пільгова оренда · ремонт коштом орендаря</span>
+        <h3>Дворові цоколі 100+ м²</h3>
+        <p>Пропонуємо ставку близько 50 грн/м² за умови, що орендар власним коштом ремонтує приміщення. Через 2–3 роки поліпшення залишаються власнику, тож вартість активу зростає без наших капітальних витрат.</p>
+      </div>
+    </div>
+    <div class="principle">«Не фасад — намагаємось продати, фасад — здати в оренду… фасад ми б лишали за собою.»<small>Принцип · нарада 11.08</small></div>
+    <details class="app inline">
+      <summary><span class="tagn">Деталі</span><span class="st"><h3>Орієнтовні ціни за категоріями</h3><p>З внутрішнього реєстру · продаж і оренда · курс 44,5</p></span><span class="chev">▶</span></summary>
+      <div class="app-body">
+        <table class="data">
+          <tr><th>Категорія</th><th style="text-align:right">Продаж</th><th style="text-align:right">Оренда</th></tr>
+          <tr><td>Цоколь / фасадні приміщення</td><td class="r"><b>~$1 150/м²</b> <span class="uah">51 000 ₴</span></td><td class="r"><b>~$12,6/м²/міс</b> <span class="uah">560 ₴</span></td></tr>
+          <tr><td>Офіс / поверхи</td><td class="r"><b>~$850/м²</b> <span class="uah">38 000 ₴</span></td><td class="r"><b>~$6,3/м²/міс</b> <span class="uah">280 ₴</span></td></tr>
+          <tr><td>Підвал / склад</td><td class="r"><b>~$500/м²</b> <span class="uah">22 000 ₴</span></td><td class="r"><b>~$4,5/м²/міс</b> <span class="uah">200 ₴</span></td></tr>
+        </table>
+        <p class="note" style="margin-top:12px">Ці цифри потрібні для попереднього позиціювання і не є остаточними цінами угод. Актуальні ціни окремих приміщень наведено в портальному прайсі (розділ 11). Для М-16 використовуємо окремі орієнтири по Чабанах для приміщень без ремонту (розділи 03–04). Великі дворові цоколі оцінюємо окремо: близько 50 ₴/м² на місяць за умови, що ремонт виконує орендар.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============================ 04 ЩО ПРОДАЄМО, ЩО ЗДАЄМО ============================ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">08 · Весь фонд · Склад і типізація</div>
+    <h2>Склад фонду та типові групи приміщень</h2>
+    <div class="feature">
+      <div>
+        <div class="big">56 <small>фактичних фотозйомок замість 95</small></div>
+        <p style="margin-top:18px">Частина приміщень має однакове планування, розташування та площу. У кожній такій групі готуємо й фотографуємо один типовий об'єкт, а матеріали використовуємо для решти з відповідною приміткою. Усього маємо 22 типові групи та 34 унікальні приміщення. Для готових будинків потрібно <b>36 фотозйомок</b>.</p>
+      </div>
+      <div>
+        <table class="mini-table">
+          <tr><td>Вільні у готових будинках</td><td>56 пом. · 6 807 м²</td></tr>
+          <tr><td>Вільні на стадії будівництва <span class="uah">М-18, 5А</span></td><td>42 пом. · 3 588 м²</td></tr>
+          <tr><td>В оренді (діючі договори)</td><td>17 пом. · 2 131 м²</td></tr>
+          <tr><td>Майнові права, не власність</td><td>97 пом. · 10 209 м²</td></tr>
+          <tr><td>Без вікон (цоколі/підвали)</td><td>53 пом.</td></tr>
+        </table>
+      </div>
+    </div>
+    <details class="app inline">
+      <summary><span class="tagn">Деталі</span><span class="st"><h3>Повний перелік фотозйомок і ризиків</h3><p>56 фотозйомок охоплюють усі 98 вільних приміщень: 22 типові групи та 34 унікальні об'єкти</p></span><span class="chev">▶</span></summary>
+      <div class="app-body">
+        <h4>Хвиля 1 · Готові будинки — 36 фотозйомок для 56 приміщень</h4>
+        <p class="note">Типові групи: готуємо і знімаємо перше приміщення групи, решта отримує ті самі матеріали з поміткою «планування типове».</p>
+        <table class="data">
+          <tr><th>Адреса · поверх</th><th>Метраж</th><th style="text-align:right">Шт.</th><th>Приміщення (знімаємо перше)</th></tr>
+          <tr><td>Машинобудівників 16 · цоколь</td><td>94–97 м²</td><td class="r"><b>7</b></td><td>НП 3.4 · 6.2 · 7.3 · 6.3 · 1.3 · 4.3 · 3.3</td></tr>
+          <tr><td>Машинобудівників 16 · цоколь</td><td>119–122 м²</td><td class="r"><b>3</b></td><td>НП 2.2 · 8.2 · 7.1</td></tr>
+          <tr><td>Машинобудівників 16 · підвал</td><td>124–133 м²</td><td class="r"><b>3</b></td><td>П.2 · П.3 · П.4</td></tr>
+          <tr><td>Машинобудівників 16 · 3 поверх</td><td>69 м²</td><td class="r"><b>2</b></td><td>НП 18.3 · 17.2</td></tr>
+          <tr><td>Машинобудівників 16 · 3 поверх</td><td>158–159 м²</td><td class="r"><b>2</b></td><td>НП 17.1 · 18.1</td></tr>
+          <tr><td>Машинобудівників 16 · 4 поверх</td><td>113–114 м²</td><td class="r"><b>2</b></td><td>НП 5.10 · 4.10</td></tr>
+          <tr><td>Єдності 5 · цоколь</td><td>126–132 м²</td><td class="r"><b>4</b></td><td>НП 13 · 16 · 17 · 18</td></tr>
+          <tr><td>Єдності 5 · цоколь</td><td>89–90 м²</td><td class="r"><b>2</b></td><td>НП 12 · 15</td></tr>
+          <tr><td>Єдності 4 · цоколь</td><td>69–72 м²</td><td class="r"><b>2</b></td><td>НП 244 · 246</td></tr>
+          <tr><td>Молодіжна 22А · цоколь</td><td>30 м²</td><td class="r"><b>2</b></td><td>НП 42 · 48 <span class="pill red" style="margin-left:6px">часткова власність</span></td></tr>
+          <tr><td>Піонерська 18 · цоколь</td><td>90–94 м²</td><td class="r"><b>2</b></td><td>НП 21 · 22</td></tr>
+        </table>
+        <p class="note" style="margin-top:22px">Унікальні — знімаємо кожне окремо (25): аналогів немає, матеріали не клонуються.</p>
+        <table class="data">
+          <tr><th>Адреса · поверх</th><th>Метраж</th><th style="text-align:right">Шт.</th><th>Приміщення</th></tr>
+          <tr><td>Машинобудівників 16 · підвал</td><td>107 м²</td><td class="r">1</td><td>П.1</td></tr>
+          <tr><td>Машинобудівників 16 · 1 поверх</td><td>113 м²</td><td class="r">1</td><td>НП 5.7</td></tr>
+          <tr><td>Машинобудівників 16 · 2 поверх</td><td>115 м²</td><td class="r">1</td><td>НП 4.8</td></tr>
+          <tr><td>Машинобудівників 16 · 3 поверх</td><td>103 м²</td><td class="r">1</td><td>НП 17.3</td></tr>
+          <tr><td>Машинобудівників 16 · 3 поверх</td><td>115 м²</td><td class="r">1</td><td>НП 4.9</td></tr>
+          <tr><td>Єдності 5 · цоколь</td><td>138 м²</td><td class="r">1</td><td>НП 14</td></tr>
+          <tr><td>Єдності 6А · цоколь</td><td>305 м²</td><td class="r">1</td><td>НП 96</td></tr>
+          <tr><td>Єдності 6А · —</td><td>252 м²</td><td class="r">1</td><td>НП 2</td></tr>
+          <tr><td>Єдності 6А · —</td><td>382 м²</td><td class="r">1</td><td>НП «підпілля»</td></tr>
+          <tr><td>Молодіжна 22 · цоколь</td><td>22 м²</td><td class="r">1</td><td>НП 21-4</td></tr>
+          <tr><td>Молодіжна 22 · цоколь</td><td>30 м²</td><td class="r">1</td><td>НП 21-5</td></tr>
+          <tr><td>Молодіжна 22А · цоколь</td><td>22 м²</td><td class="r">1</td><td>НП 47 <span class="pill red" style="margin-left:6px">часткова власність</span></td></tr>
+          <tr><td>Молодіжна 22А · цоколь</td><td>38 м²</td><td class="r">1</td><td>НП 51 <span class="pill red" style="margin-left:6px">часткова власність</span></td></tr>
+          <tr><td>Молодіжна 32 · цоколь</td><td>73 м²</td><td class="r">1</td><td>НП 138</td></tr>
+          <tr><td>Молодіжна 32 · цоколь</td><td>126 м²</td><td class="r">1</td><td>НП 123</td></tr>
+          <tr><td>Молодіжна 32 · цоколь</td><td>202 м²</td><td class="r">1</td><td>НП 124</td></tr>
+          <tr><td>Молодіжна 32А · цоколь</td><td>147 м²</td><td class="r">1</td><td>НП 160(а)</td></tr>
+          <tr><td>Молодіжна 32А · —</td><td>93 м²</td><td class="r">1</td><td>НП 184</td></tr>
+          <tr><td>Молодіжна 32А · —</td><td>299 м²</td><td class="r">1</td><td>НП 163</td></tr>
+          <tr><td>Першотравнева 21А · цоколь</td><td>200 м²</td><td class="r">1</td><td>НП 42 <span class="pill red" style="margin-left:6px">часткова власність</span></td></tr>
+          <tr><td>Першотравнева 23 · цоколь</td><td>130 м²</td><td class="r">1</td><td>НП 127</td></tr>
+          <tr><td>Піонерська 20 · —</td><td>308 м²</td><td class="r">1</td><td>НП №52/53</td></tr>
+          <tr><td>Піонерська 28 · 1 поверх</td><td>47 м²</td><td class="r">1</td><td>Приміщення 42/1</td></tr>
+          <tr><td>Гостомель, Свято-Покровська 73-Г · 1 поверх</td><td>170 м²</td><td class="r">1</td><td>НП 166/224</td></tr>
+          <tr><td>Гостомель, Свято-Покровська 73-Г · —</td><td>93 м²</td><td class="r">1</td><td>НП 172/008</td></tr>
+        </table>
+        <h4>Об'єкти на етапі будівництва · М-18 і М-5А — 20 фотозйомок для 42 приміщень: будівля, фасад і вид із вікон; інтер'єр — після введення в експлуатацію</h4>
+        <table class="data">
+          <tr><th>Адреса · поверх</th><th>Метраж</th><th style="text-align:right">Шт.</th><th>Приміщення (знімаємо перше)</th></tr>
+          <tr><td>Машинобудівників 18 · 1 поверх</td><td>85–92 м²</td><td class="r"><b>7</b></td><td>НП 10.2 · 4.5 · 9.6 · 9.5 · 10.3 · 10.7 · 9.1</td></tr>
+          <tr><td>Машинобудівників 18 · 1 поверх</td><td>64–68 м²</td><td class="r"><b>5</b></td><td>НП 4.9 · 9.2 · 10.4 · 7.3 · 7.7</td></tr>
+          <tr><td>Машинобудівників 18 · 2 поверх</td><td>32–33 м²</td><td class="r"><b>2</b></td><td>НП 9.8 · 4.12</td></tr>
+          <tr><td>Машинобудівників 18 · 2 поверх</td><td>71 м²</td><td class="r"><b>2</b></td><td>НП 7.9 · 7.12</td></tr>
+          <tr><td>Машинобудівників 18 · 2 поверх</td><td>85–87 м²</td><td class="r"><b>2</b></td><td>НП 9.9 · 4.11</td></tr>
+          <tr><td>Машинобудівників 18 · 2 поверх</td><td>99 м²</td><td class="r"><b>2</b></td><td>НП 7.11 · 7.10</td></tr>
+          <tr><td>Машинобудівників 5А · 1 поверх</td><td>66–70 м²</td><td class="r"><b>3</b></td><td>НП 5.1 · 6.2 · 5.4</td></tr>
+          <tr><td>Машинобудівників 5А · 1 поверх</td><td>80–84 м²</td><td class="r"><b>3</b></td><td>НП 4.3 · 5.5 · 6.3</td></tr>
+          <tr><td>Машинобудівників 5А · 1 поверх</td><td>94–98 м²</td><td class="r"><b>3</b></td><td>НП 4.4 · 1.1 · 6.1</td></tr>
+          <tr><td>Машинобудівників 5А · 1 поверх</td><td>118–119 м²</td><td class="r"><b>2</b></td><td>НП 4.2 · 5.2</td></tr>
+          <tr><td>Машинобудівників 5А · 2 поверх</td><td>104–106 м²</td><td class="r"><b>2</b></td><td>НП 6.6 · 6.7</td></tr>
+        </table>
+        <p class="note" style="margin-top:22px">Дев'ять унікальних приміщень на етапі будівництва фотографуємо окремо.</p>
+        <table class="data">
+          <tr><th>Адреса · поверх</th><th>Метраж</th><th style="text-align:right">Шт.</th><th>Приміщення</th></tr>
+          <tr><td>Машинобудівників 18 · 1 поверх</td><td>30 м²</td><td class="r">1</td><td>НП 10.6</td></tr>
+          <tr><td>Машинобудівників 18 · цоколь</td><td>170 м²</td><td class="r">1</td><td>НП 2.4</td></tr>
+          <tr><td>Машинобудівників 18 · цоколь</td><td>192 м²</td><td class="r">1</td><td>НП 2.1</td></tr>
+          <tr><td>Машинобудівників 5А · 1 поверх</td><td>49 м²</td><td class="r">1</td><td>НП 5.3</td></tr>
+          <tr><td>Машинобудівників 5А · 1 поверх</td><td>54 м²</td><td class="r">1</td><td>НП 6.4</td></tr>
+          <tr><td>Машинобудівників 5А · 1 поверх</td><td>145 м²</td><td class="r">1</td><td>НП 4.1</td></tr>
+          <tr><td>Машинобудівників 5А · 2 поверх</td><td>54 м²</td><td class="r">1</td><td>НП 6.8</td></tr>
+          <tr><td>Машинобудівників 5А · 2 поверх</td><td>61 м²</td><td class="r">1</td><td>НП 6.9</td></tr>
+          <tr><td>Машинобудівників 5А · 2 поверх</td><td>124 м²</td><td class="r">1</td><td>НП 6.5</td></tr>
+        </table>
+        <h4>Ризики, які потрібно усунути до виходу на ринок</h4>
+        <table class="data">
+          <tr><td><span class="pill red">Майнові права</span></td><td>97 приміщень (10 209 м²) — не право власності; 47 із них будуються. Покупцю потрібен пакет: інвестдоговір, строк введення, відповідальність за прострочення.</td></tr>
+          <tr><td><span class="pill red">Часткова власність</span></td><td>5 приміщень (Молодіжна 22А, Першотравнева 21А) — продаж лише за згодою співвласників.</td></tr>
+          <tr><td><span class="pill amber">Перейменовані вулиці</span></td><td>Першотравнева = Примаченко · Піонерська = Молодіжна · Дорошенка = Чорновола. У картці — обидві назви.</td></tr>
+        </table>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============================ 05 ФОТО + КАРТКА ============================ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">09 · Фото + картка об'єкта</div>
+    <h2>Скільки насправді коштує фотозйомка</h2>
+    <p class="lead">Потрібна не художня фотосесія, а послідовна й точна фіксація кожного приміщення за єдиним стандартом. На київському ринку фотозйомка одного об'єкта коштує 5–7 тис ₴, тому 36 окремих замовлень обійшлися б у 180–252 тис ₴ <span class="uah">($4 045–5 660)</span>. Щоб зменшити витрати, групуємо типові приміщення й оплачуємо роботу фотографа за знімальний день.</p>
+    <div class="grid g2" style="margin-top:52px">
+      <div class="plan">
+        <div class="name">Бюджетний підрядник · оплата за день</div>
+        <div class="price usd">$400–600<span class="uah">18–27 тис ₴ · 6 днів × 3–4,5 тис ₴</span></div>
+        <ul>
+          <li>Виконавець з Kabanchik зі своїм обладнанням і світлом</li>
+          <li>8–10 приміщень за день, за нашим ТЗ</li>
+          <li>Орієнтовний бюджет, погоджений на нараді 13.08</li>
+        </ul>
+        <div class="risk">Ризик: нестабільна якість. До укладення договору обов'язково проводимо тестову фотозйомку.</div>
+      </div>
+      <div class="plan rec">
+        <div class="badge">Рекомендуємо</div>
+        <div class="name">Професійний інтер'єрний фотограф · оплата за день</div>
+        <div class="price usd">$800–1 200<span class="uah">36–54 тис ₴ · 5–6 днів з обробкою</span></div>
+        <ul>
+          <li>Досвід фотозйомки комерційних інтер'єрів і власне освітлення для цокольних приміщень</li>
+          <li>Вихідні RAW-файли та оброблені фотографії включено у вартість</li>
+          <li>У 5 разів дешевше тарифу «за об'єкт» завдяки типізації</li>
+        </ul>
+        <div class="risk">Ціна фіксується після безкоштовної тестової фотозйомки цоколя. Тестуємо обох кандидатів — обираємо за результатом.</div>
+      </div>
+    </div>
+    <p class="hint">Обладнання не купуємо: підрядник повинен мати власний штатив і мобільне освітлення — це зазначено у технічному завданні. Від фотозйомки силами працівників компанії відмовляємося, оскільки витрати на техніку не гарантують професійного результату.</p>
+    <details class="app inline">
+      <summary><span class="tagn">Деталі</span><span class="st"><h3>Що знімаємо і що збираємо в картку</h3><p>Зведення двох готових ТЗ · повні версії — у Додатку</p></span><span class="chev">▶</span></summary>
+      <div class="app-body">
+        <h4>Стандарт кадрів на приміщення (з фото-ТЗ, ред. 11.08)</h4>
+        <table class="data">
+          <tr><th>Блок</th><th>Кадри</th><th style="text-align:right">Шт.</th></tr>
+          <tr><td>A · Контекст (раз на адресу)</td><td>Фасад, підходи, сусіди-орендарі, паркування</td><td class="r">6–8</td></tr>
+          <tr><td>B · Вхідна група</td><td>Вхід, ґанок/пандус, місце вивіски, вітрини</td><td class="r">4–5</td></tr>
+          <tr><td>C · Інтер'єр</td><td>Кожна кімната з двох кутів, вікна і вид з них, стеля з далекоміром, підлога</td><td class="r">8–14</td></tr>
+          <tr><td>D · Техвузли</td><td>Щит, автомати, лічильники з номерами, опалення, вентиляція</td><td class="r">5–8</td></tr>
+          <tr><td>E · Проблемні місця</td><td>Тріщини, протікання — окрема папка, НЕ для реклами</td><td class="r">за фактом</td></tr>
+        </table>
+        <h4>Картка об'єкта — два пакети (ТЗ, ред. 12.08)</h4>
+        <p><b>Пакет А</b> (мінімум для оголошення, робимо по всіх вільних): адреса з обома назвами вулиці, площа, поверх, висота стелі, тип входу, вікна, потужність у кВт, стан, план, ціна, контакт. <b>Пакет Б</b> (для угоди, за запитом): юридичний блок, інженерія повністю, операційні витрати, податки, замір трафіку.</p>
+        <p class="note">Клієнту ніколи не йдуть: витяг на власника цілком, договірні ціни минулих угод, наша мінімальна ціна, папка «Проблемні місця», службові помітки. Перед фотозйомкою приміщення готуємо: сміття, лампи, вікна — чек-лист у фото-ТЗ, розділ 6.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============================ 06 МАРКЕТИНГ ============================ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">10 · Маркетинг</div>
+    <h2>Публікуємо вибірково, щоб зберегти ринкову ціну</h2>
+    <div class="grid g3">
+      <div class="card"><div class="num-chip">1</div>
+        <h3>Одне оголошення на формат</h3>
+        <p>Якщо одночасно опублікувати близько 95 вільних приміщень, у покупців виникне враження надлишкової пропозиції, що послабить нашу позицію в переговорах. Тому для кожного формату публікуємо одне типове приміщення, а решту менеджер пропонує після уточнення потреб клієнта.</p>
+      </div>
+      <div class="card"><div class="num-chip">2</div>
+        <h3>Прибираємо неактуальні оголошення</h3>
+        <p>Старі оголошення та публікації посередників із 2022 року створюють цінову плутанину й відводять звернення від наших менеджерів. Як власник, компанія ініціює їх видалення з майданчиків і залишає один актуальний канал зв'язку.</p>
+      </div>
+      <div class="card gold"><div class="num-chip">3</div>
+        <h3>Візуалізація замість бетону</h3>
+        <p>У кожному оголошенні — AI-рендери «з меблями / без» (розділ 02) і чесні фото за стандартом. Для цоколів — аргумент безпеки: власне укриття.</p>
+      </div>
+    </div>
+    <details class="app inline">
+      <summary><span class="tagn">Деталі</span><span class="st"><h3>Механіка запуску оголошень</h3><p>Пілот М-16 · збір дзвінків · CRM</p></span><span class="chev">▶</span></summary>
+      <div class="app-body">
+        <p>Пілотний об'єкт — М-16. Одночасно публікуємо оголошення про оренду та продаж двох типових форматів: цокольного приміщення і прибудови під офіс. Мета — перевірити реальний попит до інвестицій у ремонт. У CRM фіксуємо джерело кожного звернення, потрібний формат і запит клієнта. Щеглюк веде реєстр сторонніх оголошень і звертається до майданчиків щодо їх видалення. Перший звіт готуємо через два тижні після публікації.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============================ 07 ГРОШІ ============================ -->
+<section id="det-money">
+  <div class="wrap">
+    <div class="kicker">11 · Гроші</div>
+    <h2>Вартість активів, які поки не приносять доходу</h2>
+    <div class="feature">
+      <div>
+        <div class="big">≈ $8,6 млн <small>вартість вільних приміщень</small></div>
+        <p style="margin-top:18px">Вартість 67 приміщень, для яких у порталі зазначено ціну, становить близько $6,0 млн. Ще $2,6 млн — орієнтовна вартість об'єктів без затвердженого прайсу, зокрема М-5А та приміщень у Гостомелі. Якщо здати всі вільні площі за ставками з внутрішнього реєстру, потенційний орендний дохід може сягнути <b>близько $87 тис на місяць</b>.</p>
+      </div>
+      <div>
+        <table class="mini-table">
+          <tr><td>Поверхи / офіси · 60 пом. · 6 360 м²</td><td>≈ $5,8 млн</td></tr>
+          <tr><td>Цоколі · 34 пом. · 3 542 м²</td><td>≈ $2,5 млн</td></tr>
+          <tr><td>Підвали · 4 пом. · 494 м²</td><td>≈ $0,3 млн</td></tr>
+          <tr><td>Оренда зараз (17 договорів)</td><td>2 131 м² працює</td></tr>
+        </table>
+      </div>
+    </div>
+    <h2 style="margin-top:72px">Орієнтовний кошторис запуску</h2>
+    <p class="legend">Всі суми — орієнтовні, фінальні ціни після збору пропозицій підрядників. Курс USD/UAH — <span class="ok-l">44,5</span>. <span class="ok-l">Затверджені рішення — чорний жирний.</span> <span class="tbd-l">Уточнюються після тендера — сірий курсив.</span> Долар — основна валюта, гривня — дрібним.</p>
+
+    <div class="donutbox">
+      <svg viewBox="0 0 180 180" width="200" height="200" role="img" aria-label="Розподіл рекомендованого бюджету">
+        <circle cx="90" cy="90" r="70" fill="none" stroke="#EFEAE0" stroke-width="26"/>
+        <g transform="rotate(-90 90 90)">
+          <circle cx="90" cy="90" r="70" fill="none" stroke="#B29141" stroke-width="26" stroke-dasharray="176.8 263" stroke-dashoffset="0"/>
+          <circle cx="90" cy="90" r="70" fill="none" stroke="#2A3728" stroke-width="26" stroke-dasharray="117.8 322" stroke-dashoffset="-176.8"/>
+          <circle cx="90" cy="90" r="70" fill="none" stroke="#8C8C8C" stroke-width="26" stroke-dasharray="58.9 381" stroke-dashoffset="-294.6"/>
+          <circle cx="90" cy="90" r="70" fill="none" stroke="#6A7B68" stroke-width="26" stroke-dasharray="47.1 393" stroke-dashoffset="-353.5"/>
+          <circle cx="90" cy="90" r="70" fill="none" stroke="#D7B369" stroke-width="26" stroke-dasharray="39.2 401" stroke-dashoffset="-400.6"/>
+        </g>
+        <text x="90" y="84" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="800" font-size="22" fill="#2A2A2A">$2 500</text>
+        <text x="90" y="104" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#8C8C8C">112 тис ₴ · орієнтир</text>
+      </svg>
+      <div class="dlegend">
+        <div><i style="background:#B29141"></i>Фотозйомка (профі, оплата за день)<b>$1 010 · 40 %</b></div>
+        <div><i style="background:#2A3728"></i>Вітрина: майданчики + банери<b>$675 · 27 %</b></div>
+        <div><i style="background:#8C8C8C"></i>Резерв 15 %<b>$340 · 13 %</b></div>
+        <div><i style="background:#6A7B68"></i>Підготовка: сміття, клінінг<b>$270 · 11 %</b></div>
+        <div><i style="background:#D7B369"></i>Логістика: 4 міста<b>$225 · 9 %</b></div>
+        <p class="note" style="margin-top:10px;font-size:12px;color:var(--faint)">Розподіл рекомендованого сценарію. Мінімум $1 500 і максимум $4 050 — у зведеній таблиці нижче.</p>
+      </div>
+    </div>
+
+    <details class="bblock">
+      <summary class="bhead">1 · Підготовка приміщень — що купуємо<span class="bsum">$180 – 1 240</span><span class="chev">▶</span></summary>
+      <table class="budget">
+        <tr><th>Стаття</th><th>Ціна</th><th>К-сть</th><th style="text-align:right">USD</th><th style="text-align:right">Грн</th><th>Відп.</th></tr>
+        <tr><td>Вивіз сміття, Газель/ЗІЛ з вантажниками</td><td class="tbd">800–1 500 ₴/рейс</td><td class="tbd">~10 рейсів</td><td class="r tbd">$180–340</td><td class="r"><span class="uah">8–15 тис</span></td><td>Юра</td></tr>
+        <tr><td>Клінінг силами експлуатації <span class="pill">базовий сценарій</span></td><td>—</td><td>35 прим.</td><td class="r"><span class="usd-b">0</span></td><td class="r"><span class="uah">0</span></td><td>Юра · Аня, Влад</td></tr>
+        <tr><td>Клінінг підрядником — лише фасадні приміщення <span class="pill amber">рішення по кожному окремо</span></td><td class="tbd">65–140 ₴/м²</td><td class="tbd">5 приміщень ≈ 470 м²</td><td class="r tbd">$740–900</td><td class="r"><span class="uah">33–40 тис</span></td><td>Юра</td></tr>
+        <tr class="cut"><td><span class="cutname">Лампи для 53 приміщень без вікон</span> <span class="pill red">викреслено 14.08</span></td><td>—</td><td>—</td><td class="r"><span class="usd-b">0</span></td><td class="r"><span class="uah">0</span></td><td>—</td></tr>
+        <tr class="cut"><td><span class="cutname">Штатив + LED-панелі + далекомір</span> <span class="pill red">викреслено — у підрядника своє</span></td><td>—</td><td>—</td><td class="r"><span class="usd-b">0</span></td><td class="r"><span class="uah">0</span></td><td>—</td></tr>
+      </table>
+    </details>
+
+    <details class="bblock">
+      <summary class="bhead">2 · Фотозйомка 36 об'єктів — порівняння підходів<span class="bsum">у бюджет: $400 – 1 210</span><span class="chev">▶</span></summary>
+      <table class="budget">
+        <tr><th>Підхід</th><th>Ціна</th><th>К-сть</th><th style="text-align:right">USD</th><th style="text-align:right">Грн</th><th>Статус</th></tr>
+        <tr><td>Ринковий тариф «за об'єкт»</td><td>5–7 тис ₴/об'єкт</td><td>36 об'єктів</td><td class="r">$4 045–5 660</td><td class="r"><span class="uah">180–252 тис</span></td><td><span class="pill red">відхилено</span></td></tr>
+        <tr><td>Бюджетний виконавець, оплата за день</td><td class="tbd">3–4,5 тис ₴/день</td><td class="tbd">6 днів</td><td class="r tbd">$400–600</td><td class="r"><span class="uah">18–27 тис</span></td><td><span class="pill amber">нижня межа</span></td></tr>
+        <tr><td>Професійний інтер'єрний фотограф, оплата за день</td><td class="tbd">6–9 тис ₴/день</td><td class="tbd">5–6 днів</td><td class="r tbd">$800–1 210</td><td class="r"><span class="uah">36–54 тис</span></td><td><span class="pill">рекомендуємо</span></td></tr>
+        <tr><td>Тестова фотозйомка обох кандидатів</td><td>—</td><td>2 тести</td><td class="r"><span class="usd-b">0</span></td><td class="r"><span class="uah">умова тендера</span></td><td><span class="pill gray">до договору</span></td></tr>
+      </table>
+    </details>
+
+    <details class="bblock">
+      <summary class="bhead">3 · Логістика<span class="bsum">$180 – 270</span><span class="chev">▶</span></summary>
+      <table class="budget">
+        <tr><td>Пальне й амортизація: 25 адрес у 4 містах (підготовка, фотозйомка, покази першого місяця)</td><td class="tbd">~400–500 ₴/виїзд</td><td class="tbd">20–25 виїздів</td><td class="r tbd">$180–270</td><td class="r"><span class="uah">8–12 тис</span></td><td>відп. блоків</td></tr>
+      </table>
+    </details>
+
+    <details class="bblock">
+      <summary class="bhead">4 · Вітрина й реклама · 3 місяці — затверджено 14.08<span class="bsum">$540 – 810</span><span class="chev">▶</span></summary>
+      <table class="budget">
+        <tr><th>Стаття</th><th>Ціна</th><th>К-сть</th><th style="text-align:right">USD</th><th style="text-align:right">Грн</th><th>Відп.</th></tr>
+        <tr><td>Пакети OLX/DIM.RIA + просування типових приміщень <span class="pill">затверджено</span></td><td class="tbd">4–6 тис ₴/міс</td><td>3 міс</td><td class="r tbd">$270–400</td><td class="r"><span class="uah">12–18 тис</span></td><td>Щеглюк</td></tr>
+        <tr><td>Банери «ОРЕНДА / ПРОДАЖ» на фасади <span class="pill">затверджено</span></td><td class="tbd">1,2–1,8 тис ₴/шт</td><td class="tbd">~10 шт</td><td class="r tbd">$270–400</td><td class="r"><span class="uah">12–18 тис</span></td><td>Щеглюк</td></tr>
+      </table>
+    </details>
+
+    <details class="bblock">
+      <summary class="bhead">5 · Резерв 15 %<span class="bsum">$200 – 530</span><span class="chev">▶</span></summary>
+      <table class="budget">
+        <tr><td>Непередбачене: повторні виїзди, брак, доплата за складні об'єкти</td><td>15 % від прийнятих статей</td><td>—</td><td class="r tbd">$200–530</td><td class="r"><span class="uah">9–24 тис</span></td><td>—</td></tr>
+      </table>
+    </details>
+
+    <details class="bblock" open>
+      <summary class="bhead">Разом запуск — три сценарії<span class="chev">▶</span></summary>
+      <table class="budget">
+        <tr><th></th><th>Мінімум</th><th>Рекомендовано</th><th>Максимум</th></tr>
+        <tr><td>Фотозйомка</td><td>бюджетний виконавець</td><td><b>профі-інтер'єрник</b></td><td>профі-інтер'єрник</td></tr>
+        <tr><td>Клінінг</td><td>своїми силами</td><td><b>своїми силами</b></td><td>+ підрядник, 5 фасадних</td></tr>
+        <tr><td>Реклама</td><td colspan="3">OLX/DIM.RIA + банери — в усіх сценаріях (затверджено)</td></tr>
+        <tr class="total"><td>Разом із резервом</td><td class="r"><span class="usd-b">≈ $1 500</span> <span class="uah">67 тис ₴</span></td><td class="r"><span class="usd-b">≈ $2 500</span> <span class="uah">112 тис ₴</span></td><td class="r"><span class="usd-b">≈ $4 050</span> <span class="uah">181 тис ₴</span></td></tr>
+      </table>
+    </details>
+
+    <details class="bblock">
+      <summary class="bhead">По мірі угод — не в запуску<span class="bsum">$70 – 135 на об'єкт</span><span class="chev">▶</span></summary>
+      <table class="budget">
+        <tr><th>Стаття</th><th>Ціна</th><th>Коли</th><th style="text-align:right">USD</th><th style="text-align:right">Грн</th><th>Відп.</th></tr>
+        <tr><td>Експертна оцінка для нотаріуса</td><td class="tbd">від 1 200 ₴</td><td>перед угодою</td><td class="r tbd">$27–56</td><td class="r"><span class="uah">1,2–2,5 тис</span></td><td>Мар'яна</td></tr>
+        <tr><td>Актуальні витяги, довідки</td><td class="tbd">500–1 000 ₴</td><td>перед угодою</td><td class="r tbd">$11–22</td><td class="r"><span class="uah">0,5–1 тис</span></td><td>Мар'яна</td></tr>
+        <tr><td>Техпаспорт, де відсутній <span class="pill amber">~36 % фонду</span></td><td class="tbd">1 500–2 500 ₴</td><td>строк ~5 днів</td><td class="r tbd">$34–56</td><td class="r"><span class="uah">1,5–2,5 тис</span></td><td>Мар'яна</td></tr>
+      </table>
+    </details>
+
+    <p class="hint">Постатейна розбивка з джерелами київських цін — <a href="#d7">Додаток Д7</a>. Поза кошторисом запуску: вартість облаштування окремих входів у цоколь 5–8 М-16 і базового ремонту «під клієнта» — окреме рішення після висновку проєктувальника (Етап 1а, рішення 5).</p>
+    <details class="app inline">
+      <summary><span class="tagn">Деталі</span><span class="st"><h3>Методика і приклад М-16</h3><p>Звідки цифри · розбіжність оцінок · курс</p></span><span class="chev">▶</span></summary>
+      <div class="app-body">
+        <p><b>Методика:</b> для кожного вільного приміщення ціна = ставка портального прайсу (₴/м²) × площа реєстру; де прайсу немає — категорійний орієнтир внутрішнього реєстру (цоколь $1 150/м², поверхи $850/м², підвал $500/м²). Курс 44,5 ₴/$. Це <b>орієнтовна вартість для рішень</b>, не оцінка для угод.</p>
+        <p style="margin-top:10px"><b>Приклад розбіжності:</b> орієнтовна вартість М-16 за нашою аналітикою становить близько $2,0 млн, а оцінка відділу продажу — $2,5 млн. Щоб перевірити обидві оцінки, запускаємо тестові оголошення та порівнюємо кількість і якість звернень за різних цін.</p>
+        <p class="note" style="margin-top:10px">У прайсі М-18 чотири позиції виглядають завищеними і чекають підтвердження — на підсумок впливають у межах ±$0,2 млн.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============================ 08 ДОРОЖНЯ КАРТА ============================ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">12 · Дорожня карта</div>
+    <h2>План запуску на десять тижнів</h2>
+    <div class="road">
+      <div class="step">
+        <div class="when">Етап 0 · Старт<small>тижні 1–2</small></div>
+        <div>
+          <h3>Аудит інформаційного поля</h3>
+          <p>Збираємо всі оголошення і брокерів по нашому фонду, звіряємо з обліковою відомістю. Виділяємо єдиний телефонний номер і канали зв'язку, закріплюємо відповідальних за нежитловий фонд.</p>
+          <div class="who"><b>Богдан + Щеглюк</b> — оголошення і брокери · <b>Алекс</b> — реєстр і звірка</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="when">Етап 1 · Стандарти<small>тижні 2–4</small></div>
+        <div>
+          <h3>Цінова політика і шаблони</h3>
+          <p>Аналізуємо актуальні пропозиції оренди та продажу саме у Чабанах, оскільки попередні дані стосувалися Вишневого. Затверджуємо ціни, вимоги до фото й документів, шаблон картки та єдиний акаунт на майданчиках. Мар'яна завершує типовий договір оренди з пільговим періодом на ремонт.</p>
+          <div class="who"><b>Щеглюк</b> — аналіз ринку і стандарти · <b>Мар'яна</b> — договір · <b>Алекс</b> — шаблони</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="when">Етап 1а · Вхід<small>тижні 3–6</small></div>
+        <div>
+          <h3>Врізання входів у цоколь 5–8</h3>
+          <p>Разом із проєктувальником перевіряємо можливість облаштувати окремі входи і приямки з боку вулиці: враховуємо несучі конструкції, благоустрій і вимоги ДБН. Після розрахунку вартості виносимо інвестиції на окреме рішення.</p>
+          <div class="who"><b>Юра + проєктувальник</b> · висновок і кошторис — П. Л. на рішення</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="when">Етап 2 · Наповнення<small>тижні 4–8</small></div>
+        <div>
+          <h3>Фото і документи пріоритетних приміщень</h3>
+          <p>Готуємо фото і картки пріоритетних приміщень: 941 на першому поверсі, цоколь 1–4 для продажу, фасадний цоколь 5–8, третій поверх прибудови та підвал. До укладення договору проводимо тестову фотозйомку, далі оплачуємо роботу за знімальний день. Усі оголошення публікуємо через єдиний канал. Паралельно проводимо 36 фотозйомок у готових будинках усього фонду.</p>
+          <div class="who"><b>Підрядник + Юра</b> — М-16 · <b>Аня, Влад</b> — ПК-1 · картки — <b>Щеглюк</b> · AI-візуалізації — <b>Алекс</b></div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="when">Етап 3 · Запуск<small>тижні 6–10</small></div>
+        <div>
+          <h3>Обидва крила в ринок</h3>
+          <p>Пріоритети: продати цоколь 1–4 з боку двору, здати фасадний цоколь 5–8 і приміщення 941, прибудову пропонувати лише в оренду. Усі звернення надходять на єдиний номер і фіксуються у CRM. У звіті показуємо кількість дзвінків, переглядів і заявок за кожним форматом та пропозиції щодо коригування цін.</p>
+          <div class="who"><b>Щеглюк</b> — оголошення і звіт · <b>менеджери</b> — покази</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="when">Етап 4 · Контроль<small>постійно</small></div>
+        <div>
+          <h3>Моніторинг і звітність</h3>
+          <p>Щотижневий моніторинг ринку і наших публікацій, зведений звіт органу одним листом: виконано / є ризик / потрібне рішення. Масштабування підходу на решту фонду за результатами пілота.</p>
+          <div class="who"><b>Вся команда</b> · зведення — Алекс</div>
+        </div>
+      </div>
+    </div>
+
+    <details class="app inline">
+      <summary><span class="tagn">Ризики</span><span class="st"><h3>Ризики і заходи</h3><p>Шість ризиків концепції · що робимо з кожним</p></span><span class="chev">▶</span></summary>
+      <div class="app-body">
+        <table class="data">
+          <tr><th style="width:44%">Ризик</th><th>Захід</th></tr>
+          <tr><td>Несанкціонована реклама і ціни сторонніх брокерів — демпінг, репутація</td><td>Єдина цінова політика і єдиний канал; перевірка повноважень (рішення 3)</td></tr>
+          <tr><td>Майнові права / недобудова</td><td>Дисконт при продажу «як є» або оформлення права власності (+~25 % до ціни); юридичне опрацювання</td></tr>
+          <tr><td>Відсутність техдокументації та обмірів</td><td>Закладено в Етап 1; техпаспорти — по мірі угод (розділ 11)</td></tr>
+          <tr><td>Нестача виділеного ресурсу</td><td>Відповідальний + 1–2 менеджери окремо від житла (рішення 1)</td></tr>
+          <tr><td>Цоколь без окремого входу і вітрин — обмежений попит на оренду</td><td>Етап 1а: облаштування входів у 5–8 (вартість — на рішення) або складські й сервісні формати, яким вітрина не потрібна</td></tr>
+          <tr><td>Мало пропозицій у Чабанах; попередній аналіз стосувався Вишневого</td><td>Оновити аналіз орендних і продажних пропозицій у Чабанах до затвердження цін (Етап 1)</td></tr>
+        </table>
+      </div>
+    </details>
+
+    <div class="decisions">
+      <div class="dec">
+        <div class="dn">1</div>
+        <div>
+          <h3>Відповідальні та єдиний канал</h3>
+          <p>Призначити відповідального за нежитловий фонд і 1–2 виділених менеджерів (окремо від житла); виділити єдиний телефонний номер і канали зв'язку. Пропозиція ролей: Щеглюк — напрям НФ; Юра Кушнір — ПК-2/М-16; Аня і Влад — ПК-1 і «Сакура»; Мар'яна — договори; Алекс — система і контроль.</p>
+        </div>
+        <div class="ok">Затверджую</div>
+      </div>
+      <div class="dec">
+        <div class="dn">2</div>
+        <div>
+          <h3>Єдиний реєстр даних по фонду</h3>
+          <p>Затвердити єдиний реєстр як основне зведення актуальних даних по статусах, цінах і публікаціях. Перед публікацією кожне приміщення проходить чек-листи фото і документації.</p>
+        </div>
+        <div class="ok">Затверджую</div>
+      </div>
+      <div class="dec">
+        <div class="dn">3</div>
+        <div>
+          <h3>Сторонні брокери</h3>
+          <p>По Дьоміну, Ляховій та інших: підтвердити або припинити повноваження; ввести єдину цінову політику і заборону несанкціонованих публікацій. Оголошення прибудови «продаж $833/м²» привести у відповідність із рішенням «прибудова — оренда».</p>
+        </div>
+        <div class="ok">Затверджую</div>
+      </div>
+      <div class="dec">
+        <div class="dn">4</div>
+        <div>
+          <h3>Цільова модель М-16</h3>
+          <p>Прибудову — офіси третього поверху та підвальні комори — пропонуємо лише в оренду. Для головного корпусу поєднуємо продаж і оренду: цоколь 1–4 з боку двору продаємо, перший поверх і фасадний цоколь 5–8 здаємо, приміщення на 2–4 поверхах пропонуємо як офіси або апартаменти. Ціни затверджуємо після оновлення аналізу ринку.</p>
+        </div>
+        <div class="ok">Затверджую</div>
+      </div>
+      <div class="dec">
+        <div class="dn">5</div>
+        <div>
+          <h3>Бюджет запуску + розрахунок вартості входів</h3>
+          <p>Операційний запуск: від <b>$1 500 до $4 050</b> <span class="uah">67–181 тис ₴</span>, рекомендовано <b>≈ $2 500</b> <span class="uah">112 тис ₴</span> (кошторис — розділ 11). Окремо доручити розрахунок вартості облаштування окремих входів і приямків у цоколь 5–8 та базового ремонту «під клієнта» — рішення після висновку проєктувальника.</p>
+        </div>
+        <div class="ok">Затверджую</div>
+      </div>
+      <div class="dec">
+        <div class="dn">6</div>
+        <div>
+          <h3>Майданчики і стандарт публікації</h3>
+          <p>Затвердити перелік майданчиків (OLX, DIM.RIA, RIELTOR.UA, LUN) і єдиний стандарт публікації: картка, фото за ТЗ, документація, просування під назвою ЖК і за адресою.</p>
+        </div>
+        <div class="ok">Затверджую</div>
+      </div>
+      <div class="sig">
+        <div><div class="line"></div><div class="cap">Підпис · Петро Леонідович</div></div>
+        <div><div class="line"></div><div class="cap">Дата</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 13 ТАКТИКА М-16 ============================ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">13 · Тактика · М-16 по днях</div>
+    <h2>Вісім тижнів: 19 серпня — 9 жовтня</h2>
+    <p class="lead">Стратегія вище — це «що і чому». Нижче — «хто, коли і за скільки»: графік Ганта по тижнях, план по днях, спринт-дошка першого спринту. Все з датами, відповідальними і бюджетами.</p>
+
+    <div class="gantt">
+      <div class="gantt-in">
+        <div class="g-row head">
+          <div class="g-label"></div>
+          <div class="g-w">19–22.08</div><div class="g-w">24–28.08</div><div class="g-w">31–04.09</div><div class="g-w">07–11.09</div><div class="g-w">14–18.09</div><div class="g-w">21–25.09</div><div class="g-w">28–02.10</div><div class="g-w">05–09.10</div>
+        </div>
+        <div class="g-row"><div class="g-label"><b>Накази підписано</b> · старт</div><div class="g-track"><div class="g-ms" style="grid-column:1"></div></div></div>
+        <div class="g-row"><div class="g-label">Реєстр оголошень + брокери <b>· Щеглюк, Богдан</b></div><div class="g-track"><div class="g-bar" style="grid-column:1/5"></div></div></div>
+        <div class="g-row"><div class="g-label">Єдиний телефон і канали <b>· Щеглюк</b></div><div class="g-track"><div class="g-bar" style="grid-column:1/3"></div></div></div>
+        <div class="g-row"><div class="g-label">Аналіз ринку Чабанів → цінова політика <b>· Щеглюк</b></div><div class="g-track"><div class="g-bar" style="grid-column:3/7"></div></div></div>
+        <div class="g-row"><div class="g-label">Підготовка М-16: сміття, клінінг <b>· Юра</b></div><div class="g-track"><div class="g-bar" style="grid-column:3/5"></div></div></div>
+        <div class="g-row"><div class="g-label">Тендер фото + 2 тестові фотозйомки <b>· Щеглюк</b></div><div class="g-track"><div class="g-bar gold" style="grid-column:3/5"></div></div></div>
+        <div class="g-row"><div class="g-label">Фотозйомка М-16 і готових + обробка <b>· підрядник</b></div><div class="g-track"><div class="g-bar gold" style="grid-column:5/8"></div></div></div>
+        <div class="g-row"><div class="g-label">Картки «Пакет А» + AI-візуалізації <b>· Щеглюк, Алекс</b></div><div class="g-track"><div class="g-bar" style="grid-column:6/9"></div></div></div>
+        <div class="g-row"><div class="g-label">Вітрина М-16 + банери на фасади <b>· Щеглюк</b></div><div class="g-track"><div class="g-bar gold" style="grid-column:8/9"></div></div></div>
+        <div class="g-row"><div class="g-label">Дзвінки · покази · CRM <b>· менеджери</b></div><div class="g-track"><div class="g-bar champ" style="grid-column:9/17"></div></div></div>
+        <div class="g-row"><div class="g-label">Етап 1а: проєкт входів у цоколь 5–8 <b>· Юра</b></div><div class="g-track"><div class="g-bar light" style="grid-column:3/13"></div></div></div>
+        <div class="g-row"><div class="g-label"><b>Звіт №1</b> (25.09) · <b>Звіт №2 + ціни</b> (09.10)</div><div class="g-track"><div class="g-ms" style="grid-column:12"></div><div class="g-ms" style="grid-column:16"></div></div></div>
+      </div>
+      <div class="g-legend" style="padding-bottom:20px"><span><i style="background:linear-gradient(90deg,var(--moss),var(--sage))"></i>процес</span><span><i style="background:linear-gradient(90deg,var(--gold),var(--gold2))"></i>гроші витрачаються</span><span><i style="background:linear-gradient(90deg,var(--gold2),var(--champ))"></i>гроші повертаються</span><span><i style="background:var(--line)"></i>проєктне опрацювання</span><span style="color:var(--gold)">◆ віха</span></div>
+    </div>
+
+    <details class="app inline">
+      <summary><span class="tagn">По днях</span><span class="st"><h3>Тижні 1–2 · детальний план по днях</h3><p>19 серпня — 31 серпня · відповідальний і бюджет на кожен день</p></span><span class="chev">▶</span></summary>
+      <div class="app-body">
+        <table class="data daygrid">
+          <tr><th style="width:110px">День</th><th>Що відбувається</th><th>Відповідальний</th><th style="text-align:right">Бюджет</th></tr>
+          <tr><td class="day">Ср 19.08<small>день 1</small></td><td>Підписання наказів НФ-1…НФ-4 (розділ 17). Алекс передає виконавцям фото-ТЗ, чек-листи підготовки і шаблон картки — особисто, під підпис</td><td>П. Л. · Алекс</td><td class="r">—</td></tr>
+          <tr><td class="day">Чт 20.08<small>день 2</small></td><td>Єдиний номер НФ (SIM + переадресація) і месенджери. Поділ бази на блоки: ПК-2/М-16 → Юра, ПК-1 + Сакура → Аня, Влад. Офіційні листи Дьоміну і Ляховій — запит підстав публікацій</td><td>Щеглюк · Алекс · Богдан</td><td class="r">$5 <span class="uah">200 ₴ SIM</span></td></tr>
+          <tr><td class="day">Пт 21.08<small>день 3</small></td><td>Обхід М-16: усі 15 цокольних НП + прибудова. Фіксуємо: обсяг сміття по кожному, дефекти, ключі й доступи. Реєстр сторонніх оголошень зведено (посилання, ціни, дати)</td><td>Юра · Щеглюк</td><td class="r">$0</td></tr>
+          <tr><td class="day">Пн 24.08<small>день 4</small></td><td>Рішення по брокерах на підставі відповідей: авторизуємо на наших умовах або знімаємо оголошення. Початок аналізу актуальних пропозицій оренди та продажу в Чабанах (окремо по цоколях)</td><td>Богдан + П. Л. · Щеглюк</td><td class="r">$0</td></tr>
+          <tr><td class="day">Вт 25.08<small>день 5</small></td><td>Тендер фотографів: 3 кандидати з портфоліо комерційних інтер'єрів. Заявка проєктувальнику: врізання входів/приямків у цоколь 5–8 (несучі, благоустрій, ДБН)</td><td>Щеглюк · Юра</td><td class="r">$0</td></tr>
+          <tr><td class="day">Ср 26.08<small>день 6</small></td><td>Вивіз сміття М-16: рейси 1–3 (Газель/ЗІЛ з вантажниками). Мар'яна фіналізує типовий договір оренди: ремонтні канікули, невіддільні поліпшення</td><td>Юра · Мар'яна</td><td class="r">$55–100 <span class="uah">2,5–4,5 тис ₴</span></td></tr>
+          <tr><td class="day">Чт 27.08<small>день 7</small></td><td>Вивіз сміття: рейси 4–6. Клінінг фасадних приміщень (941 + 2 цоколі 5–8) — своїми силами або підрядник, рішення по кожному окремо. Тестова фотозйомка кандидата А: цоколь М-16</td><td>Юра · Щеглюк</td><td class="r">$55–400 <span class="uah">сміття + клінінг</span></td></tr>
+          <tr><td class="day">Пт 28.08<small>день 8</small></td><td>Тестова фотозйомка кандидата Б (той самий цоколь — порівнюємо чесно). Розбір результатів двох тестів за чек-листом приймання</td><td>Щеглюк + Юра</td><td class="r">$0 <span class="uah">умова тендера</span></td></tr>
+          <tr><td class="day">Пн 31.08<small>день 9</small></td><td>Вибір підрядника, договір, графік фотозйомок по днях. Аналіз ринку Чабанів завершено → проєкт цінової політики на затвердження П. Л. Спринт 1 закрито</td><td>Щеглюк</td><td class="r">аванс за домовл.</td></tr>
+        </table>
+        <h4>Тижні 3–8 · ключові дні</h4>
+        <table class="data daygrid">
+          <tr><td class="day">Вт–Пт 01–04.09</td><td>Фотозйомка: день 1 — 941 + цоколь 5–8; день 2 — цоколь 1–4 + прибудова + підвал; дні 3–4 — готові вільні ПК-1 і Сакури (за типізацією, розділ 08)</td><td>Підрядник + Юра · Аня, Влад</td><td class="r">$400–1 210 <span class="uah">18–54 тис ₴</span></td></tr>
+          <tr><td class="day">Пн–Ср 07–09.09</td><td>Обробка фото. Картки «Пакет А» по відзнятих. AI-візуалізації: 941 і типовий цоколь — «з меблями / без» (кав'ярня, зал, офіс)</td><td>Підрядник · Щеглюк · Алекс</td><td class="r">$0</td></tr>
+          <tr><td class="day">Чт 10.09</td><td><b>Вітрина М-16 відкрита:</b> 941 (оренда) + типовий цоколь 5–8 (оренда) + типовий цоколь 1–4 (продаж) + прибудова (оренда) — під єдиним номером на OLX, DIM.RIA, RIELTOR.UA, LUN</td><td>Щеглюк</td><td class="r">$90–130 <span class="uah">пакети, 1-й міс</span></td></tr>
+          <tr><td class="day">Пт 11.09</td><td>Монтаж банерів «ОРЕНДА / ПРОДАЖ» з єдиним номером на фасади М-16 (941 + торці цоколя)</td><td>Щеглюк + Юра</td><td class="r">$270–400 <span class="uah">12–18 тис ₴</span></td></tr>
+          <tr><td class="day">Пн 14.09 →</td><td>Щоденно: дзвінки на єдиний номер → CRM (джерело, формат, запит) → покази за графіком менеджерів</td><td>менеджери блоків</td><td class="r">$0</td></tr>
+          <tr><td class="day">Ср 24.09</td><td>Публікація оголошень ПК-1 і Сакури: типові приміщення за тим самим стандартом</td><td>Щеглюк · Аня, Влад</td><td class="r">у пакетах</td></tr>
+          <tr><td class="day">Пт 25.09</td><td><b>Звіт №1 для П. Л.:</b> дзвінки / покази / заявки по форматах М-16 + перші висновки по цінах</td><td>Щеглюк</td><td class="r">—</td></tr>
+          <tr><td class="day">Пт 02.10</td><td>Висновок проєктувальника: врізання входів у 5–8 — технічна можливість + кошторис робіт → окреме рішення П. Л.</td><td>Юра</td><td class="r">вартість проєкту — за КП</td></tr>
+          <tr><td class="day">Пт 09.10</td><td><b>Звіт №2:</b> два тижні повних публікацій; рекомендації щодо цін і форматів; план другої хвилі (повторна фотозйомка, Гостомель, будинки, що будуються)</td><td>Щеглюк + Алекс</td><td class="r">—</td></tr>
+        </table>
+      </div>
+    </details>
+
+    <h3 style="margin-top:48px;font-size:19px">Спринт 1 · 19–31 серпня · дошка</h3>
+    <div class="kanban">
+      <div class="kcol">
+        <h4>Черга спринту <span>4</span></h4>
+        <div class="kcard"><div class="kname">Аналіз пропозицій у Чабанах: оренда і продаж, окремо цоколі</div><div class="kmeta"><span class="kwho">Щеглюк</span><span class="kdate">до 31.08</span></div></div>
+        <div class="kcard"><div class="kname">Договір з фотографом + графік фотозйомок</div><div class="kmeta"><span class="kwho">Щеглюк</span><span class="kdate">31.08</span></div></div>
+        <div class="kcard"><div class="kname">Проект цінової політики на затвердження</div><div class="kmeta"><span class="kwho">Щеглюк → П. Л.</span><span class="kdate">31.08</span></div></div>
+        <div class="kcard"><div class="kname">Заявка проєктувальнику: входи в цоколь 5–8</div><div class="kmeta"><span class="kwho">Юра</span><span class="kdate">25.08</span></div></div>
+      </div>
+      <div class="kcol">
+        <h4>У роботі · тиждень 1 <span>5</span></h4>
+        <div class="kcard"><div class="kname">Реєстр сторонніх оголошень + листи брокерам</div><div class="kmeta"><span class="kwho">Щеглюк · Богдан</span><span class="kdate">20–24.08</span></div></div>
+        <div class="kcard"><div class="kname">Єдиний телефон і канали зв'язку НФ</div><div class="kmeta"><span class="kwho">Щеглюк</span><span class="kdate">20.08</span></div></div>
+        <div class="kcard"><div class="kname">Обхід М-16: сміття, дефекти, ключі по 15 НП</div><div class="kmeta"><span class="kwho">Юра</span><span class="kdate">21.08</span></div></div>
+        <div class="kcard"><div class="kname">Вивіз сміття М-16 · 6 рейсів</div><div class="kmeta"><span class="kwho">Юра</span><span class="kdate">26–27.08</span></div></div>
+        <div class="kcard"><div class="kname">Тестові фотозйомки: кандидати А і Б</div><div class="kmeta"><span class="kwho">Щеглюк</span><span class="kdate">27–28.08</span></div></div>
+      </div>
+      <div class="kcol">
+        <h4>Готово <span>3</span></h4>
+        <div class="kcard done"><div class="kname">Концепція М-16 (ред. 18.08)</div><div class="kmeta"><span class="kwho">Алекс</span><span class="kdate">18.08</span></div></div>
+        <div class="kcard done"><div class="kname">Фото-ТЗ + ТЗ картки об'єкта</div><div class="kmeta"><span class="kwho">Алекс</span><span class="kdate">11–12.08</span></div></div>
+        <div class="kcard"><div class="kname">Накази НФ-1…НФ-4 на підпис</div><div class="kmeta"><span class="kwho">П. Л.</span><span class="kdate">19.08</span></div></div>
+      </div>
+    </div>
+    <p class="hint">Дошку ведемо у внутрішньому реєстрі; щопонеділка — перегляд спринту, щоп'ятниці — зведення для П. Л. одним листом: виконано / ризик / потрібне рішення.</p>
+  </div>
+</section>
+
+<!-- ============================ 14 ВІДПОВІДАЛЬНІ ============================ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">14 · Хто що робить</div>
+    <h2>Шість людей — шість зон відповідальності</h2>
+    <p class="lead">Кожен пункт — конкретна задача з датою. Це і є персональні плани на вісім тижнів: їх закріплює наказ НФ-1.</p>
+    <div class="grid g2">
+      <div class="owner">
+        <div class="oname"><h3>Щеглюк</h3><span>напрям НФ · оголошення · ціни</span></div>
+        <table>
+          <tr><td class="od">20.08</td><td>Єдиний телефон + канали звʼязку</td><td class="ob">$5</td></tr>
+          <tr><td class="od">21.08</td><td>Реєстр сторонніх оголошень зведено</td><td class="ob">$0</td></tr>
+          <tr><td class="od">25.08</td><td>Тендер: 3 кандидати-фотографи</td><td class="ob">$0</td></tr>
+          <tr><td class="od">27–28.08</td><td>Дві тестові фотозйомки, розбір за чек-листом</td><td class="ob">$0</td></tr>
+          <tr><td class="od">31.08</td><td>Аналіз ринку Чабанів → проєкт цінової політики; договір з фотографом</td><td class="ob">$0</td></tr>
+          <tr><td class="od">07–09.09</td><td>Картки «Пакет А» по відзнятих</td><td class="ob">$0</td></tr>
+          <tr><td class="od">10–11.09</td><td>Вітрина М-16 + банери</td><td class="ob">$360–530</td></tr>
+          <tr><td class="od">25.09 · 09.10</td><td>Звіти №1 і №2 для П. Л.</td><td class="ob">—</td></tr>
+        </table>
+      </div>
+      <div class="owner">
+        <div class="oname"><h3>Юра Кушнір</h3><span>ПК-2 · М-16 · підготовка</span></div>
+        <table>
+          <tr><td class="od">21.08</td><td>Обхід 15 цокольних НП + прибудови: сміття, дефекти, ключі</td><td class="ob">$0</td></tr>
+          <tr><td class="od">25.08</td><td>Заявка проєктувальнику: входи/приямки 5–8</td><td class="ob">$0</td></tr>
+          <tr><td class="od">26–27.08</td><td>Вивіз сміття: ~6 рейсів з вантажниками</td><td class="ob">$110–200</td></tr>
+          <tr><td class="od">27–28.08</td><td>Клінінг фасадних приміщень (рішення по кожному)</td><td class="ob">$0–540</td></tr>
+          <tr><td class="od">01–02.09</td><td>Супровід фотозйомки М-16: доступи, розблокування</td><td class="ob">$0</td></tr>
+          <tr><td class="od">11.09</td><td>Монтаж банерів на фасади М-16</td><td class="ob">у кошторисі</td></tr>
+          <tr><td class="od">02.10</td><td>Висновок проєктувальника + кошторис облаштування входів</td><td class="ob">за КП</td></tr>
+        </table>
+      </div>
+      <div class="owner">
+        <div class="oname"><h3>Аня + Влад</h3><span>ПК-1 · Сакура</span></div>
+        <table>
+          <tr><td class="od">22.08</td><td>Прийняти файли своїх блоків, звірити з відомістю</td><td class="ob">$0</td></tr>
+          <tr><td class="od">28.08</td><td>Підготовка готових вільних ПК-1/Сакури до фотозйомки</td><td class="ob">$70–140</td></tr>
+          <tr><td class="od">03–04.09</td><td>Супровід фотозйомки своїх блоків (за типізацією)</td><td class="ob">$0</td></tr>
+          <tr><td class="od">24.09</td><td>Вітрина ПК-1 + Сакура відкрита</td><td class="ob">у пакетах</td></tr>
+          <tr><td class="od">жовтень</td><td>Замір трафіку 15 ключових точок (2×15 хв)</td><td class="ob">$0</td></tr>
+        </table>
+      </div>
+      <div class="owner">
+        <div class="oname"><h3>Богдан</h3><span>комерція · брокери</span></div>
+        <table>
+          <tr><td class="od">20.08</td><td>Офіційні листи Дьоміну та Ляховій: запит підстав</td><td class="ob">$0</td></tr>
+          <tr><td class="od">24.08</td><td>Рішення по кожному брокеру (з П. Л.): авторизувати чи зняти</td><td class="ob">$0</td></tr>
+          <tr><td class="od">29.08</td><td>Зняття/переорієнтація оголошення прибудови ($833/м² → оренда)</td><td class="ob">$0</td></tr>
+          <tr><td class="od">вересень</td><td>Прямі пропозиції мережам щодо фасадних приміщень 100+ м²</td><td class="ob">$0</td></tr>
+        </table>
+      </div>
+      <div class="owner">
+        <div class="oname"><h3>Мар'яна</h3><span>юридичний контур</span></div>
+        <table>
+          <tr><td class="od">26.08</td><td>Типовий договір оренди: канікули, невіддільні поліпшення, індексація</td><td class="ob">$0</td></tr>
+          <tr><td class="od">05.09</td><td>Пакет по майнових правах: інвестдоговір, строки, відповідальність</td><td class="ob">$0</td></tr>
+          <tr><td class="od">12.09</td><td>План по часткових власностях (Молодіжна 22А, Першотравнева 21А)</td><td class="ob">$0</td></tr>
+          <tr><td class="od">по угодах</td><td>Оцінка + витяги + техпаспорти</td><td class="ob">$70–135/об'єкт</td></tr>
+        </table>
+      </div>
+      <div class="owner">
+        <div class="oname"><h3>Алекс</h3><span>система · контроль</span></div>
+        <table>
+          <tr><td class="od">19.08</td><td>Передати ТЗ, чек-листи, шаблон картки виконавцям</td><td class="ob">$0</td></tr>
+          <tr><td class="od">20.08</td><td>Поділ бази на блоки, передача під підпис</td><td class="ob">$0</td></tr>
+          <tr><td class="od">07–09.09</td><td>AI-візуалізації: 941 + типовий цоколь, «з меблями / без»</td><td class="ob">$0</td></tr>
+          <tr><td class="od">щопʼятниці</td><td>Зведення для П. Л. одним листом: виконано / ризик / рішення</td><td class="ob">$0</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 15 ЗАЛЕЖНОСТІ ============================ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">15 · Що для чого потрібно</div>
+    <h2>Ланцюжок: жоден крок не починається без попереднього</h2>
+    <p class="lead">Головний конвеєр пілота — від підпису до дзвінків. Якщо ламається ланка — зсувається все, що праворуч від неї.</p>
+    <div class="chain">
+      <div class="chip"><div class="cstep">1</div><div class="cname">Накази підписано</div><div class="cdate">19.08</div></div>
+      <div class="chip"><div class="cstep">2</div><div class="cname">Обхід: сміття, ключі, дефекти</div><div class="cdate">21.08</div></div>
+      <div class="chip"><div class="cstep">3</div><div class="cname">Вивіз сміття</div><div class="cdate">26–27.08</div></div>
+      <div class="chip"><div class="cstep">4</div><div class="cname">Клінінг</div><div class="cdate">27–28.08</div></div>
+      <div class="chip"><div class="cstep">5</div><div class="cname">Тестові фотозйомки ×2</div><div class="cdate">27–28.08</div></div>
+      <div class="chip"><div class="cstep">6</div><div class="cname">Договір + графік</div><div class="cdate">31.08</div></div>
+      <div class="chip"><div class="cstep">7</div><div class="cname">Фотозйомка</div><div class="cdate">01–04.09</div></div>
+      <div class="chip"><div class="cstep">8</div><div class="cname">Картка + AI-рендер</div><div class="cdate">07–09.09</div></div>
+      <div class="chip"><div class="cstep">9</div><div class="cname">Вітрина + банери</div><div class="cdate">10–11.09</div></div>
+      <div class="chip"><div class="cstep">10</div><div class="cname">Дзвінки → CRM → покази</div><div class="cdate">з 14.09</div></div>
+    </div>
+    <details class="app inline">
+      <summary><span class="tagn">Деталі</span><span class="st"><h3>Вимоги кожного кроку</h3><p>Що має бути готово, щоб крок відбувся · хто забезпечує</p></span><span class="chev">▶</span></summary>
+      <div class="app-body">
+        <table class="data">
+          <tr><th style="width:24%">Крок</th><th>Без чого не відбудеться</th><th>Забезпечує</th></tr>
+          <tr><td><b>Фотозйомка</b></td><td>Вивезене сміття · чисті вікна і підлога · доступ і ключі до кожного НП · розблоковані «закриті» приміщення або виключення їх із графіка · супровід менеджера на об'єкті</td><td>Юра · Аня, Влад</td></tr>
+          <tr><td><b>Вивіз сміття</b></td><td>Обхід з обсягами по кожному НП · замовлені рейси з вантажниками · бюджет $110–340 підтверджений (наказ НФ-2)</td><td>Юра</td></tr>
+          <tr><td><b>Картка «Пакет А»</b></td><td>Фото за ТЗ · обміри (площа, висота) · потужність кВт · статус права · ціна за затвердженою політикою</td><td>Щеглюк · Мар'яна</td></tr>
+          <tr><td><b>Ціна в оголошенні</b></td><td>Завершений аналіз пропозицій у Чабанах · затверджена цінова політика (після 31.08) · рішення «оренда чи продаж» по приміщенню за моделлю крил</td><td>Щеглюк · П. Л.</td></tr>
+          <tr><td><b>Публікація</b></td><td>Картка + фото + AI-рендер · єдиний номер працює · акаунт Холдингу на 4 майданчиках · зняті конфліктні оголошення брокерів</td><td>Щеглюк · Богдан</td></tr>
+          <tr><td><b>Банери</b></td><td>Макет із єдиним номером · друк 165–300 ₴/м² · монтажник + дозвіл на фасад</td><td>Щеглюк · Юра</td></tr>
+          <tr><td><b>Покази</b></td><td>Графік менеджерів (включно з вихідними) · ліхтар/подовжувач для темних цоколів · скрипт «показати аналоги» з типової групи</td><td>менеджери блоків</td></tr>
+          <tr><td><b>Оренда 5–8 як сервіс</b></td><td>Висновок проєктувальника по входах (02.10) · рішення П. Л. щодо вартості робіт · до того — формати без вітрини</td><td>Юра → П. Л.</td></tr>
+        </table>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============================ 16 МАСШТАБУВАННЯ ============================ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">16 · Масштабування</div>
+    <h2>Той самий цикл — на кожен наступний об'єкт</h2>
+    <p class="lead">На М-16 перевіряємо повний процес роботи: огляд приміщень, підготовку, фотозйомку, створення оголошень, публікацію та аналіз результатів. Після пілота застосовуємо цей процес до інших об'єктів. Нижче наведено заплановані дати запуску.</p>
+    <div class="grid g3">
+      <div class="card gold"><div class="num-chip">1</div><h3>М-16 · пілот</h3><p><b>24 вільних · 3 436 м² фонду.</b> Вітрина 10.09, звіт №1 — 25.09. Весь цей документ — про нього.</p></div>
+      <div class="card"><div class="num-chip">2</div><h3>ПК-1 (Вишневе)</h3><p><b>18 вільних приміщень.</b> Фотофотозйомка 01–04.09 (за типовими групами), оголошення — 24.09. Відповідальні: Аня, Влад.</p></div>
+      <div class="card"><div class="num-chip">3</div><h3>Сакура · Єдності</h3><p><b>12 вільних приміщень.</b> Фотофотозйомка 03–04.09, оголошення — 24.09 разом із ПК-1. Цоколі Єдності 5 — типова група ×4.</p></div>
+      <div class="card"><div class="num-chip">4</div><h3>Гостомель</h3><p><b>2 вільних + 2 закритих.</b> Огляд і фотозйомка — початок жовтня, оголошення — до 09.10 (у звіт №2).</p></div>
+      <div class="card"><div class="num-chip">5</div><h3>М-18 і М-5А · будуються</h3><p><b>42 вільні приміщення, на які оформлено майнові права.</b> У вересні фотографуємо будинки, фасади та види з вікон. Для продажу використовуємо плани й концептуальні AI-візуалізації. Мар'яна готує комплект документів для покупців до 5 вересня.</p></div>
+      <div class="card"><div class="num-chip">6</div><h3>Ірпінь + орендовані</h3><p><b>17 діючих договорів.</b> Чинні оголошення не змінюємо. До кінця жовтня готуємо зведення щодо кожного договору: орендна ставка, строк, порядок індексації та стан розрахунків.</p></div>
+    </div>
+    <p class="hint">Після звіту №2 (09.10) — рішення про хвилю 2: повторна фотозйомка аматорських фото, 360°-тури ключових об'єктів, замір трафіку. Кожен блок отримує той самий пакет документів: ТЗ, чек-листи, шаблон картки.</p>
+  </div>
+</section>
+
+<!-- ============================ 17 НАКАЗИ ============================ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">17 · Накази до підпису</div>
+    <h2>Чотири накази, необхідні для запуску</h2>
+    <p class="lead">Щоб усе описане запрацювало, потрібні чотири підписи: люди та обов'язки · гроші · ціни і посередники · стандарт публікації. Кожен наказ — готовий проєкт формату А4: друкуємо, підписуємо, ознайомлюємо.</p>
+    <table class="data" style="max-width:820px;margin:30px auto 0">
+      <tr><th>Наказ</th><th>Що затверджує</th><th>Яких рішень стосується</th></tr>
+      <tr><td><b>НФ-1</b> · Відповідальні</td><td>Відповідальних, обов'язки, єдиний канал зв'язку, строки</td><td>№ 1, 2</td></tr>
+      <tr><td><b>НФ-2</b> · Бюджет</td><td>Бюджет запуску, ліміти, порядок оплат</td><td>№ 5</td></tr>
+      <tr><td><b>НФ-3</b> · Ціни і посередники</td><td>Єдину цінову політику, роботу з брокерами</td><td>№ 3, 4</td></tr>
+      <tr><td><b>НФ-4</b> · Стандарт публікації</td><td>Майданчики, картки, єдиний реєстр</td><td>№ 2, 6</td></tr>
+    </table>
+
+    <div class="order-tag">Проєкт наказу · аркуш 1 з 4</div>
+    <div class="order">
+      <div class="o-org">Група компаній «Доброград»<small>ТОВ «__________________»</small></div>
+      <div class="o-title">НАКАЗ</div>
+      <div class="o-req"><span>№ НФ-1</span><span>смт Чабани / м. Вишневе</span><span>«19» серпня 2026 р.</span></div>
+      <div class="o-subj">Про призначення відповідальних за нежитловий фонд та єдиний канал звʼязку</div>
+      <p class="o-pre">З метою ефективного використання нежитлових приміщень Групи та на виконання Стратегії від 18.08.2026 —</p>
+      <div class="o-cmd">НАКАЗУЮ:</div>
+      <ol>
+        <li>Призначити <span class="o-who">Щеглюка</span> відповідальним за напрям «Нежитловий фонд» з повноваженнями щодо публікацій і цін у затверджених межах. <span class="o-due">З 19.08.2026.</span></li>
+        <li>Закріпити блоки фонду: <span class="o-who">Кушнір Ю.</span> — ПК-2 (М-16, М-18); <span class="o-who">Аня, Влад</span> — ПК-1 та «Сакура»; <span class="o-who">Мар'яна</span> — юридичний супровід; <span class="o-who">Алекс</span> — єдиний реєстр і контроль виконання. <span class="o-due">З 19.08.2026.</span></li>
+        <li>Виділити єдиний телефонний номер і канали звʼязку нежитлового фонду; зазначати їх у всіх публікаціях. Відп. — <span class="o-who">Щеглюк</span>. <span class="o-due">До 21.08.2026.</span></li>
+        <li>Заборонити суміщення роботи призначених менеджерів із житловим напрямом на період запуску. <span class="o-due">До 09.10.2026.</span></li>
+        <li>Щоп'ятниці подавати мені зведення одним аркушем: виконано / ризики / потрібні рішення. Відп. — <span class="o-who">Алекс</span>. <span class="o-due">Починаючи з 22.08.2026.</span></li>
+      </ol>
+      <div class="o-sig">
+        <div><div class="sline"></div><div class="scap">Генеральний директор</div></div>
+        <div class="o-stamp">місце<br>печатки</div>
+        <div><div class="sline"></div><div class="scap">З наказом ознайомлені (підписи)</div></div>
+      </div>
+    </div>
+
+    <div class="order-tag">Проєкт наказу · аркуш 2 з 4</div>
+    <div class="order">
+      <div class="o-org">Група компаній «Доброград»<small>ТОВ «__________________»</small></div>
+      <div class="o-title">НАКАЗ</div>
+      <div class="o-req"><span>№ НФ-2</span><span>смт Чабани / м. Вишневе</span><span>«19» серпня 2026 р.</span></div>
+      <div class="o-subj">Про затвердження бюджету на підготовку та просування нежитлових приміщень</div>
+      <p class="o-pre">З метою підготовки приміщень до продажу та оренди —</p>
+      <div class="o-cmd">НАКАЗУЮ:</div>
+      <ol>
+        <li>Затвердити бюджет запуску в коридорі <b>$1 500 – $4 050</b> (67–181 тис ₴, курс 44,5), орієнтир — <b>$2 500</b> (112 тис ₴), за статтями: підготовка приміщень (вивіз сміття, клінінг), фотозйомка з оплатою за знімальний день, логістика, майданчики й банери, резерв 15 %. <span class="o-due">Кошторис — розділ 11 Стратегії.</span></li>
+        <li>Заборонити закупівлю фотообладнання; власне обладнання виконавця — обов'язкова умова договору. Договір на фотозйомку укладати лише після двох безкоштовних тестових фотозйомок. Відп. — <span class="o-who">Щеглюк</span>. <span class="o-due">До 31.08.2026.</span></li>
+        <li>Оплати за статтями бюджету здійснювати за фактом виконання (передоплата — лише за матеріали). Перевищення статті понад 10 % — окремим погодженням зі мною.</li>
+        <li>Окремо розрахувати вартість облаштування окремих входів і приямків у цоколь секцій 5–8 будинку М-16: технічний висновок і кошторис проєктувальника. Відп. — <span class="o-who">Кушнір Ю.</span> <span class="o-due">До 02.10.2026.</span></li>
+      </ol>
+      <div class="o-sig">
+        <div><div class="sline"></div><div class="scap">Генеральний директор</div></div>
+        <div class="o-stamp">місце<br>печатки</div>
+        <div><div class="sline"></div><div class="scap">Головний бухгалтер (ознайомлення)</div></div>
+      </div>
+    </div>
+
+    <div class="order-tag">Проєкт наказу · аркуш 3 з 4</div>
+    <div class="order">
+      <div class="o-org">Група компаній «Доброград»<small>ТОВ «__________________»</small></div>
+      <div class="o-title">НАКАЗ</div>
+      <div class="o-req"><span>№ НФ-3</span><span>смт Чабани / м. Вишневе</span><span>«19» серпня 2026 р.</span></div>
+      <div class="o-subj">Про єдину цінову політику та роботу зі сторонніми посередниками</div>
+      <p class="o-pre">У зв'язку з виявленням несанкціонованих публікацій про продаж приміщень Групи (реєстр — Додаток Д8 Стратегії) —</p>
+      <div class="o-cmd">НАКАЗУЮ:</div>
+      <ol>
+        <li>Запровадити єдину цінову політику нежитлового фонду: оренда — ₴/м²/міс, продаж — $/м²; фіксація цін — після аналізу актуальних пропозицій оренди та продажу в Чабанах. Відп. — <span class="o-who">Щеглюк</span>. <span class="o-due">До 31.08.2026.</span></li>
+        <li>Направити запити пп. Дьоміну В. та Ляховій О. щодо підстав публікацій; за результатами — авторизувати на умовах Групи або вимагати зняття оголошень. Відп. — <span class="o-who">Богдан</span>. <span class="o-due">Запити — до 20.08, рішення — до 24.08.2026.</span></li>
+        <li>Публікацію «продаж блоку прибудови М-16, $833/м²» привести у відповідність із цільовою моделлю «прибудова — тільки оренда»: зняти або переорієнтувати. <span class="o-due">До 29.08.2026.</span></li>
+        <li>Заборонити будь-які публікації про об'єкти Групи поза єдиним акаунтом і єдиним номером. Порушення — підстава для припинення співпраці з посередником.</li>
+        <li>Затвердити цільову модель будинку М-16: прибудова — тільки оренда; приміщення в секціях 1–4 і 5–8 можна здавати в оренду або продавати залежно від їхнього розташування та пропозиції клієнта, з пріоритетами за Стратегією (розділ 04).</li>
+      </ol>
+      <div class="o-sig">
+        <div><div class="sline"></div><div class="scap">Генеральний директор</div></div>
+        <div class="o-stamp">місце<br>печатки</div>
+        <div><div class="sline"></div><div class="scap">З наказом ознайомлені (підписи)</div></div>
+      </div>
+    </div>
+
+    <div class="order-tag">Проєкт наказу · аркуш 4 з 4</div>
+    <div class="order">
+      <div class="o-org">Група компаній «Доброград»<small>ТОВ «__________________»</small></div>
+      <div class="o-title">НАКАЗ</div>
+      <div class="o-req"><span>№ НФ-4</span><span>смт Чабани / м. Вишневе</span><span>«19» серпня 2026 р.</span></div>
+      <div class="o-subj">Про стандарт публікації та єдиний реєстр нежитлового фонду</div>
+      <p class="o-pre">Для єдиного інформаційного поля та контролю статусів —</p>
+      <div class="o-cmd">НАКАЗУЮ:</div>
+      <ol>
+        <li>Затвердити єдиний реєстр як основне зведення актуальних даних про кожний об'єкт: статус, право, ціна, канал, відповідальний, посилання на публікації. Ведення — <span class="o-who">Алекс</span>, наповнення — <span class="o-who">Щеглюк</span>. <span class="o-due">З 19.08.2026.</span></li>
+        <li>Затвердити перелік майданчиків: OLX, DIM.RIA, RIELTOR.UA, LUN — публікації лише з єдиного акаунта Групи, під назвою ЖК і за адресою. <span class="o-due">З 10.09.2026.</span></li>
+        <li>Перед публікацією кожне приміщення проходить два чек-листи — фотозйомки та документації (Додатки Д3, Д4 Стратегії). Об'єкт без базової картки («Пакет А») не публікується.</li>
+        <li>Застосувати правило вибіркової публікації: одне типове приміщення на формат; одночасна публікація оголошень про всі вільні приміщення заборонена.</li>
+        <li>Звітність: №1 — 25.09.2026, №2 — 09.10.2026 (дзвінки, покази, заявки, рекомендації по цінах). Відп. — <span class="o-who">Щеглюк</span>.</li>
+      </ol>
+      <div class="o-sig">
+        <div><div class="sline"></div><div class="scap">Генеральний директор</div></div>
+        <div class="o-stamp">місце<br>печатки</div>
+        <div><div class="sline"></div><div class="scap">З наказом ознайомлені (підписи)</div></div>
+      </div>
+    </div>
+    <p class="hint" style="text-align:center;max-width:820px;margin:26px auto 0">Назви юросіб, ПІБ і посади підставляємо перед друком. Кожен наказ друкується окремим аркушем А4 (при друку цієї сторінки — розриви вже налаштовані).</p>
+  </div>
+</section>
+
+<!-- ============================ 18 ДОДАТОК ============================ -->
+<section class="appendix">
+  <div class="wrap">
+    <div class="kicker">18 · Конфіденційно · Додаток</div>
+    <h2>Детальні дані та робочі матеріали</h2>
+    <p class="lead sub">У розділах нижче наведено повний план робіт, типові групи приміщень, вимоги до фотозйомки та реєстр адрес.</p>
+
+    <!-- Д1 ПЛАН -->
+    <details class="app" id="d1">
+      <summary><span class="tagn">Д1</span><span class="st"><h3>Повний план робіт</h3><p>Завдання · відповідальний · строк · бюджет</p></span><span class="chev">▶</span></summary>
+      <div class="app-body">
+        <h4>Етапи 0–1 · Затвердження та впорядкування (до 22 серпня)</h4>
+        <table class="data">
+          <tr><th style="width:44%">Задача</th><th>Відповідальний</th><th>Дедлайн</th><th style="text-align:right">Бюджет</th></tr>
+          <tr><td><b>Затвердити концепцію, ролі, бюджет</b> (підпис на цьому документі)</td><td>П. Л.</td><td>18.08</td><td class="r">—</td></tr>
+          <tr><td>Реєстр чужих оголошень (майданчик, ціна, контакт) і деактивація</td><td>Богдан + Щеглюк</td><td>22.08</td><td class="r">$0</td></tr>
+          <tr><td>Поділ бази на 4 файли (ПК-1, Сакура, ПК-2, Інше) за інвентаризаційною відомістю; передати особисто</td><td>Алекс</td><td>20.08</td><td class="r">$0</td></tr>
+          <tr><td>Передати виконавцям фото-ТЗ і чек-лист підготовки приміщень</td><td>Алекс</td><td>19.08</td><td class="r">$0</td></tr>
+          <tr><td>Типовий договір оренди: ремонтні канікули, невіддільні поліпшення — наші, індексація, штрафи</td><td>Мар'яна</td><td>22.08</td><td class="r">$0</td></tr>
+          <tr><td>Категорія «не для продажу» в 1С (техкомори, провайдерські) — відділити від ринкових приміщень</td><td>ІТ / 1С</td><td>29.08</td><td class="r">$0</td></tr>
+        </table>
+        <h4>Етап 2 · Підготовка + тест (25–29 сер)</h4>
+        <table class="data">
+          <tr><th style="width:44%">Задача</th><th>Відповідальний</th><th>Дедлайн</th><th style="text-align:right">Бюджет</th></tr>
+          <tr><td>Вивіз сміття з приміщень хвилі 1 (~10 рейсів Газель/ЗІЛ з вантажниками й утилізацією)</td><td>Юра — ПК-2 · Аня, Влад — ПК-1</td><td>29.08</td><td class="r">$250–350 <span class="uah">11–15 тис ₴</span></td></tr>
+          <tr><td>Клінінг: базово силами експлуатації ($0); платний підрядник — лише 5 фасадних приміщень (65–140 ₴/м²), рішення по кожному окремо</td><td>Юра + Аня, Влад</td><td>29.08</td><td class="r">$0–900 <span class="uah">0–40 тис ₴</span></td></tr>
+          <tr><td>Відбір підрядника: портфоліо з комерційних інтер'єрів, свій штатив і світло</td><td>Щеглюк</td><td>26.08</td><td class="r">$0</td></tr>
+          <tr><td>Тестова фотозйомка одного цоколя (Єдності 5 або Молодіжна 32) — до договору</td><td>Щеглюк + підрядник</td><td>28.08</td><td class="r">безкоштовно, умова тендера</td></tr>
+          <tr><td>Тестові оголошення М-16: цоколь + прибудова, оренда і продаж — збір дзвінків</td><td>Юра</td><td>27.08</td><td class="r">$0–50 <span class="uah">просування</span></td></tr>
+        </table>
+        <h4>Етап 3–4 · Фотофотозйомка, картки, оголошення (1–26 вер)</h4>
+        <table class="data">
+          <tr><th style="width:44%">Задача</th><th>Відповідальний</th><th>Дедлайн</th><th style="text-align:right">Бюджет</th></tr>
+          <tr><td>Фотозйомка 36 типових представників та унікальних приміщень у готових будинках за фото-ТЗ; приймання за чек-листом; оплата за знімальний день</td><td>Підрядник + відп. блоків</td><td>12.09</td><td class="r">$400–1 210 <span class="uah">18–54 тис ₴</span></td></tr>
+          <tr><td>Логістика хвилі 1: пальне й амортизація, 25 адрес у 4 містах, ~20–25 виїздів</td><td>відп. блоків</td><td>вер.</td><td class="r">$180–270 <span class="uah">8–12 тис ₴</span></td></tr>
+          <tr><td>Банери «ОРЕНДА / ПРОДАЖ» із номером на фасади ключових об'єктів (друк + люверси + монтаж)</td><td>Щеглюк</td><td>17.09</td><td class="r">$270–400 <span class="uah">12–18 тис ₴</span></td></tr>
+          <tr><td>Пакети майданчиків OLX/DIM.RIA + просування типових приміщень, 3 місяці</td><td>Щеглюк</td><td>вер.–лист.</td><td class="r">$270–400 <span class="uah">12–18 тис ₴</span></td></tr>
+          <tr><td>Картки «Пакет А» на всі вільні: обидві назви вулиці, метраж, висота, вхід, кВт, стан, план, ціна</td><td>Щеглюк + Алекс</td><td>19.09</td><td class="r">$0</td></tr>
+          <tr><td>AI-візуалізації типових форматів: кав'ярня / зал / офіс, «з меблями / без»</td><td>Алекс</td><td>12.09</td><td class="r">$0 <span class="uah">нейромережі</span></td></tr>
+          <tr><td>Публікація по одному типовому приміщенню на формат; скрипт менеджера «показати аналоги»</td><td>Щеглюк</td><td>17.09</td><td class="r">$0</td></tr>
+          <tr><td>Звіт П. Л. №1: дзвінки / покази / заявки по форматах + рекомендація по цінах</td><td>Щеглюк</td><td>26.09</td><td class="r">—</td></tr>
+        </table>
+        <h4>Етап 5 · Масштабування (жовтень+)</h4>
+        <table class="data">
+          <tr><th style="width:44%">Задача</th><th>Відповідальний</th><th>Дедлайн</th><th style="text-align:right">Бюджет</th></tr>
+          <tr><td>Хвиля 2: повторна фотозйомка приміщень з аматорськими фото — за результатами перших оголошень</td><td>Щеглюк</td><td>жовт.</td><td class="r">за фактом</td></tr>
+          <tr><td>Замір пішохідного трафіку по 15 ключових точках (2×15 хв, будній день)</td><td>менеджери блоків</td><td>жовт.</td><td class="r">$0</td></tr>
+          <tr><td>Паспорти договорів по 17 орендованих (ставка, строк, індексація, дисципліна)</td><td>Мар'яна + Щеглюк</td><td>жовт.</td><td class="r">$0</td></tr>
+          <tr><td>Пакет Б (юридичний + інженерія) — лише по об'єктах з реальним інтересом</td><td>за запитом</td><td>—</td><td class="r">$0</td></tr>
+        </table>
+        <p class="note" style="margin-top:18px">Контроль: щотижня надсилаємо П. Л. один зведений лист із трьома блоками — виконано, є ризик прострочення, потрібне рішення. На ухвалення кожного рішення відводимо 1–2 дні.</p>
+      </div>
+    </details>
+
+    <!-- Д2 ТИПОВІ ГРУПИ -->
+    <details class="app" id="d2">
+      <summary><span class="tagn">Д2</span><span class="st"><h3>Типові групи приміщень — повний перелік</h3><p>22 групи · 64 приміщення · знімаємо по одному з кожної</p></span><span class="chev">▶</span></summary>
+      <div class="app-body">
+        <p>До однієї типової групи належать приміщення за однією адресою та на одному поверсі, площа яких відрізняється не більш ніж на 8 %. Перше приміщення у списку повністю готуємо й фотографуємо. Для решти використовуємо ті самі матеріали з приміткою «типове планування».</p>
+        <h4>Готові будинки — хвиля 1</h4>
+        <table class="data">
+          <tr><th>Адреса · поверх</th><th>Метраж</th><th style="text-align:right">Шт.</th><th>Приміщення (представник — перший)</th></tr>
+          <tr><td>Машинобудівників 16 · цоколь</td><td>94–97 м²</td><td class="r"><b>7</b></td><td>НП 3.4 · 6.2 · 7.3 · 6.3 · 1.3 · 4.3 · 3.3</td></tr>
+          <tr><td>Машинобудівників 16 · цоколь</td><td>119–122 м²</td><td class="r"><b>3</b></td><td>НП 2.2 · 8.2 · 7.1</td></tr>
+          <tr><td>Машинобудівників 16 · підвал</td><td>124–133 м²</td><td class="r"><b>3</b></td><td>П.2 · П.3 · П.4</td></tr>
+          <tr><td>Машинобудівників 16 · 3 поверх</td><td>69 м²</td><td class="r"><b>2</b></td><td>НП 18.3 · 17.2</td></tr>
+          <tr><td>Машинобудівників 16 · 3 поверх</td><td>158–159 м²</td><td class="r"><b>2</b></td><td>НП 17.1 · 18.1</td></tr>
+          <tr><td>Машинобудівників 16 · 4 поверх</td><td>113–114 м²</td><td class="r"><b>2</b></td><td>НП 5.10 · 4.10</td></tr>
+          <tr><td>Єдності 5 · цоколь</td><td>126–132 м²</td><td class="r"><b>4</b></td><td>НП 13 · 16 · 17 · 18</td></tr>
+          <tr><td>Єдності 5 · цоколь</td><td>89–90 м²</td><td class="r"><b>2</b></td><td>НП 12 · 15</td></tr>
+          <tr><td>Єдності 4 · цоколь</td><td>69–72 м²</td><td class="r"><b>2</b></td><td>НП 244 · 246</td></tr>
+          <tr><td>Молодіжна 22А · цоколь</td><td>30 м²</td><td class="r"><b>2</b></td><td>НП 42 · 48 <span class="pill red" style="margin-left:6px">часткова власність</span></td></tr>
+          <tr><td>Піонерська 18 · цоколь</td><td>90–94 м²</td><td class="r"><b>2</b></td><td>НП 21 · 22</td></tr>
+        </table>
+        <h4>Стадія будівництва (М-18, М-5А) — коробка + фасад, інтер'єр після введення</h4>
+        <table class="data">
+          <tr><th>Адреса · поверх</th><th>Метраж</th><th style="text-align:right">Шт.</th><th>Приміщення</th></tr>
+          <tr><td>Машинобудівників 18 · 1 поверх</td><td>85–92 м²</td><td class="r"><b>7</b></td><td>НП 10.2 · 4.5 · 9.6 · 9.5 · 10.3 · 10.7 · 9.1</td></tr>
+          <tr><td>Машинобудівників 18 · 1 поверх</td><td>64–68 м²</td><td class="r"><b>5</b></td><td>НП 4.9 · 9.2 · 10.4 · 7.3 · 7.7</td></tr>
+          <tr><td>Машинобудівників 18 · 2 поверх</td><td>32–33 м²</td><td class="r"><b>2</b></td><td>НП 9.8 · 4.12</td></tr>
+          <tr><td>Машинобудівників 18 · 2 поверх</td><td>71 м²</td><td class="r"><b>2</b></td><td>НП 7.9 · 7.12</td></tr>
+          <tr><td>Машинобудівників 18 · 2 поверх</td><td>85–87 м²</td><td class="r"><b>2</b></td><td>НП 9.9 · 4.11</td></tr>
+          <tr><td>Машинобудівників 18 · 2 поверх</td><td>99 м²</td><td class="r"><b>2</b></td><td>НП 7.11 · 7.10</td></tr>
+          <tr><td>Машинобудівників 5А · 1 поверх</td><td>66–70 м²</td><td class="r"><b>3</b></td><td>НП 5.1 · 6.2 · 5.4</td></tr>
+          <tr><td>Машинобудівників 5А · 1 поверх</td><td>80–84 м²</td><td class="r"><b>3</b></td><td>НП 4.3 · 5.5 · 6.3</td></tr>
+          <tr><td>Машинобудівників 5А · 1 поверх</td><td>94–98 м²</td><td class="r"><b>3</b></td><td>НП 4.4 · 1.1 · 6.1</td></tr>
+          <tr><td>Машинобудівників 5А · 1 поверх</td><td>118–119 м²</td><td class="r"><b>2</b></td><td>НП 4.2 · 5.2</td></tr>
+          <tr><td>Машинобудівників 5А · 2 поверх</td><td>104–106 м²</td><td class="r"><b>2</b></td><td>НП 6.6 · 6.7</td></tr>
+        </table>
+        <p class="note" style="margin-top:16px">Решта 34 вільні приміщення — унікальні за метражем або єдині на своєму поверсі: знімаються кожне окремо. Підсумок: 22 представники + 34 унікальні = 56 фотозйомок на весь вільний фонд; із них 36 — у готових будинках (хвиля 1).</p>
+      </div>
+    </details>
+
+    <!-- Д3 ФОТО-ТЗ -->
+    <details class="app" id="d3">
+      <summary><span class="tagn">Д3</span><span class="st"><h3>Фото-ТЗ — витяг</h3><p>Обсяг, хвилі, вимоги, приймання, підрядник</p></span><span class="chev">▶</span></summary>
+      <div class="app-body">
+        <p>Повне ТЗ — окремий документ «ТЗ фотозйомка нежитлового фонду» (ред. 11.08.2026), передається підряднику.</p>
+        <h4>Обсяг і хвилі</h4>
+        <table class="data">
+          <tr><th>Хвиля</th><th>Що</th><th style="text-align:right">Приміщень</th><th style="text-align:right">Площа</th></tr>
+          <tr><td>1</td><td>Вільні без жодного фото → первинна фотозйомка</td><td class="r">47</td><td class="r">4 462 м²</td></tr>
+          <tr><td>2</td><td>Вільні з аматорськими фото → повторна фотозйомка</td><td class="r">48</td><td class="r">5 808 м²</td></tr>
+          <tr><td>3</td><td>Зайняті, закриті та орендовані приміщення — після звільнення</td><td class="r">51</td><td class="r">5 598 м²</td></tr>
+        </table>
+        <p class="note">З урахуванням типізації хвилі 1–2 стискаються до 56 фактичних фотозйомок; хвиля 1 у готових будинках — 36 фотозйомок ≈ 5–6 знімальних днів при темпі 8–10 приміщень на день.</p>
+        <h4>Ключові вимоги</h4>
+        <p>Штатив обов'язковий, вертикалі строго вертикальні (допуск ±1°), брекетинг біля вікон, 53 приміщення без вікон — лише з виїзним світлом. Обробка чесна: дефекти не ретушуються — фото є частиною переддоговірної інформації. Файли — за затвердженою схемою іменування (українські назви папок, номери за відомістю). Приймання вибірково по 10 %: три зауваження — перевіряється весь масив. Тестова фотозйомка одного цоколя до підписання договору — обов'язкова.</p>
+      </div>
+    </details>
+
+    <!-- Д4 КАРТКА -->
+    <details class="app" id="d4">
+      <summary><span class="tagn">Д4</span><span class="st"><h3>Картка об'єкта — витяг</h3><p>Пакети А/Б · джерела даних · що не віддаємо клієнту</p></span><span class="chev">▶</span></summary>
+      <div class="app-body">
+        <p>Повна специфікація — документ «Інформаційне наповнення картки об'єкта» (ред. 12.08.2026): що збираємо, два рівні (внутрішнє / клієнту), карта джерел даних (реєстри, витяги, обленерго, ОСББ), пріоритет заповнення.</p>
+        <h4>Пакет А — мінімум для оголошення (по всіх вільних)</h4>
+        <p>Адреса з обома назвами вулиці, площа, поверх, висота стелі, тип входу, вікна, потужність у кВт, стан, план приміщення, ціна та умови, контакт менеджера, фото за ТЗ.</p>
+        <h4>Пакет Б — повний, для виходу на угоду (за запитом)</h4>
+        <p>Юридичний блок (витяг, вид права, обтяження, техпаспорт, земля), інженерія повністю (ТУ на потужність, вентиляція з виводом на дах, пожежна безпека), операційні витрати, податки при угоді, замір трафіку, для орендованих — паспорт договору.</p>
+        <h4>Що ніколи не йде клієнту</h4>
+        <p>Витяг на власника цілком (видно весь майновий периметр — 63,7 га), договірні ціни минулих угод, наша індикативна оцінка і мінімальна ціна, папка «Проблемні місця» (дефекти розкриваються на огляді й фіксуються актом), службові помітки, персональні дані орендарів.</p>
+      </div>
+    </details>
+
+    <!-- Д5 РЕЄСТР -->
+    <details class="app" id="d5">
+      <summary><span class="tagn">Д5</span><span class="st"><h3>Реєстр за адресами</h3><p>25 адрес · 146 приміщень · статуси</p></span><span class="chev">▶</span></summary>
+      <div class="app-body">
+        <table class="data">
+          <tr><th>Блок</th><th>Адреса</th><th style="text-align:right">Пом.</th><th style="text-align:right">Площа</th><th>Стан</th></tr>
+          <tr><td>ПК-2</td><td>вул. Машинобудівників, 16</td><td class="r">31</td><td class="r">3 436 м²</td><td><span class="pill">24 вільно</span> <span class="pill gray">6 закрито</span> <span class="pill amber">1 розстрочка</span></td></tr>
+          <tr><td>ПК-2</td><td>вул. Машинобудівників, 18 <span class="uah">будується</span></td><td class="r">28</td><td class="r">2 343 м²</td><td><span class="pill">23 вільно</span> <span class="pill gray">4 закрито</span> <span class="pill amber">1 розстрочка</span></td></tr>
+          <tr><td>НК</td><td>вул. Машинобудівників, 5А <span class="uah">будується</span></td><td class="r">19</td><td class="r">1 674 м²</td><td><span class="pill">19 вільно</span></td></tr>
+          <tr><td>ПК-1</td><td>вул. Першотравнева, 23</td><td class="r">14</td><td class="r">1 064 м²</td><td><span class="pill gray">12 офіс компанії</span> <span class="pill">1 вільно</span></td></tr>
+          <tr><td>СК</td><td>вул. Єдності, 5</td><td class="r">8</td><td class="r">904 м²</td><td><span class="pill">7 вільно</span> <span class="pill amber">1 розстрочка</span></td></tr>
+          <tr><td>СК</td><td>вул. Єдності, 6А</td><td class="r">4</td><td class="r">1 245 м²</td><td><span class="pill">3 вільно</span> <span class="pill amber">1 оренда</span></td></tr>
+          <tr><td>ГС</td><td>Гостомель, Свято-Покровська, 73-Г</td><td class="r">4</td><td class="r">624 м²</td><td><span class="pill">2 вільно</span> <span class="pill gray">2 закрито</span></td></tr>
+          <tr><td>ПК-1</td><td>вул. Молодіжна, 22А</td><td class="r">4</td><td class="r">121 м²</td><td><span class="pill">4 вільно</span> <span class="pill red">часткова</span></td></tr>
+          <tr><td>ПК-1</td><td>вул. Молодіжна, 32</td><td class="r">4</td><td class="r">633 м²</td><td><span class="pill">3 вільно</span> <span class="pill gray">1 закрито</span></td></tr>
+          <tr><td>ПК-1</td><td>вул. Молодіжна, 32А</td><td class="r">4</td><td class="r">888 м²</td><td><span class="pill">3 вільно</span> <span class="pill amber">1 оренда</span></td></tr>
+          <tr><td>ІР</td><td>Ірпінь, вул. Лісова, 4-Т</td><td class="r">4</td><td class="r">241 м²</td><td><span class="pill amber">4 оренда</span></td></tr>
+          <tr><td>СК</td><td>вул. Єдності, 4</td><td class="r">3</td><td class="r">185 м²</td><td><span class="pill">2 вільно</span> <span class="pill amber">1 оренда</span></td></tr>
+          <tr><td>ЧВ</td><td>вул. П. Дорошенка, 2/4 (Чорновола)</td><td class="r">3</td><td class="r">405 м²</td><td><span class="pill amber">3 оренда</span></td></tr>
+          <tr><td>СК</td><td>вул. Єдності, 2</td><td class="r">2</td><td class="r">278 м²</td><td><span class="pill amber">2 оренда</span></td></tr>
+          <tr><td>ПК-1</td><td>вул. Молодіжна, 22</td><td class="r">2</td><td class="r">52 м²</td><td><span class="pill">2 вільно</span></td></tr>
+          <tr><td>ПК-1</td><td>вул. Піонерська, 18</td><td class="r">2</td><td class="r">184 м²</td><td><span class="pill">2 вільно</span></td></tr>
+          <tr><td>ПК-1</td><td>вул. Піонерська, 24</td><td class="r">2</td><td class="r">181 м²</td><td><span class="pill gray">не виставлялось</span></td></tr>
+          <tr><td>ПК-1</td><td>Першотравнева 21А · 25 · Піонерська 9 · 9А · 16 · 16А · 20 · 28</td><td class="r">8</td><td class="r">1 409 м²</td><td><span class="pill">3 вільно</span> <span class="pill amber">2 оренда</span> <span class="pill gray">3 не виставлялось</span></td></tr>
+          <tr><td colspan="2"><b>Разом</b></td><td class="r"><b>146</b></td><td class="r"><b>15 868 м²</b></td><td></td></tr>
+        </table>
+        <p class="note" style="margin-top:14px">Джерело: Єдиний реєстр активів (імпорт 30.06.2026) + внутрішній реєстр НФ (12.08.2026). Живий реєстр із фільтрами — в порталі «Доброград».</p>
+      </div>
+    </details>
+
+    <!-- Д7 БЮДЖЕТ -->
+    <details class="app" id="d7">
+      <summary><span class="tagn">Д7</span><span class="st"><h3>Бюджет запуску — київські ціни</h3><p>Постатейно · перевірено по ринку · серпень 2026 · курс 44,5</p></span><span class="chev">▶</span></summary>
+      <div class="app-body">
+        <h4>1 · Підготовка приміщень (хвиля 1 — 35 об'єктів)</h4>
+        <table class="data">
+          <tr><th>Позиція</th><th>Ринкова ціна (Київ)</th><th style="text-align:right">Мін</th><th style="text-align:right">Макс</th></tr>
+          <tr><td>Вивіз будсміття з вантажниками</td><td>Газель від 700–800 ₴/рейс, ЗІЛ 7 м³ ≈ від 700 ₴/м³; ~10 рейсів</td><td class="r">8 тис ₴</td><td class="r">15 тис ₴</td></tr>
+          <tr><td>Клінінг після будівельників — рахуємо обидва способи</td><td>65–140 ₴/м²; базово — своя експлуатація ($0), платно — 5 фасадних приміщень ≈ 40 тис ₴</td><td class="r">0</td><td class="r">40 тис ₴</td></tr>
+        </table>
+        <p class="note">Викреслено рішенням від 14.08: заміна ламп у 53 приміщеннях без вікон (не робимо взагалі — світло дає підрядник на фотозйомці) і закупівля власного обладнання (штатив/LED/далекомір — купували б лише для фотозйомки своїми силами, а цей сценарій знято: витратити гроші на техніку заради аматорського результату — гірший з варіантів).</p>
+        <h4>2 · Фотозйомка (оплата за день, 5–6 днів, обладнання підрядника)</h4>
+        <table class="data">
+          <tr><td>Ринковий тариф «за об'єкт»</td><td>5 000–7 000 ₴/об'єкт з обробкою (30–50 кадрів, 45 Мп) → 35 об'єктів = 175–245 тис ₴ — <b>відхиляємо</b>, типізація робить його безглуздим</td></tr>
+          <tr><td>Бюджетний виконавець, оплата за день</td><td>3 000–4 500 ₴/день × 6 днів = 18–27 тис ₴ — діапазон, визначений на нараді 13.08 ($400–600)</td></tr>
+          <tr><td>Професійний інтер'єрний фотограф, оплата за день</td><td>6 000–9 000 ₴/день з обробкою × 6 днів = 36–54 тис ₴ — рекомендований варіант для рекламних матеріалів</td></tr>
+          <tr><td>Опція: 360°-панорами</td><td>≈ 1 000 ₴/панорама + збірка туру ≈ 4 000 ₴ — лише ключові об'єкти, після перших дзвінків</td></tr>
+        </table>
+        <h4>3 · Логістика</h4>
+        <table class="data">
+          <tr><td>25 адрес у 4 містах (Вишневе 91 пом., Чабани 47, Гостомель 4, Ірпінь 4); ~20–25 виїздів на підготовку, фотозйомку і покази; пальне + амортизація. Виїзд фотографа за межі Києва — закласти в договір, а не доплачувати за фактом</td><td class="r">8–12 тис ₴</td></tr>
+        </table>
+        <h4>4 · Вітрина й реклама (перші 3 місяці) — затверджено 14.08</h4>
+        <table class="data">
+          <tr><td>Пакети OLX Бізнес / DIM.RIA + просування типових приміщень</td><td class="r">4–6 тис ₴/міс → 12–18 тис ₴</td></tr>
+          <tr><td>Банери «ОРЕНДА / ПРОДАЖ» на фасади (10 шт ≈ 3×1 м, друк 165–300 ₴/м² + люверси + монтаж)</td><td class="r">12–18 тис ₴</td></tr>
+        </table>
+        <h4>5 · Оформлення угод — витрати виникають під час укладення, а не на етапі запуску</h4>
+        <table class="data">
+          <tr><td>Експертна оцінка для нотаріуса</td><td class="r">1 200–2 500 ₴/об'єкт</td></tr>
+          <tr><td>Актуальні витяги, довідки</td><td class="r">500–1 000 ₴/об'єкт</td></tr>
+          <tr><td>Техпаспорт, де відсутній (~36 % фонду; строк ~5 днів)</td><td class="r">1 500–2 500 ₴/об'єкт</td></tr>
+          <tr><td><b>Пакет угоди разом</b></td><td class="r"><b>≈ 3–6 тис ₴ ($70–135)</b></td></tr>
+        </table>
+        <h4>Підсумок (з резервом 15 %)</h4>
+        <table class="data">
+          <tr><td><b>Мінімум</b> — бюджетний виконавець, клінінг своїми силами</td><td class="r"><b>≈ $1 500</b> <span class="uah">67 тис ₴</span></td></tr>
+          <tr><td><b>Рекомендований орієнтир</b> — профі-фотозйомка, клінінг своїми силами</td><td class="r"><b>≈ $2 500</b> <span class="uah">112 тис ₴</span></td></tr>
+          <tr><td><b>Максимум</b> — профі-фотозйомка + платний клінінг 5 фасадних приміщень</td><td class="r"><b>≈ $4 050</b> <span class="uah">181 тис ₴</span></td></tr>
+        </table>
+        <p class="note" style="margin-top:14px">Джерела цін (серпень 2026): Kabanchik.ua (виконавці, клінінг, фото), photo-video.kiev.ua (інтер'єрна фотозйомка 5–7 тис ₴/об'єкт, панорами), idealcleaning.com.ua і svitanok.kiev.ua (клінінг 65–140 ₴/м²), trand.kiev.ua (вивіз сміття від 500–800 ₴), print-outdoor.com.ua і farba.kiev.ua (банер 165–300 ₴/м²), posluhybti.com (оцінка від 1 200 ₴, техпаспорт 1 500–2 000 ₴). Усі позиції — вилки до тендера; фіксуються договорами після тестів.</p>
+      </div>
+    </details>
+
+    <!-- Д8 БРОКЕРИ -->
+    <details class="app" id="d8">
+      <summary><span class="tagn">Д8</span><span class="st"><h3>Реєстр діючих оголошень і брокерів · М-16</h3><p>Хто продає наші метри · дати · ціни · статус повноважень</p></span><span class="chev">▶</span></summary>
+      <div class="app-body">
+        <table class="data">
+          <tr><th>Продавець</th><th>Об'єкт</th><th style="text-align:right">Ціна</th><th>Публікується з</th><th>Позначення</th><th>Статус</th></tr>
+          <tr><td>Віталій Дьомін</td><td>Блок прибудови 557,8 м² (3-й пов., офіси 964–971); пропонує дробити блок</td><td class="r">$833/м²</td><td>15.01.2025</td><td>«представник забудовника»</td><td><span class="pill red">з'ясувати повноваження</span></td></tr>
+          <tr><td>Олена Ляхова</td><td>114,4 м² — переуступка майнових прав</td><td class="r tbd">—</td><td>27.12.2024</td><td>посередник · вторинка</td><td><span class="pill red">з'ясувати повноваження</span></td></tr>
+          <tr><td>Приватні / агентства</td><td>Окремі приміщення з ремонтом (не наш фонд)</td><td class="r tbd">різні</td><td>—</td><td>—</td><td><span class="pill gray">моніторимо</span></td></tr>
+        </table>
+        <p class="note" style="margin-top:14px">Оголошення йдуть під іменем ЖК, а не за адресою — тому адресний моніторинг їх не показував. В обліку проданим зазначено лише приміщення № 947, тому підстави цих публікацій потрібно перевірити. Повний перелік із посиланнями ведеться у внутрішньому реєстрі (Блок 1, Етап 0); тут — зведення станом на 18.08.2026.</p>
+      </div>
+    </details>
+
+    <!-- Д6 ДЖЕРЕЛА -->
+    <details class="app" id="d6">
+      <summary><span class="tagn">Д6</span><span class="st"><h3>На чому побудована стратегія</h3><p>Наради та документи тижня 07–14 серпня</p></span><span class="chev">▶</span></summary>
+      <div class="app-body">
+        <table class="data">
+          <tr><th style="width:26%">Дата · подія</th><th>Що зафіксовано</th></tr>
+          <tr><td><b>10.08</b> · нарада</td><td>Теза П. Л.: «Нежитловий фонд, який є — це гроші, яких у нас немає» — головна думка обкладинки.</td></tr>
+          <tr><td><b>11.08</b> · «Стратегія роботи з нежитловим фондом»</td><td>Матриця 4 форматів і принцип «фасад лишаємо за собою»; стандарт фотозйомки «як у гугл-картах»; наповненість внутрішнього реєстру ~60 % (плани 53 %, техпаспорти 64 %, опис 51 %, фото 50 %); відмова від прайсу 10 000 ₴/об'єкт.</td></tr>
+          <tr><td><b>11.08</b> · Фото-ТЗ (документ)</td><td>25 адрес, 146 приміщень, три хвилі, стандарт кадрів, приймання, вимоги до підрядника.</td></tr>
+          <tr><td><b>12.08</b> · Картка об'єкта (документ)</td><td>Пакети А/Б, чутливі дані, червоні зони: майнові права, часткова власність, перейменовані вулиці.</td></tr>
+          <tr><td><b>13.08</b> · Стратегічна нарада з комерціалізації</td><td>Оргструктура (пропозиція), деактивація чужих оголошень, ремонтні канікули, пілот М-16, вилка підрядника $300–600 — «на такому обсязі робити не думаючи».</td></tr>
+          <tr><td><b>18.08</b> · Концепція М-16 (документ, ред. 18.08.2026)</td><td><b>Основа цього документа:</b> мета «вийти в гроші + заробляти на оренді», поверхова розкладка за відомістю 26.06.2026, гібридна модель (прибудова — оренда; крила — оренда або продаж), діагностика інфополя (Дьомін, Ляхова), 4 робочі блоки, дорожня карта етапів 0–4, шість рішень на затвердження.</td></tr>
+          <tr><td><b>Портал</b> · реєстр + прайс</td><td>146 нежитлових, статуси, метражі — база типізації (Д2) і реєстру (Д5); прайс 67 приміщень — база розрахунку вартості (розділ 11).</td></tr>
+        </table>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Доброград · Нежитловий фонд · Стратегія введення активів в обіг · v5 · пілот М-16</span>
+    <span>Підготував: Алекс Гончаревський · 18.08.2026 · курс 44,5 ₴/$</span>
+  </div>
+</footer>
+
+<script>
+  // Перед друком розгортаємо всі плашки, після — повертаємо як було
+  let openedForPrint = [];
+  window.addEventListener('beforeprint', () => {
+    openedForPrint = [];
+    document.querySelectorAll('details:not([open])').forEach(d => { d.open = true; openedForPrint.push(d); });
+  });
+  window.addEventListener('afterprint', () => {
+    openedForPrint.forEach(d => d.open = false); openedForPrint = [];
+  });
+</script>
+</body>
+</html>
