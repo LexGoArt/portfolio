@@ -21,6 +21,7 @@ graph of an operation, and my first 90 days.
 | **Dobrograd Portal** | The internal system that replaced a dozen disagreeing spreadsheets with one live registry of 2,121 units across nine developments: search, map, pricing, role-based access, instalment calculator. Trilingual case study (EN/PL/UA) — the live portal is not linked. | [Open](https://lexgoart.github.io/portfolio/dobrograd-portal/) |
 | **Dobrograd — Brand Book** | Full rebrand of a residential development brand: positioning, logo system, typography, colour and application rules, delivered as a living web document rather than a static PDF. Trilingual (UA/PL/EN). | [Open](https://lexgoart.github.io/portfolio/dobrograd-brandbook/) |
 | **15 Years of Dobrograd** | An 18-part strategy deck for a two-day anniversary programme: concept, audience zones, the funnel from ad to signed contract, content plan, team ownership and budget. Trilingual (UA/PL/EN). | [Open](https://lexgoart.github.io/portfolio/dobrograd-15-anniversary/) |
+| **Dobrograd — non-residential fund strategy** | A monetisation strategy for the commercial stock: information-field diagnosis, a rent-or-sell hybrid, four workstreams, stages 0–4 and six owner decisions. Ukrainian. | [Open](https://lexgoart.github.io/portfolio/dobrograd-nf-strategy/) |
 
 ## How these are built
 
