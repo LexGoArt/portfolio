@@ -285,6 +285,27 @@
     .donutbox{grid-template-columns:1fr;justify-items:center}
     .order{padding:34px 24px}
   }
+  /* Шляхи дзвінка клієнта */
+  .paths{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:36px}
+  .pathcard{border-radius:16px;padding:24px;box-shadow:var(--shadow)}
+  .pathcard.bad{background:#FBF4F0;border:1px solid rgba(156,74,47,.35)}
+  .pathcard.good{background:#F2F6EF;border:1px solid rgba(63,129,87,.4)}
+  .pathcard h3{font-size:14px;margin-bottom:14px}
+  .pathcard.bad h3{color:var(--red)} .pathcard.good h3{color:#2c7a51}
+  .pstep{position:relative;padding:0 0 18px 30px;font-size:13.5px;color:var(--ink2)}
+  .pstep:last-child{padding-bottom:0}
+  .pstep::before{content:attr(data-n);position:absolute;left:0;top:0;width:20px;height:20px;border-radius:50%;font-family:var(--display);font-size:10.5px;font-weight:800;display:grid;place-items:center;color:#fff}
+  .pathcard.bad .pstep::before{background:var(--red)}
+  .pathcard.good .pstep::before{background:#2c7a51}
+  .pstep::after{content:'';position:absolute;left:9px;top:22px;bottom:2px;width:2px}
+  .pathcard.bad .pstep::after{background:rgba(156,74,47,.25)}
+  .pathcard.good .pstep::after{background:rgba(63,129,87,.3)}
+  .pstep:last-child::after{display:none}
+  .pverdict{margin-top:14px;font-family:var(--display);font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+  .pathcard.bad .pverdict{color:var(--red)} .pathcard.good .pverdict{color:#2c7a51}
+  .scenrow.bad .sbar{background:linear-gradient(90deg,#9C4A2F,#C97A5E)}
+  @media (max-width:640px){.paths{grid-template-columns:1fr}}
+
   /* ===== Аудіоплеєр брифінгу ===== */
   .player{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:60;width:min(720px,calc(100% - 24px));background:var(--green);color:#FAF9F6;border-radius:16px;box-shadow:0 8px 30px rgba(26,32,23,.35);display:flex;align-items:center;gap:14px;padding:12px 18px}
   .pbtn{width:44px;height:44px;flex:none;border-radius:50%;border:none;background:var(--gold2);color:#161208;font-size:16px;cursor:pointer;display:grid;place-items:center;transition:transform .15s}
@@ -657,6 +678,29 @@
       <div class="card"><div class="num-chip">2</div><h3>Єдина ціна</h3><p>Одна цінова політика: оренда ₴/м²/міс і продаж $/м² — без самодіяльності посередників. Публікація прибудови «продаж $833/м²» суперечить рішенню «прибудова — оренда» — знімаємо або переорієнтовуємо.</p></div>
       <div class="card gold"><div class="num-chip">3</div><h3>Єдиний телефон і акаунт</h3><p>Усі звернення щодо нежитлових приміщень спрямовуємо на один номер і в один акаунт Холдингу. За напрям відповідають окремі менеджери, які не поєднують цю роботу з продажем житла.</p></div>
     </div>
+
+    <h3 style="margin-top:52px;font-size:19px">Куди йде дзвінок клієнта: зараз — і як має бути</h3>
+    <div class="paths">
+      <div class="pathcard bad">
+        <h3>Зараз · через посередника</h3>
+        <div class="pstep" data-n="1">Клієнт бачить чуже оголошення зі старою ціною $833/м²</div>
+        <div class="pstep" data-n="2">Дзвонить брокеру — контакт клієнта лишається у посередника</div>
+        <div class="pstep" data-n="3">Брокер приходить до нас торгуватися за знижку</div>
+        <div class="pstep" data-n="4">Ми втрачаємо маржу, клієнтську базу і відчуття ринку</div>
+        <div class="pverdict">Результат: чужа ціна, чужий клієнт</div>
+      </div>
+      <div class="pathcard good">
+        <h3>Як має бути · напряму</h3>
+        <div class="pstep" data-n="1">Клієнт бачить наше оголошення з єдиним номером</div>
+        <div class="pstep" data-n="2">Дзвінок фіксується в CRM: джерело, формат, запит</div>
+        <div class="pstep" data-n="3">Наш менеджер показує об'єкт і пропонує аналоги</div>
+        <div class="pverdict">Результат: повна ціна, власна база клієнтів</div>
+      </div>
+    </div>
+    <div class="layers" style="margin-top:30px;max-width:640px">
+      <div class="layer"><span>Оголошення Ляхової висить</span><div class="lbar gray" style="width:100%"></div><span class="lval">20 місяців</span></div>
+      <div class="layer"><span>Оголошення Дьоміна висить</span><div class="lbar gray" style="width:95%"></div><span class="lval">19 місяців</span></div>
+    </div>
   </div>
 </section>
 
@@ -892,7 +936,12 @@
         <div class="risk">Ціна фіксується після безкоштовної тестової фотозйомки цоколя. Тестуємо обох кандидатів — обираємо за результатом.</div>
       </div>
     </div>
-    <p class="hint">Обладнання не купуємо: підрядник повинен мати власний штатив і мобільне освітлення — це зазначено у технічному завданні. Від фотозйомки силами працівників компанії відмовляємося, оскільки витрати на техніку не гарантують професійного результату.</p>
+    <div class="scen" style="max-width:760px">
+      <div class="scenrow bad"><span>Ринковий тариф «за об'єкт»</span><div class="sbar" style="width:100%"></div><span class="sval">$4 045–5 660</span></div>
+      <div class="scenrow rec"><span><b>Профі, оплата за день</b></span><div class="sbar" style="width:21%"></div><span class="sval">$800–1 210</span></div>
+      <div class="scenrow"><span>Бюджетний, оплата за день</span><div class="sbar" style="width:11%"></div><span class="sval">$400–600</span></div>
+    </div>
+    <p class="hint">Групування типових приміщень і оплата за знімальний день замість тарифу «за об'єкт» економлять до 85 % вартості тієї самої роботи. Обладнання не купуємо: підрядник повинен мати власний штатив і мобільне освітлення — це зазначено у технічному завданні. Від фотозйомки силами працівників компанії відмовляємося.</p>
     <details class="app inline">
       <summary><span class="tagn">Деталі</span><span class="st"><h3>Що знімаємо і що збираємо в картку</h3><p>Зведення двох готових ТЗ · повні версії — у Додатку</p></span><span class="chev">▶</span></summary>
       <div class="app-body">
@@ -952,12 +1001,13 @@
         <p style="margin-top:18px">Вартість 67 приміщень, для яких у порталі зазначено ціну, становить близько $6,0 млн. Ще $2,6 млн — орієнтовна вартість об'єктів без затвердженого прайсу, зокрема М-5А та приміщень у Гостомелі. Якщо здати всі вільні площі за ставками з внутрішнього реєстру, потенційний орендний дохід може сягнути <b>близько $87 тис на місяць</b>.</p>
       </div>
       <div>
-        <table class="mini-table">
-          <tr><td>Поверхи / офіси · 60 пом. · 6 360 м²</td><td>≈ $5,8 млн</td></tr>
-          <tr><td>Цоколі · 34 пом. · 3 542 м²</td><td>≈ $2,5 млн</td></tr>
-          <tr><td>Підвали · 4 пом. · 494 м²</td><td>≈ $0,3 млн</td></tr>
-          <tr><td>Оренда зараз (17 договорів)</td><td>2 131 м² працює</td></tr>
-        </table>
+        <div class="layers">
+          <div class="layer"><span>Поверхи / офіси · 60 пом.</span><div class="lbar" style="width:100%"></div><span class="lval">≈ $5,8 млн</span></div>
+          <div class="layer"><span>Цоколі · 34 пом.</span><div class="lbar gold" style="width:43%"></div><span class="lval">≈ $2,5 млн</span></div>
+          <div class="layer"><span>Підвали · 4 пом.</span><div class="lbar champ" style="width:6%"></div><span class="lval">≈ $0,3 млн</span></div>
+          <div class="layer"><span>В оренді · 17 договорів</span><div class="lbar gray" style="width:13%"></div><span class="lval">2 131 м²</span></div>
+        </div>
+        <p class="note" style="margin-top:12px;font-size:12.5px;color:var(--faint)">Бюджет запуску ≈ $2 500 — це 0,03 % вартості замороженого фонду.</p>
       </div>
     </div>
     <h2 style="margin-top:72px">Орієнтовний кошторис запуску</h2>
@@ -1408,6 +1458,14 @@
       <div class="card"><div class="num-chip">4</div><h3>Гостомель</h3><p><b>2 вільних + 2 закритих.</b> Огляд і фотозйомка — початок жовтня, оголошення — до 09.10 (у звіт №2).</p></div>
       <div class="card"><div class="num-chip">5</div><h3>М-18 і М-5А · будуються</h3><p><b>42 вільні приміщення, на які оформлено майнові права.</b> У вересні фотографуємо будинки, фасади та види з вікон. Для продажу використовуємо плани й концептуальні AI-візуалізації. Мар'яна готує комплект документів для покупців до 5 вересня.</p></div>
       <div class="card"><div class="num-chip">6</div><h3>Ірпінь + орендовані</h3><p><b>17 діючих договорів.</b> Чинні оголошення не змінюємо. До кінця жовтня готуємо зведення щодо кожного договору: орендна ставка, строк, порядок індексації та стан розрахунків.</p></div>
+    </div>
+    <h3 style="margin-top:44px;font-size:17px">Черга публікацій: вільні приміщення по об'єктах</h3>
+    <div class="layers" style="max-width:720px">
+      <div class="layer"><span>М-18 і М-5А · будуються</span><div class="lbar champ" style="width:100%"></div><span class="lval">42 · за візуалізаціями</span></div>
+      <div class="layer"><span>М-16 · пілот</span><div class="lbar gold" style="width:57%"></div><span class="lval">24 · оголошення 10.09</span></div>
+      <div class="layer"><span>ПК-1 · Вишневе</span><div class="lbar" style="width:43%"></div><span class="lval">18 · оголошення 24.09</span></div>
+      <div class="layer"><span>Сакура · Єдності</span><div class="lbar" style="width:29%"></div><span class="lval">12 · оголошення 24.09</span></div>
+      <div class="layer"><span>Гостомель</span><div class="lbar gray" style="width:5%"></div><span class="lval">2 · до 09.10</span></div>
     </div>
     <p class="hint">Після звіту №2 (09.10) — рішення про хвилю 2: повторна фотозйомка аматорських фото, 360°-тури ключових об'єктів, замір трафіку. Кожен блок отримує той самий пакет документів: ТЗ, чек-листи, шаблон картки.</p>
   </div>
