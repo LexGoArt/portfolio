@@ -13,7 +13,7 @@
   :root{
     --bg:#FAF9F6; --bg2:#F3EFE7; --panel:#FFFFFF; --panel2:#F3EFE7;
     --line:#E8E3D8; --line2:#ECE7DC;
-    --ink:#2A2A2A; --ink2:#545454; --muted:#7A7A76; --faint:#8C8C8C;
+    --ink:#2A2A2A; --ink2:#545454; --muted:#7A7A76; --faint:#6B6B67;
     --gold:#B29141; --gold2:#D7B369; --champ:#EBCF94;
     --green:#2A3728; --sage:#6A7B68; --moss:#374636; --red:#9C4A2F;
     --display:'Montserrat', -apple-system, sans-serif;
@@ -307,7 +307,7 @@
   @media (max-width:640px){.paths{grid-template-columns:1fr}}
 
   /* ===== Аудіоплеєр брифінгу ===== */
-  .player{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:60;width:min(720px,calc(100% - 20px));background:var(--green);color:#FAF9F6;border-radius:18px;box-shadow:0 8px 30px rgba(26,32,23,.4);display:grid;grid-template-columns:auto 1fr auto;grid-template-areas:'btn info follow' 'btn bar bar';align-items:center;column-gap:14px;row-gap:9px;padding:13px 16px 14px}
+  .player{position:fixed;left:50%;bottom:calc(14px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:60;width:min(720px,calc(100% - 20px));background:var(--green);color:#FAF9F6;border-radius:18px;box-shadow:0 8px 30px rgba(26,32,23,.4);display:grid;grid-template-columns:auto 1fr auto;grid-template-areas:'btn info follow' 'btn bar bar';align-items:center;column-gap:14px;row-gap:9px;padding:13px 16px 14px}
   .pbtn{grid-area:btn;width:48px;height:48px;flex:none;border-radius:50%;border:none;background:var(--gold2);color:#161208;font-size:17px;cursor:pointer;display:grid;place-items:center;transition:transform .15s;align-self:center}
   .pbtn:hover{transform:scale(1.06)}
   .pinfo{grid-area:info;min-width:0;display:flex;flex-direction:column;gap:2px}
@@ -318,23 +318,35 @@
   .pbar::before{content:'';position:absolute;inset:-10px 0;} 
   .pfill{height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,var(--gold),var(--champ));position:relative}
   .pfill::after{content:'';position:absolute;right:-5px;top:50%;transform:translateY(-50%);width:12px;height:12px;border-radius:50%;background:var(--champ);box-shadow:0 1px 4px rgba(0,0,0,.4)}
-  .ptick{position:absolute;top:50%;transform:translate(-50%,-50%);width:2px;height:12px;border-radius:1px;background:rgba(250,249,246,.45);pointer-events:none}
+  .ptick{position:absolute;top:50%;transform:translate(-50%,-50%);width:2px;height:12px;border-radius:1px;background:rgba(250,249,246,.45);cursor:pointer}
+  .ptick::before{content:'';position:absolute;inset:-8px -7px}
+  .ptick:hover::after{content:attr(data-label);position:absolute;bottom:18px;left:50%;transform:translateX(-50%);background:#161208;color:#FAF9F6;font-size:11px;line-height:1.3;padding:5px 9px;border-radius:7px;white-space:nowrap;z-index:5}
   .ptime{font-size:11px;font-variant-numeric:tabular-nums;color:rgba(250,249,246,.8);white-space:nowrap}
   .pfollow{grid-area:follow;display:flex;align-items:center;gap:7px;font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(250,249,246,.85);cursor:pointer;white-space:nowrap;user-select:none;background:rgba(250,249,246,.1);border:1px solid rgba(250,249,246,.28);border-radius:999px;padding:8px 13px;transition:all .2s}
   .pfollow input{position:absolute;opacity:0;pointer-events:none}
   .pfollow .pf-dot{width:9px;height:9px;border-radius:50%;background:rgba(250,249,246,.4);transition:all .2s}
   .pfollow.on{background:var(--gold2);border-color:var(--gold2);color:#161208}
   .pfollow.on .pf-dot{background:#161208;animation:pulse 1.6s infinite}
+  .pfollow:has(input:focus-visible){outline:2px solid var(--champ);outline-offset:3px}
+  .pbar:focus-visible{outline:2px solid var(--champ);outline-offset:4px}
+  .pfollow.attn{animation:attn .9s ease}
+  @keyframes attn{0%,100%{transform:scale(1);box-shadow:none}25%{transform:scale(1.14);box-shadow:0 0 0 6px rgba(235,207,148,.35)}55%{transform:scale(1)}75%{transform:scale(1.1);box-shadow:0 0 0 5px rgba(235,207,148,.3)}}
+  .ptoast{position:fixed;left:50%;bottom:calc(14px + 96px);transform:translateX(-50%) translateY(10px);z-index:59;width:min(460px,calc(100% - 40px));background:var(--moss);color:#FAF9F6;border:1px solid var(--gold2);border-radius:14px;padding:12px 16px;font-size:12.5px;line-height:1.45;display:flex;gap:14px;align-items:center;opacity:0;pointer-events:none;transition:opacity .3s, transform .3s;box-shadow:0 8px 24px rgba(26,32,23,.35)}
+  .ptoast.show{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+  .ptoast b{color:var(--champ)}
+  .ptoast button{flex:none;border:none;background:var(--gold2);color:#161208;border-radius:999px;padding:8px 14px;font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+  @media (max-width:560px){.ptoast{bottom:calc(10px + 110px)}}
   .hero-listen{display:inline-flex;align-items:center;gap:10px;margin-top:26px;background:var(--green);color:var(--champ);font-family:var(--display);font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:13px 22px;border-radius:999px;cursor:pointer;border:none;box-shadow:var(--shadow)}
   .hero-listen:hover{background:var(--moss)}
   section, header.hero{scroll-margin-top:14px;transition:opacity .6s ease, filter .6s ease}
-  body.audio-playing section:not(.audio-live), body.audio-playing header.hero:not(.audio-live){opacity:.28;filter:saturate(.5)}
+  body.audio-playing section:not(.audio-live), body.audio-playing header.hero:not(.audio-live){opacity:.55}
+  body.audio-playing.following section:not(.audio-live), body.audio-playing.following header.hero:not(.audio-live){opacity:.28;filter:saturate(.5)}
   section.audio-live, header.hero.audio-live{opacity:1;filter:none;background:linear-gradient(180deg,rgba(215,179,105,.16),rgba(215,179,105,.04) 35%, transparent);box-shadow:inset 5px 0 0 var(--gold2)}
   section.audio-live .kicker::after{content:'● грає';margin-left:12px;color:var(--gold2);font-size:10px;animation:pulse 1.6s infinite}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-  body.has-player{padding-bottom:92px}
+  body.has-player{padding-bottom:calc(96px + env(safe-area-inset-bottom))}
   @media (max-width:560px){
-    .player{bottom:10px;padding:12px 13px;column-gap:11px}
+    .player{bottom:calc(10px + env(safe-area-inset-bottom));padding:12px 13px;column-gap:11px}
     .pbtn{width:46px;height:46px}
     .pname{display:none}
     .pchap{font-size:12.5px}
@@ -378,10 +390,16 @@
     .scenrow .sval{text-align:left}
   }
 
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    section.audio-live .kicker::after, .pfollow.on .pf-dot, .pfollow.attn{animation:none}
+    section, header.hero, .pbtn, summary .chev, .bhead .chev{transition:none}
+  }
   @media print{
     .order{break-before:page;box-shadow:none}
     .gantt{overflow:visible}
-    .player,.hero-listen{display:none}
+    .player,.hero-listen,.ptoast{display:none}
+    body.audio-playing section:not(.audio-live), body.audio-playing header.hero:not(.audio-live){opacity:1!important;filter:none!important}
   }
 
   /* Чипи конкурентної карти */
@@ -459,7 +477,7 @@
 <header class="hero">
   <div class="wrap">
     <div class="brand">
-      <img class="brand-logo" src="assets/logo.svg" alt="Доброград">
+      <img class="brand-logo" src="assets/logo.svg" alt="Доброград" width="835" height="196" decoding="async">
       <small class="brand-tag">Будуємо якість. Створюємо простір для життя.</small>
     </div>
     <div class="heroquote"><span class="qmark">«</span>Нежитловий фонд, який є — це гроші, яких у нас немає.<span class="qmark">»</span></div>
@@ -496,36 +514,36 @@
     <div class="roomrow">
       <div class="rhead"><h3>Приміщення П.4</h3><span>М-16 · підвал · 124 м²</span></div>
       <div class="renders">
-        <div class="render bare"><img src="assets/rooms/p4-now.webp" alt="П.4 — реальний стан: бетон"><div class="cap">Зараз · реальне фото</div><div class="arrow">→</div></div>
-        <div class="render white"><img src="assets/rooms/p4-whitebox.webp" alt="П.4 — вайтбокс"><div class="cap">Вайтбокс</div><div class="arrow">→</div></div>
-        <div class="render"><img src="assets/rooms/p4-concept.webp" alt="П.4 — концепт: більярдний клуб"><div class="cap">Концепт · <b>більярдний клуб</b></div></div>
+        <div class="render bare"><img loading="lazy" decoding="async" src="assets/rooms/p4-now.webp" alt="П.4 — реальний стан: бетон"><div class="cap">Зараз · реальне фото</div><div class="arrow">→</div></div>
+        <div class="render white"><img loading="lazy" decoding="async" src="assets/rooms/p4-whitebox.webp" alt="П.4 — вайтбокс"><div class="cap">Вайтбокс</div><div class="arrow">→</div></div>
+        <div class="render"><img loading="lazy" decoding="async" src="assets/rooms/p4-concept.webp" alt="П.4 — концепт: більярдний клуб"><div class="cap">Концепт · <b>більярдний клуб</b></div></div>
       </div>
     </div>
 
     <div class="roomrow">
       <div class="rhead"><h3>Приміщення П.3</h3><span>Піонерський 2 · вул. Машинобудівників, 16 · прибудова · підземний</span></div>
       <div class="renders">
-        <div class="render bare"><img src="assets/rooms/p3-now.webp" alt="П.3 — реальний стан: бетон"><div class="cap">Зараз · реальне фото</div><div class="arrow">→</div></div>
-        <div class="render white"><img src="assets/rooms/p3-whitebox.webp" alt="П.3 — вайтбокс"><div class="cap">Вайтбокс</div><div class="arrow">→</div></div>
-        <div class="render"><img src="assets/rooms/p3-concept.webp" alt="П.3 — концепт: фітнес-зал"><div class="cap">Концепт · <b>фітнес-зал</b></div></div>
+        <div class="render bare"><img loading="lazy" decoding="async" src="assets/rooms/p3-now.webp" alt="П.3 — реальний стан: бетон"><div class="cap">Зараз · реальне фото</div><div class="arrow">→</div></div>
+        <div class="render white"><img loading="lazy" decoding="async" src="assets/rooms/p3-whitebox.webp" alt="П.3 — вайтбокс"><div class="cap">Вайтбокс</div><div class="arrow">→</div></div>
+        <div class="render"><img loading="lazy" decoding="async" src="assets/rooms/p3-concept.webp" alt="П.3 — концепт: фітнес-зал"><div class="cap">Концепт · <b>фітнес-зал</b></div></div>
       </div>
     </div>
 
     <div class="roomrow">
       <div class="rhead"><h3>Приміщення НП 18.3</h3><span>Піонерський 2 · вул. Машинобудівників, 16 · прибудова · 3 поверх</span></div>
       <div class="renders">
-        <div class="render bare"><img src="assets/rooms/np183-now.webp" alt="НП 18.3 — реальний стан: бетон, панорамне вікно"><div class="cap">Зараз · реальне фото</div><div class="arrow">→</div></div>
-        <div class="render white"><img src="assets/rooms/np183-whitebox.webp" alt="НП 18.3 — вайтбокс"><div class="cap">Вайтбокс</div><div class="arrow">→</div></div>
-        <div class="render"><img src="assets/rooms/np183-concept.webp" alt="НП 18.3 — концепт: йога-студія"><div class="cap">Концепт · <b>йога-студія</b></div></div>
+        <div class="render bare"><img loading="lazy" decoding="async" src="assets/rooms/np183-now.webp" alt="НП 18.3 — реальний стан: бетон, панорамне вікно"><div class="cap">Зараз · реальне фото</div><div class="arrow">→</div></div>
+        <div class="render white"><img loading="lazy" decoding="async" src="assets/rooms/np183-whitebox.webp" alt="НП 18.3 — вайтбокс"><div class="cap">Вайтбокс</div><div class="arrow">→</div></div>
+        <div class="render"><img loading="lazy" decoding="async" src="assets/rooms/np183-concept.webp" alt="НП 18.3 — концепт: йога-студія"><div class="cap">Концепт · <b>йога-студія</b></div></div>
       </div>
     </div>
 
     <div class="roomrow">
       <div class="rhead"><h3>Приміщення П.1</h3><span>Піонерський 2 · вул. Машинобудівників, 16 · прибудова · підземний</span></div>
       <div class="renders">
-        <div class="render bare"><img src="assets/rooms/p1-now.webp" alt="П.1 — реальний стан: бетон"><div class="cap">Зараз · реальне фото</div><div class="arrow">→</div></div>
-        <div class="render white"><img src="assets/rooms/p1-whitebox.webp" alt="П.1 — вайтбокс"><div class="cap">Вайтбокс</div><div class="arrow">→</div></div>
-        <div class="render"><img src="assets/rooms/p1-concept.webp" alt="П.1 — концепт: майстерня"><div class="cap">Концепт · <b>майстерня</b></div></div>
+        <div class="render bare"><img loading="lazy" decoding="async" src="assets/rooms/p1-now.webp" alt="П.1 — реальний стан: бетон"><div class="cap">Зараз · реальне фото</div><div class="arrow">→</div></div>
+        <div class="render white"><img loading="lazy" decoding="async" src="assets/rooms/p1-whitebox.webp" alt="П.1 — вайтбокс"><div class="cap">Вайтбокс</div><div class="arrow">→</div></div>
+        <div class="render"><img loading="lazy" decoding="async" src="assets/rooms/p1-concept.webp" alt="П.1 — концепт: майстерня"><div class="cap">Концепт · <b>майстерня</b></div></div>
       </div>
     </div>
 
@@ -1837,15 +1855,16 @@
   </div>
 </footer>
 
+<div class="ptoast" id="ptoast" role="status"><span><b>Стеження увімкнено</b> — сторінка сама повертається до місця розповіді. Хочете гортати вільно?</span><button id="ptoastOff">Вимкнути</button></div>
 <div class="player" id="player" aria-label="Аудіобрифінг стратегії">
   <button class="pbtn" id="pplay" aria-label="Відтворити / пауза">▶</button>
   <div class="pinfo">
     <span class="pname">Аудіобрифінг · 10 хв</span>
     <span class="pchap" id="pchap">Як розморозити $8,6 млн нерухомості</span>
   </div>
-  <label class="pfollow on" id="pfollowWrap"><input type="checkbox" id="pfollow" checked><span class="pf-dot"></span>стежити</label>
+  <label class="pfollow on" id="pfollowWrap" title="Сторінка сама гортається до розділу, про який зараз йдеться. Вимкніть — і гортайте самостійно."><input type="checkbox" id="pfollow" checked aria-label="Автоматично гортати сторінку за аудіо"><span class="pf-dot"></span>стежити</label>
   <div class="pbarrow">
-    <div class="pbar" id="pbar"><div class="pfill" id="pfill"></div></div>
+    <div class="pbar" id="pbar" role="slider" tabindex="0" aria-label="Перемотування запису" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="pfill" id="pfill"></div></div>
     <span class="ptime" id="ptime">0:00 / 10:40</span>
   </div>
 </div>
@@ -1879,22 +1898,64 @@
     var CH = window.BRIEF_CHAPTERS || [];
     var cur = -1;
     function fmt(t){ t=Math.max(0,t|0); return Math.floor(t/60)+':'+('0'+(t%60)).slice(-2); }
+    function smoothPref(){ return window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'; }
+    document.addEventListener('keydown', function(e){
+      if(/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName) || e.target.isContentEditable) return;
+      if(e.code==='ArrowRight' && a.duration){ a.currentTime=Math.min(a.duration,a.currentTime+10); }
+      if(e.code==='ArrowLeft'  && a.duration){ a.currentTime=Math.max(0,a.currentTime-10); }
+    });
     play.addEventListener('click', function(){ a.paused ? a.play() : a.pause(); });
-    a.addEventListener('play',  function(){ play.textContent='❚❚'; document.body.classList.add('audio-playing'); });
-    a.addEventListener('pause', function(){ play.textContent='▶'; document.body.classList.remove('audio-playing'); });
+    a.addEventListener('play',  function(){ play.textContent='❚❚'; play.setAttribute('aria-pressed','true'); document.body.classList.add('audio-playing'); });
+    a.addEventListener('pause', function(){ play.textContent='▶'; play.setAttribute('aria-pressed','false'); document.body.classList.remove('audio-playing'); });
     a.addEventListener('ended', function(){ document.body.classList.remove('audio-playing'); document.querySelectorAll('.audio-live').forEach(function(x){x.classList.remove('audio-live')}); });
     var followWrap = document.getElementById('pfollowWrap');
-    follow.addEventListener('change', function(){ lastPull = 0; followWrap.classList.toggle('on', follow.checked); });
+    var toast = document.getElementById('ptoast'), toastOff = document.getElementById('ptoastOff');
+    function syncFollowClass(){ document.body.classList.toggle('following', follow.checked); }
+    follow.addEventListener('change', function(){ lastPull = 0; followWrap.classList.toggle('on', follow.checked); syncFollowClass(); if(!follow.checked){ toast.classList.remove('show'); } });
+    syncFollowClass();
+    toastOff.addEventListener('click', function(){ follow.checked = false; followWrap.classList.remove('on'); toast.classList.remove('show'); });
+    var lastAttn = 0, lastToast = 0;
+    function liveOutOfView(){
+      if(cur<0) return false;
+      var el = sec(CH[cur].k); if(!el) return false;
+      var r = el.getBoundingClientRect(), vh = window.innerHeight;
+      return !(r.top < vh*0.5 && r.bottom > vh*0.35);
+    }
+    function onUserScroll(){
+      if(a.paused || !follow.checked) return;
+      if(!liveOutOfView()) return;
+      var now = Date.now();
+      if(now - lastAttn > 1400){
+        lastAttn = now;
+        followWrap.classList.remove('attn'); void followWrap.offsetWidth;
+        followWrap.classList.add('attn');
+      }
+      if(now - lastToast > 18000){
+        lastToast = now;
+        toast.classList.add('show');
+        clearTimeout(toast._t);
+        toast._t = setTimeout(function(){ toast.classList.remove('show'); }, 5000);
+      }
+    }
+    window.addEventListener('wheel', onUserScroll, {passive:true});
+    window.addEventListener('touchmove', onUserScroll, {passive:true});
     function drawTicks(){
       if(!a.duration) return;
       CH.slice(1).forEach(function(c){
         var t = document.createElement('i'); t.className='ptick';
         t.style.left = (c.s/a.duration*100)+'%';
+        t.dataset.label = c.label;
+        t.addEventListener('click', function(e){ e.stopPropagation(); a.currentTime = c.s; if(a.paused) a.play(); });
         bar.appendChild(t);
       });
     }
     if(a.readyState >= 1) drawTicks(); else a.addEventListener('loadedmetadata', drawTicks);
     bar.addEventListener('click', function(e){ var r=bar.getBoundingClientRect(); a.currentTime=(e.clientX-r.left)/r.width*a.duration; });
+    bar.addEventListener('keydown', function(e){
+      if(!a.duration) return;
+      if(e.code==='ArrowRight'){ e.preventDefault(); a.currentTime=Math.min(a.duration,a.currentTime+5); }
+      if(e.code==='ArrowLeft'){ e.preventDefault(); a.currentTime=Math.max(0,a.currentTime-5); }
+    });
     // «Магніт»: якщо користувач полистав убік — повертаємо до розділу, про який іде мова
     var lastPull = 0;
     function magnet(){
@@ -1904,19 +1965,23 @@
       var inView = r.top < vh*0.5 && r.bottom > vh*0.35;
       if(!inView && Date.now()-lastPull > 1500){
         lastPull = Date.now();
-        el.scrollIntoView({behavior:'smooth', block:'start'});
+        el.scrollIntoView({behavior:smoothPref(), block:'start'});
       }
     }
     a.addEventListener('timeupdate', function(){
-      if(a.duration){ fill.style.width=(a.currentTime/a.duration*100)+'%'; time.textContent=fmt(a.currentTime)+' / '+fmt(a.duration); }
+      if(a.duration){ var pct=a.currentTime/a.duration*100; fill.style.width=pct+'%'; bar.setAttribute('aria-valuenow', Math.round(pct)); time.textContent=fmt(a.currentTime)+' / '+fmt(a.duration); }
       var i = CH.findIndex(function(c){ return a.currentTime>=c.s && a.currentTime<c.e; });
       if(i!==cur){
         cur=i;
-        document.querySelectorAll('.audio-live').forEach(function(x){x.classList.remove('audio-live')});
-        if(i>=0){
-          var el = sec(CH[i].k);
-          chapEl.textContent = CH[i].label;
-          if(el){ el.classList.add('audio-live'); if(follow.checked && !a.paused){ lastPull = Date.now(); el.scrollIntoView({behavior:'smooth', block:'start'}); } }
+        if(i>=0) chapEl.textContent = CH[i].label;
+        var newEl = i>=0 ? sec(CH[i].k) : null;
+        var curEl = document.querySelector('.audio-live');
+        if(newEl !== curEl){
+          if(curEl) curEl.classList.remove('audio-live');
+          if(newEl){
+            newEl.classList.add('audio-live');
+            if(follow.checked && !a.paused){ lastPull = Date.now(); newEl.scrollIntoView({behavior:smoothPref(), block:'start'}); }
+          }
         }
       }
       magnet();
@@ -1928,6 +1993,7 @@
   // Перед друком розгортаємо всі плашки, після — повертаємо як було
   let openedForPrint = [];
   window.addEventListener('beforeprint', () => {
+    var au = document.getElementById('briefing'); if(au && !au.paused) au.pause();
     openedForPrint = [];
     document.querySelectorAll('details:not([open])').forEach(d => { d.open = true; openedForPrint.push(d); });
   });
