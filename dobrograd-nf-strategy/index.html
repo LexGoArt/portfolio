@@ -300,7 +300,9 @@
   .pfollow input{accent-color:var(--gold2)}
   .hero-listen{display:inline-flex;align-items:center;gap:10px;margin-top:26px;background:var(--green);color:var(--champ);font-family:var(--display);font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:13px 22px;border-radius:999px;cursor:pointer;border:none;box-shadow:var(--shadow)}
   .hero-listen:hover{background:var(--moss)}
-  section.audio-live{background:linear-gradient(180deg,rgba(215,179,105,.10),rgba(215,179,105,.03) 30%, transparent)}
+  section, header.hero{scroll-margin-top:14px;transition:opacity .6s ease, filter .6s ease}
+  body.audio-playing section:not(.audio-live), body.audio-playing header.hero:not(.audio-live){opacity:.28;filter:saturate(.5)}
+  section.audio-live, header.hero.audio-live{opacity:1;filter:none;background:linear-gradient(180deg,rgba(215,179,105,.16),rgba(215,179,105,.04) 35%, transparent);box-shadow:inset 5px 0 0 var(--gold2)}
   section.audio-live .kicker::after{content:'● грає';margin-left:12px;color:var(--gold2);font-size:10px;animation:pulse 1.6s infinite}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
   body.has-player{padding-bottom:92px}
@@ -1795,9 +1797,23 @@
     var cur = -1;
     function fmt(t){ t=Math.max(0,t|0); return Math.floor(t/60)+':'+('0'+(t%60)).slice(-2); }
     play.addEventListener('click', function(){ a.paused ? a.play() : a.pause(); });
-    a.addEventListener('play',  function(){ play.textContent='❚❚'; });
-    a.addEventListener('pause', function(){ play.textContent='▶'; });
+    a.addEventListener('play',  function(){ play.textContent='❚❚'; document.body.classList.add('audio-playing'); });
+    a.addEventListener('pause', function(){ play.textContent='▶'; document.body.classList.remove('audio-playing'); });
+    a.addEventListener('ended', function(){ document.body.classList.remove('audio-playing'); document.querySelectorAll('.audio-live').forEach(function(x){x.classList.remove('audio-live')}); });
+    follow.addEventListener('change', function(){ lastPull = 0; });
     bar.addEventListener('click', function(e){ var r=bar.getBoundingClientRect(); a.currentTime=(e.clientX-r.left)/r.width*a.duration; });
+    // «Магніт»: якщо користувач полистав убік — повертаємо до розділу, про який іде мова
+    var lastPull = 0;
+    function magnet(){
+      if(!follow.checked || a.paused || cur<0) return;
+      var el = sec(CH[cur].k); if(!el) return;
+      var r = el.getBoundingClientRect(), vh = window.innerHeight;
+      var inView = r.top < vh*0.5 && r.bottom > vh*0.35;
+      if(!inView && Date.now()-lastPull > 1500){
+        lastPull = Date.now();
+        el.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    }
     a.addEventListener('timeupdate', function(){
       if(a.duration){ fill.style.width=(a.currentTime/a.duration*100)+'%'; time.textContent=fmt(a.currentTime)+' / '+fmt(a.duration); }
       var i = CH.findIndex(function(c){ return a.currentTime>=c.s && a.currentTime<c.e; });
@@ -1807,9 +1823,10 @@
         if(i>=0){
           var el = sec(CH[i].k);
           chapEl.textContent = CH[i].label;
-          if(el){ el.classList.add('audio-live'); if(follow.checked && !a.paused){ el.scrollIntoView({behavior:'smooth', block:'start'}); } }
+          if(el){ el.classList.add('audio-live'); if(follow.checked && !a.paused){ lastPull = Date.now(); el.scrollIntoView({behavior:'smooth', block:'start'}); } }
         }
       }
+      magnet();
     });
     var heroBtn = document.getElementById('heroListen');
     if(heroBtn){ heroBtn.addEventListener('click', function(){ a.play(); }); }
