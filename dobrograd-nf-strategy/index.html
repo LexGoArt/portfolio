@@ -4,20 +4,6 @@
 <meta charset="UTF-8">
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="/portfolio/favicon.svg" type="image/svg+xml">
-<link rel="canonical" href="https://lexgoart.github.io/portfolio/dobrograd-nf-strategy/">
-<meta name="description" content="Стратегія монетизації нежитлового фонду Доброграда: діагностика інфополя, гібрид «оренда/продаж», чотири робочі блоки, етапи 0–4 і шість рішень власника.">
-<meta property="og:locale" content="uk_UA">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="Alex Goncharevski">
-<meta property="og:title" content="Доброград · Нежитловий фонд · Стратегія монетизації">
-<meta property="og:description" content="Діагностика інфополя, гібрид «оренда/продаж», чотири робочі блоки, етапи 0–4 і шість рішень власника.">
-<meta property="og:url" content="https://lexgoart.github.io/portfolio/dobrograd-nf-strategy/">
-<meta property="og:image" content="https://lexgoart.github.io/portfolio/og/nf-strategy.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://lexgoart.github.io/portfolio/og/nf-strategy.png">
 <title>Доброград · Нежитловий фонд · Стратегія монетизації</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1953,6 +1939,10 @@
     }
     window.addEventListener('wheel', onUserScroll, {passive:true});
     window.addEventListener('touchmove', onUserScroll, {passive:true});
+    window.addEventListener('scroll', function(){
+      if(Date.now() < autoScrollUntil) return; // це наш власний автоскрол, не жест
+      onUserScroll();
+    }, {passive:true});
     function drawTicks(){
       if(!a.duration) return;
       CH.slice(1).forEach(function(c){
@@ -1971,7 +1961,8 @@
       if(e.code==='ArrowLeft'){ e.preventDefault(); a.currentTime=Math.max(0,a.currentTime-5); }
     });
     // «Магніт»: якщо користувач полистав убік — повертаємо до розділу, про який іде мова
-    var lastPull = 0;
+    var lastPull = 0, autoScrollUntil = 0;
+    function autoScrollTo(el){ autoScrollUntil = Date.now()+1600; el.scrollIntoView({behavior:smoothPref(), block:'start'}); }
     function magnet(){
       if(!follow.checked || a.paused || cur<0) return;
       var el = sec(CH[cur].k); if(!el) return;
@@ -1979,7 +1970,7 @@
       var inView = r.top < vh*0.5 && r.bottom > vh*0.35;
       if(!inView && Date.now()-lastPull > 1500){
         lastPull = Date.now();
-        el.scrollIntoView({behavior:smoothPref(), block:'start'});
+        autoScrollTo(el);
       }
     }
     a.addEventListener('timeupdate', function(){
@@ -1994,7 +1985,7 @@
           if(curEl) curEl.classList.remove('audio-live');
           if(newEl){
             newEl.classList.add('audio-live');
-            if(follow.checked && !a.paused){ lastPull = Date.now(); newEl.scrollIntoView({behavior:smoothPref(), block:'start'}); }
+            if(follow.checked && !a.paused){ lastPull = Date.now(); autoScrollTo(newEl); }
           }
         }
       }
@@ -2015,26 +2006,5 @@
     openedForPrint.forEach(d => d.open = false); openedForPrint = [];
   });
 </script>
-<style>
-.pfnav{position:fixed;left:16px;bottom:16px;z-index:9000;display:flex;gap:8px;
-  font-family:ui-monospace,SFMono-Regular,'JetBrains Mono',monospace;font-size:11px;
-  letter-spacing:.12em;text-transform:uppercase;opacity:.55;transition:opacity .2s ease}
-.pfnav:hover{opacity:1}
-.pfnav a{display:inline-flex;align-items:center;gap:7px;text-decoration:none;
-  background:#0B1220;color:#F4F1EA;border:1px solid rgba(244,241,234,.28);
-  padding:8px 12px;border-radius:2px;line-height:1;
-  transition:background .18s ease,border-color .18s ease,color .18s ease}
-.pfnav a:hover,.pfnav a:focus-visible{background:#E0580D;border-color:#E0580D;color:#0B1220}
-.pfnav a:focus-visible{outline:2px solid #E0580D;outline-offset:2px}
-@media print{.pfnav{display:none}}
-@media (max-width:600px){.pfnav{left:10px;bottom:10px;font-size:10px}
-  .pfnav a{padding:7px 9px;letter-spacing:.08em}}
-/* pfnav не должен лечь на фикс-плеер брифинга */
-@media (max-width:900px){body.has-player .pfnav{bottom:calc(96px + env(safe-area-inset-bottom))}}
-</style>
-<nav class="pfnav" aria-label="Portfolio">
-  <a href="../">← All work</a>
-  <a href="../coo/">How I work</a>
-</nav>
 </body>
 </html>
