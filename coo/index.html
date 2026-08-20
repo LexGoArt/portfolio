@@ -229,6 +229,9 @@
     .plate svg.mob-only,.plate svg.graph--mob{display:block;max-width:620px;margin:0 auto}
   }
 
+  /* якорные цели не липнут к верхней кромке */
+  [id]{scroll-margin-top:32px}
+
   /* ── stacked data blocks: dashed rule + FIG tag between dense figures ── */
   .sched + figure,.banner + figure,figure + figure{
     margin-top:44px;padding-top:26px;border-top:1px dashed var(--rule-strong)}
@@ -1638,6 +1641,21 @@
     sync();
     window.addEventListener('resize', sync);
   });
+
+  /* якорь по хешу: браузер скроллит до подмены шрифтов, после ре-разметки
+     цель уезжает на тысячи пикселей — повторяем прокрутку и переносим фокус */
+  (function(){
+    function gotoHash(){
+      if(!location.hash) return;
+      var el; try{ el = document.querySelector(location.hash); }catch(e){ return; }
+      if(!el) return;
+      el.setAttribute('tabindex','-1');
+      el.scrollIntoView({block:'start'});
+      el.focus({preventScroll:true});
+    }
+    if(document.fonts && document.fonts.ready) document.fonts.ready.then(gotoHash);
+    window.addEventListener('load', gotoHash);
+  })();
 
   /* sticky rail: подсвечиваем секцию, которая сейчас на экране */
   (function(){

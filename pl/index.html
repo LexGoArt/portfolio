@@ -214,6 +214,8 @@
   .links a:focus-visible{outline:2px solid var(--brand);outline-offset:-2px}
   .colophon{font-family:var(--mono);font-size:11px;color:var(--text-3);margin:0}
 
+  [id]{scroll-margin-top:32px}
+
   /* рамка листа с регистрационными уголками — как на чертежах внутри */
   .pageframe{position:fixed;inset:16px;border:1px solid rgba(11,18,32,.22);
     pointer-events:none;z-index:5}
@@ -383,6 +385,17 @@
 
   <script>
   (function(){
+    function gotoHash(){
+      if(!location.hash) return;
+      var el; try{ el = document.querySelector(location.hash); }catch(e){ return; }
+      if(!el) return;
+      el.setAttribute('tabindex','-1');
+      el.scrollIntoView({block:'start'});
+      el.focus({preventScroll:true});
+    }
+    if(document.fonts && document.fonts.ready) document.fonts.ready.then(gotoHash);
+    window.addEventListener('load', gotoHash);
+
     var cur = document.body.getAttribute('data-lang') || 'en';
     [].slice.call(document.querySelectorAll('.langfab a')).forEach(function(a){
       if(a.getAttribute('data-l') === cur) a.setAttribute('aria-current','true');
