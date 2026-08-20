@@ -2,7 +2,9 @@
 
 Operations, brand and product work, shipped as self-contained web documents.
 
-**→ [Live portfolio](https://lexgoart.github.io/portfolio/)**
+**→ [Live portfolio](https://lexgoart.github.io/portfolio/)** ·
+[po polsku](https://lexgoart.github.io/portfolio/pl/) ·
+[по-русски](https://lexgoart.github.io/portfolio/ru/)
 
 **→ [How I work](https://lexgoart.github.io/portfolio/coo/)** ·
 [po polsku](https://lexgoart.github.io/portfolio/coo/pl/) ·
