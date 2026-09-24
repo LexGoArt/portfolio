@@ -27,7 +27,7 @@ const SPEC = [
   {k:'s',  n:100, pad:2, dot:'стаття',    label:'Стаття'},
 ];
 
-const S = {d1:1, d2:1, d3:0, u:0, dv:2, v:3, p:1, s:15};
+const S = {d1:1, d2:1, d3:0, u:0, dv:2, v:1, p:1, s:15};   // М-18 · прямі · ЗП · кладка
 
 /* ─── довідники ───────────────────────────────────────────── */
 const projKeys = Object.keys(C.projects);
@@ -413,6 +413,10 @@ function read(st){
   if (rst) rg.push(rst.n + ' од. у реєстрі — ' + esc(rst.t));
   if (proj && proj.note) rg.push(esc(proj.note));
   if (vg && vg.note && !item) rg.push(esc(vg.note));
+  if (vg && vg.mirror){
+    const other = C.vyd[(inc ? 2 : 1) + '.' + st.v];
+    if (other) rg.push('дзеркало: ' + (inc ? 'витрати' : 'доходи') + ' → ' + esc(other.name));
+  }
   morph('mReg', rg.join('<i>·</i>'));
 
   const code = `${st.d1}.${st.d2}.${st.d3} · ${String(st.u).padStart(2,'0')} · ` +
