@@ -27,7 +27,7 @@ const SPEC = [
   {k:'s',  n:100, pad:2, dot:'стаття',    label:'Стаття'},
 ];
 
-const S = {d1:1, d2:1, d3:0, u:0, dv:2, v:1, p:1, s:15};   // М-18 · прямі · ЗП · кладка
+const S = {d1:1, d2:1, d3:0, u:0, dv:2, v:3, p:1, s:15};   // М-18 · прямі · ЗП · кладка — приклад ПЛ
 
 /* ─── довідники ───────────────────────────────────────────── */
 const projKeys = Object.keys(C.projects);
@@ -413,10 +413,14 @@ function read(st){
   if (rst) rg.push(rst.n + ' од. у реєстрі — ' + esc(rst.t));
   if (proj && proj.note) rg.push(esc(proj.note));
   if (vg && vg.note && !item) rg.push(esc(vg.note));
-  if (vg && vg.mirror){
-    const other = C.vyd[(inc ? 2 : 1) + '.' + st.v];
-    if (other) rg.push('дзеркало: ' + (inc ? 'витрати' : 'доходи') + ' → ' + esc(other.name));
-  }
+  if (item && item.note) rg.push(esc(item.note));
+  /* ознаки групи: капіталізація / рух коштів / транзит — те, що бухгалтер має бачити одразу */
+  const FLOW = {transit:'транзит — не дохід', capex:'актив — не витрата періоду'};
+  const sub = st.p, flow = vg && vg.flow;
+  if (flow === 'mixed') rg.push(sub >= 2 ? 'рух коштів — не P&L' : (inc ? 'фінансовий дохід' : 'фінансова витрата'));
+  else if (FLOW[flow]) rg.push(FLOW[flow]);
+  if (vg && vg.cap === 'K' && (st.d1 === 1 || st.d1 === 3)) rg.push('капіталізується в об’єкт');
+  else if (vg && vg.cap === 'P' && !inc) rg.push('витрати періоду');
   morph('mReg', rg.join('<i>·</i>'));
 
   const code = `${st.d1}.${st.d2}.${st.d3} · ${String(st.u).padStart(2,'0')} · ` +
@@ -470,22 +474,9 @@ function loop(){
   if (need) requestAnimationFrame(loop); else rafOn = false;
 }
 wake();
+read(S);
 settle();
 
-/* ─── клавіатура (глобально — лише те, що не належить барабану) ── */
-addEventListener('keydown', e => {
-  if (se.classList.contains('on')) return;
-  const tag = (e.target.tagName || '').toLowerCase();
-  if (tag === 'input' || tag === 'textarea') return;
-  if (e.code === 'Slash' || e.key === '/' ||
-      ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k')){ openSearch(); e.preventDefault(); return; }
-  if (e.target.closest && e.target.closest('.col')) return;      // барабан обробляє сам
-  const i = cols.indexOf(active);
-  if (e.key === 'ArrowLeft'){  cols[(i - 1 + cols.length) % cols.length].el.focus(); e.preventDefault(); }
-  else if (e.key === 'ArrowRight'){ cols[(i + 1) % cols.length].el.focus(); e.preventDefault(); }
-  else if (e.key === 'ArrowUp'){   active.step(-1); e.preventDefault(); }
-  else if (e.key === 'ArrowDown'){ active.step(1);  e.preventDefault(); }
-});
 
 /* ─── копіювання ──────────────────────────────────────────── */
 let toastT = 0;
@@ -530,6 +521,21 @@ se.setAttribute('aria-label', 'Пошук по кодифікатору'); se.hi
 qi.setAttribute('role', 'combobox'); qi.setAttribute('aria-expanded', 'true');
 qi.setAttribute('aria-controls', 'res'); qi.setAttribute('aria-autocomplete', 'list');
 res.setAttribute('role', 'listbox'); res.setAttribute('aria-label', 'Результати');
+/* ─── клавіатура (глобально — лише те, що не належить барабану) ── */
+addEventListener('keydown', e => {
+  if (se.classList.contains('on')) return;
+  const tag = (e.target.tagName || '').toLowerCase();
+  if (tag === 'input' || tag === 'textarea') return;
+  if (e.code === 'Slash' || e.key === '/' ||
+      ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k')){ openSearch(); e.preventDefault(); return; }
+  if (e.target.closest && e.target.closest('.col')) return;      // барабан обробляє сам
+  const i = cols.indexOf(active);
+  if (e.key === 'ArrowLeft'){  cols[(i - 1 + cols.length) % cols.length].el.focus(); e.preventDefault(); }
+  else if (e.key === 'ArrowRight'){ cols[(i + 1) % cols.length].el.focus(); e.preventDefault(); }
+  else if (e.key === 'ArrowUp'){   active.step(-1); e.preventDefault(); }
+  else if (e.key === 'ArrowDown'){ active.step(1);  e.preventDefault(); }
+});
+
 let hits = [], sel = 0, lastFocus = null;
 function openSearch(){
   lastFocus = document.activeElement;

@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Кодифікатор — 41 проєкт, один код на дохід і витрату</title>
-<meta name="description" content="Єдина кодифікація доходів і витрат девелоперської групи: 41 проєкт, 23 групи, 540 статей, об’єкти обліку з реального реєстру активів. Дзеркальний код — та сама стаття з 1 замість 2 дає дохідну сторону. Інтерактивний пікер: крутіть розряди, текст збирається з розмиття.">
+<title>Кодифікатор — 37 проєктів, один код на дохід і витрату</title>
+<meta name="description" content="Єдина кодифікація доходів і витрат девелоперської групи: 37 проєктів, 30 груп, 555 статей, об’єкти обліку з реального реєстру активів. Дзеркальний код — та сама стаття з 1 замість 2 дає дохідну сторону. Інтерактивний пікер: крутіть розряди, текст збирається з розмиття.">
 <link rel="canonical" href="https://lexgoart.github.io/portfolio/kodyfikator/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Alex Goncharevski — Selected Work">
-<meta property="og:title" content="Кодифікатор — 41 проєкт, один код на дохід і витрату">
-<meta property="og:description" content="Єдина кодифікація доходів і витрат девелоперської групи: 41 проєкт, 23 групи, 540 статей, об’єкти обліку з реального реєстру активів. Дзеркальний код — та сама стаття з 1 замість 2 дає дохідну сторону. Інтерактивний пікер: крутіть розряди, текст збирається з розмиття.">
+<meta property="og:title" content="Кодифікатор — 37 проєктів, один код на дохід і витрату">
+<meta property="og:description" content="Єдина кодифікація доходів і витрат девелоперської групи: 37 проєктів, 30 груп, 555 статей, об’єкти обліку з реального реєстру активів. Дзеркальний код — та сама стаття з 1 замість 2 дає дохідну сторону. Інтерактивний пікер: крутіть розряди, текст збирається з розмиття.">
 <meta property="og:url" content="https://lexgoart.github.io/portfolio/kodyfikator/">
 <meta property="og:image" content="https://lexgoart.github.io/portfolio/og/kodyfikator.png">
 <meta property="og:image:secure_url" content="https://lexgoart.github.io/portfolio/og/kodyfikator.png">
@@ -18,8 +18,8 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Кодифікатор — інтерактивний довідник кодів">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Кодифікатор — 41 проєкт, один код на дохід і витрату">
-<meta name="twitter:description" content="Єдина кодифікація доходів і витрат девелоперської групи: 41 проєкт, 23 групи, 540 статей, об’єкти обліку з реального реєстру активів. Дзеркальний код — та сама стаття з 1 замість 2 дає дохідну сторону. Інтерактивний пікер: крутіть розряди, текст збирається з розмиття.">
+<meta name="twitter:title" content="Кодифікатор — 37 проєктів, один код на дохід і витрату">
+<meta name="twitter:description" content="Єдина кодифікація доходів і витрат девелоперської групи: 37 проєктів, 30 груп, 555 статей, об’єкти обліку з реального реєстру активів. Дзеркальний код — та сама стаття з 1 замість 2 дає дохідну сторону. Інтерактивний пікер: крутіть розряди, текст збирається з розмиття.">
 <meta name="twitter:image" content="https://lexgoart.github.io/portfolio/og/kodyfikator.png">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -81,7 +81,8 @@ body:has(.pfnav){padding-bottom:24px}
 .morph>.cur{ position:relative; z-index:2; }
 .morph>.gh{ position:absolute; inset:0; z-index:1; pointer-events:none;
             animation:gh var(--gd,360ms) cubic-bezier(.16,.84,.44,1) forwards;
-            will-change:opacity,filter,transform }
+            will-change:opacity,filter,transform;
+            display:flex; flex-direction:column; justify-content:flex-end }
 @keyframes gh{
   0%  {opacity:var(--go,.34); filter:blur(1.5px); transform:translateY(0) scale(1)}
   100%{opacity:0;             filter:blur(var(--gb,9px));
