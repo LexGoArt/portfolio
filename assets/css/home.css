@@ -1,0 +1,131 @@
+/* ---------- home: one screen, three doors ----------
+   Nothing to scroll. The page only asks one question: which side of me are you here for.
+   Each door speaks its own voice: Operations in mono, AI in dots, Design in serif italic. */
+
+html, body.home { height: 100%; }
+body.home { overflow: hidden; }
+
+.gate {
+  height: 100vh; height: 100svh; min-height: 560px;
+  display: grid; grid-template-rows: 1fr;
+  padding: clamp(80px, 11vh, 112px) var(--gut) clamp(24px, 4vh, 40px);
+}
+
+
+/* three equal columns, hairline seams */
+.doors3 {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--ink);
+  min-height: 0;
+}
+.d3 {
+  --mx: 50%; --my: 50%;
+  position: relative; isolation: isolate; overflow: hidden;
+  display: grid; grid-template-rows: 1fr; align-items: end;
+  padding: 18px clamp(16px, 2vw, 28px) clamp(20px, 3vh, 32px);
+  border-left: 1px solid var(--rule);
+  transition: opacity 220ms var(--ease-out);
+}
+.d3:first-child { border-left: 0; padding-left: 0; }
+.d3:last-child { padding-right: 0; }
+
+.d3-t { align-self: end; line-height: .9; white-space: nowrap; position: relative; transition: transform 160ms var(--ease-out); }
+.d3-word { display: inline-block; }
+/* the word carries into the next page */
+.d3--ops .d3-word { view-transition-name: t-ops; }
+.d3--ai .d3-t--ai { view-transition-name: t-ai; }
+.d3--des .d3-word { view-transition-name: t-des; }
+.d3--ops .d3-word { transition: color 200ms var(--ease-out); }
+/* Design: ink with a band of colour parked off to the right; hover slides the colour in, the first visit sweeps it through once */
+.d3--des .d3-word {
+  background: linear-gradient(90deg, var(--ink) 0 34%, #ff2d6f 34% 42%, #a23cff 42% 50%, #2f6bff 50% 58%, #00b49b 58% 66%, var(--ink) 66% 100%) 100% 0 / 300% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  transition: background-position 700ms var(--ease-out);
+  line-height: 1; padding-bottom: .34em; margin-bottom: -.34em;   /* room for the g descender under background-clip */
+}
+.d3--des.sweep .d3-word { animation: dsweep 1100ms 250ms var(--ease-io) both; }
+@keyframes dsweep { from { background-position: 100% 0; } to { background-position: 0% 0; } }
+.d3-t.mono { font-size: clamp(30px, 5vw, 86px); font-weight: 500; letter-spacing: -0.06em; }
+.d3-t.serif { font-size: clamp(46px, 7.6vw, 130px); line-height: .78; letter-spacing: -0.015em; padding-bottom: .04em; }
+.d3-t--ai { display: block; height: clamp(56px, 6.6vw, 104px); width: calc(clamp(56px, 6.6vw, 104px) * 12 / 11); }   /* dot cap height matches the other two words; width = the glyph grid */
+.d3-t--ai canvas { position: absolute; left: 0; bottom: 0; height: 100%; width: 100%; }
+.d3-ar {
+  position: absolute; right: clamp(16px, 2vw, 28px); bottom: clamp(26px, 3.4vh, 38px); font-size: 18px;
+  opacity: 0; transform: translateX(-8px); transition: opacity 250ms ease, transform 350ms var(--ease-out);
+}
+.d3:last-child .d3-ar { right: 0; }
+
+/* the caret only shows while the operations door is live */
+.d3--ops .caret {
+  display: inline-block; width: .09em; height: .74em; margin-left: .05em; background: var(--accent);
+  vertical-align: -0.02em; opacity: 0;
+}
+
+/* surfaces revealed around the cursor only, like light under glass */
+.d3::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; opacity: 0;
+  transition: opacity 260ms var(--ease-out);
+  -webkit-mask-image: radial-gradient(260px circle at var(--mx) var(--my), #000 0%, rgba(0,0,0,.5) 45%, transparent 75%);
+  mask-image: radial-gradient(260px circle at var(--mx) var(--my), #000 0%, rgba(0,0,0,.5) 45%, transparent 75%);
+}
+.d3--ops::before {
+  background-image:
+    linear-gradient(var(--rule-2) 1px, transparent 1px),
+    linear-gradient(90deg, var(--rule-2) 1px, transparent 1px);
+  background-size: 96px 32px; background-position: -1px -1px;
+}
+/* Design: glossy ribbons on wet paper, drawn by design-surface.js around the cursor */
+/* AI: a field of code characters drawn by gate.js */
+.d3-code { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; pointer-events: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
+
+@media (hover: hover) and (pointer: fine) {
+  .doors3:hover .d3:not(:hover) { opacity: .34; }
+  .d3:hover::before { opacity: 1; }
+  .d3:hover .d3-ar { opacity: 1; transform: none; }
+  .d3--ops:hover .d3-word { color: var(--accent); }
+  .d3--ops:hover .d3-cell { opacity: 1; transform-origin: center; }
+  .d3--des:hover .d3-word { background-position: 50% 0; }
+}
+.d3:focus-visible { outline-offset: -3px; --mx: 50%; --my: 70%; }
+.d3:focus-visible::before, .d3.touch-on::before { opacity: 1; }
+.d3:active .d3-t { transform: scale(.985); transform-origin: left bottom; }
+/* first visit: a caret types the word in and leaves with the last letter; nothing blinks */
+.d3--ops.typing .caret { opacity: 1; }
+/* operations: one selected cell, stepping across the grid */
+.d3-cell {
+  position: absolute; left: 0; top: 0; z-index: -1; width: 97px; height: 33px; pointer-events: none;
+  border: 1.5px solid var(--accent); background: rgb(31 61 255 / .06); opacity: 0;
+  transition: transform 90ms var(--ease-out), opacity 500ms var(--ease-out);
+}
+.d3, .d3 * { -webkit-tap-highlight-color: transparent; }
+
+
+/* leaving: the chosen door stays, the rest let go */
+html.leaving .bar { opacity: 0; transition: opacity 200ms linear; }
+/* only the chosen word travels: the others must not be captured, or they ghost back over the new page */
+html.leaving .d3:not(.chosen) .d3-word, html.leaving .d3:not(.chosen) .d3-t--ai { view-transition-name: none; }
+/* touch and keyboard have no hover: the chosen word still takes its colour before it flies */
+.d3--des.chosen .d3-word { background-position: 50% 0; }
+.d3--ops.chosen .d3-word { color: var(--accent); }
+html.leaving .d3:not(.chosen) { opacity: 0 !important; transform: translateY(32px); transition: transform 260ms cubic-bezier(.5,0,.75,0), opacity 200ms linear; }
+
+/* ---------- phones: three rows, still one screen ---------- */
+@media (max-width: 760px) {
+  .gate { padding-top: 76px; }
+  .doors3 { grid-template-columns: 1fr; grid-template-rows: repeat(3, minmax(0, 1fr)); }
+  .d3, .d3:first-child, .d3:last-child { border-left: 0; border-top: 1px solid var(--rule); padding: 12px 0 14px; }
+  .d3:first-child { border-top: 0; }
+  .d3-t.mono { font-size: clamp(34px, 10.5vw, 56px); }
+  .d3-t.serif { font-size: clamp(50px, 14vw, 80px); }
+  .d3-t--ai { height: clamp(48px, 14vw, 76px); width: calc(clamp(48px, 14vw, 76px) * 12 / 11); }
+  .d3-ar { opacity: 1; transform: none; bottom: 22px; right: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .d3--ops.typing .caret { animation: none; opacity: 1; }
+  .d3-ar { transition: opacity 150ms; transform: none; }
+  .d3--des .d3-word, .d3-cell, .d3-t { transition: none; }
+  .d3--des.sweep .d3-word { animation: none; }
+  html.leaving .d3:not(.chosen) { transform: none; }
+}

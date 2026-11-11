@@ -1,0 +1,66 @@
+/* ---------- AI page ----------
+   The middle stroke: speaks in dots and in the one accent. */
+
+/* the title is set in dots: the type is filled with a halftone screen */
+.ai-h1 { position: relative; height: clamp(110px, 17vw, 250px); width: calc(clamp(110px, 17vw, 250px) * 12 / 11); margin: 0; view-transition-name: t-ai; }
+.ai-h1 canvas { position: absolute; left: 0; bottom: 0; width: 100%; height: 100%; }
+
+/* ---------- shape ---------- */
+.shape { align-items: start; row-gap: 48px; }
+.shape-fig { grid-column: 1 / span 6; margin: 0; position: relative; }
+.mdots { width: 100%; aspect-ratio: 4 / 3; height: auto; }
+.shape-cap { position: relative; height: 40px; margin-top: 4px; }
+.shape-cap span { position: absolute; top: 0; transform: translateX(-50%); font-size: 12px; white-space: nowrap; }
+.shape-cap .mono { letter-spacing: .02em; }
+.shape-cap .serif { font-size: 20px; top: -4px; }
+.c-ops { left: 21%; }
+.c-ai { left: 50%; color: var(--accent); }
+.c-des { left: 79%; }
+.shape-txt { grid-column: 8 / span 5; padding-top: 8px; }
+
+
+/* ---------- measured ---------- */
+/* measured: two totals drawn to scale. The bar grows for as long as the hours were long. */
+.meter { margin: 0; border-top: 1px solid var(--ink); padding-top: clamp(28px, 3vw, 44px); display: grid; gap: clamp(22px, 2.4vw, 34px); }
+.m-row { display: grid; grid-template-columns: minmax(150px, 2fr) 7fr; grid-template-areas: "n track" ". l"; column-gap: var(--col-gap); row-gap: 8px; align-items: center; }
+.m-n { grid-area: n; margin: 0; font: 600 clamp(30px, 3.4vw, 52px)/1 var(--sans); letter-spacing: -0.035em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.m-n small { font-size: .42em; font-weight: 500; letter-spacing: 0; color: var(--ink-3); margin-left: .1em; }
+.m-l { grid-area: l; margin: 0; font-size: 15px; color: var(--ink-2); }
+.m-track { grid-area: track; height: 14px; position: relative; }
+.m-bar { position: absolute; inset: 0 auto 0 0; width: calc(var(--v) * 100%); min-width: 6px; transform-origin: left center; }
+/* both bars are cut into 100-hour segments, so the scale can be counted: 12.8 by hand, 1.2 with AI */
+.m-row--off .m-bar { background: repeating-linear-gradient(90deg, var(--ink) 0 calc(100% / 12.79 - 2px), #fff calc(100% / 12.79 - 2px) calc(100% / 12.79)); }
+.m-row--on .m-bar { background: repeating-linear-gradient(90deg, var(--accent) 0 calc(100% / 1.245 - 2px), #fff calc(100% / 1.245 - 2px) calc(100% / 1.245)); }
+.m-scale { margin: 0; font-size: 11px; letter-spacing: .04em; color: var(--ink-3); display: grid; grid-template-columns: minmax(150px, 2fr) 7fr; column-gap: var(--col-gap); }
+.m-scale::before { content: ""; }
+@media (max-width: 900px) { .m-scale { display: block; } }
+.m-row--on .m-n { color: var(--accent); }
+.m-foot { margin: 6px 0 0; font-size: 17px; line-height: 1.5; color: var(--ink-2); max-width: 62ch; text-wrap: pretty; }
+.m-foot b { color: var(--ink); font-weight: 600; }
+/* the reveal: each bar takes as long as its hours, scaled: the hand-made one crawls, the AI one snaps */
+.meter.rv { opacity: 1; transform: none; }
+html.js .meter.rv .m-bar { clip-path: inset(0 100% 0 0); }
+html.js .meter.rv.in .m-row--off .m-bar { clip-path: inset(0); transition: clip-path 2.2s 200ms cubic-bezier(.25, .1, .25, 1); }
+html.js .meter.rv.in .m-row--on .m-bar { clip-path: inset(0); transition: clip-path 220ms 200ms var(--ease-out); }
+@media (prefers-reduced-motion: reduce) { .meter.rv .m-bar { clip-path: none !important; transition: none !important; } }
+.stats-link { margin-top: 28px; display: inline-flex; font-size: 13px; }
+
+/* ---------- in practice ---------- */
+/* in practice: one table, each craft named in its own face */
+.crafts { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--rule); }
+.crafts li { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 5fr) minmax(0, 4fr); column-gap: var(--col-gap); align-items: baseline; border-top: 1px solid var(--rule); padding: 26px 0 30px; }
+.craft-k { font-size: clamp(26px, 2.6vw, 38px); line-height: 1; }
+.craft-k.mono { font-weight: 500; letter-spacing: -0.06em; }
+.craft-k.serif { font-size: clamp(32px, 3.2vw, 46px); }
+.craft-t { margin: 0; font: 500 clamp(19px, 1.7vw, 24px)/1.25 var(--sans); letter-spacing: -0.02em; text-wrap: pretty; }
+.craft-d { margin: 0; color: var(--ink-2); font-size: 15px; }
+.timeline--ai .tl-t { font: 500 clamp(20px, 1.9vw, 26px)/1.15 var(--sans); letter-spacing: -0.02em; }
+
+@media (max-width: 900px) {
+  .shape-fig, .shape-txt { grid-column: 1 / -1; }
+  .m-row { grid-template-columns: 1fr; grid-template-areas: "n" "track" "l"; }
+  .crafts li { grid-template-columns: 1fr; row-gap: 10px; }
+}
+
+/* the AI page is a sequence of short lists: tighter pace between them */
+.aip .section { padding-top: clamp(80px, 9vw, 128px); }
