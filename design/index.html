@@ -21,6 +21,8 @@
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,400;1,500&family=Geologica:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/site.css">
 <link rel="stylesheet" href="../assets/css/inner.css">
+<link rel="stylesheet" href="../assets/css/wall.css">
+<script type="importmap">{"imports":{"three":"../assets/vendor/three/three.module.min.js","three/addons/controls/OrbitControls.js":"../assets/vendor/three/OrbitControls.js"}}</script>
 </head>
 <body class="inner des">
 
@@ -38,75 +40,124 @@
     </div>
   </section>
 
-  <!-- SELECTED WORK -->
+  <!-- WALL -->
   <section class="section" id="work">
     <div class="wrap">
-      <div class="section-head">
-        <h2 class="h2" data-i="selH">Work for Dobrograd, then things I made for myself.</h2>
+      <div class="wall">
+        <figure class="t t-8 rv">
+          <div class="tf hv" style="--ar:16/9" data-group="des"><img class="poster" src="../assets/media/floors.jpg" alt="A floor plan lifts into a stack of all floors" loading="lazy"><video src="../assets/media/floors.mp4" muted loop playsinline preload="none"></video></div>
+          <figcaption class="tc"><p class="tk mono">2026 · HTML · GSAP · ffmpeg</p><h3 data-i="f1t">DOBROGRAD, a product film made in code</h3><p data-i="f1d">Made without an editing timeline: every frame is HTML, CSS and GSAP rendered to video, with the sound placed to the frame.</p></figcaption>
+        </figure>
+        <figure class="t t-4 rv">
+          <div class="tf hv tall" style="--ar:9/16" data-group="des"><img class="poster" src="../assets/media/sync.jpg" alt="Catalogue reel: data sources sync one by one" loading="lazy"><video src="../assets/media/sync.mp4" muted loop playsinline preload="none"></video></div>
+          <figcaption class="tc"><p class="tk mono">2026 · 9:16</p><h3 data-i="f2t">Catalogue reel</h3><p data-i="f2d">Vertical film for the sales catalogue. Each element enters because the one before it moved.</p></figcaption>
+        </figure>
+
+        <figure class="t t-7 rv">
+          <div class="tf m3d" style="--ar:4/3" data-stl="../assets/models/quadro.glb" data-explode="30" data-fit="0.95" data-label="Townhouse model, drag to rotate"><img class="poster" src="../assets/img/proj/quadro.jpg" alt="Townhouse model, assembled and exploded" loading="lazy"></div>
+          <figcaption class="tc"><p class="tk mono">2026 · 1:75 · Bambu X2D</p><h3 data-i="dQt">Townhouse model, 1:75</h3><p data-i="dQ">Four sections, two floors and balconies, redrawn for a desktop printer. Storeys and roof sit on magnets. Hover and they lift apart; drag to turn.</p></figcaption>
+        </figure>
+        <figure class="t t-5 rv">
+          <div class="tf hv" style="--ar:16/9" data-group="des"><img class="poster" src="../assets/media/words.jpg" alt="Kinetic type: catalogue, flats, commercial, storage, townhouses" loading="lazy"><video src="../assets/media/words.mp4" muted loop playsinline preload="none"></video></div>
+          <figcaption class="tc"><p class="tk mono">2026 · Kinetic type</p><h3 data-i="dWt">One word, five catalogues</h3><p data-i="dW">The opening of the portal film. Each word pushes the next one out and the loop closes on the first.</p></figcaption>
+        </figure>
+
+        <figure class="t t-7 rv">
+          <div class="tf demo" style="--ar:16/10" data-demo="https://lexgoart.github.io/portfolio/dobrograd-brandbook/" data-ls="dobrograd-bb-lang=$lang" data-title="Dobrograd brand book"><img class="poster" src="../assets/img/proj/brandbook.jpg" alt="Dobrograd brand book, cover screen" loading="lazy"></div>
+          <figcaption class="tc"><p class="tk mono">Live · EN PL UA</p><h3 data-i="f3t">Dobrograd brand book</h3><p data-i="f3d">Positioning, logo system, typography and colour rules for a 15-year-old developer that had none.</p></figcaption>
+        </figure>
+        <figure class="t t-5 rv">
+          <div class="tf demo" style="--ar:16/10" data-demo="https://lexgoart.github.io/portfolio/dobrograd-15-anniversary/" data-ls="dobrograd15-lang=$lang" data-title="15 years of Dobrograd"><img class="poster" src="../assets/img/proj/anniversary.jpg" alt="15 Years of Dobrograd programme, cover screen" loading="lazy" style="object-position:22% center"></div>
+          <figcaption class="tc"><p class="tk mono">Live · EN PL UA</p><h3 data-i="f4t">15 years of Dobrograd</h3><p data-i="f4d">An 18-part anniversary programme: concept, audience zones, the path from an ad to a signed contract, content plan.</p></figcaption>
+        </figure>
+
+        <figure class="t t-6 rv">
+          <div class="tf m3d" style="--ar:4/3" data-stl="../assets/models/pentax-grip-main.stl,../assets/models/pentax-grip-side.stl" data-tones="#6b4a33,#7a5a40" data-label="Camera grip, drag to rotate"><img class="poster" src="../assets/img/proj/print-pentax.jpg" alt="Halftone render of a camera grip" loading="lazy"></div>
+          <figcaption class="tc"><p class="tk mono">2026 · Shapr3D · Bambu X2D</p><h3 data-i="f7t">Grip for a Pentax ME</h3><p data-i="f7d">Holds an iPhone on a 1976 film camera with MagSafe. Measured from a 3D scan, printed and refitted through 56 versions.</p></figcaption>
+        </figure>
+        <figure class="t t-6 rv">
+          <div class="tf m3d" style="--ar:4/3" data-stl="../assets/models/neoruler-holder.stl,../assets/models/neoruler-head.stl" data-tones="#2a2a2a,#bdbdbd" data-label="Wall holder, drag to rotate"><img class="poster" src="../assets/img/proj/print-neoruler.jpg" alt="Halftone render of a wall holder" loading="lazy"></div>
+          <figcaption class="tc"><p class="tk mono">2026 · Python · 3MF</p><h3 data-i="f8t">Holder for a measuring head</h3><p data-i="f8d">A wall mount for an IKEA Skådis board with a honeycomb front insert, generated from a Python script and checked for fit before printing.</p></figcaption>
+        </figure>
+
+        <figure class="t t-4 rv">
+          <div class="tf hv" style="--ar:16/9" data-group="des"><img class="poster" src="../assets/media/dots.jpg" alt="White dots and lines tangle into a constellation" loading="lazy"><video src="../assets/media/dots.mp4" muted loop playsinline preload="none"></video></div>
+          <figcaption class="tc"><h3 data-i="dDt">Today's search, drawn as a tangle</h3><p data-i="dD">Every question bounced between people and folders. The film opens on that mess.</p></figcaption>
+        </figure>
+        <figure class="t t-4 rv">
+          <div class="tf hv" style="--ar:16/9" data-group="des"><img class="poster" src="../assets/media/neon.jpg" alt="A neon loop collapses into a search bar" loading="lazy"><video src="../assets/media/neon.mp4" muted loop playsinline preload="none"></video></div>
+          <figcaption class="tc"><h3 data-i="dNt">Nine files, one search</h3><p data-i="dN">Nine scattered files turn into one search field.</p></figcaption>
+        </figure>
+        <figure class="t t-4 rv">
+          <div class="tf hv" style="--ar:16/9" data-group="des"><img class="poster" src="../assets/media/crest.jpg" alt="The Dobrograd crest draws in and the wordmark types out" loading="lazy"><video src="../assets/media/crest.mp4" muted loop playsinline preload="none"></video></div>
+          <figcaption class="tc"><h3 data-i="dCt">The crest, drawn in</h3><p data-i="dC">The film's end card: the laurel draws in, then the letter and the wordmark.</p></figcaption>
+        </figure>
+
+        <figure class="t t-4 rv">
+          <div class="tf tall" style="--ar:430/900;background:#f6f6f6" data-view><img src="../assets/img/proj/dengi.jpg" alt="Personal finance app screen with a daily limit ring" loading="lazy" style="object-fit:contain"></div>
+          <figcaption class="tc"><p class="tk mono">2026 · PWA</p><h3 data-i="f6t">Money, a personal finance app</h3><p data-i="f6d">A daily limit until payday, rings like an Apple Watch, liquid glass. Designed and built for myself.</p></figcaption>
+        </figure>
+        <figure class="t t-8 rv">
+          <div class="tf" style="--ar:992/890" data-view><img src="../assets/img/proj/map3d.jpg" alt="Clay-style 3D diorama of residential complexes on a table" loading="lazy"></div>
+          <figcaption class="tc"><p class="tk mono">2026 · three.js · OSM</p><h3 data-i="f5t">The map as a diorama</h3><p data-i="f5d">Every complex of the group as a clay model on a table, built in three.js on OpenStreetMap data.</p></figcaption>
+        </figure>
       </div>
-
-      <div class="works">
-        <figure class="work w-8 rv">
-          <div class="media media--video"><video src="../assets/media/film-loop.mp4" poster="../assets/media/film-poster.jpg" muted loop playsinline preload="none" data-auto></video></div>
-          <figcaption><span class="t serif" data-i="f1t">DOBROGRAD, a product film made in code</span><span class="d" data-i="f1d">Made without an editing timeline: every frame is HTML, CSS and GSAP rendered to video, with the sound placed to the frame.</span><span class="mono y">2026 · HTML · GSAP · ffmpeg</span></figcaption>
-        </figure>
-        <figure class="work w-4 rv">
-          <div class="media media--video media--tall"><video src="../assets/media/reel-loop.mp4" poster="../assets/media/reel-poster.jpg" muted loop playsinline preload="none" data-auto></video></div>
-          <figcaption><span class="t serif" data-i="f2t">Catalogue reel</span><span class="d" data-i="f2d">Vertical film for the sales catalogue. Each element enters because the one before it moved.</span><span class="mono y">2026 · 9:16</span></figcaption>
-        </figure>
-
-        <figure class="work w-7 rv">
-          <a class="media" href="https://lexgoart.github.io/portfolio/dobrograd-brandbook/"><img src="../assets/img/proj/brandbook.jpg" alt="Dobrograd brand book, cover screen" loading="lazy"></a>
-          <figcaption><span class="t serif" data-i="f3t">Dobrograd brand book</span><span class="d" data-i="f3d">Positioning, logo system, typography and colour rules for a 15-year-old developer that had none.</span><span class="mono y">2026 · EN PL UA ↗</span></figcaption>
-        </figure>
-        <figure class="work w-5 rv">
-          <a class="media media--left" href="https://lexgoart.github.io/portfolio/dobrograd-15-anniversary/"><img src="../assets/img/proj/anniversary.jpg" alt="15 Years of Dobrograd programme, cover screen" loading="lazy"></a>
-          <figcaption><span class="t serif" data-i="f4t">15 years of Dobrograd</span><span class="d" data-i="f4d">An 18-part anniversary programme: concept, audience zones, the path from an ad to a signed contract, content plan.</span><span class="mono y">2026 · EN PL UA ↗</span></figcaption>
-        </figure>
-
-        <figure class="work w-4 rv">
-          <div class="media media--phone"><img src="../assets/img/proj/dengi.jpg" alt="Personal finance app screen with a daily limit ring" loading="lazy"></div>
-          <figcaption><span class="t serif" data-i="f6t">Money, a personal finance app</span><span class="d" data-i="f6d">A daily limit until payday, rings like an Apple Watch, liquid glass. Designed and built for myself.</span><span class="mono y">2026 · PWA</span></figcaption>
-        </figure>
-        <figure class="work w-8 rv">
-          <div class="media"><img src="../assets/img/proj/map3d.jpg" alt="Clay-style 3D diorama of residential complexes on a table" loading="lazy"></div>
-          <figcaption><span class="t serif" data-i="f5t">The map as a diorama</span><span class="d" data-i="f5d">Every complex of the group as a clay model on a table, built in three.js on OpenStreetMap data.</span><span class="mono y">2026 · three.js · OSM</span></figcaption>
-        </figure>
-
-        <figure class="work w-5 rv">
-          <div class="media media--obj"><img src="../assets/img/proj/print-pentax.jpg" alt="Halftone render of a camera grip" loading="lazy"></div>
-          <figcaption><span class="t serif" data-i="f7t">Grip for a Pentax ME</span><span class="d" data-i="f7d">Holds an iPhone on a 1976 film camera with MagSafe. Measured from a 3D scan, printed and refitted through 56 versions.</span><span class="mono y">2026 · Shapr3D · Bambu X2D</span></figcaption>
-        </figure>
-        <figure class="work w-7 rv">
-          <div class="media media--obj"><img src="../assets/img/proj/print-neoruler.jpg" alt="Halftone render of a wall holder" loading="lazy"></div>
-          <figcaption><span class="t serif" data-i="f8t">Holder for a measuring head</span><span class="d" data-i="f8d">A wall mount for an IKEA Skådis board with a honeycomb front insert, generated from a Python script and checked for fit before printing.</span><span class="mono y">2026 · Python · 3MF</span></figcaption>
-        </figure>
-      </div>
-      <p class="note"><a class="inl" href="../ai/" data-i="desAiNote">How AI fits into my work →</a></p>
     </div>
   </section>
 
-  <!-- BACKGROUND -->
-  <section class="section" id="background">
+  <!-- STUDIES -->
+  <section class="section" id="archive">
     <div class="wrap">
       <div class="section-head">
-        <h2 class="h2" data-i="bgH">Training and design roles.</h2>
+        <h2 class="h2" data-i="arcH">Studies I art-directed in Midjourney.</h2>
+        <p class="lead-s" data-i="arcS">2023 and 2024. The pixels are the machine's; the brief, light and the one frame out of dozens were mine.</p>
       </div>
+      <div class="studies">
+          <button class="tf" type="button" data-view data-group="studies" data-full="../assets/img/studies/s01-packaging.jpg" data-alt-en="Illustrated juice bottles" data-alt-pl="Ilustrowane butelki soku" data-alt-ru="Иллюстрированные бутылки сока"><img src="../assets/img/studies/t-s01-packaging.jpg" alt="Illustrated juice bottles, Midjourney" loading="lazy"></button>
+          <button class="tf" type="button" data-view data-group="studies" data-full="../assets/img/studies/s02-web.jpg" data-alt-en="Sneaker store landing" data-alt-pl="Landing sklepu z butami" data-alt-ru="Лендинг магазина кроссовок"><img src="../assets/img/studies/t-s02-web.jpg" alt="Sneaker store landing, Midjourney" loading="lazy"></button>
+          <button class="tf" type="button" data-view data-group="studies" data-full="../assets/img/studies/s03-styling.jpg" data-alt-en="Organic forest cabin" data-alt-pl="Organiczny domek w lesie" data-alt-ru="Органичный домик в лесу"><img src="../assets/img/studies/t-s03-styling.jpg" alt="Organic forest cabin, Midjourney" loading="lazy"></button>
+          <button class="tf" type="button" data-view data-group="studies" data-full="../assets/img/studies/s04-print.jpg" data-alt-en="Abstract business cards" data-alt-pl="Abstrakcyjne wizytówki" data-alt-ru="Абстрактные визитки"><img src="../assets/img/studies/t-s04-print.jpg" alt="Abstract business cards, Midjourney" loading="lazy"></button>
+          <button class="tf" type="button" data-view data-group="studies" data-full="../assets/img/studies/s05-illustrations.jpg" data-alt-en="Flat vector portrait" data-alt-pl="Płaski portret wektorowy" data-alt-ru="Плоский векторный портрет"><img src="../assets/img/studies/t-s05-illustrations.jpg" alt="Flat vector portrait, Midjourney" loading="lazy"></button>
+          <button class="tf" type="button" data-view data-group="studies" data-full="../assets/img/studies/s06-social.jpg" data-alt-en="Editorial collage" data-alt-pl="Kolaż redakcyjny" data-alt-ru="Редакционный коллаж"><img src="../assets/img/studies/t-s06-social.jpg" alt="Editorial collage, Midjourney" loading="lazy"></button>
+          <button class="tf" type="button" data-view data-group="studies" data-full="../assets/img/studies/s07-photography.jpg" data-alt-en="Floral fashion portrait" data-alt-pl="Kwiatowy portret modowy" data-alt-ru="Модный портрет в цветах"><img src="../assets/img/studies/t-s07-photography.jpg" alt="Floral fashion portrait, Midjourney" loading="lazy"></button>
+          <button class="tf" type="button" data-view data-group="studies" data-full="../assets/img/studies/s08-ai.jpg" data-alt-en="Aluminium honeycomb form" data-alt-pl="Aluminiowy plaster miodu" data-alt-ru="Алюминиевые соты"><img src="../assets/img/studies/t-s08-ai.jpg" alt="Aluminium honeycomb form, Midjourney" loading="lazy"></button>
+          <button class="tf" type="button" data-view data-group="studies" data-full="../assets/img/studies/s09-packaging.jpg" data-alt-en="Botanical gift boxes" data-alt-pl="Botaniczne pudełka prezentowe" data-alt-ru="Ботанические подарочные коробки"><img src="../assets/img/studies/t-s09-packaging.jpg" alt="Botanical gift boxes, Midjourney" loading="lazy"></button>
+          <button class="tf" type="button" data-view data-group="studies" data-full="../assets/img/studies/s10-web.jpg" data-alt-en="Finance app screens" data-alt-pl="Ekrany aplikacji finansowej" data-alt-ru="Экраны финансового приложения"><img src="../assets/img/studies/t-s10-web.jpg" alt="Finance app screens, Midjourney" loading="lazy"></button>
+          <button class="tf" type="button" data-view data-group="studies" data-full="../assets/img/studies/s11-styling.jpg" data-alt-en="White cabin by the lake" data-alt-pl="Biały dom nad wodą" data-alt-ru="Белый дом у воды"><img src="../assets/img/studies/t-s11-styling.jpg" alt="White cabin by the lake, Midjourney" loading="lazy"></button>
+          <button class="tf" type="button" data-view data-group="studies" data-full="../assets/img/studies/s12-print.jpg" data-alt-en="Gold botanical brochure" data-alt-pl="Złota broszura botaniczna" data-alt-ru="Золотая ботаническая брошюра"><img src="../assets/img/studies/t-s12-print.jpg" alt="Gold botanical brochure, Midjourney" loading="lazy"></button>
+          <button class="tf" type="button" data-view data-group="studies" data-full="../assets/img/studies/s13-illustrations.jpg" data-alt-en="Cafe in warm light" data-alt-pl="Kawiarnia w ciepłym świetle" data-alt-ru="Кафе в теплом свете"><img src="../assets/img/studies/t-s13-illustrations.jpg" alt="Cafe in warm light, Midjourney" loading="lazy"></button>
+          <button class="tf" type="button" data-view data-group="studies" data-full="../assets/img/studies/s14-social.jpg" data-alt-en="Restaurant feed flatlay" data-alt-pl="Talerze do feedu restauracji" data-alt-ru="Блюда для ленты ресторана"><img src="../assets/img/studies/t-s14-social.jpg" alt="Restaurant feed flatlay, Midjourney" loading="lazy"></button>
+          <button class="tf" type="button" data-view data-group="studies" data-full="../assets/img/studies/s15-photography.jpg" data-alt-en="Plated asparagus overhead" data-alt-pl="Szparagi z góry" data-alt-ru="Спаржа сверху"><img src="../assets/img/studies/t-s15-photography.jpg" alt="Plated asparagus overhead, Midjourney" loading="lazy"></button>
+          <button class="tf" type="button" data-view data-group="studies" data-full="../assets/img/studies/s16-ai.jpg" data-alt-en="Bright loft interior" data-alt-pl="Jasne wnętrze loftu" data-alt-ru="Светлый лофт"><img src="../assets/img/studies/t-s16-ai.jpg" alt="Bright loft interior, Midjourney" loading="lazy"></button>
+          <button class="tf" type="button" data-view data-group="studies" data-full="../assets/img/studies/s17-packaging.jpg" data-alt-en="Handmade eco boxes" data-alt-pl="Ręcznie robione eko pudełka" data-alt-ru="Эко коробки ручной работы"><img src="../assets/img/studies/t-s17-packaging.jpg" alt="Handmade eco boxes, Midjourney" loading="lazy"></button>
+          <button class="tf" type="button" data-view data-group="studies" data-full="../assets/img/studies/s18-web.jpg" data-alt-en="Photo app on phone" data-alt-pl="Aplikacja foto na telefonie" data-alt-ru="Фотоприложение на телефоне"><img src="../assets/img/studies/t-s18-web.jpg" alt="Photo app on phone, Midjourney" loading="lazy"></button>
+          <button class="tf" type="button" data-view data-group="studies" data-full="../assets/img/studies/s19-styling.jpg" data-alt-en="Contemporary Italian lounge" data-alt-pl="Współczesny włoski salon" data-alt-ru="Современная итальянская гостиная"><img src="../assets/img/studies/t-s19-styling.jpg" alt="Contemporary Italian lounge, Midjourney" loading="lazy"></button>
+          <button class="tf" type="button" data-view data-group="studies" data-full="../assets/img/studies/s20-print.jpg" data-alt-en="Black wine label" data-alt-pl="Czarna etykieta wina" data-alt-ru="Черная этикетка вина"><img src="../assets/img/studies/t-s20-print.jpg" alt="Black wine label, Midjourney" loading="lazy"></button>
+          <button class="tf" type="button" data-view data-group="studies" data-full="../assets/img/studies/s21-illustrations.jpg" data-alt-en="Picture book dragon" data-alt-pl="Smok z książeczki" data-alt-ru="Дракон из детской книги"><img src="../assets/img/studies/t-s21-illustrations.jpg" alt="Picture book dragon, Midjourney" loading="lazy"></button>
+          <button class="tf" type="button" data-view data-group="studies" data-full="../assets/img/studies/s22-social.jpg" data-alt-en="Natural cosmetics shoot" data-alt-pl="Sesja kosmetyków naturalnych" data-alt-ru="Съемка натуральной косметики"><img src="../assets/img/studies/t-s22-social.jpg" alt="Natural cosmetics shoot, Midjourney" loading="lazy"></button>
+          <button class="tf" type="button" data-view data-group="studies" data-full="../assets/img/studies/s23-photography.jpg" data-alt-en="Cat in a helmet" data-alt-pl="Kot w kasku" data-alt-ru="Кот в шлеме"><img src="../assets/img/studies/t-s23-photography.jpg" alt="Cat in a helmet, Midjourney" loading="lazy"></button>
+          <button class="tf" type="button" data-view data-group="studies" data-full="../assets/img/studies/s24-ai.jpg" data-alt-en="Sunlit old interior" data-alt-pl="Stare wnętrze w słońcu" data-alt-ru="Старинная комната в солнце"><img src="../assets/img/studies/t-s24-ai.jpg" alt="Sunlit old interior, Midjourney" loading="lazy"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY, folded -->
+  <section class="section" id="background">
+    <div class="wrap folds">
+      <details class="fold">
+        <summary><span data-i="bgH">Training and design roles.</span><span class="pm" data-i="more">More</span></summary>
+        <div class="fold-b">
       <ol class="timeline">
         <li><span class="mono">2017 → 2022</span><span class="serif tl-t" data-i="b1t">Academy of Fine Arts in Łódź</span><span data-i="b1d">Master's degree, computer graphics.</span></li>
         <li><span class="mono">2018 → 2024</span><span class="serif tl-t" data-i="b2t">Freelance graphic designer</span><span data-i="b2d">More than 100 projects for game studios and publishers. A contract with 4A Games, 2020 to 2021.</span></li>
         <li><span class="mono">2018 → 2020</span><span class="serif tl-t">iSpot · Apple Premium Partner</span><span data-i="b3d">Visual merchandiser. One display standard across 13 stores, accessory sales up 15%.</span></li>
         <li><span class="mono">2026</span><span class="serif tl-t">Dobrograd</span><span data-i="b4d">Rebrand, brand book, anniversary, product films and the visual language of the sales portal.</span></li>
       </ol>
-    </div>
-  </section>
-
-  <!-- AI ARCHIVE -->
-  <section class="section" id="archive">
-    <div class="wrap">
-      <div class="section-head">
-        <h2 class="h2" data-i="arcH">Studies I art-directed in Midjourney.</h2>
-      </div>
+        </div>
+      </details>
+      <details class="fold">
+        <summary><span data-i="anatomy">Anatomy of a prompt</span><span class="pm" data-i="more">More</span></summary>
+        <div class="fold-b">
       <div class="arc-intro grid">
         <div class="prose">
           <p data-i="arcP1">These are studies I generated in Midjourney in 2023 and 2024, when image models first got good. The pixels are the machine's. The brief, composition, light, palette and the choice of one frame out of dozens were mine.</p>
@@ -121,7 +172,8 @@
         </figure>
       </div>
 
-      <div class="contact" data-archive></div>
+        </div>
+      </details>
     </div>
   </section>
 
@@ -132,13 +184,6 @@
   </nav></div>
 </main>
 
-<dialog class="lightbox" aria-label="Image viewer">
-  <img alt="">
-  <button class="lb-x mono" type="button" aria-label="Close">esc ×</button>
-  <button class="lb-p mono" type="button" aria-label="Previous">←</button>
-  <button class="lb-n mono" type="button" aria-label="Next">→</button>
-  <p class="lb-c mono"></p>
-</dialog>
 
 <footer class="foot">
   <div class="wrap">
@@ -154,8 +199,9 @@
 
 <script src="../assets/js/i18n.js"></script>
 <script src="../assets/js/site.js"></script>
-<script src="../assets/js/archive.js"></script>
 <script src="../assets/js/inner.js"></script>
 <script src="../assets/js/aidots.js"></script>
+<script src="../assets/js/wall.js"></script>
+<script type="module" src="../assets/js/wall3d.js"></script>
 </body>
 </html>

@@ -21,6 +21,7 @@
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,400;1,500&family=Geologica:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/site.css">
 <link rel="stylesheet" href="../assets/css/inner.css">
+<link rel="stylesheet" href="../assets/css/wall.css">
 <link rel="stylesheet" href="../assets/css/ai.css">
 </head>
 <body class="inner aip">
@@ -38,28 +39,6 @@
       <dl class="head-facts mono">
         <div><dt data-i="measured">Measured</dt><dd data-i="measuredV">32 tasks · 04 → 07.2026</dd></div>
       </dl>
-    </div>
-  </section>
-
-  <!-- SHAPE -->
-  <section class="section" id="shape">
-    <div class="wrap">
-      <div class="grid shape">
-        <figure class="shape-fig" aria-label="Diagram: two deep strokes, operations and design, joined in the middle by AI">
-          <canvas class="mdots" data-mdots width="10" height="10"></canvas>
-          <figcaption class="shape-cap">
-            <span class="mono c-ops">Operations</span>
-            <span class="mono c-ai">AI</span>
-            <span class="serif c-des">Design</span>
-          </figcaption>
-        </figure>
-        <div class="prose shape-txt">
-          <p data-ih="shapeP1">A T-shaped specialist goes deep in one field and knows a little about many. <strong>My shape has two deep strokes.</strong></p>
-          <p data-ih="shapeP2">One is operations: as CEO I took an events company from 400 thousand to 3.5 million złoty in revenue and from one market to seven. Today I run operations for a development group with 27 projects.</p>
-          <p data-ih="shapeP3">The other is design: a master's degree in computer graphics from the Academy of Fine Arts in Łódź and more than a hundred projects for game studios, 4A Games among them.</p>
-          <p data-ih="shapeP4">The stroke in the middle is AI. It is how one person keeps both depths at working speed.</p>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -88,47 +67,85 @@
     </div>
   </section>
 
-  <!-- IN PRACTICE -->
-  <section class="section" id="practice">
+  <!-- WALL -->
+  <section class="section" id="work">
     <div class="wrap">
-      <div class="section-head">
-        <h2 class="h2" data-i="pracH">Where it sits in each of my two crafts.</h2>
+      <div class="wall">
+        <figure class="t t-8 rv">
+          <div class="tf ba" style="--ar:4/3" data-label="Real photo and AI edit"><img src="../assets/img/ba/egg-now.webp" alt="Empty commercial unit, real photo" loading="lazy"><img class="after" src="../assets/img/ba/egg-ai.webp" alt="The same photo with a ladder to the clouds added by AI" loading="lazy"><span class="lab l" data-i="baPhoto">Photo</span><span class="lab r" data-i="baAI">AI</span></div>
+          <figcaption class="tc"><h3 data-i="aEt">Easter eggs in real photos</h3><p data-i="aE">Real photos of empty units. AI adds one quiet detail, and the catalogue marks the frame as AI. Drag the line.</p></figcaption>
+        </figure>
+        <figure class="t t-4 rv">
+          <div class="tf ba" style="--ar:3/4" data-label="Today and a concept"><img src="../assets/img/ba/np183-now.webp" alt="Commercial unit as it is today" loading="lazy"><img class="after" src="../assets/img/ba/np183-concept.webp" alt="The same unit as a business could use it, AI concept" loading="lazy"><span class="lab l" data-i="baNow">Now</span><span class="lab r" data-i="baConcept">Concept</span></div>
+          <figcaption class="tc"><h3 data-i="aNt">Now, and with a business inside</h3><p data-i="aN">The concept is built on the real photo, so the owner sees their own room.</p></figcaption>
+        </figure>
+
+        <figure class="t t-6 rv">
+          <div class="tf ba" style="--ar:4/3" data-label="Today and a concept"><img src="../assets/img/ba/p4-now.webp" alt="Unfinished commercial room, real photo" loading="lazy"><img class="after" src="../assets/img/ba/p4-concept.webp" alt="The same room as a working space, AI concept" loading="lazy"><span class="lab l" data-i="baNow">Now</span><span class="lab r" data-i="baConcept">Concept</span></div>
+          <figcaption class="tc"><h3 data-i="aPt">Every unit in two frames</h3><p data-i="aP">Part of the commercial-stock strategy: what the space is today and what it can earn.</p></figcaption>
+        </figure>
+        <figure class="t t-6 rv">
+          <div class="tf ba" style="--ar:4/3" data-label="Bare flat and furnished render"><img src="../assets/img/ba/viz-1-original.webp" alt="Flat without finishing, real photo" loading="lazy"><img class="after" src="../assets/img/ba/viz-3-furnished.webp" alt="The same flat furnished, AI render" loading="lazy"><span class="lab l" data-i="baPhoto">Photo</span><span class="lab r" data-i="baAI">AI</span></div>
+          <figcaption class="tc"><h3 data-i="aVt">A bare flat, furnished</h3><p data-i="aV">One photo from the site, one render of the same room. Buyers see the finished flat.</p></figcaption>
+        </figure>
+
+        <figure class="t t-7 rv">
+          <div class="tf hv" style="--ar:16/9" data-video="../assets/media/ws-full.mp4" data-poster="../assets/media/ws-poster.jpg"><img class="poster" src="../assets/media/ws-poster.jpg" alt="Training film frame: task card in the tracker" loading="lazy"><video src="../assets/media/ws-loop.mp4" muted loop playsinline preload="none"></video></div>
+          <figcaption class="tc"><p class="tk mono">4:32 · UA</p><h3 data-i="aWt">A training film rendered from code</h3><p data-i="aW">Written as HTML, built frame by frame. The voice is synthesised and every cut follows the words.</p></figcaption>
+        </figure>
+        <figure class="t t-5 rv">
+          <div class="tf demo" style="--ar:16/10" data-demo="https://lexgoart.github.io/portfolio/ai-vs-specialists/" data-ls="aivs-lang=$lang" data-title="AI versus specialists"><img class="poster" src="../assets/img/proj/ai-vs.jpg" alt="Study: AI against specialists" loading="lazy"></div>
+          <figcaption class="tc"><p class="tk mono">Live · EN PL RU</p><h3 data-i="aSt">The study behind the numbers</h3><p data-i="aS">Every one of the 32 tasks with its rate and formula.</p></figcaption>
+        </figure>
       </div>
-      <!-- one table, each craft named in its own face -->
-      <ol class="crafts">
-        <li><span class="craft-k mono">Operations</span><p class="craft-t"><span>32</span> <span data-i="pr1a">regulations, templates and documents put into use.</span> <span>14</span> <span data-i="pr1b">projects through an operational audit.</span></p><p class="craft-d" data-i="pr1d">Audits, analyses, documents and reports go through Claude and ChatGPT. About 7.4 months of my own time without AI became about three weeks with it.</p></li>
-        <li><span class="craft-k serif">Design</span><p class="craft-t" data-i="pr2a">Films and the catalogue reel are rendered from code I write with Claude Code.</p><p class="craft-d" data-i="pr2d">No editing timeline: HTML, CSS and GSAP become video, with the sound placed to the frame.</p></li>
-      </ol>
     </div>
   </section>
 
-  <!-- TOOLS -->
-  <section class="section" id="tools">
-    <div class="wrap">
-      <div class="section-head">
-        <h2 class="h2" data-i="toolsH">Tools I made for my own work.</h2>
+  <!-- STORY, folded -->
+  <section class="section" id="shape">
+    <div class="wrap folds">
+      <details class="fold">
+        <summary><span data-i="shapeH">Why the shape is an M</span><span class="pm" data-i="more">More</span></summary>
+        <div class="fold-b">
+      <div class="grid shape">
+        <figure class="shape-fig" aria-label="Diagram: two deep strokes, operations and design, joined in the middle by AI">
+          <canvas class="mdots" data-mdots width="10" height="10"></canvas>
+          <figcaption class="shape-cap">
+            <span class="mono c-ops">Operations</span>
+            <span class="mono c-ai">AI</span>
+            <span class="serif c-des">Design</span>
+          </figcaption>
+        </figure>
+        <div class="prose shape-txt">
+          <p data-ih="shapeP1">A T-shaped specialist goes deep in one field and knows a little about many. <strong>My shape has two deep strokes.</strong></p>
+          <p data-ih="shapeP2">One is operations: as CEO I took an events company from 400 thousand to 3.5 million złoty in revenue and from one market to seven. Today I run operations for a development group with 27 projects.</p>
+          <p data-ih="shapeP3">The other is design: a master's degree in computer graphics from the Academy of Fine Arts in Łódź and more than a hundred projects for game studios, 4A Games among them.</p>
+          <p data-ih="shapeP4">The stroke in the middle is AI. It is how one person keeps both depths at working speed.</p>
+        </div>
       </div>
-      <ol class="index" data-preview>
+        </div>
+      </details>
+      <details class="fold">
+        <summary><span data-i="toolsH">Tools I made for my own work.</span><span class="pm" data-i="more">More</span></summary>
+        <div class="fold-b">
+      <ol class="index">
         <li><div class="i-row">
           <span class="i-t" data-i="w9t">Slukh, a meeting assistant</span><span class="i-d" data-i="w9d">Microphone, Whisper on the laptop, Claude, a live panel and minutes straight into Obsidian. Sensitive audio never leaves the machine.</span><span class="i-y mono" data-i="private">private tool</span></div></li>
         <li><div class="i-row">
           <span class="i-t" data-i="w10t">Resume Studio</span><span class="i-d" data-i="w10d">Rewrites my CV for a specific vacancy while every line keeps its length, so the layout never breaks.</span><span class="i-y mono" data-i="private">private tool</span></div></li>
       </ol>
-    </div>
-    <div class="peek" aria-hidden="true"><img alt=""></div>
-  </section>
-
-  <!-- PATH -->
-  <section class="section" id="path">
-    <div class="wrap">
-      <div class="section-head">
-        <h2 class="h2" data-i="pathH">From image studies to the daily work of a COO.</h2>
-      </div>
+        </div>
+      </details>
+      <details class="fold">
+        <summary><span data-i="pathH">From image studies to the daily work of a COO.</span><span class="pm" data-i="more">More</span></summary>
+        <div class="fold-b">
       <ol class="timeline timeline--ai">
         <li><span class="mono">2023 → 2024</span><span class="tl-t" data-i="a1t">Midjourney studies</span><span data-i="a1d">Image studies I art-directed while the models were getting good: brief, composition, light, and choosing one frame out of dozens.</span></li>
         <li><span class="mono">06.2024</span><span class="tl-t" data-i="a2t">Three courses</span><span>Vanderbilt · Prompt Engineering for ChatGPT<br>IBM · Generative AI<br>Google Cloud · Introduction to Generative AI</span></li>
         <li><span class="mono">04 → 07.2026</span><span class="tl-t" data-i="a3t">AI in the daily work of a COO</span><span data-i="a3d">Audits, analyses, regulations and reports for a development group, measured against specialists task by task.</span></li>
       </ol>
+        </div>
+      </details>
     </div>
   </section>
 
@@ -156,5 +173,6 @@
 <script src="../assets/js/inner.js"></script>
 <script src="../assets/js/mshape.js"></script>
 <script src="../assets/js/aidots.js"></script>
+<script src="../assets/js/wall.js"></script>
 </body>
 </html>

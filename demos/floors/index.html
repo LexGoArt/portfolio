@@ -1,0 +1,655 @@
+<meta charset="utf-8">
+<title>Конструктор підлоги НФ</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --bg: #F1F2F4;
+    --panel: #FFFFFF;
+    --panel-2: #E7E9EC;
+    --ink: #202631;
+    --ink-2: #4A5261;
+    --ink-3: #7C8494;
+    --line: #D4D7DC;
+    --accent: #D9530B;
+    --accent-soft: #FBEADF;
+    --ok: #2E7D4F;
+    --ok-soft: #E3F0E8;
+    --warn: #9A6A00;
+    --warn-soft: #F6EDD6;
+    --bad: #B23A2E;
+    --hud-bg: #202631;
+    --hud-fg: #F1F2F4;
+    --hud-dim: rgba(241,242,244,.55);
+    --hud-track: rgba(241,242,244,.16);
+    --sel-soft: #FBEADF;
+  }
+  /* Свідомо одна тема: світла, у будь-якому режимі переглядача */
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', -apple-system, 'Segoe UI', sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .wrap { max-width: 1020px; margin: 0 auto; padding: 0 18px 90px; }
+  h1, h2 { font-family: 'Unbounded', 'IBM Plex Sans', sans-serif; margin: 0; text-wrap: balance; }
+  h1 { font-weight: 700; font-size: clamp(24px, 4.5vw, 36px); line-height: 1.15; }
+  h2 { font-weight: 500; font-size: 18px; }
+  .mono { font-family: 'IBM Plex Mono', monospace; }
+  .muted { color: var(--ink-3); }
+
+  /* HUD */
+  .hud {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--hud-bg); color: var(--hud-fg);
+    box-shadow: 0 6px 20px rgba(0,0,0,.25);
+  }
+  .hud-in {
+    max-width: 1020px; margin: 0 auto; padding: 12px 18px;
+    display: flex; gap: 16px; align-items: center; flex-wrap: wrap; justify-content: space-between;
+  }
+  .hud .money {
+    font-family: 'IBM Plex Mono', monospace; font-weight: 600;
+    font-size: clamp(21px, 4.5vw, 30px); line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .hud .money small { font-size: 13px; font-weight: 400; opacity: .6; }
+  .hud .sub { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--hud-dim); margin-top: 4px; }
+  .stats { display: flex; gap: 14px; flex-wrap: wrap; }
+  .stat { min-width: 100px; }
+  .stat .n {
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--hud-dim);
+    display: flex; justify-content: space-between; margin-bottom: 4px;
+  }
+  .stat .track { height: 6px; background: var(--hud-track); border-radius: 3px; overflow: hidden; }
+  .stat .fill { display: block; height: 100%; min-width: 4px; border-radius: 3px; transition: width .4s cubic-bezier(.4,0,.2,1); }
+
+  /* levels */
+  .lvl { margin-top: 36px; }
+  .lvl-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+  .badge {
+    width: 30px; height: 30px; background: var(--accent); color: #fff;
+    display: grid; place-items: center;
+    font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600; flex: none;
+  }
+  .lvl-head p { margin: 0; font-size: 13px; color: var(--ink-3); flex-basis: 100%; }
+
+  .grid { display: grid; gap: 10px; }
+  .g4 { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+  .pick {
+    background: var(--panel); border: 1.5px solid var(--line);
+    padding: 14px; cursor: pointer; transition: border-color .15s, transform .15s;
+    text-align: left; font: inherit; color: inherit; position: relative;
+  }
+  .pick:hover { transform: translateY(-2px); border-color: var(--accent); }
+  .pick:focus-visible { outline: 2.5px solid var(--accent); outline-offset: 2px; }
+  .pick.on { border-color: var(--accent); background: var(--sel-soft); box-shadow: 0 0 0 2px var(--accent); }
+  .pick.off { opacity: .38; pointer-events: none; }
+  .pick .ico { font-size: 22px; line-height: 1; margin-bottom: 8px; }
+  .pick .ttl { font-weight: 700; font-size: 15px; line-height: 1.25; }
+  .pick .txt { font-size: 12.5px; color: var(--ink-2); margin-top: 5px; min-height: 38px; }
+  .pick .cost { font-family: 'IBM Plex Mono', monospace; font-size: 13px; font-weight: 600; margin-top: 9px; color: var(--accent); }
+  .rec {
+    position: absolute; top: -9px; right: 10px;
+    background: var(--ok); color: #fff; font-size: 10.5px;
+    font-family: 'IBM Plex Mono', monospace; letter-spacing: .08em;
+    padding: 3px 9px; border-radius: 999px;
+  }
+  .navail { position: absolute; top: -9px; right: 10px; background: var(--panel-2); color: var(--ink-3);
+    font-size: 10.5px; font-family: 'IBM Plex Mono', monospace; padding: 3px 9px; border-radius: 999px;
+    border: 1px solid var(--line); }
+
+  /* swatches */
+  .swatch { height: 66px; margin-bottom: 10px; position: relative; overflow: hidden; border: 1px solid var(--line); }
+  .swatch::after { content: ""; position: absolute; inset: 0;
+    background: linear-gradient(112deg, rgba(255,255,255,.35) 0%, rgba(255,255,255,.05) 40%, rgba(255,255,255,0) 60%); }
+  .swatch.matte::after { background: linear-gradient(112deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,0) 45%); }
+  .tx-grind { background: #8E8B83;
+    background-image: radial-gradient(circle at 22% 28%, rgba(255,255,255,.5) .9px, transparent 1.2px),
+      radial-gradient(circle at 68% 62%, rgba(0,0,0,.4) 1px, transparent 1.3px),
+      radial-gradient(circle at 44% 82%, rgba(255,255,255,.35) .8px, transparent 1.1px);
+    background-size: 11px 11px, 15px 15px, 8px 8px; }
+  .tx-top { background: #7E8288;
+    background-image: radial-gradient(circle at 30% 40%, rgba(0,0,0,.22) 1.3px, transparent 1.7px),
+      radial-gradient(circle at 72% 70%, rgba(255,255,255,.22) 1.1px, transparent 1.5px);
+    background-size: 14px 14px, 17px 17px; }
+  .tx-poly { background: linear-gradient(158deg, #4A6E93 0%, #2C4A6E 55%, #22405F 100%); }
+  .tx-pasp { background: linear-gradient(150deg, #A85B32 0%, #8C4A28 60%, #7C4022 100%); }
+  .flakes { background-image:
+      radial-gradient(circle at 18% 34%, #E8E2D2 1.6px, transparent 2px),
+      radial-gradient(circle at 62% 22%, #7C9AB8 1.4px, transparent 1.8px),
+      radial-gradient(circle at 40% 70%, #C9B98E 1.5px, transparent 1.9px),
+      radial-gradient(circle at 84% 62%, #E8E2D2 1.3px, transparent 1.7px) !important;
+    background-size: 23px 23px, 29px 29px, 19px 19px, 33px 33px !important; }
+  .swatch .tag, .bigswatch .tag {
+    position: absolute; left: 8px; bottom: 6px; z-index: 2;
+    font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .05em;
+    color: #fff; background: rgba(15,17,20,.6); padding: 2px 7px; border-radius: 4px;
+  }
+  .bigswatch { height: 120px; position: relative; overflow: hidden; border: 1px solid var(--line); margin-bottom: 16px; }
+
+  /* sliders */
+  .sliders {
+    background: var(--panel); border: 1.5px solid var(--line);
+    padding: 16px 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 10px;
+  }
+  .sl label {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 2px;
+  }
+  .sl .v { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 19px; color: var(--ink); letter-spacing: 0; font-variant-numeric: tabular-nums; }
+  input[type=range] { width: 100%; accent-color: var(--accent); }
+  .seg3 { display: flex; border: 1.5px solid var(--line); overflow: hidden; }
+  .seg3 button {
+    font: inherit; font-size: 13px; font-weight: 600; padding: 9px 8px; flex: 1;
+    background: transparent; border: 0; border-right: 1px solid var(--line);
+    cursor: pointer; color: var(--ink-2);
+  }
+  .seg3 button:last-child { border-right: 0; }
+  .seg3 button.on { background: var(--accent); color: #fff; }
+  .seg3 button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+  /* compare matrix */
+  .cmp { background: var(--panel); border: 1.5px solid var(--line); overflow-x: auto; }
+  .cmp table { border-collapse: collapse; width: 100%; min-width: 640px; }
+  .cmp th, .cmp td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--line); font-size: 13px; }
+  .cmp thead th { font-weight: 700; font-size: 13.5px; border-bottom: 2px solid var(--ink); }
+  .cmp thead th span { display: block; font-family: 'IBM Plex Mono', monospace; font-weight: 400; font-size: 11px; color: var(--ink-3); margin-top: 2px; }
+  .cmp td:first-child, .cmp th:first-child {
+    font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+    letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); width: 180px;
+  }
+  .cmp .sel { background: var(--sel-soft); }
+  .cmp .track { height: 7px; background: var(--panel-2); border-radius: 4px; overflow: hidden; margin-top: 5px; }
+  .cmp .track i { display: block; height: 100%; border-radius: 4px; }
+  .cmp .num { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 12.5px; }
+  .cmp .best { color: var(--ok); font-weight: 700; }
+  .cmp .yes { color: var(--ok); font-weight: 700; }
+  .cmp .no { color: var(--bad); font-weight: 700; }
+
+  /* toggles (додатки + прискорювачі) */
+  .up {
+    background: var(--panel); border: 1.5px solid var(--line);
+    padding: 13px 15px; display: flex; gap: 11px; align-items: flex-start;
+    cursor: pointer; transition: border-color .15s; text-align: left; font: inherit; color: inherit;
+  }
+  .up:hover { border-color: var(--accent); }
+  .up:focus-visible { outline: 2.5px solid var(--accent); outline-offset: 2px; }
+  .up.on { border-color: var(--ok); background: var(--ok-soft); }
+  .up.off { opacity: .38; pointer-events: none; }
+  .up .box {
+    width: 19px; height: 19px; border: 2px solid var(--line); flex: none;
+    margin-top: 2px; display: grid; place-items: center; font-size: 12px; color: #fff;
+  }
+  .up.on .box { background: var(--ok); border-color: var(--ok); }
+  .up .ttl { font-weight: 700; font-size: 14px; }
+  .up .txt { font-size: 12.5px; color: var(--ink-2); margin-top: 2px; display: block; }
+  .up .cost { font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; color: var(--accent); margin-top: 5px; display: block; font-weight: 600; }
+  .up .cost .save { color: var(--ok); }
+
+  /* result */
+  .res { background: var(--panel); border: 2px solid var(--accent); padding: 22px; margin-top: 12px; }
+  .res .big {
+    font-family: 'IBM Plex Mono', monospace; font-weight: 600;
+    font-size: clamp(28px, 6vw, 44px); line-height: 1; font-variant-numeric: tabular-nums;
+  }
+  .res .per { font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: var(--ink-2); margin-top: 6px; }
+  .split { display: flex; height: 26px; overflow: hidden; margin: 18px 0 10px; background: var(--panel-2); }
+  .split i { display: block; transition: width .4s; }
+  .keys { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12.5px; }
+  .keys span { display: flex; align-items: center; gap: 6px; }
+  .keys em { width: 11px; height: 11px; font-style: normal; flex: none; }
+  .verdict { margin-top: 18px; padding: 15px 17px; background: var(--panel-2); border-left: 3px solid var(--accent); font-size: 14px; }
+  .ach { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+  .a {
+    font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; padding: 6px 12px; border-radius: 999px;
+    background: var(--ink); color: var(--bg);
+  }
+  .a.dim { background: transparent; color: var(--ink-3); border: 1px dashed var(--line); }
+  .btn {
+    font: inherit; font-weight: 700; font-size: 14px; padding: 11px 20px;
+    border: 1.5px solid var(--accent); background: var(--accent); color: #fff; cursor: pointer; margin: 16px 10px 0 0;
+  }
+  .btn.ghost { background: transparent; color: var(--accent); }
+  .btn:focus-visible { outline: 2.5px solid var(--ink); outline-offset: 2px; }
+  pre {
+    background: var(--panel-2); border: 1px solid var(--line); padding: 15px 17px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; line-height: 1.65;
+    overflow-x: auto; margin: 12px 0 0; white-space: pre-wrap;
+  }
+
+  @media (max-width: 720px) {
+    .sliders { grid-template-columns: 1fr; }
+    .stats { gap: 10px; }
+    .stat { min-width: 84px; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="hud">
+  <div class="hud-in">
+    <div>
+      <div class="money"><span id="hMoney">0</span> <small>₴</small></div>
+      <div class="sub"><span id="hPer">0</span> ₴/м² · <span id="hDays">0</span> дн. до навантаження · <span id="hArea">150</span> м²</div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="n"><span>Міцність</span><span id="vDur">0</span></div>
+        <div class="track"><i class="fill" id="bDur" style="background:#D9A83F"></i></div></div>
+      <div class="stat"><div class="n"><span>Волога·хімія</span><span id="vWet">0</span></div>
+        <div class="track"><i class="fill" id="bWet" style="background:#5B8FBF"></i></div></div>
+      <div class="stat"><div class="n"><span>Вигляд</span><span id="vLook">0</span></div>
+        <div class="track"><i class="fill" id="bLook" style="background:#A98BD4"></i></div></div>
+      <div class="stat"><div class="n"><span>Швидкість</span><span id="vSpd">0</span></div>
+        <div class="track"><i class="fill" id="bSpd" style="background:#5CBB87"></i></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<div style="padding:28px 0 4px">
+  <div class="mono" style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:8px">
+    Доброград · Нежитловий фонд
+  </div>
+  <h1>Конструктор заливної підлоги</h1>
+  <p class="muted" style="max-width:600px;margin:8px 0 0">
+    Чотири кроки. Тиснеш — бачиш ціну, строк і що змінюється. Тільки монолітні покриття.
+    Внизу — готовий запит підряднику.
+  </p>
+</div>
+
+<!-- LEVEL 1 -->
+<section class="lvl">
+  <div class="lvl-head"><span class="badge">1</span><h2>Що це за приміщення</h2>
+    <p>Від цього залежить рекомендація покриття</p></div>
+  <div class="grid g4" id="useGrid"></div>
+  <div class="sliders">
+    <div class="sl">
+      <label>Площа <span class="v"><span id="areaV">150</span> м²</span></label>
+      <input type="range" id="area" min="20" max="1000" step="10" value="150" aria-label="Площа приміщення">
+    </div>
+    <div class="sl">
+      <label>Основа</label>
+      <div class="seg3" id="baseSeg" role="group" aria-label="Стан основи">
+        <button data-base="new">Нова плита<br><small class="muted" style="font-weight:400">будуємо зараз</small></button>
+        <button data-base="ok">Стара, в нормі<br><small class="muted" style="font-weight:400">дрібний ремонт</small></button>
+        <button data-base="bad">Стара, вбита<br><small class="muted" style="font-weight:400">треба вирівнювати</small></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEVEL 2 -->
+<section class="lvl">
+  <div class="lvl-head"><span class="badge">2</span><h2>Обери покриття</h2>
+    <p>Ціни під ключ: матеріал + робота, без підготовки основи</p></div>
+  <div class="grid g4" id="coatGrid"></div>
+</section>
+
+<!-- COMPARE -->
+<section class="lvl">
+  <div class="lvl-head"><span class="badge">⚖</span><h2>Порівняння</h2>
+    <p>Зірка — найкращий показник у рядку. Обране покриття підсвічено</p></div>
+  <div class="cmp"><table id="cmpTable"></table></div>
+</section>
+
+<!-- LEVEL 3 -->
+<section class="lvl">
+  <div class="lvl-head"><span class="badge">3</span><h2>Додатки</h2>
+    <p>Вмикай тільки потрібне. Сірі — недоступні для обраного покриття</p></div>
+  <div class="grid g4" id="upGrid"></div>
+</section>
+
+<!-- LEVEL 4 -->
+<section class="lvl">
+  <div class="lvl-head"><span class="badge">4</span><h2>Прискорювачі</h2>
+    <p>Технології, що ріжуть календар. Більшість — вимога до підрядника, а не наша витрата</p></div>
+  <div class="grid g4" id="boostGrid"></div>
+</section>
+
+<!-- RESULT -->
+<section class="lvl">
+  <div class="lvl-head"><span class="badge">✓</span><h2>Підсумок</h2></div>
+  <div class="res">
+    <div class="bigswatch" id="rSwatch"></div>
+    <div class="mono muted" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase">Разом під ключ</div>
+    <div class="big"><span id="rTotal">0</span> ₴</div>
+    <div class="per"><span id="rPer">0</span> ₴/м² · <span id="rDays">0</span> дн. до повного навантаження · ресурс <span id="rLife">—</span></div>
+
+    <div class="split" id="split"></div>
+    <div class="keys" id="keys"></div>
+
+    <div class="verdict" id="verdict"></div>
+    <div class="ach" id="ach"></div>
+
+    <button class="btn" id="copyBtn">Скопіювати запит підряднику</button>
+    <button class="btn ghost" id="resetBtn">Почати спочатку</button>
+    <pre id="req"></pre>
+  </div>
+</section>
+
+<p class="muted mono" style="font-size:12px;margin-top:30px">
+  Ціни — ринкові медіани, Україна, серпень 2026. Орієнтир для рішення;
+  фінальні цифри — з комерційних пропозицій після обмірів.
+</p>
+
+</div>
+
+<script>
+const f = n => new Intl.NumberFormat('uk-UA',{maximumFractionDigits:0}).format(Math.round(n));
+
+/* ---------------- ДАНІ ---------------- */
+const USES = [
+  {id:'cell',  ico:'📦', ttl:'Комірки, склад, техприміщення', txt:'Навантаження є, краса не потрібна'},
+  {id:'park',  ico:'🚗', ttl:'Паркінг', txt:'Колеса, шипи, реагенти взимку'},
+  {id:'retail',ico:'🛍️', ttl:'НП першої лінії', txt:'Магазин, офіс, салон — люди бачать щодня'},
+  {id:'wet',   ico:'🍽️', ttl:'Вологі й харчові', txt:'Кафе, мийка, часте прибирання з водою'}
+];
+
+const COATS = [
+  {id:'grind', tex:'tx-grind', matte:true, ttl:'Шліфування + просочення',
+   txt:'Зміцнюємо те, що є. Пил не летить, вигляд охайний',
+   cost:450, tempo:120, cure:1, life:'5–10 р.',
+   dur:55, wet:40, look:45, sample:'сірий бетон, матовий',
+   newOnly:false},
+  {id:'top', tex:'tx-top', matte:true, ttl:'Топінг',
+   txt:'Корунд у свіжий бетон. Тільки разом із заливкою плити',
+   cost:650, tempo:350, cure:5, life:'15–20 р.',
+   dur:85, wet:55, look:50, sample:'сіро-графітовий, матовий',
+   newOnly:true},
+  {id:'poly', tex:'tx-poly', matte:false, ttl:'Наливна полімерна',
+   txt:'Епоксид або поліуретан. Безшовна, миється, будь-який колір',
+   cost:950, tempo:80, cure:4, life:'10–15 р.',
+   dur:80, wet:85, look:90, sample:'глянець, будь-який RAL',
+   newOnly:false},
+  {id:'pasp', tex:'tx-pasp', matte:false, ttl:'Поліаспартик',
+   txt:'«Підлога за 1 день»: хода того ж вечора, не жовтіє',
+   cost:1300, tempo:150, cure:1, life:'12–18 р.',
+   dur:90, wet:85, look:85, sample:'напівглянець, кольоровий',
+   newOnly:false}
+];
+
+const PROPS = [
+  {k:'dur', n:'Зносостійкість'},
+  {k:'wet', n:'Волога і хімія'},
+  {k:'look',n:'Товарний вигляд'}
+];
+const FACTS = [
+  {k:'cure',  n:'Днів до навантаження', fmt:c=>c.cure+' дн.'},
+  {k:'tempo', n:'Темп бригади',         fmt:c=>c.tempo+' м²/день'},
+  {k:'life',  n:'Ресурс',               fmt:c=>c.life},
+  {k:'newOnly',n:'По старій плиті',     fmt:c=>c.newOnly?'<span class="no">ні, лише нова</span>':'<span class="yes">так</span>'},
+  {k:'sample',n:'Як виглядає',          fmt:c=>c.sample}
+];
+
+const UPS = [
+  {id:'slip', ttl:'Антиковзання R11', txt:'Кварцовий пісок у фініші — пандуси, вологі зони',
+   cost:90, days:0, dur:5, only:['poly','pasp']},
+  {id:'zone', ttl:'Розмітка зон', txt:'Смуги, проїзди, номери місць',
+   cost:60, days:1, look:5, only:null},
+  {id:'wp', ttl:'Гідроізоляція', txt:'Підлога по ґрунту, цоколь, вологі приміщення',
+   cost:230, days:2, wet:30, only:null},
+  {id:'flake', ttl:'Декоративні флейки', txt:'Кольорова крихта — ховає дрібні дефекти',
+   cost:180, days:1, look:10, only:['poly','pasp']}
+];
+
+const BOOSTS = [
+  {id:'laser', ttl:'Laser screed', txt:'Машина рівняє бетон по лазеру: до 3 000 м²/день, ±2 мм. Вимога до підрядника',
+   need:s=>s.base==='new' && s.area>=300, needTxt:'нова плита від 300 м²',
+   cost:0, days:-2},
+  {id:'ride', ttl:'Ride-on затирка', txt:'Двороторний «вертоліт» — затирає топінг у рази швидше. Вимога до підрядника',
+   need:s=>s.coat==='top', needTxt:'тільки для топінгу',
+   cost:0, days:-1},
+  {id:'fast', ttl:'Швидкотвердіюча стяжка', txt:'Самовирівнювальна суміш: хода через 3–6 год замість тижня сушіння',
+   need:s=>s.base==='bad', needTxt:'коли треба вирівнювати',
+   cost:80, days:-4},
+  {id:'pasp2', ttl:'Поліаспартик замість епоксиду', txt:'Та сама безшовна підлога, але твердіння годинами — перемикає покриття',
+   need:s=>s.coat==='poly', needTxt:'коли обрано наливну',
+   cost:0, days:0, switchTo:'pasp'}
+];
+
+/* ---------------- СТАН ---------------- */
+const DEF = {use:'cell', coat:'grind', area:150, base:'ok', ups:{}, boosts:{}};
+let S = JSON.parse(JSON.stringify(DEF));
+
+/* ---------------- ЛОГІКА ---------------- */
+const coat = () => COATS.find(c=>c.id===S.coat);
+const coatAvail = c => !c.newOnly || S.base==='new';
+const upAvail = u => !u.only || u.only.includes(S.coat);
+const rec = () => {
+  if (S.use==='cell')  return 'grind';
+  if (S.use==='park')  return S.base==='new' ? 'top' : 'pasp';
+  return 'poly'; // retail, wet
+};
+
+function calc(){
+  const a=S.area, c=coat();
+  // підготовка основи
+  let prepCost=0, prepDays=0, lvlCost=0, lvlDays=0;
+  if (S.base==='ok'){ prepCost=60*a; prepDays=1; }
+  if (S.base==='bad'){
+    prepCost=60*a; prepDays=1;
+    lvlCost=(300+(S.boosts.fast?80:0))*a; lvlDays=6;
+  }
+  const finCost=c.cost*a;
+  let finDays=Math.ceil(a/c.tempo)+c.cure;
+
+  let upsCost=0, upsDays=0;
+  UPS.forEach(u=>{ if(S.ups[u.id]&&upAvail(u)){ upsCost+=u.cost*a; upsDays+=u.days; } });
+
+  let boostDays=0;
+  BOOSTS.forEach(b=>{ if(S.boosts[b.id]&&b.need(S)&&!b.switchTo) boostDays+=b.days; });
+
+  const days=Math.max(1, prepDays+lvlDays+finDays+upsDays+boostDays);
+  const total=prepCost+lvlCost+finCost+upsCost;
+  return {prepCost,lvlCost,finCost,upsCost,total,per:total/a,days,c};
+}
+
+function stats(){
+  const c=coat(); let dur=c.dur, wet=c.wet, look=c.look;
+  UPS.forEach(u=>{ if(S.ups[u.id]&&upAvail(u)){ dur+=u.dur||0; wet+=u.wet||0; look+=u.look||0; } });
+  const days=calc().days;
+  const spd=Math.max(5, Math.round(100-(days-2)*5));
+  return {dur:Math.min(100,dur), wet:Math.min(100,wet), look:Math.min(100,look), spd:Math.min(100,spd)};
+}
+
+/* ---------------- РЕНДЕР ---------------- */
+function rUse(){
+  document.getElementById('useGrid').innerHTML = USES.map(u=>`
+    <button class="pick ${S.use===u.id?'on':''}" data-use="${u.id}">
+      <div class="ico">${u.ico}</div><div class="ttl">${u.ttl}</div>
+      <div class="txt">${u.txt}</div>
+    </button>`).join('');
+  document.querySelectorAll('#baseSeg button').forEach(b=>
+    b.classList.toggle('on', b.dataset.base===S.base));
+}
+
+function rCoat(){
+  const r=rec();
+  document.getElementById('coatGrid').innerHTML = COATS.map(c=>{
+    const av=coatAvail(c);
+    return `<button class="pick ${S.coat===c.id?'on':''} ${av?'':'off'}" data-coat="${c.id}" ${av?'':'disabled'}>
+      ${c.id===r&&av?'<span class="rec">РАДИМО</span>':''}
+      ${!av?'<span class="navail">лише нова плита</span>':''}
+      <div class="swatch ${c.tex} ${c.matte?'matte':''}"><span class="tag">${c.sample}</span></div>
+      <div class="ttl">${c.ttl}</div>
+      <div class="txt">${c.txt}</div>
+      <div class="cost">${f(c.cost)} ₴/м² · ${c.life}</div>
+    </button>`;
+  }).join('');
+}
+
+function rCompare(){
+  const head=`<tr><th>Властивість</th>${COATS.map(c=>
+    `<th class="${c.id===S.coat?'sel':''}">${c.ttl}<span>${f(c.cost)} ₴/м²</span></th>`).join('')}</tr>`;
+  const bars=PROPS.map(p=>{
+    const best=Math.max(...COATS.map(c=>c[p.k]));
+    return `<tr><td>${p.n}</td>${COATS.map(c=>{
+      const v=c[p.k];
+      return `<td class="${c.id===S.coat?'sel':''}">
+        <span class="num ${v===best?'best':''}">${v}${v===best?' ★':''}</span>
+        <span class="track"><i style="width:${v}%;background:${v===best?'var(--ok)':'var(--accent)'}"></i></span></td>`;
+    }).join('')}</tr>`;
+  }).join('');
+  const facts=FACTS.map(p=>`<tr><td>${p.n}</td>${COATS.map(c=>
+    `<td class="${c.id===S.coat?'sel':''}">${p.fmt(c)}</td>`).join('')}</tr>`).join('');
+  document.getElementById('cmpTable').innerHTML=`<thead>${head}</thead><tbody>${bars}${facts}</tbody>`;
+}
+
+function rUps(){
+  document.getElementById('upGrid').innerHTML = UPS.map(u=>{
+    const av=upAvail(u), on=S.ups[u.id]&&av;
+    return `<button class="up ${on?'on':''} ${av?'':'off'}" data-up="${u.id}" ${av?'':'disabled'}>
+      <span class="box">${on?'✓':''}</span>
+      <span><span class="ttl">${u.ttl}</span>
+        <span class="txt">${av?u.txt:'Недоступно для обраного покриття'}</span>
+        <span class="cost">+${f(u.cost)} ₴/м²${u.days?' · +'+u.days+' дн.':''}</span></span>
+    </button>`;
+  }).join('');
+}
+
+function rBoosts(){
+  document.getElementById('boostGrid').innerHTML = BOOSTS.map(b=>{
+    const av=b.need(S), on=S.boosts[b.id]&&av;
+    let costTxt;
+    if(b.switchTo) costTxt=`різниця ціни покриттів · <span class="save">−дні твердіння</span>`;
+    else costTxt=`${b.cost?'+'+f(b.cost)+' ₴/м²':'без доплати'}${b.days?` · <span class="save">${b.days} дн.</span>`:''}`;
+    return `<button class="up ${on?'on':''} ${av?'':'off'}" data-boost="${b.id}" ${av?'':'disabled'}>
+      <span class="box">${on?'✓':''}</span>
+      <span><span class="ttl">${b.ttl}</span>
+        <span class="txt">${av?b.txt:'Умова: '+b.needTxt}</span>
+        <span class="cost">${costTxt}</span></span>
+    </button>`;
+  }).join('');
+}
+
+function rHud(){
+  const c=calc(), st=stats();
+  document.getElementById('hMoney').textContent=f(c.total);
+  document.getElementById('hPer').textContent=f(c.per);
+  document.getElementById('hDays').textContent=c.days;
+  document.getElementById('hArea').textContent=f(S.area);
+  const set=(v,b,val)=>{document.getElementById(v).textContent=val;document.getElementById(b).style.width=val+'%';};
+  set('vDur','bDur',st.dur); set('vWet','bWet',st.wet);
+  set('vLook','bLook',st.look); set('vSpd','bSpd',st.spd);
+}
+
+function rRes(){
+  const c=calc(), st=stats();
+
+  const sw=document.getElementById('rSwatch');
+  const flakeOn=S.ups.flake&&upAvail(UPS.find(u=>u.id==='flake'));
+  sw.className='bigswatch '+c.c.tex+(c.c.matte?' matte':'')+(flakeOn?' flakes':'');
+  const extra=[];
+  if(flakeOn) extra.push('флейки');
+  if(S.ups.slip&&upAvail(UPS.find(u=>u.id==='slip'))) extra.push('антиковзання R11');
+  sw.innerHTML=`<span class="tag">${c.c.ttl} · ${c.c.sample}${extra.length?' · '+extra.join(' · '):''}</span>`;
+
+  document.getElementById('rTotal').textContent=f(c.total);
+  document.getElementById('rPer').textContent=f(c.per);
+  document.getElementById('rDays').textContent=c.days;
+  document.getElementById('rLife').textContent=c.c.life;
+
+  const parts=[['Підготовка',c.prepCost,'#8B93A3'],['Вирівнювання',c.lvlCost,'#D9A83F'],
+               ['Покриття',c.finCost,'#D9530B'],['Додатки',c.upsCost,'#A98BD4']].filter(p=>p[1]>0);
+  document.getElementById('split').innerHTML=parts.map(([n,v,col])=>
+    `<i style="width:${v/c.total*100}%;background:${col}" title="${n}: ${f(v)} ₴"></i>`).join('');
+  document.getElementById('keys').innerHTML=parts.map(([n,v,col])=>
+    `<span><em style="background:${col}"></em>${n} · <b class="mono">${f(v)} ₴</b></span>`).join('');
+
+  const r=rec(), order=['grind','top','poly','pasp'];
+  let v='';
+  if(S.coat===r) v=`<b>Збіг із рекомендацією.</b> Для такого приміщення «${c.c.ttl}» — робочий вибір.`;
+  else if(order.indexOf(S.coat)>order.indexOf(r))
+    v=`<b>Перезаклад.</b> Тут вистачило б «${COATS.find(x=>x.id===r).ttl}» — різниця йде в запас, який навряд знадобиться.`;
+  else v=`<b>Недоклад.</b> Для цього режиму експлуатації радимо «${COATS.find(x=>x.id===r).ttl}» — обране покриття може здатися зарано.`;
+  if(S.use==='wet'&&!S.ups.wp) v+=' Для вологого приміщення варто увімкнути гідроізоляцію.';
+  if(S.base==='bad'&&!S.boosts.fast) v+=' Основа вбита: швидкотвердіюча стяжка зекономила б ~4 дні.';
+  document.getElementById('verdict').innerHTML=v;
+
+  const A=[
+    [c.per<700,'💰 До 700 ₴/м²'],
+    [c.days<=7,'⚡ Тиждень і працює'],
+    [st.wet>=90,'💧 Волога не пройде'],
+    [BOOSTS.filter(b=>b.need(S)&&!b.switchTo).length>0&&BOOSTS.every(b=>!b.need(S)||b.switchTo||S.boosts[b.id]),'🇨🇳 Повний турбо'],
+    [S.area>=500,'🏗️ Великий об\u0027єкт']
+  ];
+  document.getElementById('ach').innerHTML=A.map(([ok,t])=>
+    `<span class="a ${ok?'':'dim'}">${t}</span>`).join('');
+
+  const ups=UPS.filter(u=>S.ups[u.id]&&upAvail(u)).map(u=>u.ttl);
+  const boosts=BOOSTS.filter(b=>S.boosts[b.id]&&b.need(S)&&!b.switchTo).map(b=>b.ttl);
+  const baseTxt={new:'нова плита (заливається зараз)',ok:'наявна плита у задовільному стані',bad:'наявна плита, потрібне вирівнювання'}[S.base];
+  document.getElementById('req').textContent=
+`Добрий день!
+
+Просимо прорахувати влаштування підлоги в нежитловому приміщенні.
+
+Площа: ${f(S.area)} м²
+Основа: ${baseTxt}
+Покриття: ${c.c.ttl}
+Додатки: ${ups.length?ups.join(', '):'немає'}
+${boosts.length?'Технології: '+boosts.join(', ')+'\n':''}
+У прорахунку вказати окремо:
+  - матеріал, ₴/м²
+  - робота, ₴/м²
+  - підготовка основи, ₴/м²
+  - строк виходу на повне навантаження
+  - гарантія
+  - наявність техніки (laser screed / ride-on затирка)
+
+Наш орієнтир: ${f(c.per)} ₴/м² під ключ, ${c.days} днів.
+Розглядаємо рамкову співпрацю на пул приміщень.`;
+}
+
+function render(){ rUse(); rCoat(); rCompare(); rUps(); rBoosts(); rHud(); rRes(); }
+
+/* ---------------- ПОДІЇ ---------------- */
+document.addEventListener('click', e=>{
+  const b=e.target.closest('[data-use],[data-coat],[data-up],[data-boost],[data-base]');
+  if(!b) return;
+  if(b.dataset.use){ S.use=b.dataset.use; if(coatAvail(COATS.find(c=>c.id===rec()))) S.coat=rec(); }
+  else if(b.dataset.base){
+    S.base=b.dataset.base;
+    if(!coatAvail(coat())) S.coat='grind';
+    if(coatAvail(COATS.find(c=>c.id===rec()))) S.coat=rec();
+  }
+  else if(b.dataset.coat){ S.coat=b.dataset.coat; }
+  else if(b.dataset.up){ S.ups[b.dataset.up]=!S.ups[b.dataset.up]; }
+  else if(b.dataset.boost){
+    const bo=BOOSTS.find(x=>x.id===b.dataset.boost);
+    if(bo.switchTo){ S.coat=bo.switchTo; }
+    else S.boosts[bo.id]=!S.boosts[bo.id];
+  }
+  render();
+});
+
+const areaEl=document.getElementById('area');
+areaEl.addEventListener('input',()=>{
+  S.area=+areaEl.value;
+  document.getElementById('areaV').textContent=f(S.area);
+  render();
+});
+
+document.getElementById('copyBtn').addEventListener('click',e=>{
+  navigator.clipboard.writeText(document.getElementById('req').textContent).then(()=>{
+    e.target.textContent='Скопійовано ✓';
+    setTimeout(()=>e.target.textContent='Скопіювати запит підряднику',1800);
+  }).catch(()=>{ e.target.textContent='Виділіть текст нижче вручну'; });
+});
+
+document.getElementById('resetBtn').addEventListener('click',()=>{
+  S=JSON.parse(JSON.stringify(DEF));
+  areaEl.value=S.area;
+  document.getElementById('areaV').textContent=f(S.area);
+  render();
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+
+render();
+</script>
